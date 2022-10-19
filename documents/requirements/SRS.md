@@ -3,7 +3,7 @@
 - [Introduction](#1-introduction)
     - [Purpose](#11-purpose)
     - [Scope](#12-scope)
-    - [Definitions, Acronyms and Abbreviations](#13-definitions-acronyms-and-abbreviations)
+    - [Definitions, Acronyms and Abbreviations](#13-definition-acronyms-and-abbreviations)
     - [References](#14-references)
     - [Overview](#15-overview)
 - [Overall Description](#2-overall-description)
