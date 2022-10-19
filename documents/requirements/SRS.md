@@ -89,3 +89,29 @@ To help our user navigating the application (if necessary) we will provide a "Ho
 
 ### 3.8 Interfaces
 #### User Interfaces
+For not logged in Users
+- Login / Register
+For logged in Users:
+- Profile
+- Dashboard - Stats
+- Game
+- Level
+- Streak
+For both:
+- How to play
+- Landing page
+
+#### Communication Interfaces
+The Frontend will communicate with the Backend with the HTTP-Protocol
+
+### 3.9 Licensing Requirements
+#### Legal, Copyright and other Notices
+The logo is licensed to CUMGroup and is only allowed to be used for the application. We do not take responsibilty for any incorrect data or errors in the application.
+
+### 4. Supporting Information
+For further information you can check out our [blog](https://github.com/CUMGroup/AMOGUS/discussions) or contact us directly:
+- @AlexMi-Ha
+- @Annalytic-programming
+- @elnaz-gharoon
+- @jas20202
+- @WachtelHD 
