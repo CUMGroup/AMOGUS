@@ -51,12 +51,12 @@ Currently planned categories are:
 - Complex Number Arithmetic
 
 #### Streak System
-Here we want the player to get attached to the game more by introducing a streak system. The player gets a streak wich tracks the amount of consecutive days they (uninterupted) played. So if a player doesn't play for 24 hours, the streak gets reset.
+Here we want the player to get attached to the game more by introducing a streak system. The player gets a streak which tracks the amount of consecutive days they (uninterupted) played. So if a player doesn't play for 24 hours, the streak gets reset.
 
 #### Stats tracking
 We want to track some statistics of the player to display in a Dashboard and let the Person see their progress.
 #### Level System
-This will introduce a leveling System where players get levels by simply playing wich will increase the difficulty over time.
+This will introduce a leveling System where players get levels by simply playing which will increase the difficulty over time.
 #### Big Excercise Pool to randomly choose from
 As we cannot generate a lot of the problems to be solved by the computer, we have to provide a big enough Excercise pool to cover a broad range of problems.
 
