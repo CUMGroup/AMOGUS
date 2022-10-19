@@ -67,7 +67,7 @@ The technology used will be:
 #### Accounts (Login, Registering, Profiles)
 We want to let the user create their own account to track their progress, play games and get notified if they would lose their streak.
 #### Game loop
-This is the most important feature of our app. Here we will implement the main Excercises in a playful way. Players get a random Math problem from a specific category and can then try to solve it to get points and progress in the game.<br>
+This is the most important feature of our app. Here we will implement the main excercises in a playful way. Players get a random Math problem from a specific category and can then try to solve it to get points and progress in the game.<br>
 Currently planned categories are:
 - Mental Arithmetic
 - Analysis (with Differentiation and Integration)
@@ -82,7 +82,7 @@ We want to track some statistics of the player to display in a dashboard and let
 #### Level System
 This will introduce a leveling system where players get levels by simply playing which will increase the difficulty over time.
 #### Big Excercise Pool to randomly choose from
-As we cannot generate a lot of the problems to be solved by the computer, we have to provide a big enough Excercise pool to cover a broad range of problems.
+As we cannot generate a lot of the problems to be solved by the computer, we have to provide a big enough excercise pool to cover a broad range of problems.
 
 ### 3.2 Usability
 The User Interface should be designed in an obvious way that the user can directly start learning without having to learn the Interface first. For further explanation we will have a "How-To" page covering how to play and the overall infrastructure of the site and we will have small tutorials in each excercise, helping the player when stuck.
@@ -94,7 +94,7 @@ The Server should only be down for a very short period of time when a new versio
 #### Capacity
 The Backend should be able to handle many players at the same time. At no point should there be a waiting queue for the user.
 #### Storage
-All of the persistant storage will be handled by the Backend, so storage won't be a problem
+All of the persistant storage will be handled by the Backend, so storage won't be a problem.
 #### Response Time
 As this will be a kind of game, the perfomance - e.g. checking the answer - should be as fast as possible.
 
@@ -102,7 +102,7 @@ As this will be a kind of game, the perfomance - e.g. checking the answer - shou
 #### Coding Standards
 We will use the most common clean code standards. To ensure a clean structure we will use a variation of [Clean Architecture by Jason Taylor](https://github.com/jasontaylordev/CleanArchitecture) for our C# API Backend.
 #### Testing Strategy
-The application will have a high test coverage to ensure it is working correctly
+The application will have a high test coverage to ensure it is working correctly.
 
 ### 3.6 Design Constraints
 To keep our application modular and testable, we will use the MVVM pattern to connect our C# REST-API to the Angular frontend.
@@ -126,7 +126,7 @@ For both:
 - Landing page
 
 #### Communication Interfaces
-The Frontend will communicate with the Backend with the HTTP-Protocol
+The Frontend will communicate with the Backend via the HTTP-Protocol.
 
 ### 3.9 Licensing Requirements
 #### Legal, Copyright and other Notices
