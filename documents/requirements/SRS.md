@@ -40,11 +40,52 @@ The technology used will be:
 
 ## 3. Specific Requirements
 ### 3.1 Functionality
-- Accounts (Login, Registering, Profiles)
-- Game loop
-- Streak System
-- Stats tracking
-- Level System
-- Big Excercise Pool to randomly choose from
+#### Accounts (Login, Registering, Profiles)
+We want to let the user create their own account to track their progress, play games and get notified if the would lose their streak.
+#### Game loop
+This is the most important feature of our app. Here we will implement the main Excercises in a playful way. Players get a random Math problem from a specific category and can then try to solve it to get points and progress in the game.<br>
+Currently planned categories are:
+- Mental Arithmetic
+- Analysis (with Differentiation and Integration)
+- Algebra (with Matrices)
+- Complex Number Arithmetic
 
-###
+#### Streak System
+Here we want the player to get attached to the game more by introducing a streak system. The player gets a streak wich tracks the amount of consecutive days they (uninterupted) played. So if a player doesn't play for 24 hours, the streak gets reset.
+
+#### Stats tracking
+We want to track some statistics of the player to display in a Dashboard and let the Person see their progress.
+#### Level System
+This will introduce a leveling System where players get levels by simply playing wich will increase the difficulty over time.
+#### Big Excercise Pool to randomly choose from
+As we cannot generate a lot of the problems to be solved by the computer, we have to provide a big enough Excercise pool to cover a broad range of problems.
+
+### 3.2 Usability
+The User Interface should be designed in an obvious way that the user can directly start learning without having to learn the Interface first. For further explanation we will have a "How-To" page covering how to play and the overall infrastructure of the site and we will have small tutorials in each excercise, helping the player when stuck.
+
+### 3.3 Reliability
+The Server should only be down for a very short period of time when a new version of the web app is deployed. All other downtimes have to be handled as quickly as possible.
+
+### 3.4 Performance
+#### Capacity
+The Backend should be able to handle many players at the same time. At no point should there be a waiting queue for the user.
+#### Storage
+All of the persistant storage will be handled by the Backend, so storage won't be a problem
+#### Response Time
+As this will be a kind of game, the perfomance - e.g. checking the answer - should be as fast as possible.
+
+### 3.5 Supportability
+#### Coding Standards
+We will use the most common clean code standards. To ensure a clean structure we will use a variation of [Clean Architecture by Jason Taylor](https://github.com/jasontaylordev/CleanArchitecture) for our C# API Backend.
+#### Testing Strategy
+The application will have a high test coverage to ensure it is working correctly
+
+### 3.6 Design Constraints
+To keep our application modular and testable, we will use the MVVM pattern to connect our C# REST-API to the Angular frontend.
+They will communicate with the JSON format.
+
+### 3.7 Online User Documentation and Help System Requirements
+To help our user navigating the application (if necessary) we will provide a "How-To" page and small tutorials in each excercise.
+
+### 3.8 Interfaces
+#### User Interfaces
