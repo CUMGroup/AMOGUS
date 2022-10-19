@@ -110,8 +110,8 @@ The logo is licensed to CUMGroup and is only allowed to be used for the applicat
 
 ### 4. Supporting Information
 For further information you can check out our [blog](https://github.com/CUMGroup/AMOGUS/discussions) or contact us directly:
-- @AlexMi-Ha
-- @Annalytic-programming
-- @elnaz-gharoon
-- @jas20202
-- @WachtelHD 
+- [@AlexMi-Ha](https://github.com/AlexMi-Ha)
+- [@Annalytic-programming](https://github.com/Annalytic-programming)
+- [@elnaz-gharoon](https://github.com/elnaz-gharoon)
+- [@jas20202](https://github.com/jas20202)
+- [@WachtelHD](https://github.com/WachtelHD)
