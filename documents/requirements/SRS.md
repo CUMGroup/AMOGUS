@@ -1,3 +1,27 @@
+## Table of contents
+- [Table of contents](#table-of-contents)
+- [Introduction](#1-introduction)
+    - [Purpose](#11-purpose)
+    - [Scope](#12-scope)
+    - [Definitions, Acronyms and Abbreviations](#13-definitions-acronyms-and-abbreviations)
+    - [References](#14-references)
+    - [Overview](#15-overview)
+- [Overall Description](#2-overall-description)
+    - [Vision](#21-vision)
+    - [Use Case Diagram](#22-use-case-diagram)
+	- [Technology Stack](#23-technology-stack)
+- [Specific Requirements](#3-specific-requirements)
+    - [Functionality](#31-functionality)
+    - [Usability](#32-usability)
+    - [Reliability](#33-reliability)
+    - [Performance](#34-performance)
+    - [Supportability](#35-supportability)
+    - [Design Constraints](#36-design-constraints)
+    - [Online User Documentation and Help System Requirements](#37-online-user-documentation-and-help-system-requirements)
+    - [Interfaces](#38-interfaces)
+    - [Licensing Requirements](#39-licensing-requirements)
+- [Supporting Information](#4-supporting-information)
+
 ## 1. Introduction
 ### 1.1 Purpose
 This document specifies the requirements of our application. It also describes nonfunctional requirements, designconstraints, and other factors necessary to provide a complete and comprehensive description of the requirements for AMOGUS.
