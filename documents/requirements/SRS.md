@@ -30,7 +30,7 @@ This document provides an overview over the project, its use cases and requireme
 ### 2.1 Vision
 AMOGUS is a web application for people to practice their Mathematic skills similar to the well-known language learning app Duolingo.
 ### 2.2 Use Case Diagram
-![Use Case Diagram](UseCaseDiagram.png)
+![Use Case Diagram](UseCaseDiagramImage.png)
 ### 2.3 Technology Stack
 The technology used will be:
 - Backend: ASP.Net Web API, Sqlite Database
