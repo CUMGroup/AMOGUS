@@ -41,7 +41,7 @@ The technology used will be:
 ## 3. Specific Requirements
 ### 3.1 Functionality
 #### Accounts (Login, Registering, Profiles)
-We want to let the user create their own account to track their progress, play games and get notified if the would lose their streak.
+We want to let the user create their own account to track their progress, play games and get notified if they would lose their streak.
 #### Game loop
 This is the most important feature of our app. Here we will implement the main Excercises in a playful way. Players get a random Math problem from a specific category and can then try to solve it to get points and progress in the game.<br>
 Currently planned categories are:
@@ -51,12 +51,12 @@ Currently planned categories are:
 - Complex Number Arithmetic
 
 #### Streak System
-Here we want the player to get attached to the game more by introducing a streak system. The player gets a streak which tracks the amount of consecutive days they (uninterupted) played. So if a player doesn't play for 24 hours, the streak gets reset.
+Here we want the player to get attached to the game more by introducing a streak system. The player gets a streak which tracks the amount of consecutive days they (uninterupted) played. So if a player doesn't play till midnight, the streak gets reset.
 
 #### Stats tracking
-We want to track some statistics of the player to display in a Dashboard and let the Person see their progress.
+We want to track some statistics of the player to display in a dashboard and let the Person see their progress.
 #### Level System
-This will introduce a leveling System where players get levels by simply playing which will increase the difficulty over time.
+This will introduce a leveling system where players get levels by simply playing which will increase the difficulty over time.
 #### Big Excercise Pool to randomly choose from
 As we cannot generate a lot of the problems to be solved by the computer, we have to provide a big enough Excercise pool to cover a broad range of problems.
 
