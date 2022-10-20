@@ -22,7 +22,7 @@ The Backend tracks the game information:
 - longest streak
 - answers per day
 - correct answers per day
-- answers per category
+- answers per category<br>
 See the [Stats specification file](/documents/gameplay/plots_statstracking.pdf)<br>
 Data will be displayed in the view
 ## 7. Effort Estimation
