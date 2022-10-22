@@ -1,7 +1,7 @@
 ## 1. Brief Description
 This use case allows tracking statistics of the games a user played
 ## 2. GUI Mockup
-TBD
+<img src="../viewMockups/20221019_120557.jpg" height="500" alt="guimockups">
 ## 3. Flow of Events
 TBD
 ## 4. Special Requirements
