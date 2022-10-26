@@ -9,7 +9,8 @@ TBD
 / 
 ## 5. Preconditions
 1. The user is logged in
-2. The user starts a game
+2. The user starts a game<br>
+See [specification file](/documents/gameplay/game_loop.jpeg) for more information.
 ## 6. Postconditions
 1. The stat system tracks the game progress
 2. the player earns rewards based on their performance
