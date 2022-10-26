@@ -1,7 +1,8 @@
 ## 1. Brief Description
 This use case will allow a user to create a new account.
 ## 2. GUI Mockup
-TBD
+<img src="../viewMockups/60b79e09-5575-4556-977d-a732de14cf4b.jpeg" height="500" alt="guimockups"></img>
+
 ## 3. Flow of Events
 TBD
 ## 4. Special Requirements

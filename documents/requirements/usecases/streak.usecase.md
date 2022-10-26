@@ -7,6 +7,6 @@ This use case allows the user to see their continuous days played streak and the
 ## 5. Preconditions
 The user is logged in
 ## 6. Postconditions
-See [Streak specification file](/documens/gameplay/streak_system.pdf)
+See [Streak specification file](/documents/gameplay/streak_system.pdf)
 ## 7. Effort Estimation
 tbd

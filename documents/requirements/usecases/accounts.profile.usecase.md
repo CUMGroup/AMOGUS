@@ -1,6 +1,8 @@
 ## 1. Brief Description
 This use case will allow a user to see their profile data. (Name, Email, Account deletion)
 ## 2. GUI Mockup
+<img src="../viewMockups/60b79e09-5575-4556-977d-a732de14cf4b.jpeg" height="500" alt="guimockups"></img>
+
 ## 3. Flow of Events
 ## 4. Special Requirements
 The user has an account.

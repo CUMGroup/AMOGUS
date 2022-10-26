@@ -76,7 +76,8 @@ Currently planned categories are:
 - Mental Arithmetic
 - Analysis (with Differentiation and Integration)
 - Algebra (with Matrices)
-- Complex Number Arithmetic
+- Complex Number Arithmetic<br>
+[Game loop Use Case](usecases/gameloop.usecase.md)
 
 #### Streak System
 Here we want the player to get attached to the game more by introducing a streak system. The player gets a streak which tracks the amount of consecutive days they (uninterupted) played. So if a player doesn't play till midnight, the streak gets reset.<br>
