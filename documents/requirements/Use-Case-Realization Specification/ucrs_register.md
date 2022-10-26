@@ -27,7 +27,7 @@ This Use-Case-Realization Specification decribes how the use case "Register" is 
 In the following the flow of events is described supported by a UMLSD. This document ends with the description of the derived requirements.
 
 ## 2. Flow of Events—Design 
-[Game loop Use Case](Use-Case-Realization%20Specification/sequence_diagrams/LoginDiagram.pdf)
+
 
 ## 3. Derived Requirements
 - account-system
