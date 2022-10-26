@@ -41,7 +41,7 @@ Login Use-case Diagram
 
 
 ## 3. Derived Requirements
-- User Paasword/Email
+- User Password/Email
 - authorization-system
 
 
