@@ -34,7 +34,7 @@ this use-case-Realization Specification describes how a user who needs math parc
 
 ## 2. Flow of Events—Design 
 
-Login Use-case Diagram 
+![Use Case Login Diagram](LoginDiagram.pdf)
 
 
 
