@@ -28,7 +28,7 @@ This Use-Case-Realization Specification decribes how the use case "Register" is 
 In the following the flow of events is described supported by a UMLSD. This document ends with the description of the derived requirements.
 
 ## 2. Flow of Events—Design 
-<img src="./sequence_diagrams/Register.png" height="500" alt="guimockups"></img>
+<img src="./sequence_diagrams/Register.png" height="500" alt="guimockups"></img><br>
 The user fills in the registration form and sends a request to the authentication service. This request is forwarded to the server which will check in the DB wheter the user already exists (username or email) or not. If the user already exists then an Error is returned and the registration process is canceled. On the other hand, if the user doen't exist yet the server will create a new user, store it in the DB and answer the Authentication service with the token for the user. The user is now logged into is newly created account.
 
 ## 3. Derived Requirements
