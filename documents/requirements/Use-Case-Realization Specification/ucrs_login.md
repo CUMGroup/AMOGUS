@@ -37,7 +37,7 @@ this use-case-Realization Specification describes how a user who needs math parc
 Use Case Login Diagram
 
 
-
+<img src="./sequence_diagrams/LoginDiagram.png" height="500" alt="guimockups"></img><br>
 
 
 ## 3. Derived Requirements
