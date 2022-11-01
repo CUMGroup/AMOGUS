@@ -4,7 +4,7 @@ This usecase allows the user to play the game where they solve math problems und
 <img src="../viewMockups/20221019_120549.jpg" height="500" alt="guimockups"></img>
 
 ## 3. Flow of Events
-TBD
+<img src="/documents/requirements/usecases/activitydiagrams/activity_gameloop.png" height="500" alt="flow of events"></img>
 ## 4. Special Requirements
 / 
 ## 5. Preconditions
