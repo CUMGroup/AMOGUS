@@ -5,8 +5,8 @@ using System.Xml;
 namespace AMOGUS.Core.Common.Interfaces.Game {
     public interface IGameService {
 
-        Task<Session> NewSession();
+        Task<Session> NewSessionAsync();
 
-        Task<Session> EndSession(Session session);
+        Task<Session> EndSessionAsync(Session session);
     }
 }

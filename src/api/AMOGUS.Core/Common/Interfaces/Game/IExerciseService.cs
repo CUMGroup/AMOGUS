@@ -7,6 +7,6 @@ namespace AMOGUS.Core.Common.Interfaces.Game {
 
         Task<List<Exercise>> GetRandomExercisesAsync(int amount);
 
-        Task<bool> CheckAnswer(Exercise answer);
+        Task<bool> CheckAnswerAsync(Exercise answer);
     }
 }
