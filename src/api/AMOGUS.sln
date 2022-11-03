@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32819.101
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AMOGUS", "AMOGUS\AMOGUS.csproj", "{C90DF7C0-2B62-4959-BA54-BBBFBAD3D167}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AMOGUS.Core", "AMOGUS.Core\AMOGUS.Core.csproj", "{209FE088-5291-4B25-BEBE-09B2CC0ECA72}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AMOGUS.Core", "AMOGUS.Core\AMOGUS.Core.csproj", "{209FE088-5291-4B25-BEBE-09B2CC0ECA72}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AMOGUS.Infrastructure", "AMOGUS.Infrastructure\AMOGUS.Infrastructure.csproj", "{48A1E0BC-DC11-492B-99AB-3F9D3C87762E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AMOGUS.Infrastructure", "AMOGUS.Infrastructure\AMOGUS.Infrastructure.csproj", "{48A1E0BC-DC11-492B-99AB-3F9D3C87762E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AMOGUS.Api", "AMOGUS.Api\AMOGUS.Api.csproj", "{B4AA2209-AB3C-48FF-B0C6-4613F5083BE7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,10 +15,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{C90DF7C0-2B62-4959-BA54-BBBFBAD3D167}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C90DF7C0-2B62-4959-BA54-BBBFBAD3D167}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C90DF7C0-2B62-4959-BA54-BBBFBAD3D167}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C90DF7C0-2B62-4959-BA54-BBBFBAD3D167}.Release|Any CPU.Build.0 = Release|Any CPU
 		{209FE088-5291-4B25-BEBE-09B2CC0ECA72}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{209FE088-5291-4B25-BEBE-09B2CC0ECA72}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{209FE088-5291-4B25-BEBE-09B2CC0ECA72}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -27,6 +23,10 @@ Global
 		{48A1E0BC-DC11-492B-99AB-3F9D3C87762E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{48A1E0BC-DC11-492B-99AB-3F9D3C87762E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{48A1E0BC-DC11-492B-99AB-3F9D3C87762E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B4AA2209-AB3C-48FF-B0C6-4613F5083BE7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B4AA2209-AB3C-48FF-B0C6-4613F5083BE7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B4AA2209-AB3C-48FF-B0C6-4613F5083BE7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B4AA2209-AB3C-48FF-B0C6-4613F5083BE7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
