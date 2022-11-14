@@ -1,9 +1,9 @@
 ﻿
-using AMOGUS.Core.Common.Interfaces.User;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
+using AMOGUS.Infrastructure.Identity;
 
-namespace AMOGUS.Core.Domain.Models.Game {
+namespace AMOGUS.Core.Domain.Models.Entities {
     public class GameSession {
 
         [Key]
@@ -11,7 +11,7 @@ namespace AMOGUS.Core.Domain.Models.Game {
         
         [ForeignKey("User")]
         public string UserId { get; set; }
-        public IApplicationUser User { get; set; }
+        public ApplicationUser User { get; set; }
 
         public TimeSpan Playtime { get; set; }
         public int CorrectAnswersCount { get; set; }
@@ -22,12 +22,15 @@ namespace AMOGUS.Core.Domain.Models.Game {
 
         public TimeSpan SlowestAnswer { get; set; }
         
+        // n to m relationship to questions
+        public ICollection<Question> Questions { get; set; }
+
         [NotMapped]
         public double QuickestAnswerInMillis { get {
                 return QuickestAnswer.TotalMilliseconds;
             } 
         }
-
+        [NotMapped] 
         public double SlowestAnswerInSeconds { get {
                 return SlowestAnswer.TotalSeconds;
             } 

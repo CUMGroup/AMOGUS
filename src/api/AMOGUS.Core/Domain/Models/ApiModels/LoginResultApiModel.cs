@@ -9,7 +9,9 @@ namespace AMOGUS.Core.Domain.Models.ApiModels {
     public class LoginResultApiModel {
         public Result Result { get; private set; }
 
-        public string? Token { get; private set; }
+        public string? Token { get; private set; } = null;
+
+        public DateTime? Expiration { get; private set; } = null;
 
 
         public LoginResultApiModel() {
@@ -20,9 +22,10 @@ namespace AMOGUS.Core.Domain.Models.ApiModels {
             this.Result = res;
         }
 
-        public LoginResultApiModel(Result res, string token) {
+        public LoginResultApiModel(Result res, string token, DateTime expiration) {
             this.Result = res;
             this.Token = token;
+            this.Expiration = expiration;
         }
     }
 }

@@ -1,12 +1,7 @@
-﻿using AMOGUS.Core.Common.Interfaces.User;
-using AMOGUS.Core.Domain.Enums;
-using System;
-using System.Collections.Generic;
+﻿using AMOGUS.Core.Domain.Enums;
+using AMOGUS.Infrastructure.Identity;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AMOGUS.Core.Domain.Models.Entities {
     public class UserMedal {
@@ -14,10 +9,9 @@ namespace AMOGUS.Core.Domain.Models.Entities {
         [Key]
         public UserMedalType MedalId { get; set; }
 
-        [Key]
         [ForeignKey("User")]
         public string UserId { get; set; }
-        public IApplicationUser User { get; set; }
+        public ApplicationUser User { get; set; }
 
 
         [Required]

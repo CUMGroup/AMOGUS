@@ -1,9 +1,8 @@
-﻿
-using AMOGUS.Core.Common.Interfaces.User;
+﻿using AMOGUS.Infrastructure.Identity;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace AMOGUS.Core.Domain.Models.Game {
+namespace AMOGUS.Core.Domain.Models.Entities {
     public class UserStats {
 
         // TODO: Annotation
@@ -11,7 +10,7 @@ namespace AMOGUS.Core.Domain.Models.Game {
         [Key]
         [ForeignKey("User")]
         public string UserId { get; set; }
-        public IApplicationUser User { get; set; }
+        public ApplicationUser User { get; set; }
 
         public int Level { get; set; } = 0;
 
