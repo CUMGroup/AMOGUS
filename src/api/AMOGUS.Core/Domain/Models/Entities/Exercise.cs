@@ -1,6 +1,8 @@
 ﻿
 namespace AMOGUS.Core.Domain.Models.Game {
     public class Exercise {
-        // TODO
+
+        public string QuestionId { get; set; }
+
     }
 }

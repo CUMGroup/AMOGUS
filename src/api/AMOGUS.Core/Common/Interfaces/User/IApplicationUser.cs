@@ -7,5 +7,7 @@
         string Id { get; set; }
         string Email { get; set; }
 
+        bool PlayedToday { get; set; }
+
     }
 }
