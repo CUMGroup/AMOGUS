@@ -1,5 +1,5 @@
 ﻿
-using AMOGUS.Core.Domain.Models.Game;
+using AMOGUS.Core.Domain.Models.Entities;
 using System.Xml;
 
 namespace AMOGUS.Core.Common.Interfaces.Game {

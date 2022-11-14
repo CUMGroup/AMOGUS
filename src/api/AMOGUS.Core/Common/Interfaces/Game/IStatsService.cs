@@ -1,5 +1,5 @@
 ﻿
-using AMOGUS.Core.Domain.Models.Game;
+using AMOGUS.Core.Domain.Models.Entities;
 
 namespace AMOGUS.Core.Common.Interfaces.Game {
     public interface IStatsService {
