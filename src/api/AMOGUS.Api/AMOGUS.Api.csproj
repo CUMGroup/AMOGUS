@@ -11,7 +11,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
+    <ProjectReference Include="..\AMOGUS.Core\AMOGUS.Core.csproj" />
+    <ProjectReference Include="..\AMOGUS.Infrastructure\AMOGUS.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

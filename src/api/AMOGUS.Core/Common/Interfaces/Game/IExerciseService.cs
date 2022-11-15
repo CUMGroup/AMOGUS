@@ -1,12 +1,12 @@
 ﻿
 using AMOGUS.Core.Domain.Models.ApiModels;
-using AMOGUS.Core.Domain.Models.Game;
+using AMOGUS.Core.Domain.Models.Entities;
 
 namespace AMOGUS.Core.Common.Interfaces.Game {
     public interface IExerciseService {
 
-        Task<List<Exercise>> GetRandomExercisesAsync(int amount);
+        Task<List<Question>> GetRandomExercisesAsync(int amount);
 
-        Task<bool> CheckAnswerAsync(Exercise answer);
+        Task<bool> CheckAnswerAsync(Question answer);
     }
 }
