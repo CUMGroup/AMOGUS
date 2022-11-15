@@ -7,7 +7,9 @@
   },
   "files": [
     "src/main.ts",
-    "src/polyfills.ts"
+    "src/polyfills.ts",
+    "node_modules/gsap/types/gsap-core.d.ts",
+    "src/app/interfaces/dataTypes.ts"
   ],
   "include": [
     "src/**/*.d.ts"
