@@ -1,5 +1,5 @@
 {
-  "name": "amogus",
+  "name": "untitled",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -11,13 +11,19 @@
   "private": true,
   "dependencies": {
     "@angular/animations": "^14.2.0",
+    "@angular/cdk": "^14.2.6",
     "@angular/common": "^14.2.0",
     "@angular/compiler": "^14.2.0",
     "@angular/core": "^14.2.0",
     "@angular/forms": "^14.2.0",
+    "@angular/material": "^14.2.6",
     "@angular/platform-browser": "^14.2.0",
     "@angular/platform-browser-dynamic": "^14.2.0",
     "@angular/router": "^14.2.0",
+    "@types/gsap": "^3.0.0",
+    "echarts": "^5.4.0",
+    "gsap": "^3.11.3",
+    "ngx-echarts": "^14.0.0",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"
