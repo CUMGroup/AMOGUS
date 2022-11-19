@@ -1,0 +1,21 @@
+.left{
+  background-color: lightgray;
+  position: absolute;
+}
+
+.center{
+  margin: auto;
+  background-color: darkgray;
+}
+
+.right{
+  background-color: gray;
+  position: absolute;
+}
+
+svg {
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
