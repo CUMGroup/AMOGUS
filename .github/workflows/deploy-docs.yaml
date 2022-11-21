@@ -3,7 +3,7 @@ name: "📦🔰 Deploy docs via GitHub Pages"
 on:
   push:
     branches:
-      - gh-pages
+      - 'gh-pages'
     paths:
       - 'docs/**'
       - 'mkdocs.yml'
