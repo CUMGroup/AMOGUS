@@ -14,7 +14,7 @@ jobs:
     name: "📦🔰 Deploy docs via GitHub Pages"
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout main
+      - name: Checkout gh-pages
         uses: actions/checkout@v2
       - name: Deploy docs
         uses: mhausenblas/mkdocs-deploy-gh-pages@master
