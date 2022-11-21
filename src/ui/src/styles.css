@@ -29,3 +29,11 @@ body {
     --color-gold: #c5a453;
     --color-yellow: #ffff33;
 }
+
+.correct-highlight {
+    color: var(--color-correct);
+}
+
+.wrong-highlight {
+    color: var(--color-wrong);
+}
