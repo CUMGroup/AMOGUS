@@ -1,0 +1,30 @@
+.graphs-container {
+    display: flex;
+    justify-content: center;
+}
+
+.pi-chart {
+    width: 50%;
+}
+
+.line-chart {
+    width: 50%;
+}
+
+@media screen and (max-width: 850px) {
+    .graphs-container {
+        display: block;
+    }
+
+    .pi-chart {
+        width: 100%;
+    }
+
+    .line-chart {
+        width: 100%;
+    }
+}
+
+:host {
+    display: block;
+}
