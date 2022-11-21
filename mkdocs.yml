@@ -4,9 +4,6 @@ repo_url: https://github.com/CUMGroup/AMOGUS
 repo_name: CUMGroup/AMOGUS
 
 markdown_extensions:
-  - pymdownx.emoji:
-      emoji_index: !!python/name:materialx.emoji.twemoji
-      emoji_generator: !!python/name:materialx.emoji.to_svg
   - footnotes
   - tables
   - pymdownx.highlight:
