@@ -1,4 +1,8 @@
-site_name: My Docs
+site_name: Amogus Docs
+site_url: https://cumgroup.github.io/AMOGUS/
+nav:
+    - Home: index.md
+    - About: about.md
 theme:
   name: material
 
