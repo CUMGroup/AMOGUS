@@ -27,7 +27,7 @@ export class StatsService {
 
       LongestStreak: 5,
 
-      CategorieAnswers: new Map<String, Number>([
+      CategorieAnswers: new Map<string, number>([
         ["Analysis", 52],
         ["Algebra", 17],
         ["Arithmetic", 43]
@@ -39,9 +39,16 @@ export class StatsService {
         99,
         102
       ],
+      Unlocked: [
+        "5: Unlocked Medium Difficulty",
+        "10: Unlocked Daily Challenge",
+        "20: Unlocked Advanced Difficulty"
+      ],
+      NextPrize: {
+        level: 25,
+        prize: "Key Pack (5 keys)"
+      }
     };
     return of(stats);
   }
-
-
 }

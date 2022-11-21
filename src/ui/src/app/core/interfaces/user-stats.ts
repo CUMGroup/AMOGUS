@@ -2,18 +2,24 @@ import { TimeSpan } from "../types/time-span";
 
 export interface UserStats {
 
-    Level: Number;
-    CurrentStreak: Number;
+    Level: number;
+    CurrentStreak: number;
 
-    OverallAnswered: Number;
-    CorrectAnswers: Number;
+    OverallAnswered: number;
+    CorrectAnswers: number;
 
     TotalTimePlayed: TimeSpan;
     QuickestAnswer: TimeSpan;
     SlowestAnswer: TimeSpan;
 
-    LongestStreak: Number;
+    LongestStreak: number;
 
-    CategorieAnswers: Map<String, Number>;
-    CorrectPerDay: Number[];
+    CategorieAnswers: Map<string, number>;
+    CorrectPerDay: number[];
+
+    Unlocked: string[];
+    NextPrize: {
+        level: number,
+        prize: string
+    };
 }

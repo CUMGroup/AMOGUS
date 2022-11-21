@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { GraphsComponent } from './graphs/graphs.component';
+import { StatsComponent } from './pages/stats/stats.component';
 
 const routes: Routes = [
-  { path: 'stats', component: GraphsComponent }
+  { path: 'stats', component: StatsComponent }
 ];
 
 @NgModule({
