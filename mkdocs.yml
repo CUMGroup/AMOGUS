@@ -1,11 +1,37 @@
 site_name: Amogus Docs
 site_url: https://cumgroup.github.io/AMOGUS/
-nav:
-    - Home: index.md
-    - About: about.md
+repo_url: https://github.com/CUMGroup/AMOGUS
+repo_name: CUMGroup/AMOGUS
+
+markdown_extensions:
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
+  - footnotes
+  - tables
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - admonition
+  - pymdownx.superfences
+  - pymdownx.details
+  - pymdownx.tasklist:
+      custom_checkbox: true
+
 theme:
   name: material
+  palette:
+    scheme: default
+    primary: black
+    accent: lime
+  features:
+    - navigation.sections
+    - navigation.expand
+    - toc.integrate
+  icon:
+    repo: fontawesome/brands/github
 
-nav:
-    - 'index.md'
-    - 'about.md'
+plugins:
+  - search
+  - git-revision-date
