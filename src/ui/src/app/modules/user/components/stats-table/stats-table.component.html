@@ -1,0 +1,17 @@
+<div class="stats-container">
+    <h1>Statistics</h1>
+
+    <h3><b>Level {{currentLevel}}</b></h3>
+    <p>Current Streak: {{stats?.CurrentStreak}}</p>
+    <p>{{stats?.OverallAnswered}} Questions Answered</p>
+    <p><span class="correct-highlight">{{stats?.CorrectAnswers}}</span> Correct | <span
+            class="wrong-highlight">{{stats?.OverallAnswered - stats?.CorrectAnswers}}</span> Wrong</p>
+    <p>{{stats?.TotalTimePlayed?.totalHours}} hours played</p>
+    <details>
+        <summary>More stats</summary>
+        <p>Correct/Incorrect Ratio: {{ciRatio | number : '1.0-2'}}</p>
+        <p>Quickest Answer: {{stats?.QuickestAnswer?.totalMilliseconds}}ms</p>
+        <p>Slowest Answer: {{stats?.SlowestAnswer?.totalSeconds}}s</p>
+        <p>Longest Streak: {{stats?.LongestStreak}}d</p>
+    </details>
+</div>

@@ -1,0 +1,14 @@
+.levelbar {
+    background-color: var(--color-blue);
+    text-align: center;
+    padding: .3em 0;
+}
+
+.levelbar-container {
+    width: 100%;
+    background-color: var(--background-input);
+}
+
+:host {
+    display: block;
+}

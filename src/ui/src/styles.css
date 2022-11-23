@@ -1,4 +1,39 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    color: var(--text);
+    background-color: var(--background);
+}
+
+:root {
+    --background: #21252b;
+    --border: #c5cad2;
+    --background-input: #636669;
+    --text: #eeeeee;
+    --accent-text: #5f7a99;
+    --diagram: #384094;
+    --color-correct: #19c819;
+    --color-wrong: #cc0000;
+    --color-purple: #c678dd;
+    --color-blue: #56b5c2;
+    --color-orange: #df9a59;
+    --color-lemon: #bee21d;
+    --color-pink: #cc6688;
+    --color-gold: #c5a453;
+    --color-yellow: #ffff33;
+}
+
+.correct-highlight {
+    color: var(--color-correct);
+}
+
+.wrong-highlight {
+    color: var(--color-wrong);
+}
