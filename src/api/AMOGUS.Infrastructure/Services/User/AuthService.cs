@@ -1,6 +1,6 @@
 ﻿using AMOGUS.Core.Common.Communication;
 using AMOGUS.Core.Common.Interfaces.User;
-using AMOGUS.Core.Domain.Models.ApiModels;
+using AMOGUS.Core.DataTransferObjects.User;
 using AMOGUS.Infrastructure.Identity;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;

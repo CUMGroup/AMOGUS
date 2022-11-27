@@ -15,7 +15,6 @@ namespace AMOGUS.Infrastructure.Persistence {
         public DbSet<UserStats> UserStats { get; set; }
         public DbSet<UserMedal> UserMedals { get; set; }
         public DbSet<GameSession> GameSessions { get; set; }
-        public DbSet<Question> Exercises { get; set; }
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) {
 
