@@ -21,9 +21,10 @@ namespace AMOGUS.Core.Domain.Models.Entities {
         public TimeSpan QuickestAnswer { get; set; }
 
         public TimeSpan SlowestAnswer { get; set; }
-        
-        // n to m relationship to questions
-        public ICollection<Question> Questions { get; set; }
+
+
+        [NotMapped]
+        public List<Question> Questions = new();
 
         [NotMapped]
         public double QuickestAnswerInMillis { get {
