@@ -1,0 +1,70 @@
+.bar{
+  width: 100%;
+  height: 6%;
+  background-color: darkgray;
+  position: fixed;
+  z-index: 100;
+  display: flex;
+  justify-content: space-between;
+}
+
+.hamburger{
+  height: 100%;
+  width: auto;
+}
+
+.home{
+  height: 100%;
+}
+
+.menu{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  position: fixed;
+  z-index: 99;
+  left: -200px;
+  overflow: hidden;
+  height: 100%;
+  width: 200px;
+  background-color: black;
+  color: white;
+  align-items: center;
+
+}
+
+/*.div[class*="move"] {*/
+/*  height:3px;*/
+/*  width:0;*/
+/*  background-color: white;*/
+/*}*/
+
+.move0{
+  height:3px;
+  width:0;
+  background-color: white;
+}
+.move1{
+  height:3px;
+  width:0;
+  background-color: white;
+}
+.move2{
+  height:3px;
+  width:0;
+  background-color: white;
+}
+.move3{
+  height:3px;
+  width:0;
+  background-color: white;
+}
+
+.item {
+  display: flex;
+  overflow: hidden;
+  justify-content: center;
+  flex-direction: column;
+}
+
