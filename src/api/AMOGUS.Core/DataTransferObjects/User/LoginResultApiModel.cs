@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AMOGUS.Core.Domain.Models.ApiModels {
+namespace AMOGUS.Core.DataTransferObjects.User {
     public class LoginResultApiModel {
         public Result Result { get; private set; }
 

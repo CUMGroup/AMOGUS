@@ -1,5 +1,5 @@
 ﻿
-namespace AMOGUS.Core.Domain.Models.ApiModels {
+namespace AMOGUS.Core.DataTransferObjects.User {
     public class RegisterApiModel {
 
         public string Email { get; set; }

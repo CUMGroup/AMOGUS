@@ -1,4 +1,4 @@
-﻿using AMOGUS.Core.Domain.Models.ApiModels;
+﻿using AMOGUS.Core.DataTransferObjects.User;
 
 namespace AMOGUS.Core.Common.Interfaces.User
 {
