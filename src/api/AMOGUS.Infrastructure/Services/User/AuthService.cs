@@ -93,7 +93,7 @@ namespace AMOGUS.Infrastructure.Services.User {
 
             await _userManager.AddToRoleAsync(user, role);
 
-            return await LoginUserAsync(new LoginApiModel { Email = registerModel.Email, Password = registerModel.Password});s
+            return await LoginUserAsync(new LoginApiModel { Email = registerModel.Email, Password = registerModel.Password});
         }
     }
 }
