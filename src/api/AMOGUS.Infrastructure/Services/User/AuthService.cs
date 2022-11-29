@@ -66,7 +66,7 @@ namespace AMOGUS.Infrastructure.Services.User {
                 signingCredentials: new SigningCredentials(authSigningKey, SecurityAlgorithms.HmacSha256)
                 );
 
-            return new LoginResultApiModel(Result.Success(), new JwtSecurityTokenHandler().WriteToken(token), token.ValidTo);
+            return new LoginResultApiModel(Result.Success(), new JwtSecurityTokenHandler().WriteToken(token), token.ValidTo, user.UserName, user.Email);
         }
 
 
@@ -93,7 +93,7 @@ namespace AMOGUS.Infrastructure.Services.User {
 
             await _userManager.AddToRoleAsync(user, role);
 
-            return await LoginUserAsync(new LoginApiModel { Email = registerModel.Email, Password = registerModel.Password});
+            return await LoginUserAsync(new LoginApiModel { Email = registerModel.Email, Password = registerModel.Password});s
         }
     }
 }
