@@ -1,6 +1,6 @@
 ﻿using AMOGUS.Core.Centralization.User;
 using AMOGUS.Core.Common.Interfaces.User;
-using AMOGUS.Core.Domain.Models.ApiModels;
+using AMOGUS.Core.DataTransferObjects.User;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AMOGUS.Api.Controllers {
