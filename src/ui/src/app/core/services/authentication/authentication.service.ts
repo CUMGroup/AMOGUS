@@ -17,7 +17,8 @@ export class AuthenticationService {
   login(email: string, password: string): Observable<User> {
     return this.api.post<LoginResult>('/auth/login', {email, password}).pipe(
       tap(e => this.setSession),
-      map(e => ({Email: e.Email, Username: e.Username}))
+      map(e => ({Email: e.Email, Username: e.Username})),
+      catchError(this.handleError)
     );
   }
 
