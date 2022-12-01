@@ -51,7 +51,12 @@
 
 
 ## 9. Data View (optional)
+Data, such as userdata and session data, will be stored using a database. During development AMOGUS will store it's data in an SQLite and for production MariaDB. 
 
+The original db-concept can be seen [here](https://github.com/CUMGroup/AMOGUS/blob/main/documents/architecture/db_concept.pdf).
+
+Originally the complex questions from a session would also be stored in the database. For simplicity reasons and to reduce data in the database this idea was discarded. The 'Questions'-table (as seen in the original db-concept) is no longer part of the database. 
+Instead, the complex questions will be recorded as JSON objects which can easily be modified.
 
 
 ## 10. Size and Performance
