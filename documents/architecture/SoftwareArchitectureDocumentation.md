@@ -10,21 +10,13 @@
 
 ### 1.5 Overview
 
-
-
 ## 2. Architectural Represantation
 
-
-
 ## 3. Architectural Goals and Constraints
-
-
 
 ## 4. Use-Case-View
 
 ### 4.1 Use-Case Realizations
-
-
 
 ## 5. Logical View
 
@@ -32,15 +24,11 @@
 
 ### 5.2 Architecturally Significant Design Packages
 
-
-
 ## 6. Process View
-
-
 
 ## 7. Deployment View
 
-
+![](Deployment/DeploymentDiagram.png)
 
 ## 8. Implementation View
 ### 8.1 Overview
@@ -68,9 +56,17 @@ The original db-concept can be seen [here](https://github.com/CUMGroup/AMOGUS/bl
 Originally the complex questions from a session would also be stored in the database. For simplicity reasons and to reduce data in the database this idea was discarded. The 'Questions'-table (as seen in the original db-concept) is no longer part of the database. 
 Instead, the complex questions will be recorded as JSON objects which can easily be modified.
 
-
 ## 10. Size and Performance
 
 
-
 ## 11. Quality
+
+We are trying to ensure a specific quality-standard by introducing multiple architecture tactics concerning the design attribute Modifiability.
+
+- AMOGUS will follow a service based architecture to enforce modularization and increase cohesion, hence making modifications more centralized and independent.
+
+- Coupling will be reduced by following the [ABBA-Scheme](https://github.com/CUMGroup/AMOGUS/blob/main/documents/architecture/BackendArchitecture.pdf) and only allowing communication via well defined interfaces.
+
+- Backend and frontend will be completely seperated (only communicating through a REST-API) to further decouple the application.
+
+- Backend and frontend will be deployed in different docker containers therefore making deployment easier.
