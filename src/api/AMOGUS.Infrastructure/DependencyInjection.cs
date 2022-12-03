@@ -43,7 +43,8 @@ namespace AMOGUS.Infrastructure {
             });
 
             services.AddTransient<IAuthService, AuthService>();
-            
+
+            services.AddTransient<IUserService, UserService>();
 
             return services;
         }

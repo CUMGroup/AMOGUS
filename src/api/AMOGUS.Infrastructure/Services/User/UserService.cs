@@ -8,12 +8,10 @@ using Microsoft.EntityFrameworkCore;
 
 namespace AMOGUS.Infrastructure.Services.User {
     internal class UserService : IUserService {
-        private readonly RoleManager<IdentityRole> _roleManager;
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly IApplicationDbContext _dbContext;
 
-        public UserService(RoleManager<IdentityRole> roleManager, UserManager<ApplicationUser> userManager, IApplicationDbContext dbContext) {
-            _roleManager = roleManager;
+        public UserService(UserManager<ApplicationUser> userManager, IApplicationDbContext dbContext) {
             _userManager = userManager;
             _dbContext = dbContext;
         }
