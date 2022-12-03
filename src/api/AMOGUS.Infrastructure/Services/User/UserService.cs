@@ -22,8 +22,12 @@ namespace AMOGUS.Infrastructure.Services.User {
             throw new NotImplementedException();
         }
 
-        public Task<ApplicationUser> GetUserAsync(string userId) {
-            throw new NotImplementedException();
+        public async Task<ApplicationUser> GetUserAsync(string userId) {
+            ApplicationUser user = await _userManager.FindByIdAsync(userId);
+            if (user == null) {
+                throw new exce
+            }
+            return user;
         }
 
         public Task<bool> IsInRoleAsync(string userId, string role) {
