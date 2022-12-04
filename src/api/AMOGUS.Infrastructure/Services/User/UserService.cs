@@ -32,10 +32,14 @@ namespace AMOGUS.Infrastructure.Services.User {
                 return Result.Failure("Failed deleting user.");
             }
 
-            ApplicationUser user = await GetUserAsync(userId);
-            IdentityResult result = await _userManager.DeleteAsync(user);
-            if (!result.Succeeded) {
-                return Result.Failure(result.Errors.Select(e => (e.Code + ": " + e.Description)));
+            try {
+                ApplicationUser user = await GetUserAsync(userId);
+                IdentityResult result = await _userManager.DeleteAsync(user);
+                if (!result.Succeeded) {
+                    return Result.Failure(result.Errors.Select(e => (e.Code + ": " + e.Description)));
+                }
+            } catch (UserNotFoundException ex) {
+                return Result.Failure("Failed deleting user.");
             }
             return Result.Success();
         }
