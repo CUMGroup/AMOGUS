@@ -23,7 +23,7 @@ namespace AMOGUS.Api.Controllers {
         public async Task<IActionResult> GetUser() {
             var userId = HttpContext?.User?.FindFirst(ClaimTypes.NameIdentifier)?.Value;
             if (userId == null) {
-                return Unauthorized();
+                return Forbid();
             }
             try{
                 ApplicationUser user = await _userService.GetUserAsync(userId);
@@ -42,7 +42,7 @@ namespace AMOGUS.Api.Controllers {
         public async Task<IActionResult> DeleteUser() {
             var userId = HttpContext?.User?.FindFirst(ClaimTypes.NameIdentifier)?.Value;
             if (userId == null) {
-                return Unauthorized();
+                return Forbid();
             }
             Result res = await _userService.DeleteUserAsync(userId);
             return res.Succeeded ? Ok(res) : NotFound();
