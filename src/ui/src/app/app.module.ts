@@ -9,6 +9,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import {LoginRegisterComponent} from "./modules/user/pages/login-register/login-register.component";
 import {UserModule} from "./modules/user/user.module";
+import {SharedModule} from "./shared/shared.module";
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import {UserModule} from "./modules/user/user.module";
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
+    SharedModule,
     UserModule
   ],
   providers: [],
