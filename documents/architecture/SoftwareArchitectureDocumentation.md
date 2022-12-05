@@ -45,7 +45,7 @@ The API layer has the ApiControllers components which use dependency injection f
 Within the Infrastructure layer the UserService and the AuthService both communicate with each other and use the ApplicationDbContext. The GameService in the Core layer uses the ExerciseService and communicates with the StatsService. All the services in the Frontend layer use the ApiService to be able to communicate with the API layer.
 
 ### 8.2 Layers
-![Component_Diagramm](https://user-images.githubusercontent.com/99250573/205466208-6ae4646f-0136-4a46-8cc6-4c572aa9885d.png)
+![Component_Diagramm2](https://user-images.githubusercontent.com/99250573/205755266-094f56e9-216e-4d1b-91ab-8eac9c6d3dfe.png)
 
 
 ## 9. Data View (optional)
