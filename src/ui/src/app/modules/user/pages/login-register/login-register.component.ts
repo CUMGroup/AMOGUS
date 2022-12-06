@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {AuthenticationService} from "../../../../core/services/authentication/authentication.service";
 
 @Component({
   selector: 'app-login-register',
@@ -11,8 +12,9 @@ export class LoginRegisterComponent implements OnInit {
   hide = true;
   repeatedHide = true;
   access: FormGroup;
+  message: string;
 
-  constructor(public formBuilder: FormBuilder) {
+  constructor(public formBuilder: FormBuilder, public authService:AuthenticationService) {
   }
 
   ngOnInit(): void {
@@ -25,8 +27,25 @@ export class LoginRegisterComponent implements OnInit {
     })
   }
 
-  log(){
-    console.log(this.access)
+  login(){
+    if(this.access.get("password").value !== this.access.get("repeatPassword").value &&
+      !this.access.get("login").value){
+      this.message = "enter the same password"
+    }else{
+      this.message = "";
+    }
+    if(this.access.get("login").value){
+      this.authService.login(
+        this.access.get("email").value,
+        this.access.get("password").value
+      )
+    }else{
+      this.authService.register(
+        this.access.get("email").value,
+        this.access.get("username").value,
+        this.access.get("password").value
+      )
+    }
   }
 
   disable(){

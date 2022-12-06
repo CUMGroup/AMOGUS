@@ -24,13 +24,14 @@
     </button>
   </mat-form-field>
   <div class="submit">
+    <p style="color:red">{{message}}</p>
     <mat-slide-toggle formControlName="login" (click)="disable()">register/login</mat-slide-toggle>
     <!--      [disabled]="access.invalid"-->
     <button
       mat-raised-button
       color="primary"
 
-      (click)="log()"
+      (click)="login()"
     > Submit </button>
   </div>
 </form>

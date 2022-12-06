@@ -47,7 +47,6 @@ import {MatSlideToggleModule} from "@angular/material/slide-toggle";
     }),
     FormsModule,
     ReactiveFormsModule,
-
   ]
 })
 export class UserModule { }
