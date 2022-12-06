@@ -25,6 +25,7 @@
 ### 5.2 Architecturally Significant Design Packages
 
 ## 6. Process View
+![](ProcessDiagram.png)
 
 ## 7. Deployment View
 
