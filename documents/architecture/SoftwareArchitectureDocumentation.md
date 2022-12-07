@@ -2,15 +2,99 @@
 
 ### 1.1 Purpose
 
+This software architecture document provides a comprehensive overview of the architecture of the project AMOGUS. It serves as a communication medium between the software architect and other project team members regarding architecturally significant decisions which have been made.
+
 ### 1.2 Scope
+
+This document defines the architecture of AMOGUS. It is directly related to the ABBA-Scheme and the ASR.
 
 ### 1.3 Definitions, Acronyms and Abbreviations
 
+- **AMOGUS**: the project acromym for **A**dvanced **M**athmetic **O**perations **A**nd **G**eometrics **U**nder **S**tress
+
+- **ABBA-Scheme**: the **A**mogus **B**asic **B**ackend **A**pi defines the internal backend architecture.
+
 ### 1.4 References
+
+Figures:
+
+- [Fig. 1](https://github.com/CUMGroup/AMOGUS/blob/main/documents/architecture/Process/Process_Diagram.png)
+
+- [Fig. 2](https://github.com/CUMGroup/AMOGUS/blob/main/documents/architecture/Deployment/DeploymentDiagram.png)
+
+- [Fig. 3](https://github.com/CUMGroup/AMOGUS/blob/main/documents/architecture/Components/Component_Diagramm.png)
+
+
+
+Documents:
+
+- [ABBA-Scheme](https://github.com/CUMGroup/AMOGUS/blob/main/documents/architecture/architecture/BackendArchitecture.pdf)
+
+- [DB Concept](https://github.com/CUMGroup/AMOGUS/blob/main/documents/architecture/Data/db_concept.pdf)
 
 ### 1.5 Overview
 
+The following sections describes the architecture more detailed.
+
+1. [Introduction](#1-introduction)
+   
+   1.1 [Purpose](#11-purpose)
+   
+   1.2 [Scope](#12-scope)
+   
+   1.3 [Definitions, Acronyms and Abbreviations](#13-definitions,-acronyms-and-abbreviations)
+   
+   1.4 [References](#14-references)
+   
+   1.5 [Overview](#15-overview)
+
+2. [Architectural Representation](#11-purpose)
+
+3. [Architectural Goals and Constrains](#3-architectural-goals-and-constraints)
+
+4. [Use Case View](#4-use-case-view)
+   
+   4.2 [Use Case Realizations](#42-use-case-realizations)
+
+5. [Logical View](#5-logical-view)
+   
+   5.1 [Overview](#51-overview)
+   
+   5.2 [Architecturally Significant Design Packages](#52-architecturally-significant-design-packages)
+
+6. [Process View](#6-process-view)
+
+7. [Deployment View](#8-deployment-view)
+
+8. [Implementation View](#8-implementation-view)
+   
+   8.1 [Overview](#81-overview)
+   
+   8.2 [Layers](#82-layers)
+
+9. [Data View](#9-data-view-(optional))
+
+10. [Size and Performance](#10-size-and-performance)
+
+11. [Quality](#11-quality)
+
 ## 2. Architectural Represantation
+
+For AMOGUS the basic architecture is split into services:
+
+- User Service: all userbased operations (roles, delete)
+
+- Auth Service: authorization of users (login and register)
+
+- Stats Service: get and update stats of a user
+
+- Exercise Service: get and validate exercises
+
+- Game Service: orchestrates the exercises and stats
+
+- Streak Service: check current streak and update if necessary
+
+
 
 ## 3. Architectural Goals and Constraints
 
@@ -48,9 +132,15 @@ Special constraints that may apply:
 
 ![](Process/Process_Diagram.png)
 
+<p align="center">Fig. 1</p>
+
+
+
 ## 7. Deployment View
 
 ![](Deployment/DeploymentDiagram.png)
+
+<p align="center">Fig. 2</p>
 
 ## 8. Implementation View
 
@@ -72,6 +162,8 @@ Within the Infrastructure layer the UserService and the AuthService both communi
 ### 8.2 Layers
 
 ![Component_Diagramm2](Components/Component_Diagramm.png)
+
+<p align="center">Fig. 3</p>
 
 ## 9. Data View (optional)
 
