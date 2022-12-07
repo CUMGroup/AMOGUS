@@ -35,8 +35,15 @@ Special constraints that may apply:
 - small amount of time for implementations
 
 ## 4. Use-Case-View
+Following Use-Cases are fount in AMOGUS:
+- Login / Register
+- Track process with stats view
+- Practice Math with a game session
+- Manage exercises as an admin
 
 ### 4.1 Use-Case Realizations
+Use-Case Realization for [login.](https://github.com/CUMGroup/AMOGUS/tree/main/documents/requirements/Use-Case-Realization%20Specification/ucrs_login.md)<br>
+Use-Case Realization for [register.](https://github.com/CUMGroup/AMOGUS/tree/main/documents/requirements/Use-Case-Realization%20Specification/ucrs_register.md)
 
 ## 5. Logical View
 
@@ -76,8 +83,6 @@ Within the Infrastructure layer the UserService and the AuthService both communi
 ## 9. Data View (optional)
 
 Data, such as userdata and session data, will be stored using a database. During development AMOGUS will store it's data in an SQLite and for production it will use MariaDB. 
-
-## 10. Size and Performance
 
 The original db-concept can be seen [here](https://github.com/CUMGroup/AMOGUS/blob/main/documents/architecture/Data/db_concept.pdf).
 
