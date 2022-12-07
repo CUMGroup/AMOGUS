@@ -38,7 +38,7 @@ In the following the flow of events is described supported by a UMLSD. This docu
 Use Case Login Diagram
 
 
-<img src="../../../assets/images/sequence_diagrams/LoginDiagram.png" height="500" alt="guimockups"></img><br>
+<img src="../../../../assets/images/sequence_diagrams/LoginDiagram.png" height="500" alt="guimockups"></img><br>
 
 ## 3. Derived Requirements
 - User Password/Email
