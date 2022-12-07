@@ -1,1 +1,1 @@
-![](/assets/documents/gameplay/Task_plan.png)
+![](../../../assets/documents/gameplay/Task_plan.png)
