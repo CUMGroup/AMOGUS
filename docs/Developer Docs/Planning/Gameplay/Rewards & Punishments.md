@@ -1,1 +1,1 @@
-![](/docs/assets/documents/gameplay/goodies_and_punishments.png)
+![](/assets/documents/gameplay/goodies_and_punishments.png)

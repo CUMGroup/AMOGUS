@@ -1,1 +1,1 @@
-![](/docs/assets/documents/gameplay/plots_statstracking.png)
+![](/assets/documents/gameplay/plots_statstracking.png)
