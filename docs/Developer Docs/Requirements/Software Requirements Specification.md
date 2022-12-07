@@ -67,7 +67,7 @@ AMOGUS is a web application for people to practice their Mathematic skills simil
 
 ### 2.2 Use Case Diagram
 
-![Use Case Diagram](UseCaseDiagram.png)
+![Use Case Diagram](../../assets/images/requirements/UseCaseDiagram.png)
 
 ### 2.3 Technology Stack
 
@@ -85,10 +85,10 @@ The technology used will be:
 #### Accounts (Login, Registering, Profiles)
 
 We want to let the user create their own account to track their progress, play games and get notified if they would lose their streak.<br>
-[Login Use Case](usecases/accounts.login.usecase.md)<br>
-[Register Use Case](usecases/accounts.register.usecase.md)<br>
-[Logout Use Case](usecases/accounts.logout.usecase.md)<br>
-[Profile Use Case](usecases/accounts.profile.usecase.md)
+[Login Use Case](Use%20Cases/Login%20Use%20Case.md)<br>
+[Register Use Case](Use%20Cases/Register%20Use%20Case.md)<br>
+[Logout Use Case](Use%20Cases/Logout%20Use%20Case.md)<br>
+[Profile Use Case](Use%20Cases/Profile%20Use%20Case.md)
 
 #### Game loop
 
@@ -99,22 +99,22 @@ Currently planned categories are:
 - Analysis (with Differentiation and Integration)
 - Algebra (with Matrices)
 - Complex Number Arithmetic<br>
-  [Game loop Use Case](usecases/gameloop.usecase.md)
+  [Game loop Use Case](Use%20Cases/Gameloop%20Use%20Case.md)
 
 #### Streak System
 
 Here we want the player to get attached to the game more by introducing a streak system. The player gets a streak which tracks the amount of consecutive days they (uninterupted) played. So if a player doesn't play till midnight, the streak gets reset.<br>
-[Streak Use Case](usecases/streak.usecase.md)
+[Streak Use Case](Use%20Cases/Streak%20Use%20Case.md)
 
 #### Stats tracking
 
 We want to track some statistics of the player to display in a dashboard and let the Person see their progress.<br>
-[Stats Use Case](usecases/stats.usecase.md)
+[Stats Use Case](Use%20Cases/Stats%20Use%20Case.md)
 
 #### Level System
 
 This will introduce a leveling system where players get levels by simply playing which will increase the difficulty over time.<br>
-[Level Use Case](usecases/level.usecase.md)
+[Level Use Case](Use%20Cases/Level%20Use%20Case.md)
 
 #### Big Excercise Pool to randomly choose from
 
