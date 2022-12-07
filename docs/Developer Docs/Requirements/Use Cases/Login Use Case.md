@@ -1,10 +1,10 @@
 ## 1. Brief Description
 This use case will allow a user with an account to log in to it.
 ## 2. GUI Mockup
-<img src="../viewMockups/60b79e09-5575-4556-977d-a732de14cf4b.jpeg" height="500" alt="guimockups"></img>
+<img src="./viewMockups/60b79e09-5575-4556-977d-a732de14cf4b.jpeg" height="500" alt="guimockups"></img>
 
 ## 3. Flow of Events
-<img src="/documents/requirements/usecases/activitydiagrams/activity_login.png" height="500" alt="flow of events"></img>
+<img src="./activitydiagrams/activity_login.png" height="500" alt="flow of events"></img>
 ## 4. Special Requirements
 The user already has an account.
 ## 5. Preconditions

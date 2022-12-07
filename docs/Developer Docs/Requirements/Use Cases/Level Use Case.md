@@ -1,7 +1,7 @@
 ## 1. Brief Description
 This use case allows the user to progress in the game by collecting levels from playing. New Levels yield rewards. 
 ## 2. GUI Mockup
-<img src="../viewMockups/60b79e09-5575-4556-977d-a732de14cf4b.jpeg" height="500" alt="guimockups"></img>
+<img src="./viewMockups/60b79e09-5575-4556-977d-a732de14cf4b.jpeg" height="500" alt="guimockups"></img>
 
 ## 3. Flow of Events
 TBD
@@ -12,5 +12,5 @@ TBD
 2. The user plays games
 3. The user collects levels by answering correctly 
 ## 6. Postconditions
-The user gets rewards as shown in the Level [specification file](/documents/gameplay/level_system.pdf)
+The user gets rewards as shown in the Level [specification file](../../Planning/Gameplay/Level%20System.md)
 ## 7. Effort Estimation
