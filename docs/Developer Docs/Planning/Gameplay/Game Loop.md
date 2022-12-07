@@ -1,1 +1,1 @@
-![](../../../assets//documents/gameplay/game_loop.jpeg)
+![](../../../assets/images/gameplay/game_loop.jpeg)

@@ -1,1 +1,1 @@
-![](../../../assets/documents/gameplay/Tutorial.png)
+![](../../../assets/images/Tutorial.png)

@@ -1,1 +1,1 @@
-![](../../../assets/documents/gameplay/streak_system.png)
+![](../../../assets/images/gameplay/streak_system.png)
