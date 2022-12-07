@@ -130,6 +130,7 @@ Use-Case Realization for [login.](https://github.com/CUMGroup/AMOGUS/tree/main/d
 Use-Case Realization for [register.](https://github.com/CUMGroup/AMOGUS/tree/main/documents/requirements/Use-Case-Realization%20Specification/ucrs_register.md)
 
 ## 5. Logical View
+[Class Diagram.] (https://github.com/CUMGroup/AMOGUS/blob/main/documents/architecture/Classdiagrams/BackendClassDiagram.pdf)
 
 ### 5.1 Overview
 
@@ -182,6 +183,12 @@ Originally the complex questions from a session would also be stored in the data
 Instead, the complex questions will be recorded as JSON objects which can easily be modified.
 
 ## 10. Size and Performance
+
+The frontend performance is most likely going to stay in a efficent state. As most of the logic is rather simple and just provides/generates some basic information. Other than that the design choice will take a small percentage of the performance. So our goal is to stay efficient and don’t over engineer the frontend.
+The backend  handles the major data processing and generation for our questions, therefore we can’t prevent some size and performance issues.
+Some questions simply can’t be generated in a reasonable time so we will  use some auto generated questions mixed with generated ones to keep our performance as good as possible. This also describes our goal for the backend, to use as low performance as possible.
+Our database will linearly scale with the amount of users and questions, which allows us to regulate our size concerns. In case we get more users than expected we can easily extend our Hardware. :D
+Our general Goal is to reach the best UX possible, thus we should keep in mind that a long waiting period might lose the interest of each user. To prevent this issue we target a maximum waiting period of 2s on initial load and whilst on the page about 1s.
 
 ## 11. Quality
 
