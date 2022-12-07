@@ -1,1 +1,1 @@
-![](/documents/gameplay/level_system.png)
+![](/docs/assets//documents/gameplay/level_system.png)
