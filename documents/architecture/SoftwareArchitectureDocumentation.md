@@ -33,8 +33,6 @@ Special constraints that may apply:
 - small team with little experiance
 
 - small amount of time for implementations
-  
-  
 
 ## 4. Use-Case-View
 
@@ -48,7 +46,7 @@ Special constraints that may apply:
 
 ## 6. Process View
 
-![](Process_Diagram.png)
+![](Process/Process_Diagram.png)
 
 ## 7. Deployment View
 
@@ -73,7 +71,7 @@ Within the Infrastructure layer the UserService and the AuthService both communi
 
 ### 8.2 Layers
 
-![Component_Diagramm2](https://user-images.githubusercontent.com/99250573/205755266-094f56e9-216e-4d1b-91ab-8eac9c6d3dfe.png)
+![Component_Diagramm2](Components/Component_Diagramm.png)
 
 ## 9. Data View (optional)
 
@@ -81,7 +79,7 @@ Data, such as userdata and session data, will be stored using a database. During
 
 ## 10. Size and Performance
 
-The original db-concept can be seen [here](https://github.com/CUMGroup/AMOGUS/blob/main/documents/architecture/db_concept.pdf).
+The original db-concept can be seen [here](https://github.com/CUMGroup/AMOGUS/blob/main/documents/architecture/Data/db_concept.pdf).
 
 Originally the complex questions from a session would also be stored in the database. For simplicity reasons and to reduce data in the database this idea was discarded. The 'Questions'-table (as seen in the original db-concept) is no longer part of the database. 
 Instead, the complex questions will be recorded as JSON objects which can easily be modified.
@@ -94,7 +92,7 @@ We are trying to ensure a specific quality-standard by introducing multiple arch
 
 - AMOGUS will follow a service based architecture to enforce modularization and increase cohesion, hence making modifications more centralized and independent.
 
-- Coupling will be reduced by following the [ABBA-Scheme](https://github.com/CUMGroup/AMOGUS/blob/main/documents/architecture/BackendArchitecture.pdf) and only allowing communication via well defined interfaces.
+- Coupling will be reduced by following the [ABBA-Scheme](https://github.com/CUMGroup/AMOGUS/blob/main/documents/architecture/architecture/BackendArchitecture.pdf) and only allowing communication via well defined interfaces.
 
 - Backend and frontend will be completely seperated (only communicating through a REST-API) to further decouple the application.
 
