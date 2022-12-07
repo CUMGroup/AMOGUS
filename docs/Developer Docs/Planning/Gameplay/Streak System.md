@@ -1,1 +1,1 @@
-![](https://github.com/CUMGroup/AMOGUS/tree/online-docs/documents/gameplay/streak_system.png)
+![](/documents/gameplay/streak_system.png)

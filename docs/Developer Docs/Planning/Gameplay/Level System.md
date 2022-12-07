@@ -1,1 +1,1 @@
-![](https://github.com/CUMGroup/AMOGUS/tree/online-docs/documents/gameplay/level_system.png)
+![](/documents/gameplay/level_system.png)

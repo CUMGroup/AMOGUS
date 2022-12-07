@@ -1,1 +1,1 @@
-![](https://github.com/CUMGroup/AMOGUS/tree/online-docs/documents/gameplay/goodies_and_punishments.png)
+![](/documents/gameplay/goodies_and_punishments.png)
