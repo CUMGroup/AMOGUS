@@ -1,1 +1,1 @@
-![](https://github.com/CUMGroup/AMOGUS/tree/online-docs/documents/gameplay/Tutorial.png)
+![](/documents/gameplay/Tutorial.png)
