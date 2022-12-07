@@ -1,0 +1,1 @@
+![](../../assets/images/conventions/Colorscheme.png)
