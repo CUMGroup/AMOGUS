@@ -13,7 +13,7 @@ import { LoginResult } from '../../interfaces/loginResult';
 export class AuthenticationService {
 
   constructor(private api: ApiService) { }
-  
+
   login(email: string, password: string): Observable<User> {
     return this.api.post<LoginResult>('/auth/login', {email, password}).pipe(
       tap(e => this.setSession),
@@ -29,7 +29,7 @@ export class AuthenticationService {
       catchError(this.handleError)
     )
   }
-  
+
   logout() {
     localStorage.removeItem("id_token");
   }
@@ -40,7 +40,7 @@ export class AuthenticationService {
 
   private setSession(loginResult: LoginResult): void {
     localStorage.setItem('id_token', loginResult.Token);
-  }          
+  }
 
   public isLoggedIn(): boolean {
     //double negation for type convertion

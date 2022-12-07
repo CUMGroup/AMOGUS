@@ -29,9 +29,6 @@ import {MatSlideToggleModule} from "@angular/material/slide-toggle";
     StatsTableComponent,
     LoginRegisterComponent
   ],
-  exports: [
-    LoginRegisterComponent
-  ],
   imports: [
     CommonModule,
     UserRoutingModule,

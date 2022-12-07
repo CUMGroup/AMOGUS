@@ -38,13 +38,13 @@ export class LoginRegisterComponent implements OnInit {
       this.authService.login(
         this.access.get("email").value,
         this.access.get("password").value
-      )
+      ).subscribe()
     }else{
       this.authService.register(
         this.access.get("email").value,
         this.access.get("username").value,
         this.access.get("password").value
-      )
+      ).subscribe()
     }
   }
 
