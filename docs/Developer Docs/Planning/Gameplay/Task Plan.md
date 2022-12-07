@@ -1,0 +1,1 @@
+![](https://github.com/CUMGroup/AMOGUS/tree/main/documents/gameplay/Task_plan.png)
