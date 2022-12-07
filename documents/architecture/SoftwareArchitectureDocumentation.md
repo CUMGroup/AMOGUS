@@ -48,8 +48,6 @@ Special constraints that may apply:
 
 ## 6. Process View
 
-## 7. Deployment View
-
 ![](Process_Diagram.png)
 
 ## 7. Deployment View
