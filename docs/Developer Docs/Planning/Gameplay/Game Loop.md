@@ -1,1 +1,1 @@
-![](https://github.com/CUMGroup/AMOGUS/tree/main/documents/gameplay/game_loop.jpeg)
+![](https://github.com/CUMGroup/AMOGUS/tree/online-docs/documents/gameplay/game_loop.jpeg)

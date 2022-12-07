@@ -1,1 +1,1 @@
-![](https://github.com/CUMGroup/AMOGUS/tree/main/documents/gameplay/plots_statstracking.png)
+![](https://github.com/CUMGroup/AMOGUS/tree/online-docs/documents/gameplay/plots_statstracking.png)

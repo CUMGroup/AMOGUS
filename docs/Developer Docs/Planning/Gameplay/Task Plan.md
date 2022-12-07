@@ -1,1 +1,1 @@
-![](https://github.com/CUMGroup/AMOGUS/tree/main/documents/gameplay/Task_plan.png)
+![](https://github.com/CUMGroup/AMOGUS/tree/online-docs/documents/gameplay/Task_plan.png)
