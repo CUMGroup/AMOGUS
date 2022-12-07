@@ -1,10 +1,10 @@
 ## 1. Brief Description
 This usecase allows the user to play the game where they solve math problems under time pressure to earn levels and rewards.
 ## 2. GUI Mockup
-<img src="./viewMockups/20221019_120549.jpg" height="500" alt="guimockups"></img>
+<img src="../../../../assets/images/viewMockups/20221019_120549.jpg" height="500" alt="guimockups"></img>
 
 ## 3. Flow of Events
-<img src="./activitydiagrams/activity_gameloop.png" height="500" alt="flow of events"></img>
+<img src="../../../../assets/images/activitydiagrams/activity_gameloop.png" height="500" alt="flow of events"></img>
 ## 4. Special Requirements
 / 
 ## 5. Preconditions
