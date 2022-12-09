@@ -1,0 +1,20 @@
+#container {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 0;
+  overflow: hidden;
+  background: black;
+}
+
+.amongus {
+  display: block;
+  position: absolute;
+  height: auto;
+  width: 5em;
+  background: transparent;
+  z-index: 1;
+}

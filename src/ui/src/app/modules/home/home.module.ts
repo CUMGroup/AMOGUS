@@ -4,8 +4,8 @@ import { HomeRoutingModule } from './home-routing.module';
 import { LandingTextParallaxComponent } from './landing-text-parallax/landing-text-parallax.component';
 import { TextParallaxComponent } from 'src/app/shared/components/text-parallax/text-parallax.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
-import { AmongusParallaxComponent } from './amongus-parallax/amongus-parallax.component';
-
+import { AmongusParallaxComponent } from './components/amongus-parallax/amongus-parallax.component';
+import { LandingComponent } from './pages/landing/landing.component';
 
 
 @NgModule({
@@ -13,7 +13,8 @@ import { AmongusParallaxComponent } from './amongus-parallax/amongus-parallax.co
     LandingTextParallaxComponent,
     TextParallaxComponent,
     LandingPageComponent,
-    AmongusParallaxComponent
+    AmongusParallaxComponent,
+    LandingComponent
   ],
   imports: [
     CommonModule,
