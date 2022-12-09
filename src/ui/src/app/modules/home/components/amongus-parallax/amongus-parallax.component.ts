@@ -19,10 +19,8 @@ export class AmongusParallaxComponent implements OnInit {
 
   rotation: number = 0;
 
-  moveTimer: number = 20;
   move(e: any) {
     this.parallaxIt(e, ".amongus", 1000);
-    //this.parallaxIt(e, ".background", -100);
   };
 
   parallaxIt(e: MouseEvent, target: string, movement: number) {
@@ -38,11 +36,6 @@ export class AmongusParallaxComponent implements OnInit {
       rota = this.rotation
     }
 
-    // for reseting if constant right movement exists (x+rota)
-    // if(rota >= cont.clientWidth/2){
-    //   this.rotation = 0;
-    // }
-
     gsap.to(target, {
       duration: 5,
       x: x,
@@ -51,15 +44,5 @@ export class AmongusParallaxComponent implements OnInit {
     });
 
   }
-  // let tmp = document.getElementById("test");
-  // let matrix = window.getComputedStyle(tmp,null).getPropertyValue("transform");
-  // let rotation: string[] = matrix.split('(');
-  // console.log(rotation);
-  // let rotations = rotation.split(',');
-  // console.log(rotations);
-  // Math.round(Math.atan2(b, a) * (180/Math.PI))
-  // let angle = Math.round(Math.asin(Number(rotation)) * (180/Math.PI));
-  // if(isNaN(angle)){ angle = 1}
-  // console.log(angle);
 
 }
