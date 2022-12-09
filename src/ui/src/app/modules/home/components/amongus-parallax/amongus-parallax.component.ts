@@ -1,5 +1,5 @@
-import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
-import {gsap} from "gsap";
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { gsap } from "gsap";
 
 @Component({
   selector: 'app-amongus-parallax',
@@ -19,34 +19,24 @@ export class AmongusParallaxComponent implements OnInit {
 
   rotation: number = 0;
 
-  launch(){
-    // let amog = this.amogus.nativeElement._gsap
-    // let rock = this.rocket.nativeElement
-    // let rx = Number((amog.x+"").split(".")[0])
-    // let ry = Number((amog.y+"").split(".")[0])
-    // let ax = Number((rock.x+"").split(".")[0])
-    // let ay = Number((rock.y+"").split(".")[0])
-    // console.log("rx: " + rx +", ry: " + ry + ", ax: " + ax + ", ay: " +ay)
-    // let rot = (Math.atan2(ay-ry,ax-rx) * (180 / Math.PI));
-    // gsap.to(".rocket", {rotation: rot})
-    // gsap.to(".rocket",{duration:2,x:amog.x+amog.x,y:amog.y})
-
-  }
-  move(e:any) {
+  moveTimer: number = 20;
+  move(e: any) {
     this.parallaxIt(e, ".amongus", 1000);
-    this.parallaxIt(e, ".background", -100);
+    //this.parallaxIt(e, ".background", -100);
   };
 
-  parallaxIt(e:MouseEvent, target:string, movement:number) {
+  parallaxIt(e: MouseEvent, target: string, movement: number) {
     const cont: any = this.container.nativeElement;
-    const x = (e.pageX - cont.offsetLeft - cont.clientWidth / 2) / cont.clientWidth * movement;
-    const y = (e.pageY - cont.offsetTop - cont.clientHeight / 2) / cont.clientHeight * movement;
+    let x = (e.pageX - cont.offsetLeft - cont.clientWidth / 2) / cont.clientWidth * movement;
+    let y = (e.pageY - cont.offsetTop - cont.clientHeight / 2) / cont.clientHeight * movement;
+    if (y < 0) y = 0;
+    if (y > cont.clientHeight / 2) y = cont.clientHeight / 2;
+    console.log(cont.clientHeight)
     let rota = 0;
-    if(target != ".background"){
+    if (target != ".background") {
       this.rotation = this.rotation + 5
-      rota =this.rotation
+      rota = this.rotation
     }
-    console.log(this.rotation)
 
     // for reseting if constant right movement exists (x+rota)
     // if(rota >= cont.clientWidth/2){
@@ -54,10 +44,10 @@ export class AmongusParallaxComponent implements OnInit {
     // }
 
     gsap.to(target, {
-      duration: 3,
+      duration: 5,
       x: x,
       y: y,
-      rotate:rota,
+      rotate: rota,
     });
 
   }
