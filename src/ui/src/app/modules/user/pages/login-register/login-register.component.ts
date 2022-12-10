@@ -1,18 +1,21 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {AuthenticationService} from "../../../../core/services/authentication/authentication.service";
+import {Observable, Subscription} from "rxjs";
+import {User} from "../../../../core/interfaces/user";
 
 @Component({
   selector: 'app-login-register',
   templateUrl: './login-register.component.html',
   styleUrls: ['./login-register.component.css']
 })
-export class LoginRegisterComponent implements OnInit {
+export class LoginRegisterComponent implements OnInit, OnDestroy{
 
   hide = true;
   repeatedHide = true;
   access: FormGroup;
   message: string;
+  signSubscription: Subscription;
 
   constructor(public formBuilder: FormBuilder, public authService:AuthenticationService) {
   }
@@ -27,6 +30,10 @@ export class LoginRegisterComponent implements OnInit {
     })
   }
 
+  ngOnDestroy(): void {
+    this.signSubscription.unsubscribe()
+  }
+
   login(){
     if(this.access.get("password").value !== this.access.get("repeatPassword").value &&
       !this.access.get("login").value){
@@ -35,12 +42,12 @@ export class LoginRegisterComponent implements OnInit {
       this.message = "";
     }
     if(this.access.get("login").value){
-      this.authService.login(
+      this.signSubscription = this.authService.login(
         this.access.get("email").value,
         this.access.get("password").value
       ).subscribe()
     }else{
-      this.authService.register(
+      this.signSubscription = this.authService.register(
         this.access.get("email").value,
         this.access.get("username").value,
         this.access.get("password").value
