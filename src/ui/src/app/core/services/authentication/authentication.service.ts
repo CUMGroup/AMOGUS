@@ -14,18 +14,16 @@ export class AuthenticationService {
 
   constructor(private api: ApiService) { }
 
-  login(email: string, password: string): Observable<User> {
-    return this.api.post<LoginResult>('/auth/login', {email, password}).pipe(
+  login(email: string, password: string): Observable<LoginResult> {
+    return this.api.post<LoginResult>('/auth/login', { email, password }).pipe(
       tap(e => this.setSession),
-      map(e => ({Email: e.Email, Username: e.Username})),
       catchError(this.handleError)
     );
   }
 
-  register(email: string, username: string, password: string): Observable<User> {
-    return this.api.post<LoginResult>('/auth/register', {email, username, password}).pipe(
+  register(email: string, username: string, password: string): Observable<LoginResult> {
+    return this.api.post<LoginResult>('/auth/register', { email, username, password }).pipe(
       tap(e => this.setSession),
-      map(e => ({Email: e.Email, Username: e.Username})),
       catchError(this.handleError)
     )
   }
