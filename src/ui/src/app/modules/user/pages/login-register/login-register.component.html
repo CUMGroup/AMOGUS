@@ -1,0 +1,37 @@
+<form [formGroup]="access" class="display">
+  <h1 *ngIf="access.get('login').value">Login</h1>
+  <h1 *ngIf="!access.get('login').value">Register</h1>
+  <mat-form-field appearance="fill" class="defineWidth">
+    <mat-label class="label">Username</mat-label>
+    <input matInput type="text" formControlName="username">
+  </mat-form-field>
+  <mat-form-field *ngIf="!access.get('login').value" appearance="fill" class="defineWidth">
+    <mat-label class="label">email</mat-label>
+    <input matInput type="text" formControlName="email">
+  </mat-form-field>
+  <mat-form-field appearance="fill" class="defineWidth">
+    <mat-label class="label">password</mat-label>
+    <input matInput [type]="hide ? 'password' : 'text'" formControlName="password">
+    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+      <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+    </button>
+  </mat-form-field>
+  <mat-form-field *ngIf="!access.get('login').value" appearance="fill" class="defineWidth">
+    <mat-label class="label">repeatPassword</mat-label>
+    <input matInput [type]="repeatedHide ? 'password' : 'text'" formControlName="repeatPassword">
+    <button mat-icon-button matSuffix (click)="repeatedHide = !repeatedHide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="repeatedHide">
+      <mat-icon>{{repeatedHide ? 'visibility_off' : 'visibility'}}</mat-icon>
+    </button>
+  </mat-form-field>
+  <div class="submit">
+    <p style="color:red">{{message}}</p>
+    <mat-slide-toggle formControlName="login" (click)="disable()">register/login</mat-slide-toggle>
+    <!--      [disabled]="access.invalid"-->
+    <button
+      mat-raised-button
+      color="primary"
+
+      (click)="login()"
+    > Submit </button>
+  </div>
+</form>
