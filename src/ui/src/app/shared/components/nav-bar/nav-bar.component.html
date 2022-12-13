@@ -4,11 +4,12 @@
     <path d="M2,5 L10,5" class="middle" style="fill: none;stroke: #474747;stroke-linecap: round;"/>
     <path d="M10,8 L2,8" class="lower" style="fill: none;stroke: #474747;stroke-linecap: round;"/>
   </svg>
-  <img href="" class="home" src="assets/well.png" alt="well">
+  <a href="/home/landing"><img class="home" src="assets/well.png" alt="well"></a>
 </div>
 <div class="menu">
   <div class="item" *ngFor="let item of menuArray; let i = index">
     <a
+      class="link"
       mat-button
       [href]="item.path"
       (mouseenter)="animate('move' + i)"
@@ -19,3 +20,4 @@
     <div [className]="'move' + i"></div>
   </div>
 </div>
+<router-outlet></router-outlet>

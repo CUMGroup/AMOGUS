@@ -4,4 +4,5 @@ export interface question{
   time: number;
   type: "text" | "multipleChoice";
   multipleChoiceAnswers?: string[];
+  finished?: boolean;
 }

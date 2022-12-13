@@ -6,7 +6,7 @@ import { LandingTextParallaxComponent } from './landing-text-parallax/landing-te
 import { LandingComponent } from './pages/landing/landing.component';
 
 const routes: Routes = [
-  { path: 'landing', component: LandingPageComponent },
+  { path: 'landing', component: LandingComponent },
   { path: 'text', component: LandingTextParallaxComponent }
 ];
 
