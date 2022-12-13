@@ -1,0 +1,30 @@
+<div class="outline">
+  <div class="progressBar">
+    <div class="progress">
+<!--      <img class="knife" src="https://png.pngtree.com/png-clipart/20220730/ourmid/pngtree-cartoon-knife-png-image_6093279.png">-->
+    </div>
+  </div>
+
+  <mat-card class="questions">
+    {{currentQuestion.question}}
+  </mat-card>
+  <mat-card class="answers" *ngIf="currentQuestion.type == 'multipleChoice'">
+    <form [formGroup]="checkboxGroup">
+      <div *ngFor="let control of this.checkboxGroup.controls['values']['controls']; let i = index">
+          <mat-checkbox [formControl]="control" >{{currentQuestion.multipleChoiceAnswers[i]}}</mat-checkbox>
+      </div>
+    </form>
+  </mat-card>
+  <textarea class="textInput" *ngIf="currentQuestion.type == 'text'">
+  </textarea>
+
+  <div class="submit">
+    <button (click)="log()">log</button>
+    <button (click)="animate()">animate</button>
+    <button mat-raised-button color="primary" (click)="submit()">Submit</button>
+  </div>
+</div>
+
+<div>
+  {{test}}
+</div>

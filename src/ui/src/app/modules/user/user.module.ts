@@ -7,11 +7,13 @@ import { MatExpansionModule } from "@angular/material/expansion";
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatButtonModule } from '@angular/material/button';
 import { NgxEchartsModule } from 'ngx-echarts';
-import { FormsModule } from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { StatsComponent } from './pages/stats/stats.component';
 import { LevelProgressComponent } from './components/level-progress/level-progress.component';
 import { StatsGraphsComponent } from './components/stats-graphs/stats-graphs.component';
 import { StatsTableComponent } from './components/stats-table/stats-table.component';
+import { GameViewComponent } from "./pages/game-view/game-view.component";
+import {MatCardModule} from "@angular/material/card";
 
 
 @NgModule({
@@ -20,7 +22,8 @@ import { StatsTableComponent } from './components/stats-table/stats-table.compon
     StatsComponent,
     LevelProgressComponent,
     StatsGraphsComponent,
-    StatsTableComponent
+    StatsTableComponent,
+    GameViewComponent
   ],
   imports: [
     CommonModule,
@@ -32,6 +35,10 @@ import { StatsTableComponent } from './components/stats-table/stats-table.compon
       echarts: () => import('echarts')
     }),
     FormsModule,
+    MatCardModule,
+    ReactiveFormsModule,
+    FormsModule,
+
   ]
 })
 export class UserModule { }
