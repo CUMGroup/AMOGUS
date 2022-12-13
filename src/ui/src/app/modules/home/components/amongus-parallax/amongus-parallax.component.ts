@@ -29,7 +29,6 @@ export class AmongusParallaxComponent implements OnInit {
     let y = (e.pageY - cont.offsetTop - cont.clientHeight / 2) / cont.clientHeight * movement;
     if (y < 0) y = 0;
     if (y > cont.clientHeight / 2) y = cont.clientHeight / 2;
-    console.log(cont.clientHeight)
     let rota = 0;
     if (target != ".background") {
       this.rotation = this.rotation + 5
