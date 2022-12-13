@@ -7,6 +7,9 @@ import { AppComponent } from './app.component';
 import * as echarts from 'echarts';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
+import {LoginRegisterComponent} from "./modules/user/pages/login-register/login-register.component";
+import {UserModule} from "./modules/user/user.module";
+import {SharedModule} from "./shared/shared.module";
 
 @NgModule({
   declarations: [
@@ -16,7 +19,9 @@ import { AppRoutingModule } from './app-routing.module';
     HttpClientModule,
     BrowserModule,
     BrowserAnimationsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    SharedModule,
+    UserModule
   ],
   providers: [],
   bootstrap: [AppComponent]

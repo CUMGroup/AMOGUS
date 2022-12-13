@@ -14,7 +14,12 @@ import { StatsGraphsComponent } from './components/stats-graphs/stats-graphs.com
 import { StatsTableComponent } from './components/stats-table/stats-table.component';
 import { GameViewComponent } from "./pages/game-view/game-view.component";
 import {MatCardModule} from "@angular/material/card";
-
+import { LoginRegisterComponent } from "./pages/login-register/login-register.component";
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatIconModule} from "@angular/material/icon";
+import {MatInputModule} from "@angular/material/input";
+import {MatSliderModule} from "@angular/material/slider";
+import {MatSlideToggleModule} from "@angular/material/slide-toggle";
 
 @NgModule({
   declarations: [
@@ -24,6 +29,7 @@ import {MatCardModule} from "@angular/material/card";
     StatsGraphsComponent,
     StatsTableComponent,
     GameViewComponent
+    LoginRegisterComponent
   ],
   imports: [
     CommonModule,
@@ -31,6 +37,10 @@ import {MatCardModule} from "@angular/material/card";
     MatExpansionModule,
     MatCheckboxModule,
     MatButtonModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatIconModule,
+    MatSlideToggleModule,
     NgxEchartsModule.forRoot({
       echarts: () => import('echarts')
     }),
@@ -38,7 +48,6 @@ import {MatCardModule} from "@angular/material/card";
     MatCardModule,
     ReactiveFormsModule,
     FormsModule,
-
   ]
 })
 export class UserModule { }
