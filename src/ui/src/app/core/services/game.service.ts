@@ -100,15 +100,99 @@ export class GameService {
       ]
     },
     {
-      question: "Simplify :150 ÷ (6 + 3 x 8) - 5",
-      answer: "0",
+      question: "Find x : x + 10 = 0",
+      answer: "-10",
+      time: 10,
+      type: "multipleChoice",
+      multipleChoiceAnswers: [
+        "2",
+        "-5",
+        "-10",
+        "8"
+      ]
+    },
+    {
+      question: "Find x : x^2 - 2 = 2 ",
+      answer: "2",
       time: 15,
       type: "multipleChoice",
       multipleChoiceAnswers: [
         "2",
-        "5",
+        "3",
         "0",
+        "4"
+      ]
+    },
+    {
+      question: "Find x : 5x - 11 = 3x + 9",
+      answer: "10",
+      time: 20,
+      type: "multipleChoice",
+      multipleChoiceAnswers: [
+        "10",
+        "13",
+        "4",
         "None of these"
+      ]
+    },
+    {
+      question: "Find x : 9 - 2(x - 5) = x + 10",
+      answer: "3",
+      time: 25,
+      type: "multipleChoice",
+      multipleChoiceAnswers: [
+        "2",
+        "4",
+        "5",
+        "3"
+      ]
+    },
+    {
+      question: "Simplify : 3/4 + 1/4",
+      answer: "1",
+      time: 10,
+      type: "multipleChoice",
+      multipleChoiceAnswers: [
+        "1",
+        "2",
+        "3",
+        "4"
+      ]
+    },
+    {
+      question: "Simplify : (1/8)^2 + 7/16 ",
+      answer: "0.5",
+      time: 10,
+      type: "multipleChoice",
+      multipleChoiceAnswers: [
+        "0.25",
+        "0.5",
+        "0.75",
+        "None of these"
+      ]
+    },
+    {
+      question: "Simplify : 4/2 - 1/2 + 2",
+      answer: "3.5",
+      time: 10,
+      type: "multipleChoice",
+      multipleChoiceAnswers: [
+        "1",
+        "2.5",
+        "2",
+        "3.5"
+      ]
+    },
+    {
+      question: "Solve : 2+2",
+      answer: "4",
+      time: 7,
+      type: "multipleChoice",
+      multipleChoiceAnswers: [
+        "1",
+        "2",
+        "3",
+        "4"
       ]
     },
   ]

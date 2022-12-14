@@ -24,10 +24,6 @@
   margin: 10px;
 }
 
-::ng-deep  .mat-checkbox-inner-container{
-  border: solid 2px #c5cad2;
-}
-
 .textInput{
   margin: 0;
   height: 200px;
@@ -39,7 +35,6 @@
   background-color: #636669;
   color: #eeeeee;
   border: solid 2px #c5cad2;
-
 }
 
 .knife{
@@ -62,7 +57,6 @@
   background-color: red;
   border-radius: 10px;
   margin: 10px;
-
 }
 
 .submit{
@@ -70,4 +64,15 @@
   flex-direction: row;
   justify-content: space-evenly;
   flex-wrap: nowrap;
+}
+
+.example-radio-group {
+  display: flex;
+  flex-direction: column;
+  margin: 15px 0;
+  align-items: flex-start;
+}
+
+.example-radio-button {
+  margin: 5px;
 }

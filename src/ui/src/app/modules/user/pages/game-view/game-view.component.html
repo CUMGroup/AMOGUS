@@ -9,17 +9,19 @@
     {{currentQuestion.question}}
   </mat-card>
   <mat-card class="answers" *ngIf="currentQuestion.type == 'multipleChoice'">
-    <form [formGroup]="checkboxGroup">
-      <div *ngFor="let control of this.checkboxGroup.controls['values']['controls']; let i = index">
-          <mat-checkbox [formControl]="control" >{{currentQuestion.multipleChoiceAnswers[i]}}</mat-checkbox>
-      </div>
-    </form>
+    <mat-radio-group
+      aria-labelledby="example-radio-group-label"
+      class="example-radio-group"
+      [(ngModel)]="selectedAnswer">
+      <mat-radio-button class="example-radio-button" *ngFor="let answer of answers" [value]="answer">
+        {{answer}}
+      </mat-radio-button>
+    </mat-radio-group>
   </mat-card>
   <textarea class="textInput" *ngIf="currentQuestion.type == 'text'">
   </textarea>
 
   <div class="submit">
-    <button (click)="log()">log</button>
     <button mat-raised-button color="primary" (click)="submit()">Submit</button>
   </div>
 </div>
