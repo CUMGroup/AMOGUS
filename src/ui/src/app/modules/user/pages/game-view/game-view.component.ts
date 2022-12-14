@@ -48,7 +48,7 @@ export class GameViewComponent implements OnInit {
 
     } else{
       this.animate();
-      this.gameProgress = timer(this.currentQuestion.time * 1000).subscribe(() => this.submit())
+      // this.gameProgress = timer(this.currentQuestion.time * 1000).subscribe(() => this.submit())
     }
     switch(this.currentQuestion.type) {
       case "text": break;

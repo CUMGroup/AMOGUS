@@ -184,7 +184,7 @@ export class GameService {
       ]
     },
     {
-      question: "Solve : 2+2",
+      question: "Simplify : 2+2",
       answer: "4",
       time: 7,
       type: "multipleChoice",
@@ -193,6 +193,16 @@ export class GameService {
         "2",
         "3",
         "4"
+      ]
+    },
+    {
+      question: "Simplify : (e^(i*pi))+2",
+      answer: "1",
+      time: 7,
+      type: "multipleChoice",
+      multipleChoiceAnswers: [
+        "1",
+        "0",
       ]
     },
   ]
