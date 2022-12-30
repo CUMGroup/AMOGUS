@@ -130,11 +130,7 @@ Use-Case Realization for [login.](https://github.com/CUMGroup/AMOGUS/tree/main/d
 Use-Case Realization for [register.](https://github.com/CUMGroup/AMOGUS/tree/main/documents/requirements/Use-Case-Realization%20Specification/ucrs_register.md)
 
 ## 5. Logical View
-[Class Diagram.] (https://github.com/CUMGroup/AMOGUS/blob/main/documents/architecture/Classdiagrams/BackendClassDiagram.pdf)
-
-### 5.1 Overview
-
-### 5.2 Architecturally Significant Design Packages
+![Class Diagram](https://github.com/CUMGroup/AMOGUS/blob/main/documents/architecture/Classdiagrams/BackendClassDiagram.png)
 
 ## 6. Process View
 
