@@ -175,7 +175,7 @@ Within the Infrastructure layer the UserService and the AuthService both communi
 
 Data, such as userdata and session data, will be stored using a database. During development AMOGUS will store it's data in an SQLite and for production it will use MariaDB. 
 
-The original db-concept can be seen [here](./Database%20Concept.md).
+The db-concept can be seen [here](./Database%20Concept.md).
 
 Originally the complex questions from a session would also be stored in the database. For simplicity reasons and to reduce data in the database this idea was discarded. The 'Questions'-table (as seen in the original db-concept) is no longer part of the database. 
 Instead, the complex questions will be recorded as JSON objects which can easily be modified.
