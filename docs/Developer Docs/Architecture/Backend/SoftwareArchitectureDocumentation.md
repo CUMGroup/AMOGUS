@@ -21,6 +21,8 @@ This document defines the architecture of AMOGUS. It is directly related to the 
 
 Figures:
 
+- [Fig. 0](./Class%20Diagram.md)
+
 - [Fig. 1](./Process%20Diagram.md)
 
 - [Fig. 2](./Deployment%20Diagram.md)
@@ -130,6 +132,7 @@ Use-Case Realization for [register.](../../Requirements/Use%20Case%20Realization
 
 ## 5. Logical View
 ![Class Diagram](../../../assets/images/architecture/BackendClassDiagram.png)
+<p align="center">Fig. 0</p>
 
 ## 6. Process View
 
