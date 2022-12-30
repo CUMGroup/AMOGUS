@@ -1,0 +1,1 @@
+![](../../../assets/images/architecture/BackendArchitecture.png)

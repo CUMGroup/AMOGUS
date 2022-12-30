@@ -21,7 +21,7 @@
 ### 2.1 Architecture decisions
 
 - AMOGUS will follow a service based architecture to enforce modularization and increase cohesion, hence making modifications more centralized and independent.
-- Coupling will be reduced by following the [ABBA-Scheme](https://github.com/CUMGroup/AMOGUS/blob/main/documents/architecture/architecture/BackendArchitecture.pdf) and only allowing communication via well defined interfaces.
+- Coupling will be reduced by following the [ABBA-Scheme](./ABBA%20Structure.md) and only allowing communication via well defined interfaces.
 - Backend and frontend will be completely seperated (only communicating through a REST-API) to further decouple the application.
 - Backend and frontend will be deployed in different docker containers therefore making deployment easier.
 

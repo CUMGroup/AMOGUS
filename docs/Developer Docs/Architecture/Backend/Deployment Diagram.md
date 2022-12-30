@@ -1,0 +1,1 @@
+![](../../../assets/images/architecture/DeploymentDiagram.png)
