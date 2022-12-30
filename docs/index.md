@@ -1,22 +1,10 @@
 ---
-title: My First Page
+title: Welcome
 layout: default
 ---
 
-# Welcome to MkDocs
+# Welcome to the AMOGUS DOCS
+This online documentation provides you with all the developer as well as the user documentation that you could ever wish to have!
+Of course, keep in mind, that this documentation is a Work In Progress and gets updated with further Planning and Implementation!
 
-For full documentation visit [mkdocs.org](https://www.mkdocs.org).
-
-## Commands
-
-* `mkdocs new [dir-name]` - Create a new project.
-* `mkdocs serve` - Start the live-reloading docs server.
-* `mkdocs build` - Build the documentation site.
-* `mkdocs -h` - Print help message and exit.
-
-## Project layout
-
-    mkdocs.yml    # The configuration file.
-    docs/
-        index.md  # The documentation homepage.
-        ...       # Other markdown pages, images and other files.
+Have Fun!
