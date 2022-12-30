@@ -1,4 +1,5 @@
-# Quality attribute scenarios
+# Utility Tree
+## Quality attribute scenarios
 
 | Quality attribute | Source               | Stimulus             | Artifact    | Environment     | Response                       | Response measure                                                                |
 | ----------------- | -------------------- | -------------------- | ----------- | --------------- | ------------------------------ | ------------------------------------------------------------------------------- |
