@@ -76,3 +76,8 @@
 .example-radio-button {
   margin: 5px;
 }
+
+::ng-deep .mat-radio-container{
+  background: white;
+  border-radius: 10px;
+}
