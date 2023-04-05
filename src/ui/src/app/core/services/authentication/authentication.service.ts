@@ -15,14 +15,15 @@ export class AuthenticationService {
   constructor(private api: ApiService) { }
 
   login(email: string, password: string): Observable<LoginResult> {
-    return this.api.post<LoginResult>('/auth/login', { email, password }).pipe(
-      tap(e => this.setSession),
+    console.log(email);
+    return this.api.post<LoginResult>('/auth/login', { email:email, password:password }).pipe(
+      tap(e => this.setSession(e)),
       catchError(this.handleError)
     );
   }
 
   register(email: string, username: string, password: string): Observable<LoginResult> {
-    return this.api.post<LoginResult>('/auth/register', { email, username, password }).pipe(
+    return this.api.post<LoginResult>('/auth/register', JSON.stringify({ email, username, password })).pipe(
       tap(e => this.setSession),
       catchError(this.handleError)
     )
@@ -37,7 +38,8 @@ export class AuthenticationService {
   }
 
   private setSession(loginResult: LoginResult): void {
-    localStorage.setItem('id_token', loginResult.Token);
+    console.log(loginResult)
+    localStorage.setItem('id_token', loginResult.token);
   }
 
   public isLoggedIn(): boolean {
