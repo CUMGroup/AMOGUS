@@ -9,7 +9,7 @@ import { catchError, retry } from 'rxjs/operators';
 })
 export class ApiService {
 
-  baseUrl = 'localhost:7051';
+  baseUrl = '/api';
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json'
@@ -23,7 +23,7 @@ export class ApiService {
   }
 
   post<T>(endpoint: string, object: any): Observable<T> {
-    return this.http.post<T>(new URL(endpoint, this.baseUrl).href, object);
+    return this.http.post<T>(this.baseUrl+endpoint, object);
   }
 
   put<T>(endpoint: string, object: any): Observable<T> {
