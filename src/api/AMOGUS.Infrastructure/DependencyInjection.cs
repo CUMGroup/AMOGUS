@@ -1,4 +1,5 @@
 ﻿using AMOGUS.Core.Common.Interfaces.Database;
+using AMOGUS.Core.Common.Interfaces.Game;
 using AMOGUS.Core.Common.Interfaces.User;
 using AMOGUS.Infrastructure.Identity;
 using AMOGUS.Infrastructure.Persistence;

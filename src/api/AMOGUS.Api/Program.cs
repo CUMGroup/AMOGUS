@@ -2,6 +2,7 @@ using AMOGUS.Core.Centralization.User;
 using AMOGUS.Core.Common.Interfaces.Database;
 using AMOGUS.Core.Common.Interfaces.User;
 using AMOGUS.Infrastructure;
+using AMOGUS.Core;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,6 +14,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddDataServices(builder.Configuration);
+builder.Services.AddCoreServices();
 
 var app = builder.Build();
 
