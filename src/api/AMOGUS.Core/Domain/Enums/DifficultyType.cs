@@ -6,5 +6,8 @@ using System.Threading.Tasks;
 
 namespace AMOGUS.Core.Domain.Enums {
     public enum DifficultyType {
+        EASY,
+        MEDIUM,
+        HARD
     }
 }
