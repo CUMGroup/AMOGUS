@@ -1,0 +1,83 @@
+.outline{
+  height: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.questions{
+  background: #21252b;
+  border: solid 2px #c5cad2;
+  color: #eeeeee;
+  width: 50%;
+  text-align: center;
+  margin: 10px;
+}
+
+.answers{
+  background: #21252b;
+  border: solid 2px #c5cad2;
+  color: #eeeeee;
+  width: 50%;
+  height:200px;
+  margin: 10px;
+}
+
+.textInput{
+  margin: 0;
+  height: 200px;
+  width: 50%;
+  max-width: 700px;
+  min-width: 200px;
+  border-radius: 10px;
+  resize: horizontal;
+  background-color: #636669;
+  color: #eeeeee;
+  border: solid 2px #c5cad2;
+}
+
+.knife{
+  height:50px;
+  position: absolute;
+}
+
+.progress{
+  width:0;
+  height: 100%;
+  background-color: blue;
+  display: flex;
+  justify-content: flex-end;
+  border-radius: 10px;
+}
+
+.progressBar{
+  width:80%;
+  height: 30px;
+  background-color: red;
+  border-radius: 10px;
+  margin: 10px;
+}
+
+.submit{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  flex-wrap: nowrap;
+}
+
+.example-radio-group {
+  display: flex;
+  flex-direction: column;
+  margin: 15px 0;
+  align-items: flex-start;
+}
+
+.example-radio-button {
+  margin: 5px;
+}
+
+::ng-deep .mat-radio-container{
+  background: white;
+  border-radius: 10px;
+}

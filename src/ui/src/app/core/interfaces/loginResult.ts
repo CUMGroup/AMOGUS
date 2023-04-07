@@ -1,6 +1,6 @@
 export interface LoginResult {
-    Token: string;
-    Expiration: Date;
-    Email: string;
-    Username: string;
+    token: string;
+    expiration: Date;
+    email: string;
+    username: string;
 }
