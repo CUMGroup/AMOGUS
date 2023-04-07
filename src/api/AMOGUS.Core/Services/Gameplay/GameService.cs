@@ -2,6 +2,8 @@
 using AMOGUS.Core.Common.Interfaces.Game;
 using AMOGUS.Core.Domain.Enums;
 using AMOGUS.Core.Domain.Models.Entities;
+using AMOGUS.Infrastructure.Identity;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -14,17 +16,32 @@ namespace AMOGUS.Core.Services.Gameplay {
 
         private readonly IExerciseService _exerciseService;
         private readonly IApplicationDbContext _dbContext;
+        private readonly UserManager<ApplicationUser> userManager;
 
-        public GameService(IExerciseService exerciseService, IApplicationDbContext dbContext) {
+        public GameService(IExerciseService exerciseService, IApplicationDbContext dbContext, Microsoft.AspNetCore.Identity.UserManager<ApplicationUser> userManager) {
             _exerciseService = exerciseService;
             _dbContext = dbContext;
+            this.userManager = userManager;
         }
 
         public async Task EndSessionAsync(GameSession session, string userId) {
             var answers = new List<bool>();
+            var user = await userManager.FindByIdAsync(userId);
+            if(user == null) {
+                return;
+            }
+            session.User = user;
+
             var userstat = await _dbContext.UserStats.Where(e => e.UserId.Equals(userId)).Include(e => e.User).FirstOrDefaultAsync();
             if(userstat == null) {
-                return;
+                userstat = new() {
+                    UserId = userId,
+                    User = user,
+                    QuickestAnswer = session.QuickestAnswer.TotalMilliseconds,
+                    SlowestAnswer = session.SlowestAnswer.TotalMilliseconds,
+                };
+                await _dbContext.UserStats.AddAsync(userstat);
+                await _dbContext.SaveChangesAsync();
             }
             userstat.OverallAnswered += session.GivenAnswersCount;
             userstat.TotalTimePlayed += session.Playtime.TotalMilliseconds;
@@ -39,7 +56,9 @@ namespace AMOGUS.Core.Services.Gameplay {
                 userstat.SlowestAnswer = session.SlowestAnswer.TotalMilliseconds;
             if (userstat.QuickestAnswer > session.QuickestAnswer.TotalMilliseconds)
                 userstat.QuickestAnswer = session.QuickestAnswer.TotalMilliseconds;
+            //await userManager.UpdateAsync(userstat.User);
             _dbContext.GameSessions.Add(session);
+            await _dbContext.SaveChangesAsync();
             _dbContext.UserStats.Update(userstat);
             await _dbContext.SaveChangesAsync();
         }
