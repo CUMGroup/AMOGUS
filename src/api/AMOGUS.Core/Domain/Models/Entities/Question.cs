@@ -1,6 +1,5 @@
 ﻿
 using AMOGUS.Core.Domain.Enums;
-using System.ComponentModel.DataAnnotations;
 
 namespace AMOGUS.Core.Domain.Models.Entities {
     public class Question {
@@ -9,6 +8,7 @@ namespace AMOGUS.Core.Domain.Models.Entities {
         
         public string Exercise { get; set; }
         public string Answer { get; set; }
+        public List<string> WrongAnswers { get; set; } = new();
 
         public string Help { get; set; }
         public DifficultyType Difficulty { get; set; }
