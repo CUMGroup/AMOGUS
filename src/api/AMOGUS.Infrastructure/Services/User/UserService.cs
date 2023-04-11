@@ -4,7 +4,6 @@ using AMOGUS.Core.Common.Interfaces.Database;
 using AMOGUS.Core.Common.Interfaces.User;
 using AMOGUS.Infrastructure.Identity;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
 
 namespace AMOGUS.Infrastructure.Services.User {
     internal class UserService : IUserService {
@@ -17,18 +16,12 @@ namespace AMOGUS.Infrastructure.Services.User {
         }
 
         public async Task<Result> DeleteUserAsync(string userId) {
-            var medalsToDelete = _dbContext.UserMedals.Where(m => m.UserId.Equals(userId)).ToList();
-            _dbContext.UserMedals.RemoveRange(medalsToDelete);
-
-            var statsToDelete = _dbContext.UserStats.Where(us => us.UserId.Equals(userId)).ToList();
-            _dbContext.UserStats.RemoveRange(statsToDelete);
-
-            var sessionsToDelete = _dbContext.GameSessions.Where(gs => gs.UserId.Equals(userId)).ToList();
-            _dbContext.GameSessions.RemoveRange(sessionsToDelete);
+            RemoveUserHistory(userId);
 
             try {
                 await _dbContext.SaveChangesAsync();
-            } catch (Exception ex) {
+            }
+            catch (Exception ex) {
                 return Result.Failure("Failed deleting user.");
             }
 
@@ -38,10 +31,22 @@ namespace AMOGUS.Infrastructure.Services.User {
                 if (!result.Succeeded) {
                     return Result.Failure(result.Errors.Select(e => (e.Code + ": " + e.Description)));
                 }
-            } catch (UserNotFoundException ex) {
+            }
+            catch (UserNotFoundException ex) {
                 return Result.Failure("Failed deleting user.");
             }
             return Result.Success();
+        }
+
+        private void RemoveUserHistory(string userId) {
+            var medalsToDelete = _dbContext.UserMedals.Where(m => m.UserId.Equals(userId)).ToList();
+            _dbContext.UserMedals.RemoveRange(medalsToDelete);
+
+            var statsToDelete = _dbContext.UserStats.Where(us => us.UserId.Equals(userId)).ToList();
+            _dbContext.UserStats.RemoveRange(statsToDelete);
+
+            var sessionsToDelete = _dbContext.GameSessions.Where(gs => gs.UserId.Equals(userId)).ToList();
+            _dbContext.GameSessions.RemoveRange(sessionsToDelete);
         }
 
         public async Task<ApplicationUser> GetUserAsync(string userId) {

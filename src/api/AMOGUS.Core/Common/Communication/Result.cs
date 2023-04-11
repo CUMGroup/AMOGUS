@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace AMOGUS.Core.Common.Communication {
+﻿namespace AMOGUS.Core.Common.Communication {
     public class Result {
         public bool Succeeded { get; private set; }
 
@@ -14,7 +8,6 @@ namespace AMOGUS.Core.Common.Communication {
             Succeeded = succeeded;
             Errors = errors.ToArray();
         }
-
 
         public static Result Success() {
             return new Result(true, Array.Empty<string>());

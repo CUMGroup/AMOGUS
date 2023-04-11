@@ -16,16 +16,31 @@ namespace AMOGUS.Infrastructure {
 
         public static IServiceCollection AddDataServices(this IServiceCollection services, IConfiguration configuration) {
 
-            services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlite(configuration.GetConnectionString("DefaultConnection"))
-            );
+            AddDatabaseContext(services, configuration);
             services.AddScoped<IApplicationDbContext>(provider => provider.GetRequiredService<ApplicationDbContext>());
 
+            AddIdentitiyServices(services);
+            AddAuthenticationServices(services, configuration);
+
+            services.AddTransient<IAuthService, AuthService>();
+            services.AddTransient<IUserService, UserService>();
+
+            return services;
+        }
+
+        private static void AddDatabaseContext(IServiceCollection services, IConfiguration configuration) {
+            services.AddDbContext<ApplicationDbContext>(options =>
+                            options.UseSqlite(configuration.GetConnectionString("DefaultConnection"))
+                        );
+        }
+
+        private static void AddIdentitiyServices(IServiceCollection services) {
             services.AddIdentity<ApplicationUser, IdentityRole>()
-                .AddEntityFrameworkStores<ApplicationDbContext>()
-                .AddDefaultTokenProviders();
+                            .AddEntityFrameworkStores<ApplicationDbContext>()
+                            .AddDefaultTokenProviders();
+        }
 
-
+        private static void AddAuthenticationServices(IServiceCollection services, IConfiguration configuration) {
             services.AddAuthentication(opt => {
                 opt.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
                 opt.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -41,12 +56,6 @@ namespace AMOGUS.Infrastructure {
                     ValidateIssuerSigningKey = true
                 };
             });
-
-            services.AddTransient<IAuthService, AuthService>();
-
-            services.AddTransient<IUserService, UserService>();
-
-            return services;
         }
     }
 }

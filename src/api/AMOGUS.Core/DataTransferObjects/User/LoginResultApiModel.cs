@@ -1,9 +1,4 @@
 ﻿using AMOGUS.Core.Common.Communication;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AMOGUS.Core.DataTransferObjects.User {
     public class LoginResultApiModel {
@@ -16,7 +11,6 @@ namespace AMOGUS.Core.DataTransferObjects.User {
         public string? Username { get; private set; } = null;
 
         public string? Email { get; private set; } = null;
-
 
         public LoginResultApiModel() {
             this.Result = Result.Failure("Login failed");

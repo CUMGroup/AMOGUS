@@ -1,6 +1,4 @@
-﻿
-using AMOGUS.Core.Domain.Models.Entities;
-using System.Xml;
+﻿using AMOGUS.Core.Domain.Models.Entities;
 
 namespace AMOGUS.Core.Common.Interfaces.Game {
     public interface IGameService {
