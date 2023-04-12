@@ -1,10 +1,11 @@
-﻿using AMOGUS.Core.Domain.Models.Entities;
+using AMOGUS.Core.Domain.Enums;
+using AMOGUS.Core.Domain.Models.Entities;
 
 namespace AMOGUS.Core.Common.Interfaces.Game {
     public interface IGameService {
 
-        Task<GameSession> NewSessionAsync();
+        GameSession NewSession(CategoryType category, string userId);
 
-        Task<GameSession> EndSessionAsync(GameSession session);
+        Task EndSessionAsync(GameSession session, string userId);
     }
 }

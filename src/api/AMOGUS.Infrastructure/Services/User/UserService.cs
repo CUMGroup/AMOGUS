@@ -16,12 +16,7 @@ namespace AMOGUS.Infrastructure.Services.User {
         }
 
         public async Task<Result> DeleteUserAsync(string userId) {
-            RemoveUserHistory(userId);
-
-            try {
-                await _dbContext.SaveChangesAsync();
-            }
-            catch (Exception ex) {
+            if (await UserHistoryRemovalSuccessful(userId)) {
                 return Result.Failure("Failed deleting user.");
             }
 
@@ -38,7 +33,7 @@ namespace AMOGUS.Infrastructure.Services.User {
             return Result.Success();
         }
 
-        private void RemoveUserHistory(string userId) {
+        private async Task<bool> UserHistoryRemovalSuccessful(string userId) {
             var medalsToDelete = _dbContext.UserMedals.Where(m => m.UserId.Equals(userId)).ToList();
             _dbContext.UserMedals.RemoveRange(medalsToDelete);
 
@@ -47,6 +42,14 @@ namespace AMOGUS.Infrastructure.Services.User {
 
             var sessionsToDelete = _dbContext.GameSessions.Where(gs => gs.UserId.Equals(userId)).ToList();
             _dbContext.GameSessions.RemoveRange(sessionsToDelete);
+
+            try {
+                await _dbContext.SaveChangesAsync();
+            }
+            catch (Exception ex) {
+                return false;
+            }
+            return true;
         }
 
         public async Task<ApplicationUser> GetUserAsync(string userId) {

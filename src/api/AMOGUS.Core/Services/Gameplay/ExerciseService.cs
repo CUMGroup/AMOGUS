@@ -2,6 +2,7 @@
 using AMOGUS.Core.Domain.Enums;
 using AMOGUS.Core.Domain.Models.Entities;
 using AMOGUS.Core.ExtensionMethods;
+using AMOGUS.Core.Factories;
 using AngouriMath;
 using AngouriMath.Core.Exceptions;
 using Microsoft.Extensions.Configuration;
@@ -43,17 +44,46 @@ namespace AMOGUS.Core.Services.Gameplay {
             Entity exprTrue = qOrig.Answer;
             Entity exprUser = answer.Answer;
             try {
-                var res = new Entity.Equalsf(exprTrue, exprUser).Simplify().EvalBoolean();
-                return res;
-            }
-            catch (CannotEvalException) {
+                return new Entity.Equalsf(exprTrue, exprUser).Simplify().EvalBoolean();
+            }catch(CannotEvalException) {
                 return false;
             }
         }
 
-        public async Task<List<Question>> GetRandomExercisesAsync(CategoryType category, int amount) {
+        public List<Question> GetRandomExercises(CategoryType category, int amount) {
             var rng = new Random();
             return _questions.Where(e => e.Category == category).OrderBy(e => rng.Next()).Take(amount).ToList();
+        }
+
+
+        public List<Question> GenerateRandomExercises(CategoryType category, int amount) {
+            var factory = GetExerciseFactory(category);
+            var questions = new List<Question>();
+            for (int i = 0; i < amount; ++i) {
+                var questString = factory.GenerateRandomExerciseString();
+                var answString = factory.CalcAnswer(questString);
+                if(String.IsNullOrWhiteSpace(answString)) {
+                    --i;
+                    continue;
+                }
+                questions.Add(new Question {
+                    Category = category,
+                    QuestionId = Guid.NewGuid().ToString(),
+                    Exercise = questString,
+                    Answer = answString,
+                    Difficulty = DifficultyType.EASY,
+                    ExperiencePoints = 5,
+                    Help = string.Empty
+                });
+            }
+            return questions;
+        }
+
+        private IExerciseFactory GetExerciseFactory(CategoryType category) {
+            return category switch {
+                CategoryType.MENTAL => new MentalExerciseFactory(),
+                _ => throw new ArgumentException(),
+            };
         }
     }
 }
