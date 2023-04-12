@@ -1,7 +1,6 @@
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
 import { LandingComponent } from "./modules/home/pages/landing/landing.component";
-import { NavBarComponent } from "./shared/components/nav-bar/nav-bar.component";
 
 
 const routes: Routes = [

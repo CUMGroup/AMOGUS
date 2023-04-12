@@ -11,17 +11,20 @@ import { SharedModule } from 'src/app/shared/shared.module';
 
 
 @NgModule({
-  declarations: [
-    LandingTextParallaxComponent,
-    TextParallaxComponent,
-    LandingPageComponent,
-    AmongusParallaxComponent,
-    LandingComponent
-  ],
-  imports: [
-    CommonModule,
-    HomeRoutingModule,
-    SharedModule
-  ]
+    declarations: [
+        LandingTextParallaxComponent,
+        TextParallaxComponent,
+        LandingPageComponent,
+        AmongusParallaxComponent,
+        LandingComponent
+    ],
+    exports: [
+        LandingTextParallaxComponent
+    ],
+    imports: [
+        CommonModule,
+        HomeRoutingModule,
+        SharedModule
+    ]
 })
 export class HomeModule { }

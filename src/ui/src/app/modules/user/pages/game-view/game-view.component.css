@@ -45,7 +45,7 @@
 .progress{
   width:0;
   height: 100%;
-  background-color: blue;
+  background-color: #21252b;
   display: flex;
   justify-content: flex-end;
   border-radius: 10px;
@@ -54,7 +54,8 @@
 .progressBar{
   width:80%;
   height: 30px;
-  background-color: red;
+  background-color: #636669;
+  border: solid #c5cad2;
   border-radius: 10px;
   margin: 10px;
 }

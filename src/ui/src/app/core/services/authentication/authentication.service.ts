@@ -15,7 +15,7 @@ export class AuthenticationService {
   constructor(private api: ApiService) { }
 
   login(email: string, password: string): Observable<LoginResult> {
-    console.log(email);
+    //console.log(email);
     return this.api.post<LoginResult>('/auth/login', { email:email, password:password }).pipe(
       tap(e => this.setSession(e)),
       catchError(this.handleError)
@@ -38,7 +38,7 @@ export class AuthenticationService {
   }
 
   private setSession(loginResult: LoginResult): void {
-    console.log(loginResult)
+    //console.log(loginResult)
     localStorage.setItem('id_token', loginResult.token);
   }
 
@@ -47,6 +47,9 @@ export class AuthenticationService {
     return !!localStorage.getItem('id_token');
   }
 
+  public getAuthToken(): string{
+    return localStorage.getItem('id_token');
+  }
 
   private handleError(error: HttpErrorResponse) {
     if (error.status === 0) {
@@ -62,7 +65,6 @@ export class AuthenticationService {
     return throwError(() => new Error('Something bad happened; please try again later.'));
   }
   //nobodys gonna know... ;-) @AlexMi-Ha
-
 }
 
 

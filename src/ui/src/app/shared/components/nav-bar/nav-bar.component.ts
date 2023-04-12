@@ -33,7 +33,7 @@ export class NavBarComponent implements OnInit {
       },
       {
         text:"game",
-        path:"/user/game",
+        path:"/user/game-selection",
       },
       // {
       //   text:"text",
