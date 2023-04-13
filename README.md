@@ -2,8 +2,8 @@
 This project was developed in the Software Engineering I lecture of the DHBW Karlsruhe.<br>
 _AMOGUS_, as the name suggests, is a learning App, where you can practice your [Quick Maths](https://youtu.be/N1TetLavxuA?t=15) skills. But fair warning: It will be __*under stress*__.
 
-You can visit our project at [amogus.alexmiha.de](amogus.alexmiha.de) (COMING).<br>
-Our documentation can be found at [amogus-docs.alexmiha.de](amogus-docs.alexmiha.de) and our blog where we post weekly updates can be found in this repos [Discussions](https://github.com/CUMGroup/AMOGUS/discussions) tab.
+You can visit our project at <a href="amogus.alexmiha.de">amogus.alexmiha.de<a> (COMING).<br>
+Our documentation can be found at <a href="amogus-docs.alexmiha.de">amogus-docs.alexmiha.de</a> and our blog where we post weekly updates can be found in this repos <a href="https://github.com/CUMGroup/AMOGUS/discussions">Discussions</a> tab.
 
 # Technicalities
 ## Getting Started
