@@ -1,8 +1,8 @@
+using AMOGUS.Core;
 using AMOGUS.Core.Centralization.User;
 using AMOGUS.Core.Common.Interfaces.Database;
 using AMOGUS.Core.Common.Interfaces.User;
 using AMOGUS.Infrastructure;
-using AMOGUS.Core;
 using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);

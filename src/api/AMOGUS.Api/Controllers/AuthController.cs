@@ -16,7 +16,7 @@ namespace AMOGUS.Api.Controllers {
 
         [HttpPost]
         [Route("login")]
-        public async Task<IActionResult> Login([FromBody]LoginApiModel model) {
+        public async Task<IActionResult> Login([FromBody] LoginApiModel model) {
             var res = await _authService.LoginUserAsync(model);
             return res.Match<IActionResult>(
                 Ok,
@@ -26,7 +26,7 @@ namespace AMOGUS.Api.Controllers {
 
         [HttpPost]
         [Route("register")]
-        public async Task<IActionResult> Register([FromBody]RegisterApiModel model) {
+        public async Task<IActionResult> Register([FromBody] RegisterApiModel model) {
             var res = await _authService.RegisterUserAsync(model, UserRoles.User);
             return res.Match<IActionResult>(
                 Ok,

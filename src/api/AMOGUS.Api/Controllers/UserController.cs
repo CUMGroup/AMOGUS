@@ -48,9 +48,9 @@ namespace AMOGUS.Api.Controllers {
             return res.Match<IActionResult>(
                 Ok,
                 err => {
-                    if(err is UserNotFoundException)
+                    if (err is UserNotFoundException)
                         return NotFound(err.Message);
-                    if(err is UserOperationException)
+                    if (err is UserOperationException)
                         return UnprocessableEntity(err.Message);
                     return StatusCode(500, err.Message);
                 }
