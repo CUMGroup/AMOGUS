@@ -1,4 +1,7 @@
 ﻿using AMOGUS.Core.Common.Communication;
+using AMOGUS.Core.Common.Exceptions;
+using AMOGUS.Core.Common.Interfaces.Database;
+using AMOGUS.Core.Common.Interfaces.Security;
 using AMOGUS.Core.Common.Interfaces.User;
 using AMOGUS.Core.DataTransferObjects.User;
 using AMOGUS.Infrastructure.Identity;
@@ -10,11 +13,11 @@ using System.Security.Claims;
 namespace AMOGUS.Infrastructure.Services.User {
     internal class AuthService : IAuthService {
 
-        private readonly TokenFactory _tokenFactory;
-        private readonly RoleManager<IdentityRole> _roleManager;
-        private readonly UserManager<ApplicationUser> _userManager;
+        private readonly ITokenFactory _tokenFactory;
+        private readonly IRoleManager _roleManager;
+        private readonly IUserManager _userManager;
 
-        public AuthService(RoleManager<IdentityRole> _roleManager, UserManager<ApplicationUser> _userManager, TokenFactory _tokenFactory) {
+        public AuthService(IRoleManager _roleManager, IUserManager _userManager, ITokenFactory _tokenFactory) {
             this._roleManager = _roleManager!;
             this._userManager = _userManager!;
             this._tokenFactory = _tokenFactory!;
@@ -33,34 +36,34 @@ namespace AMOGUS.Infrastructure.Services.User {
             }
         }
 
-        public async Task<LoginResultApiModel> LoginUserAsync(LoginApiModel loginModel) {
+        public async Task<Result<LoginResultApiModel>> LoginUserAsync(LoginApiModel loginModel) {
 
             var user = await _userManager.FindByEmailAsync(loginModel.Email);
             if (user == null || !await _userManager.CheckPasswordAsync(user, loginModel.Password)) {
-                return new LoginResultApiModel();
+                return new AuthFailureException("Invalid Username or Password!");
             }
             var userRoles = await _userManager.GetRolesAsync(user);
             List<Claim> authClaims = await _tokenFactory.GetUserAuthClaimsFromRolesAsync(userRoles, user);
             JwtSecurityToken token = _tokenFactory.GenerateNewJwtSecurityToken(authClaims);
 
-            return new LoginResultApiModel(Result.Success(), new JwtSecurityTokenHandler().WriteToken(token), token.ValidTo, user.UserName, user.Email);
+            return new LoginResultApiModel(new JwtSecurityTokenHandler().WriteToken(token), token.ValidTo, user.UserName, user.Email);
         }
 
-        public async Task<LoginResultApiModel> RegisterUserAsync(RegisterApiModel registerModel, string role) {
+        public async Task<Result<LoginResultApiModel>> RegisterUserAsync(RegisterApiModel registerModel, string role) {
 
             var userExists = await _userManager.FindByEmailAsync(registerModel.Email);
             if (userExists != null) {
-                return new LoginResultApiModel(Result.Failure("Account already exists!"));
+                return new AuthFailureException("Account already exists!");
             }
 
             ApplicationUser user = CreateNewApplicationUserModel(registerModel);
 
             var result = await _userManager.CreateAsync(user, registerModel.Password);
             if (!result.Succeeded)
-                return new LoginResultApiModel(Result.Failure("Failed to create Account"));
+                return new AuthFailureException("Failed to create Account");
 
             if (!await _roleManager.RoleExistsAsync(role)) {
-                return new LoginResultApiModel(Result.Failure("Failed to create Account"));
+                return new AuthFailureException("Failed to create Account");
             }
 
             await _userManager.AddToRoleAsync(user, role);

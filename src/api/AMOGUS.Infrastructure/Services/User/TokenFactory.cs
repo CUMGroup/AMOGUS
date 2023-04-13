@@ -21,7 +21,7 @@ namespace AMOGUS.Infrastructure.Services.User {
         }
 
         public string GenerateHashedGuidToken() {
-            Guid guid = GenerateGuidToken();
+            var guid = GenerateGuidToken();
             using (var hashAlg = SHA256.Create()) {
                 byte[] crypt = hashAlg.ComputeHash(Encoding.UTF8.GetBytes(guid.ToString()));
                 return Convert.ToBase64String(crypt);
