@@ -21,12 +21,12 @@ namespace AMOGUS.Infrastructure.Services.User {
             }
 
             var userRes = await GetUserAsync(userId);
-            if(userRes.IsFaulted) {
+            if (userRes.IsFaulted) {
                 return userRes;
             }
             IdentityResult result = await _userManager.DeleteAsync(userRes.Value);
             if (!result.Succeeded) {
-                return new UserOperationException(String.Join(';',result.Errors.Select(e => e.Code + ": " + e.Description)));
+                return new UserOperationException(String.Join(';', result.Errors.Select(e => e.Code + ": " + e.Description)));
             }
             return true;
         }
@@ -62,7 +62,7 @@ namespace AMOGUS.Infrastructure.Services.User {
             var userRes = await GetUserAsync(userId);
 
             return await userRes.Match(
-                user => _userManager.IsInRoleAsync(user, role), 
+                user => _userManager.IsInRoleAsync(user, role),
                 err => Task.FromResult(false)
             );
         }
