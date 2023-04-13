@@ -37,7 +37,7 @@ Additionally you have to install all node dependencies by running the following 
 ```console
 npm install
 ```
-Finally, you can build an run the project using the following commands:
+Finally, you can build and run the project using the following commands:
 ```console
 cd src/api/AMOGUS.Api
 dotnet run
@@ -47,7 +47,7 @@ and
 cd src/ui
 npm start
 ```
-This will start the app at `https:localhost:4200`.
+This will start the app at `https://localhost:4200`.
 
 # Our Team
 
@@ -67,9 +67,10 @@ This will start the app at `https:localhost:4200`.
 <td align="center"><a align="center" href="https://github.com/WachtelHD">@WachtelHD</a></td>
 </tr>
 </table>
-If you have any Questions, feel free to contact us via the GitHub Discussions, an Issue or <a href="mailto:alex@hagl.de">alex@hagl.de</a>
+If you have any Questions, feel free to contact us via the GitHub Discussions, an Issue or <a href="mailto:alex@hagl.de">alex@hagl.de</a>.
 
-> Stay sus
+
+**Stay sus!**
 
 <br><br><br>
 <div align="center">
