@@ -1,7 +1,5 @@
-﻿
-using AMOGUS.Core.Common.Interfaces.Game;
+﻿using AMOGUS.Core.Common.Interfaces.Game;
 using AMOGUS.Core.Services.Gameplay;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace AMOGUS.Core {
