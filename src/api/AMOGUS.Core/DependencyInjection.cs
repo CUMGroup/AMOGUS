@@ -13,7 +13,7 @@ namespace AMOGUS.Core {
             services.AddTransient<IStatsService, StatsService>();
 
             services.AddConfigurations();
-            
+
             return services;
         }
 

@@ -17,7 +17,7 @@ namespace AMOGUS.Core.Services.Gameplay {
 
         public async Task<Result<UserStats>> GetUserStatsAsync(string userId) {
             var res = await _dbContext.UserStats.Where(e => e.UserId.Equals(userId)).Include(e => e.User).FirstOrDefaultAsync();
-            if(res == null) {
+            if (res == null) {
                 return new UserOperationException($"Could not find stats for user with id {userId}");
             }
             return res;

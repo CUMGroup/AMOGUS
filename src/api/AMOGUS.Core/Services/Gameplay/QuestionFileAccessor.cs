@@ -7,7 +7,7 @@ using Newtonsoft.Json;
 
 namespace AMOGUS.Core.Services.Gameplay {
     internal class QuestionFileAccessor : IQuestionFileAccessor {
-        
+
         private readonly IQuestionRepoConfiguration _questionRepoConfiguration;
 
         private readonly string _exercisePath;
@@ -34,7 +34,7 @@ namespace AMOGUS.Core.Services.Gameplay {
                 .Where(e => Path.GetExtension(e).Equals(_exerciseExtension))
                 .ToList();
             foreach (var f in files) {
-                _questions.AddRange(JsonConvert.DeserializeObject<List<Question>>(await File.ReadAllTextAsync(f)) ! );
+                _questions.AddRange(JsonConvert.DeserializeObject<List<Question>>(await File.ReadAllTextAsync(f))!);
             }
         }
 
@@ -57,7 +57,7 @@ namespace AMOGUS.Core.Services.Gameplay {
 
         public async Task SaveQuestionFilesAsync() {
             var categories = GetAllCategories();
-            foreach(var category in categories) {
+            foreach (var category in categories) {
                 var path = GetQuestionFilenameByCategory(category);
                 var quest = GetAllQuestionsByCategory(category);
                 var json = JsonConvert.SerializeObject(quest);

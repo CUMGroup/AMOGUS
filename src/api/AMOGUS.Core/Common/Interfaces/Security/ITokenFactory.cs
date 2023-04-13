@@ -1,6 +1,6 @@
-﻿using System.IdentityModel.Tokens.Jwt;
+﻿using AMOGUS.Infrastructure.Identity;
+using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
-using AMOGUS.Infrastructure.Identity;
 
 namespace AMOGUS.Core.Common.Interfaces.Security {
     public interface ITokenFactory {

@@ -1,6 +1,4 @@
-﻿using AMOGUS.Core.Common.Communication;
-
-namespace AMOGUS.Core.DataTransferObjects.User {
+﻿namespace AMOGUS.Core.DataTransferObjects.User {
     public class LoginResultApiModel {
         public string? Token { get; private set; } = null;
 

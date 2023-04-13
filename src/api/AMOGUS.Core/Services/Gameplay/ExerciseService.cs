@@ -22,7 +22,8 @@ namespace AMOGUS.Core.Services.Gameplay {
             Entity exprUser = answer.Answer;
             try {
                 return new Entity.Equalsf(exprTrue, exprUser).Simplify().EvalBoolean();
-            }catch(CannotEvalException) {
+            }
+            catch (CannotEvalException) {
                 return false;
             }
         }
@@ -38,7 +39,7 @@ namespace AMOGUS.Core.Services.Gameplay {
             for (int i = 0; i < amount; ++i) {
                 var questString = factory.GenerateRandomExerciseString();
                 var answString = factory.CalcAnswer(questString);
-                if(String.IsNullOrWhiteSpace(answString)) {
+                if (String.IsNullOrWhiteSpace(answString)) {
                     --i;
                     continue;
                 }
