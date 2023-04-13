@@ -23,16 +23,17 @@ namespace AMOGUS.Core.Services.Gameplay {
         public async Task<Result> EndSessionAsync(GameSession session, string userId) {
             var user = await _userManager.FindByIdAsync(userId);
             if(user == null) {
-                return new UserNotFoundException($"Could not find user with id {userId}"); // 15uhr - 18 uhr
+                return new UserNotFoundException($"Could not find user with id {userId}");
             }
             session.User = user;
 
-            var answers = await CalculateCorrectAnswersAsync(session.Questions);
+            var answers = CalculateCorrectAnswers(session.Questions);
 
             await _statsService.UpdateUserStatsAsync(session, answers, user);
             
             _dbContext.GameSessions.Add(session);
-            await _dbContext.SaveChangesAsync();
+            var dbRes = await _dbContext.SaveChangesAsync();
+            return dbRes > 0;
         }
         public GameSession NewSession(CategoryType category, string userId, int questionAmount) {
             var session = new GameSession() {
@@ -47,10 +48,10 @@ namespace AMOGUS.Core.Services.Gameplay {
             return NewSession(category, userId, 10);
         }
 
-        private async Task<bool[]> CalculateCorrectAnswersAsync(List<Question> questions) {
+        private bool[] CalculateCorrectAnswers(List<Question> questions) {
             bool[] answers = new bool[questions.Count];
             for (int i = 0; i < questions.Count; ++i) {
-                answers[i] = await _exerciseService.CheckAnswerAsync(questions[i]);
+                answers[i] = _exerciseService.CheckAnswer(questions[i]);
             }
             return answers;
         }
