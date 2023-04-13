@@ -4,7 +4,7 @@ using AMOGUS.Infrastructure.Identity;
 namespace AMOGUS.Core.Common.Interfaces.User {
     public interface IUserService {
 
-        Task<ApplicationUser> GetUserAsync(string userId);
+        Task<Result<ApplicationUser>> GetUserAsync(string userId);
 
         Task<bool> IsInRoleAsync(string userId, string role);
 
