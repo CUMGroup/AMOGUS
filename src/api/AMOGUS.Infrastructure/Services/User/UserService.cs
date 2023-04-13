@@ -4,7 +4,6 @@ using AMOGUS.Core.Common.Interfaces.Database;
 using AMOGUS.Core.Common.Interfaces.User;
 using AMOGUS.Infrastructure.Identity;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
 
 namespace AMOGUS.Infrastructure.Services.User {
     internal class UserService : IUserService {
@@ -17,6 +16,24 @@ namespace AMOGUS.Infrastructure.Services.User {
         }
 
         public async Task<Result> DeleteUserAsync(string userId) {
+            if (await UserHistoryRemovalSuccessful(userId)) {
+                return Result.Failure("Failed deleting user.");
+            }
+
+            try {
+                ApplicationUser user = await GetUserAsync(userId);
+                IdentityResult result = await _userManager.DeleteAsync(user);
+                if (!result.Succeeded) {
+                    return Result.Failure(result.Errors.Select(e => (e.Code + ": " + e.Description)));
+                }
+            }
+            catch (UserNotFoundException ex) {
+                return Result.Failure("Failed deleting user.");
+            }
+            return Result.Success();
+        }
+
+        private async Task<bool> UserHistoryRemovalSuccessful(string userId) {
             var medalsToDelete = _dbContext.UserMedals.Where(m => m.UserId.Equals(userId)).ToList();
             _dbContext.UserMedals.RemoveRange(medalsToDelete);
 
@@ -28,20 +45,11 @@ namespace AMOGUS.Infrastructure.Services.User {
 
             try {
                 await _dbContext.SaveChangesAsync();
-            } catch (Exception ex) {
-                return Result.Failure("Failed deleting user.");
             }
-
-            try {
-                ApplicationUser user = await GetUserAsync(userId);
-                IdentityResult result = await _userManager.DeleteAsync(user);
-                if (!result.Succeeded) {
-                    return Result.Failure(result.Errors.Select(e => (e.Code + ": " + e.Description)));
-                }
-            } catch (UserNotFoundException ex) {
-                return Result.Failure("Failed deleting user.");
+            catch (Exception ex) {
+                return false;
             }
-            return Result.Success();
+            return true;
         }
 
         public async Task<ApplicationUser> GetUserAsync(string userId) {

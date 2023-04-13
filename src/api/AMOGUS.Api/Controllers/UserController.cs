@@ -10,7 +10,7 @@ using System.Security.Claims;
 namespace AMOGUS.Api.Controllers {
     [ApiController]
     [Route("user")]
-    public class UserController : Controller{
+    public class UserController : Controller {
         private readonly IUserService _userService;
 
         public UserController(IUserService userService) {
@@ -25,7 +25,7 @@ namespace AMOGUS.Api.Controllers {
             if (userId == null) {
                 return Forbid();
             }
-            try{
+            try {
                 ApplicationUser user = await _userService.GetUserAsync(userId);
                 UserApiModel userModel = new(user.Id, user.UserName, user.Email, user.PlayedToday);
 

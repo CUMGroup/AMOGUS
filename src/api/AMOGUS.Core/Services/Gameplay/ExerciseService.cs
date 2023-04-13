@@ -1,12 +1,12 @@
 ﻿using AMOGUS.Core.Common.Interfaces.Game;
-using AMOGUS.Core.Domain.Models.Entities;
-using Microsoft.Extensions.Configuration;
-using AMOGUS.Core.ExtensionMethods;
 using AMOGUS.Core.Domain.Enums;
-using Newtonsoft.Json;
+using AMOGUS.Core.Domain.Models.Entities;
+using AMOGUS.Core.ExtensionMethods;
+using AMOGUS.Core.Factories;
 using AngouriMath;
 using AngouriMath.Core.Exceptions;
-using AMOGUS.Core.Factories;
+using Microsoft.Extensions.Configuration;
+using Newtonsoft.Json;
 
 namespace AMOGUS.Core.Services.Gameplay {
     internal class ExerciseService : IExerciseService {
@@ -18,8 +18,8 @@ namespace AMOGUS.Core.Services.Gameplay {
 
         public ExerciseService(IConfiguration configuration) {
             _exercisePath = configuration.GetExercisePathString();
-            
-            if(_questions is null) {
+
+            if (_questions is null) {
                 Task.Run(async () => {
                     await ReloadQuestionsAsync();
                 });
@@ -32,8 +32,8 @@ namespace AMOGUS.Core.Services.Gameplay {
             List<string> files = Directory.GetFiles(_exercisePath)
                 .Where(e => Path.GetExtension(e).Equals(_exerciseExtension))
                 .ToList();
-            foreach(var f in files) {
-                _questions.AddRange(JsonConvert.DeserializeObject<List<Question>>(await File.ReadAllTextAsync(f)) ! );
+            foreach (var f in files) {
+                _questions.AddRange(JsonConvert.DeserializeObject<List<Question>>(await File.ReadAllTextAsync(f))!);
             }
         }
 

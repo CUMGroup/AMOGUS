@@ -1,5 +1,5 @@
 ﻿using AMOGUS.Core.Common.Interfaces.Database;
-using AMOGUS.Core.Common.Interfaces.Game;
+using AMOGUS.Core.Common.Interfaces.Security;
 using AMOGUS.Core.Common.Interfaces.User;
 using AMOGUS.Infrastructure.Identity;
 using AMOGUS.Infrastructure.Persistence;
@@ -17,16 +17,34 @@ namespace AMOGUS.Infrastructure {
 
         public static IServiceCollection AddDataServices(this IServiceCollection services, IConfiguration configuration) {
 
-            services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlite(configuration.GetConnectionString("DefaultConnection"))
-            );
+            services.AddDatabaseContext(configuration);
             services.AddScoped<IApplicationDbContext>(provider => provider.GetRequiredService<ApplicationDbContext>());
 
+            services.AddIdentitiyServices();
+            services.AddAuthenticationServices(configuration);
+
+            services.AddTransient<IAuthService, AuthService>();
+            services.AddTransient<IUserService, UserService>();
+            services.AddTransient<ITokenFactory, TokenFactory>();
+
+            return services;
+        }
+
+        private static IServiceCollection AddDatabaseContext(this IServiceCollection services, IConfiguration configuration) {
+            services.AddDbContext<ApplicationDbContext>(options =>
+                            options.UseSqlite(configuration.GetConnectionString("DefaultConnection"))
+                        );
+            return services;
+        }
+
+        private static IServiceCollection AddIdentitiyServices(this IServiceCollection services) {
             services.AddIdentity<ApplicationUser, IdentityRole>()
-                .AddEntityFrameworkStores<ApplicationDbContext>()
-                .AddDefaultTokenProviders();
+                            .AddEntityFrameworkStores<ApplicationDbContext>()
+                            .AddDefaultTokenProviders();
+            return services;
+        }
 
-
+        private static IServiceCollection AddAuthenticationServices(this IServiceCollection services, IConfiguration configuration) {
             services.AddAuthentication(opt => {
                 opt.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
                 opt.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -42,11 +60,6 @@ namespace AMOGUS.Infrastructure {
                     ValidateIssuerSigningKey = true
                 };
             });
-
-            services.AddTransient<IAuthService, AuthService>();
-
-            services.AddTransient<IUserService, UserService>();
-
             return services;
         }
     }
