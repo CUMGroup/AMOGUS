@@ -3,6 +3,7 @@ using AMOGUS.Core.Common.Interfaces.Security;
 using AMOGUS.Core.Common.Interfaces.User;
 using AMOGUS.Infrastructure.Identity;
 using AMOGUS.Infrastructure.Persistence;
+using AMOGUS.Infrastructure.Persistence.User;
 using AMOGUS.Infrastructure.Services.User;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
@@ -22,6 +23,9 @@ namespace AMOGUS.Infrastructure {
 
             services.AddIdentitiyServices();
             services.AddAuthenticationServices(configuration);
+
+            services.AddTransient<IUserManager, UserManagerWrapper>();
+            services.AddTransient<IRoleManager, RoleManagerWrapper>();
 
             services.AddTransient<IAuthService, AuthService>();
             services.AddTransient<IUserService, UserService>();
