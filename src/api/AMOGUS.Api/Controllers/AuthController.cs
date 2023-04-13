@@ -17,15 +17,21 @@ namespace AMOGUS.Api.Controllers {
         [HttpPost]
         [Route("login")]
         public async Task<IActionResult> Login([FromBody]LoginApiModel model) {
-            LoginResultApiModel res = await _authService.LoginUserAsync(model);
-            return res.Result.Succeeded ? Ok(res) : Unauthorized(res);
+            var res = await _authService.LoginUserAsync(model);
+            return res.Match<IActionResult>(
+                Ok,
+                Unauthorized
+            );
         }
 
         [HttpPost]
         [Route("register")]
         public async Task<IActionResult> Register([FromBody]RegisterApiModel model) {
-            LoginResultApiModel res = await _authService.RegisterUserAsync(model, UserRoles.User);
-            return res.Result.Succeeded ? Ok(res) : UnprocessableEntity(res);
+            var res = await _authService.RegisterUserAsync(model, UserRoles.User);
+            return res.Match<IActionResult>(
+                Ok,
+                UnprocessableEntity
+            );
         }
     }
 }

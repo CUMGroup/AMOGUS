@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Identity;
 namespace AMOGUS.Core.Common.Interfaces.Database {
     public interface IUserManager {
 
-        Task<IdentityResult> CreateAsync(ApplicationUser user, string password)
+        Task<IdentityResult> CreateAsync(ApplicationUser user, string password);
 
         Task<IdentityResult> DeleteAsync(ApplicationUser user);
 
