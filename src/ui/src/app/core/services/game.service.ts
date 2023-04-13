@@ -6,17 +6,24 @@ import { question } from "../interfaces/question";
 })
 export class GameService {
 
+  currentQuestion = 0;
   constructor() { }
 
+  startNewGame(){
+    this.currentQuestion = 0;
+    this.setQuestions("the type of questions to get");
+  }
+
+  setQuestions(type:string){
+    // this.questions =
+  }
+
   // mock data
-
-  currentQuestion = 0;
-
-  questions: Array<question> = [
+  questions: question[] = [
     {
       question: "Find the sum of 9+10",
       answer: "21",
-      time: 10,
+      time: 60,
       type: "multipleChoice",
       multipleChoiceAnswers: [
         "19",

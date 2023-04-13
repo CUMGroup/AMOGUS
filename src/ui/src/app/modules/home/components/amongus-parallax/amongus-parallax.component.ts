@@ -1,5 +1,6 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { gsap } from "gsap";
+import {debounceTime, Observable} from "rxjs";
 
 @Component({
   selector: 'app-amongus-parallax',
@@ -20,6 +21,7 @@ export class AmongusParallaxComponent implements OnInit {
   rotation: number = 0;
 
   move(e: any) {
+    //TODO: debounceTime(100) used to delay the events
     this.parallaxIt(e, ".amongus", 1000);
   };
 

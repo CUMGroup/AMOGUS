@@ -6,3 +6,7 @@ export interface question{
   multipleChoiceAnswers?: string[];
   finished?: boolean;
 }
+
+export interface gameOption{
+  gameType: string;
+}

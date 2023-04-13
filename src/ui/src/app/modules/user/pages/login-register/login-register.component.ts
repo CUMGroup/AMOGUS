@@ -1,15 +1,14 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {AuthenticationService} from "../../../../core/services/authentication/authentication.service";
-import {Observable, Subscription} from "rxjs";
-import {User} from "../../../../core/interfaces/user";
+import {Subscription} from "rxjs";
 
 @Component({
   selector: 'app-login-register',
   templateUrl: './login-register.component.html',
   styleUrls: ['./login-register.component.css']
 })
-export class LoginRegisterComponent implements OnInit, OnDestroy{
+export class LoginRegisterComponent implements OnInit, OnDestroy {
 
   hide = true;
   repeatedHide = true;
@@ -17,7 +16,7 @@ export class LoginRegisterComponent implements OnInit, OnDestroy{
   message: string;
   signSubscription: Subscription;
 
-  constructor(public formBuilder: FormBuilder, public authService:AuthenticationService) {
+  constructor(public formBuilder: FormBuilder, public authService: AuthenticationService) {
   }
 
   ngOnInit(): void {
@@ -34,19 +33,19 @@ export class LoginRegisterComponent implements OnInit, OnDestroy{
     this.signSubscription.unsubscribe()
   }
 
-  login(){
-    if(this.access.get("password").value !== this.access.get("repeatPassword").value &&
-      !this.access.get("login").value){
+  login() {
+    if (this.access.get("password").value !== this.access.get("repeatPassword").value &&
+      !this.access.get("login").value) {
       this.message = "enter the same password"
-    }else{
+    } else {
       this.message = "";
     }
-    if(this.access.get("login").value){
+    if (this.access.get("login").value) {
       this.signSubscription = this.authService.login(
         this.access.get("email").value,
         this.access.get("password").value
       ).subscribe()
-    }else{
+    } else {
       this.signSubscription = this.authService.register(
         this.access.get("email").value,
         this.access.get("username").value,
@@ -55,11 +54,11 @@ export class LoginRegisterComponent implements OnInit, OnDestroy{
     }
   }
 
-  disable(){
-    if(!this.access.get("login").value){
+  disable() {
+    if (!this.access.get("login").value) {
       this.access.get("email").disable()
       this.access.get("repeatPassword").disable()
-    }else{
+    } else {
       this.access.get("email").enable()
       this.access.get("repeatPassword").enable()
     }

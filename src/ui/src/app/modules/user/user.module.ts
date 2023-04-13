@@ -21,6 +21,7 @@ import { MatInputModule } from "@angular/material/input";
 import { MatSlideToggleModule } from "@angular/material/slide-toggle";
 import { MatDialogModule } from "@angular/material/dialog";
 import {MatRadioModule} from "@angular/material/radio";
+import { GameSelectionComponent } from './pages/game-selection/game-selection.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import {MatRadioModule} from "@angular/material/radio";
     StatsTableComponent,
     GameViewComponent,
     LoginRegisterComponent,
-    AnswerDialog
+    AnswerDialog,
+    GameSelectionComponent
   ],
   imports: [
     CommonModule,

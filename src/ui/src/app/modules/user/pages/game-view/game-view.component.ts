@@ -1,11 +1,11 @@
-import {Component, Inject, OnInit} from '@angular/core';
-import {FormArray, FormBuilder, FormControl, FormGroup} from "@angular/forms";
+import {Component, Inject, OnDestroy, OnInit} from '@angular/core';
+import {FormBuilder} from "@angular/forms";
 import {gsap} from "gsap";
 import {question} from "../../../../core/interfaces/question";
 import {GameService} from "../../../../core/services/game.service";
 import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from "@angular/material/dialog";
 import {Router} from "@angular/router";
-import {Subscription, timer} from 'rxjs'
+import {Subject, Subscription, takeUntil, timer} from 'rxjs'
 
 
 @Component({
@@ -14,66 +14,77 @@ import {Subscription, timer} from 'rxjs'
   styleUrls: ['./game-view.component.css']
 })
 
-export class GameViewComponent implements OnInit {
+export class GameViewComponent implements OnInit,OnDestroy {
 
   currentQuestion: question;
-  test:number;
+  test: number;
   correctAnswers: Array<boolean> = [];
   gameProgress: Subscription;
   selectedAnswer: string;
   answers: string[] = [];
 
+  protected componentDestroyed$: Subject<void> = new Subject<void>();
+
   constructor(
     private router: Router,
-    public formBuilder:FormBuilder,
-    public gameService:GameService,
+    public formBuilder: FormBuilder,
+    public gameService: GameService,
     public dialog: MatDialog
-  ) { }
+  ) {
+  }
 
   ngOnInit(): void {
     this.newQuestion()
   }
 
-  newQuestion(){
+  ngOnDestroy(){
+    this.componentDestroyed$.next();
+    this.componentDestroyed$.complete();
+    //TODO: kill all subscriptions to prevent funky behavior with Dialog (Subject)
+  }
+
+  newQuestion() {
     this.currentQuestion = this.gameService.getQuestion();
-    if(this.currentQuestion.finished){
+    if (this.currentQuestion.finished) {
       this.gameProgress.unsubscribe()
       const dialogRef = this.dialog.open(AnswerDialog, {
         data: {answers: this.correctAnswers},
       });
 
-      dialogRef.afterClosed().subscribe(result => {
+      dialogRef.afterClosed().pipe(takeUntil(this.componentDestroyed$)).subscribe(() => {
         this.router.navigate([""])
       });
 
-    } else{
+    } else {
       this.animate();
-      this.gameProgress = timer(this.currentQuestion.time * 1000).subscribe(() => this.submit())
+      this.gameProgress = timer(this.currentQuestion.time * 1000).pipe(takeUntil(this.componentDestroyed$)).subscribe(() => this.submit())
     }
-    switch(this.currentQuestion.type) {
-      case "text": break;
+    switch (this.currentQuestion.type) {
+      case "text":
+        break;
       case "multipleChoice":
         this.answers = this.currentQuestion.multipleChoiceAnswers;
         break;
-      default: console.log("error occurred");
+      default:
+        console.log("error occurred");
     }
   }
 
-  log(){
+  log() {
     console.log(this.correctAnswers)
   }
 
-  animate(){
+  animate() {
     // gsap.fromTo(".knife",{ rotate:0},{ rotate: 765, duration:this.time})
-    gsap.fromTo(".progress",{width:"0%"},{width:"100%", duration:this.currentQuestion.time})
+    gsap.fromTo(".progress", {width: "0%"}, {width: "100%", duration: this.currentQuestion.time})
 
   }
 
-  submit(){
+  submit() {
     this.gameProgress.unsubscribe()
-    if(this.currentQuestion.answer === this.selectedAnswer){
+    if (this.currentQuestion.answer === this.selectedAnswer) {
       this.correctAnswers.push(true);
-    }else{
+    } else {
       this.correctAnswers.push(false);
     }
     this.newQuestion();
@@ -91,7 +102,8 @@ export class AnswerDialog {
   constructor(
     public dialogRef: MatDialogRef<AnswerDialog>,
     @Inject(MAT_DIALOG_DATA) public data: { answers: Array<boolean> },
-  ) {}
+  ) {
+  }
 
   onNoClick(): void {
     this.dialogRef.close();

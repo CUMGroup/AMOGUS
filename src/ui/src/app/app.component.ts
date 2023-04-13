@@ -1,5 +1,4 @@
-import {Component, ElementRef, ViewChild} from '@angular/core';
-import { gsap , TweenMax, TimelineMax } from 'gsap'
+import {Component} from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -8,22 +7,5 @@ import { gsap , TweenMax, TimelineMax } from 'gsap'
 })
 
 export class AppComponent {
-  data = [
-    {
-      name:"well",
-      value: 2
-    },
-    {
-      name:"fuck",
-      value: 3
-    },
-    {
-      name:"you",
-      value: 4
-    },
-    {
-      name:"nibba",
-      value: 5
-    }
-  ]
+
 }

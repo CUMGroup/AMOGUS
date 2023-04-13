@@ -1,15 +1,13 @@
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import {NgModule} from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 
-import { AppComponent } from './app.component';
-
-import * as echarts from 'echarts';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { AppRoutingModule } from './app-routing.module';
-import {LoginRegisterComponent} from "./modules/user/pages/login-register/login-register.component";
+import {AppComponent} from './app.component';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {AppRoutingModule} from './app-routing.module';
 import {UserModule} from "./modules/user/user.module";
 import {SharedModule} from "./shared/shared.module";
+import {AuthInterceptorService} from "./core/services/authentication/auth-interceptor.service";
 
 @NgModule({
   declarations: [
@@ -23,7 +21,14 @@ import {SharedModule} from "./shared/shared.module";
     SharedModule,
     UserModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptorService,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}
