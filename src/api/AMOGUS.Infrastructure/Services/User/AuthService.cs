@@ -43,7 +43,7 @@ namespace AMOGUS.Infrastructure.Services.User {
                 return new AuthFailureException("Invalid Username or Password!");
             }
             var userRoles = await _userManager.GetRolesAsync(user);
-            List<Claim> authClaims = await _tokenFactory.GetUserAuthClaimsFromRolesAsync(userRoles, user);
+            List<Claim> authClaims = _tokenFactory.GetUserAuthClaimsFromRoles(userRoles, user);
             JwtSecurityToken token = _tokenFactory.GenerateNewJwtSecurityToken(authClaims);
 
             return new LoginResultApiModel(new JwtSecurityTokenHandler().WriteToken(token), token.ValidTo, user.UserName, user.Email);

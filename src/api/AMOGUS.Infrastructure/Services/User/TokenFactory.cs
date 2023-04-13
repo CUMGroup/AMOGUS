@@ -40,7 +40,7 @@ namespace AMOGUS.Infrastructure.Services.User {
                             );
         }
 
-        public async Task<List<Claim>> GetUserAuthClaimsFromRolesAsync(IList<string> userRoles, ApplicationUser user) {
+        public List<Claim> GetUserAuthClaimsFromRoles(IList<string> userRoles, ApplicationUser user) {
             var authClaims = new List<Claim> {
                 new Claim(ClaimTypes.Email, user.Email),
                 new Claim(ClaimTypes.NameIdentifier, user.Id),
