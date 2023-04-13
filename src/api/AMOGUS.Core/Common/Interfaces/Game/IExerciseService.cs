@@ -6,7 +6,7 @@ namespace AMOGUS.Core.Common.Interfaces.Game {
 
         List<Question> GetRandomExercises(CategoryType category, int amount);
 
-        Task<bool> CheckAnswerAsync(Question answer);
+        bool CheckAnswer(Question answer);
 
         List<Question> GenerateRandomExercises(CategoryType category, int amount);
     }
