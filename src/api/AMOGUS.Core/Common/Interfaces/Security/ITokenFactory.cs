@@ -9,7 +9,7 @@ namespace AMOGUS.Core.Common.Interfaces.Security {
 
         string GenerateHashedGuidToken();
 
-        Task<List<Claim>> GetUserAuthClaimsFromRolesAsync(IList<string> userRoles, ApplicationUser user);
+        List<Claim> GetUserAuthClaimsFromRoles(IList<string> userRoles, ApplicationUser user);
 
         JwtSecurityToken GenerateNewJwtSecurityToken(List<Claim> authClaims);
     }

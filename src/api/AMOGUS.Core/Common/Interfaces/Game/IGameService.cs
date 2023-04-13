@@ -6,6 +6,8 @@ namespace AMOGUS.Core.Common.Interfaces.Game {
 
         GameSession NewSession(CategoryType category, string userId);
 
+        GameSession NewSession(CategoryType category, string userId, int questionAmount);
+
         Task EndSessionAsync(GameSession session, string userId);
     }
 }
