@@ -37,6 +37,18 @@ namespace AMOGUS.Core.Common.Communication {
 
         public bool IsSuccess => State == ResultState.Success;
 
+        public A ValueOrDefault(A defaultValue) {
+            return IsSuccess ? Value : defaultValue;
+        }
+
+        public A ValueOrDefault(Func<A> defaultValueProvider) {
+            return IsSuccess ? Value : defaultValueProvider();
+        }
+
+        public async Task<A> ValueOrDefaultAsync(Func<Task<A>> defaultValueProvider) {
+            return IsSuccess ? Value : await defaultValueProvider();
+        }
+
         public override string ToString() =>
             IsFaulted ?
                 exception?.ToString() ?? "Undefined Exception!" :
