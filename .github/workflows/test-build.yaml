@@ -1,0 +1,36 @@
+name: Build on Pull Request
+
+on:
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: '6.0.x'
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '14.x'
+
+    - name: Install dependencies
+      run: |
+        cd src/api/AMOGUS.Api
+        dotnet restore
+        cd ../../ui
+        npm install
+
+    - name: Build
+      run: |
+        cd src/api/AMOGUS.Api
+        dotnet build
+        cd ../../ui
+        npm run build
