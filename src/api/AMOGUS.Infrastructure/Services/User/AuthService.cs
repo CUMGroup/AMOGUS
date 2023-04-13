@@ -1,26 +1,23 @@
-﻿using System.IdentityModel.Tokens.Jwt;
-using System.Reflection;
-using System.Security.Claims;
-using System.Text;
-using AMOGUS.Core.Common.Communication;
+﻿using AMOGUS.Core.Common.Communication;
 using AMOGUS.Core.Common.Interfaces.User;
 using AMOGUS.Core.DataTransferObjects.User;
 using AMOGUS.Infrastructure.Identity;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.Extensions.Configuration;
-using Microsoft.IdentityModel.Tokens;
+using System.IdentityModel.Tokens.Jwt;
+using System.Reflection;
+using System.Security.Claims;
 
 namespace AMOGUS.Infrastructure.Services.User {
     internal class AuthService : IAuthService {
 
+        private readonly TokenFactory _tokenFactory;
         private readonly RoleManager<IdentityRole> _roleManager;
         private readonly UserManager<ApplicationUser> _userManager;
-        private readonly IConfiguration _configuration;
 
-        public AuthService(RoleManager<IdentityRole> _roleManager, UserManager<ApplicationUser> _userManager, IConfiguration _configuration) {
-            this._roleManager = _roleManager;
-            this._userManager = _userManager;
-            this._configuration = _configuration;
+        public AuthService(RoleManager<IdentityRole> _roleManager, UserManager<ApplicationUser> _userManager, TokenFactory _tokenFactory) {
+            this._roleManager = _roleManager!;
+            this._userManager = _userManager!;
+            this._tokenFactory = _tokenFactory!;
         }
 
         public async Task CreateRolesAsync<TRoles>() {
@@ -42,38 +39,11 @@ namespace AMOGUS.Infrastructure.Services.User {
             if (user == null || !await _userManager.CheckPasswordAsync(user, loginModel.Password)) {
                 return new LoginResultApiModel();
             }
-
-            List<Claim> authClaims = await GetUserAuthClaims(user);
-            JwtSecurityToken token = GenerateNewJwtSecurityToken(authClaims);
+            var userRoles = await _userManager.GetRolesAsync(user);
+            List<Claim> authClaims = await _tokenFactory.GetUserAuthClaimsFromRolesAsync(userRoles, user);
+            JwtSecurityToken token = _tokenFactory.GenerateNewJwtSecurityToken(authClaims);
 
             return new LoginResultApiModel(Result.Success(), new JwtSecurityTokenHandler().WriteToken(token), token.ValidTo, user.UserName, user.Email);
-        }
-
-        private async Task<List<Claim>> GetUserAuthClaims(ApplicationUser user) {
-            var userRoles = await _userManager.GetRolesAsync(user);
-            var authClaims = new List<Claim> {
-                new Claim(ClaimTypes.Email, user.Email),
-                new Claim(ClaimTypes.NameIdentifier, user.Id),
-                new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
-            };
-
-            foreach (var userRole in userRoles) {
-                authClaims.Add(new Claim(ClaimTypes.Role, userRole));
-            }
-
-            return authClaims;
-        }
-
-        private JwtSecurityToken GenerateNewJwtSecurityToken(List<Claim> authClaims) {
-            var authSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]));
-
-            return new JwtSecurityToken(
-                            issuer: _configuration["Jwt:Issuer"],
-                            audience: _configuration["Jwt:Audience"],
-                            expires: DateTime.Now.AddHours(12),
-                            claims: authClaims,
-                            signingCredentials: new SigningCredentials(authSigningKey, SecurityAlgorithms.HmacSha256)
-                            );
         }
 
         public async Task<LoginResultApiModel> RegisterUserAsync(RegisterApiModel registerModel, string role) {
@@ -83,7 +53,7 @@ namespace AMOGUS.Infrastructure.Services.User {
                 return new LoginResultApiModel(Result.Failure("Account already exists!"));
             }
 
-            ApplicationUser user = CreateNewApplicationUser(registerModel);
+            ApplicationUser user = CreateNewApplicationUserModel(registerModel);
 
             var result = await _userManager.CreateAsync(user, registerModel.Password);
             if (!result.Succeeded)
@@ -98,7 +68,7 @@ namespace AMOGUS.Infrastructure.Services.User {
             return await LoginUserAsync(new LoginApiModel { Email = registerModel.Email, Password = registerModel.Password });
         }
 
-        private static ApplicationUser CreateNewApplicationUser(RegisterApiModel registerModel) {
+        private static ApplicationUser CreateNewApplicationUserModel(RegisterApiModel registerModel) {
             return new() {
                 Email = registerModel.Email,
                 UserName = registerModel.UserName,
