@@ -1,6 +1,6 @@
-﻿using AMOGUS.Core.Common.Interfaces.Security;
+﻿using AMOGUS.Core.Common.Interfaces.Configuration;
+using AMOGUS.Core.Common.Interfaces.Security;
 using AMOGUS.Infrastructure.Identity;
-using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
@@ -10,10 +10,10 @@ using System.Text;
 namespace AMOGUS.Infrastructure.Services.User {
     internal class TokenFactory : ITokenFactory {
 
-        private readonly IConfiguration _configuration;
+        private readonly IJwtConfiguration _jwtConfiguration;
 
-        public TokenFactory(IConfiguration configuration) {
-            this._configuration = configuration;
+        public TokenFactory(IJwtConfiguration jwtConfiguration) {
+            _jwtConfiguration = jwtConfiguration;
         }
 
         public Guid GenerateGuidToken() {
@@ -29,11 +29,11 @@ namespace AMOGUS.Infrastructure.Services.User {
         }
 
         public JwtSecurityToken GenerateNewJwtSecurityToken(List<Claim> authClaims) {
-            var authSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]));
+            var authSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_jwtConfiguration.Key));
 
             return new JwtSecurityToken(
-                            issuer: _configuration["Jwt:Issuer"],
-                            audience: _configuration["Jwt:Audience"],
+                            issuer: _jwtConfiguration.Issuer,
+                            audience: _jwtConfiguration.Audience,
                             expires: DateTime.Now.AddHours(12),
                             claims: authClaims,
                             signingCredentials: new SigningCredentials(authSigningKey, SecurityAlgorithms.HmacSha256)
