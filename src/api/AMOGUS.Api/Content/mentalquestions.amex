@@ -2,11 +2,11 @@
     {
         "QuestionId": "7f0beccc-063a-44d9-aa32-7ccdaa91231d",
         "Exercise": "If a pizza has 8 slices and you eat 3, how many slices are left?",
-        "Answer": "5",
+        "Answer": 5,
         "WrongAnswers": [
-            "6", 
-            "7", 
-            "4"
+            6, 
+            7, 
+            4
         ],
         "Help": "Subtract the number of slices eaten from the total number of slices.",
         "Difficulty": "EASY",
@@ -16,11 +16,11 @@
     {
         "QuestionId": "6dc8f6b2-6b0f-4c91-9f08-75f0a96b4a4d",
         "Exercise": "What is the sum of 5 and 7?",
-        "Answer": "12",
+        "Answer": 12,
         "WrongAnswers": [
-            "10", 
-            "14", 
-            "15"
+            10, 
+            14, 
+            15
         ],
         "Help": "Add the two numbers together.",
         "Difficulty": "EASY",
@@ -58,11 +58,11 @@
     {
         "QuestionId": "4bb40c9b-0154-4dbb-8ba4-84e2c2ee3f3d",
         "Exercise": "What is the next number in the sequence: 2, 4, 6, 8, __ ?",
-        "Answer": "10",
+        "Answer": 10,
         "WrongAnswers": [
-            "12", 
-            "14", 
-            "16"
+            12, 
+            14, 
+            16
         ],
         "Help": "Add 2 to each number in the sequence to find the next number.",
         "Difficulty": "EASY",
@@ -72,11 +72,11 @@
     {        
         "QuestionId": "5a90a15c-1217-46d9-9aeb-cbaae22f2a7e",        
         "Exercise": "What is the largest prime number less than 20?",        
-        "Answer": "19",        
+        "Answer": 19,        
         "WrongAnswers": [
-            "17",
-            "13", 
-            "23"
+            17,
+            13, 
+            23
         ],
         "Help": "A prime number is only divisible by 1 and itself.",
         "Difficulty": "MEDIUM",
@@ -86,11 +86,11 @@
     {
         "QuestionId": "f3361f7c-3252-4a48-9e58-6a7e6b49f6c7",
         "Exercise": "What is the square root of 81?",
-        "Answer": "9",
+        "Answer": 9,
         "WrongAnswers": [
-            "8", 
-            "7", 
-            "10"
+            8, 
+            7, 
+            10
         ],
         "Help": "The square root of a number is the value that, when multiplied by itself, equals the original number.",
         "Difficulty": "MEDIUM",
@@ -100,11 +100,11 @@
     {
         "QuestionId": "07b5a5b5-5e1f-4c68-9409-68a905408027",
         "Exercise": "If x = 2 and y = 5, what is the value of x^2 + y?",
-        "Answer": "9",
+        "Answer": 9,
         "WrongAnswers": [
-            "11", 
-            "13", 
-            "7"
+            11, 
+            13, 
+            7
         ],
         "Help": "Substitute the given values for x and y into the equation and simplify.",
         "Difficulty": "MEDIUM",
@@ -114,11 +114,11 @@
     {
         "QuestionId": "7f10e6c8-8d1d-4dcf-9dfc-60d9aaac1dbd",
         "Exercise": "What is the value of the expression 3x + 2y when x = 4 and y = 5?",
-        "Answer": "22",
+        "Answer": 22,
         "WrongAnswers": [
-            "19", 
-            "16", 
-            "27"
+            19, 
+            16, 
+            27
         ],
         "Help": "Substitute the given values for x and y into the expression and simplify.",
         "Difficulty": "MEDIUM",
@@ -128,11 +128,11 @@
     {
         "QuestionId": "c2d5e5a7-819c-4e89-8e35-e2d87eb85c0e",
         "Exercise": "If f(x) = 2x - 3, what is the value of f(5)?",
-        "Answer": "7",
+        "Answer": 7,
         "WrongAnswers": [
-            "8", 
-            "6", 
-            "10"
+            8, 
+            6, 
+            10
         ],
         "Help": "Substitute the value of 5 for x in the function and simplify.",
         "Difficulty": "MEDIUM",
@@ -142,11 +142,11 @@
     {
         "QuestionId": "1ebf5b6f-9d0f-4067-af6a-2e7d16c47cf1",
         "Exercise": "What is the value of (3 + 5) * (8 - 4) / 2?",
-        "Answer": "16",
+        "Answer": 16,
         "WrongAnswers": [
-            "8", 
-            "12",
-            "20"
+            8, 
+            12,
+            20
         ],
         "Help": "Ah, the good old order of operations. Remember, math is like a recipe, you need to add, subtract, multiply, and divide in the right order. Don't forget the parentheses, they're the seasoning in this equation!",
         "Difficulty": "HARD",
@@ -170,11 +170,11 @@
     {
         "QuestionId": "4c8d1e57-17a6-4227-a080-8c9acdcf06d9",
         "Exercise": "What is the result of 7^3 - 5^3?",
-        "Answer": "288",
+        "Answer": 288,
         "WrongAnswers": [
-            "360", 
-            "250", 
-            "210"
+            360, 
+            250, 
+            210
         ],
         "Help": "When it comes to exponents, it's all about the power! But don't get too carried away with all that power, or you might just blow up the math lab. Just kidding, but let's take a deep breath and solve this one step by step.",
         "Difficulty": "HARD",
