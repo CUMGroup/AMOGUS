@@ -1,7 +1,7 @@
 ﻿using AMOGUS.Core.Common.Communication;
 using AMOGUS.Core.Common.Exceptions;
-using AMOGUS.Core.Common.Interfaces.Database;
 using AMOGUS.Core.Common.Interfaces.Game;
+using AMOGUS.Core.Common.Interfaces.Repositories;
 using AMOGUS.Core.Domain.Models.Entities;
 using AMOGUS.Infrastructure.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -9,14 +9,14 @@ using Microsoft.EntityFrameworkCore;
 namespace AMOGUS.Core.Services.Gameplay {
     internal class StatsService : IStatsService {
 
-        private readonly IApplicationDbContext _dbContext;
+        private readonly IUserStatsRepository _userStatsRepository;
 
-        public StatsService(IApplicationDbContext dbContext) {
-            _dbContext = dbContext!;
+        public StatsService(IUserStatsRepository userStatsRepository) {
+            _userStatsRepository = userStatsRepository!;
         }
 
         public async Task<Result<UserStats>> GetUserStatsAsync(string userId) {
-            var res = await _dbContext.UserStats.Where(e => e.UserId.Equals(userId)).Include(e => e.User).FirstOrDefaultAsync();
+            var res = await _userStatsRepository.GetUserStatsIncludeUserAsync(userId);
             if (res == null) {
                 return new UserOperationException($"Could not find stats for user with id {userId}");
             }
@@ -24,8 +24,7 @@ namespace AMOGUS.Core.Services.Gameplay {
         }
 
         public async Task<bool> UpdateUserStatsAsync(UserStats userStats) {
-            _dbContext.UserStats.Update(userStats);
-            var res = await _dbContext.SaveChangesAsync();
+            var res = await _userStatsRepository.UpdateUserStatsAsync(userStats);
             return res > 0;
         }
 

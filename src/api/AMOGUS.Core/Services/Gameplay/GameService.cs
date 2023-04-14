@@ -2,6 +2,7 @@
 using AMOGUS.Core.Common.Exceptions;
 using AMOGUS.Core.Common.Interfaces.Database;
 using AMOGUS.Core.Common.Interfaces.Game;
+using AMOGUS.Core.Common.Interfaces.Repositories;
 using AMOGUS.Core.Domain.Enums;
 using AMOGUS.Core.Domain.Models.Entities;
 
@@ -9,15 +10,17 @@ namespace AMOGUS.Core.Services.Gameplay {
     internal class GameService : IGameService {
 
         private readonly IExerciseService _exerciseService;
-        private readonly IApplicationDbContext _dbContext;
-        private readonly IUserManager _userManager;
         private readonly IStatsService _statsService;
 
-        public GameService(IExerciseService exerciseService, IApplicationDbContext dbContext, IUserManager userManager, IStatsService statsService) {
+        private readonly IGameSessionRepository _gameSessionRepository;
+
+        private readonly IUserManager _userManager;
+
+        public GameService(IExerciseService exerciseService, IUserManager userManager, IStatsService statsService, IGameSessionRepository gameSessionRepository) {
             _exerciseService = exerciseService!;
-            _dbContext = dbContext!;
             _userManager = userManager!;
             _statsService = statsService!;
+            _gameSessionRepository = gameSessionRepository!;
         }
 
         public async Task<Result> EndSessionAsync(GameSession session, string userId) {
@@ -31,8 +34,7 @@ namespace AMOGUS.Core.Services.Gameplay {
 
             await _statsService.UpdateUserStatsAsync(session, answers, user);
 
-            _dbContext.GameSessions.Add(session);
-            var dbRes = await _dbContext.SaveChangesAsync();
+            var dbRes = await _gameSessionRepository.AddGameSessionAsync(session);
             return dbRes > 0;
         }
         public GameSession NewSession(CategoryType category, string userId, int questionAmount) {
