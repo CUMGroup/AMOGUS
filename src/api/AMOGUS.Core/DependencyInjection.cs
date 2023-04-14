@@ -8,8 +8,9 @@ namespace AMOGUS.Core {
 
         public static IServiceCollection AddCoreServices(this IServiceCollection services) {
 
-            services.AddTransient<IGameService, GameService>();
             services.AddTransient<IExerciseService, ExerciseService>();
+            services.AddTransient<IGameService, GameService>();
+            services.AddTransient<IQuestionFileAccessor, QuestionFileAccessor>();
             services.AddTransient<IStatsService, StatsService>();
 
             services.AddConfigurations();

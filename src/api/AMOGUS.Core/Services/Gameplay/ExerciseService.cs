@@ -11,7 +11,7 @@ namespace AMOGUS.Core.Services.Gameplay {
         private readonly IQuestionFileAccessor _questionFileAccessor;
 
         public ExerciseService(IQuestionFileAccessor questionFileAccessor) {
-            _questionFileAccessor = questionFileAccessor;
+            _questionFileAccessor = questionFileAccessor!;
         }
 
         public bool CheckAnswer(Question answer) {

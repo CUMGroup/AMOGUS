@@ -17,7 +17,7 @@ namespace AMOGUS.Core.Services.Gameplay {
 
 
         public QuestionFileAccessor(IQuestionRepoConfiguration questionRepoConfiguration) {
-            _questionRepoConfiguration = questionRepoConfiguration;
+            _questionRepoConfiguration = questionRepoConfiguration!;
             _exercisePath = _questionRepoConfiguration.ExercisePath;
 
             if (_questions is null) {

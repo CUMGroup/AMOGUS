@@ -8,7 +8,7 @@ namespace AMOGUS.Infrastructure.Persistence.User {
         private readonly RoleManager<IdentityRole> _roleManager;
 
         public RoleManagerWrapper(RoleManager<IdentityRole> roleManager) {
-            _roleManager = roleManager;
+            _roleManager = roleManager!;
         }
 
         public Task<IdentityResult> CreateAsync(IdentityRole role) {

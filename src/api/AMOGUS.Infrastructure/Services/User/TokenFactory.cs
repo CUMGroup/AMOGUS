@@ -13,7 +13,7 @@ namespace AMOGUS.Infrastructure.Services.User {
         private readonly IJwtConfiguration _jwtConfiguration;
 
         public TokenFactory(IJwtConfiguration jwtConfiguration) {
-            _jwtConfiguration = jwtConfiguration;
+            _jwtConfiguration = jwtConfiguration!;
         }
 
         public Guid GenerateGuidToken() {

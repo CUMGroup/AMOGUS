@@ -14,10 +14,10 @@ namespace AMOGUS.Core.Services.Gameplay {
         private readonly IStatsService _statsService;
 
         public GameService(IExerciseService exerciseService, IApplicationDbContext dbContext, IUserManager userManager, IStatsService statsService) {
-            _exerciseService = exerciseService;
-            _dbContext = dbContext;
-            _userManager = userManager;
-            _statsService = statsService;
+            _exerciseService = exerciseService!;
+            _dbContext = dbContext!;
+            _userManager = userManager!;
+            _statsService = statsService!;
         }
 
         public async Task<Result> EndSessionAsync(GameSession session, string userId) {

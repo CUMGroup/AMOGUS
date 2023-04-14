@@ -9,7 +9,7 @@ namespace AMOGUS.Infrastructure.Persistence.User {
         private readonly UserManager<ApplicationUser> _userManager;
 
         public UserManagerWrapper(UserManager<ApplicationUser> userManager) {
-            _userManager = userManager;
+            _userManager = userManager!;
         }
 
         public Task<IdentityResult> AddToRoleAsync(ApplicationUser user, string role) {

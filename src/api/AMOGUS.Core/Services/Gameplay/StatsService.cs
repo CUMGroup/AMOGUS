@@ -12,7 +12,7 @@ namespace AMOGUS.Core.Services.Gameplay {
         private readonly IApplicationDbContext _dbContext;
 
         public StatsService(IApplicationDbContext dbContext) {
-            _dbContext = dbContext;
+            _dbContext = dbContext!;
         }
 
         public async Task<Result<UserStats>> GetUserStatsAsync(string userId) {

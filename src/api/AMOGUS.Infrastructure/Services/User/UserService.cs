@@ -11,8 +11,8 @@ namespace AMOGUS.Infrastructure.Services.User {
         private readonly IApplicationDbContext _dbContext;
 
         public UserService(IUserManager userManager, IApplicationDbContext dbContext) {
-            _userManager = userManager;
-            _dbContext = dbContext;
+            _userManager = userManager!;
+            _dbContext = dbContext!;
         }
 
         public async Task<Result> DeleteUserAsync(string userId) {
