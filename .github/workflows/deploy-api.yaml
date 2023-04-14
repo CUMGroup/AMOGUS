@@ -1,0 +1,52 @@
+name: Test, Build & Redeploy
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - src/api/**
+    
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+      
+    - name: Setup .NET 6
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: '6.0.x'
+        
+    - name: Build
+      run: |
+        cd src/api/AMOGUS.Api
+        dotnet build
+  docker:
+    name: Publish
+    runs-on: ubuntu-18.04
+    needs: [build]
+    env:
+      REPO: ${{ secrets.DOCKER_REPO }}
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup .NET 6
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: '6.0.x'
+      - name: Login to REPO
+        run: docker login -u ${{ secrets.DOCKER_USER }} -p ${{ secrets.DOCKER_PASS }}
+      - name: Build Image
+        run: docker build -t $REPO:latest -t $REPO:${GITHUB_SHA::8} -f src/api/AMOGUS.Api/Dockerfile src/api
+      - name: Publish Image
+        run: docker push $REPO
+        
+  redeploy:
+    name: Redeploy webhook call
+    runs-on: ubuntu-18.04
+    needs: [docker]
+    steps:
+      - name: Deploy docker container webhook
+        uses: joelwmale/webhook-action@master
+        env:
+          WEBHOOK_URL: ${{ secrets.DEPLOY_WEBHOOK_URL }}
