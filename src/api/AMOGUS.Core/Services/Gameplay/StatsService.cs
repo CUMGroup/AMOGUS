@@ -4,7 +4,6 @@ using AMOGUS.Core.Common.Interfaces.Game;
 using AMOGUS.Core.Common.Interfaces.Repositories;
 using AMOGUS.Core.Domain.Models.Entities;
 using AMOGUS.Infrastructure.Identity;
-using Microsoft.EntityFrameworkCore;
 
 namespace AMOGUS.Core.Services.Gameplay {
     internal class StatsService : IStatsService {
