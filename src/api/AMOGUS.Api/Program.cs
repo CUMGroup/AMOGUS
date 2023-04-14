@@ -39,6 +39,8 @@ builder.Services.AddCoreServices();
 
 var app = builder.Build();
 
+app.UsePathBase("/api");
+
 using (var scope = app.Services.CreateScope()) {
     var db = scope.ServiceProvider.GetRequiredService<IApplicationDbContext>();
     await db.EnsureDatabaseAsync();
@@ -51,6 +53,12 @@ using (var scope = app.Services.CreateScope()) {
 if (app.Environment.IsDevelopment()) {
     app.UseSwagger();
     app.UseSwaggerUI();
+}
+else {
+    app.UseCors(e => 
+        e.AllowAnyHeader()
+        .AllowAnyMethod()
+        .SetIsOriginAllowed(orig=> "amogus.alexmiha.de".Equals(orig)));
 }
 
 app.UseHttpsRedirection();
