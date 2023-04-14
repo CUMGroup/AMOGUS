@@ -37,6 +37,8 @@ builder.Services.AddSwaggerGen(c => {
 builder.Services.AddDataServices(builder.Configuration);
 builder.Services.AddCoreServices();
 
+builder.Configuration.AddJsonFile("appsettings.json").AddEnvironmentVariables();
+
 var app = builder.Build();
 
 app.UsePathBase("/api");
