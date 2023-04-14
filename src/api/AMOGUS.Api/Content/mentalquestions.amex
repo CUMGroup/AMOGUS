@@ -11,7 +11,7 @@
         "Help": "Subtract the number of slices eaten from the total number of slices.",
         "Difficulty": "EASY",
         "Category": "MENTAL",
-        "ExperiencePoints": 10
+        "ExperiencePoints": 3
     },
     {
         "QuestionId": "6dc8f6b2-6b0f-4c91-9f08-75f0a96b4a4d",
@@ -25,7 +25,7 @@
         "Help": "Add the two numbers together.",
         "Difficulty": "EASY",
         "Category": "MENTAL",
-        "ExperiencePoints": 10
+        "ExperiencePoints": 5
     },
     {
         "QuestionId": "9ba5af27-79da-4b56-afce-0e6b76a2b41d",
@@ -39,7 +39,7 @@
         "Help": "Compare the fractions by finding a common denominator.",
         "Difficulty": "EASY",
         "Category": "MENTAL",
-        "ExperiencePoints": 10
+        "ExperiencePoints": 2
     },
     {
         "QuestionId": "cb7d34d6-0b91-4f88-9b31-66b0735c15b5",
@@ -53,7 +53,7 @@
         "Help": "Use the unit price of the pencils to find the total cost of 10 pencils.",
         "Difficulty": "EASY",
         "Category": "MENTAL",
-        "ExperiencePoints": 10
+        "ExperiencePoints": 5
     },
     {
         "QuestionId": "4bb40c9b-0154-4dbb-8ba4-84e2c2ee3f3d",
@@ -67,7 +67,7 @@
         "Help": "Add 2 to each number in the sequence to find the next number.",
         "Difficulty": "EASY",
         "Category": "MENTAL",
-        "ExperiencePoints": 10
+        "ExperiencePoints": 3
     },
     {        
         "QuestionId": "5a90a15c-1217-46d9-9aeb-cbaae22f2a7e",        
@@ -81,7 +81,7 @@
         "Help": "A prime number is only divisible by 1 and itself.",
         "Difficulty": "MEDIUM",
         "Category": "MENTAL",
-        "ExperiencePoints": 25
+        "ExperiencePoints": 13
     },
     {
         "QuestionId": "f3361f7c-3252-4a48-9e58-6a7e6b49f6c7",
@@ -95,7 +95,7 @@
         "Help": "The square root of a number is the value that, when multiplied by itself, equals the original number.",
         "Difficulty": "MEDIUM",
         "Category": "MENTAL",
-        "ExperiencePoints": 25
+        "ExperiencePoints": 9
     },
     {
         "QuestionId": "07b5a5b5-5e1f-4c68-9409-68a905408027",
@@ -109,7 +109,7 @@
         "Help": "Substitute the given values for x and y into the equation and simplify.",
         "Difficulty": "MEDIUM",
         "Category": "MENTAL",
-        "ExperiencePoints": 25
+        "ExperiencePoints": 15
     },
     {
         "QuestionId": "7f10e6c8-8d1d-4dcf-9dfc-60d9aaac1dbd",
@@ -123,7 +123,7 @@
         "Help": "Substitute the given values for x and y into the expression and simplify.",
         "Difficulty": "MEDIUM",
         "Category": "MENTAL",
-        "ExperiencePoints": 25
+        "ExperiencePoints": 10
     },
     {
         "QuestionId": "c2d5e5a7-819c-4e89-8e35-e2d87eb85c0e",
@@ -137,7 +137,7 @@
         "Help": "Substitute the value of 5 for x in the function and simplify.",
         "Difficulty": "MEDIUM",
         "Category": "MENTAL",
-        "ExperiencePoints": 25
+        "ExperiencePoints": 15
     },
     {
         "QuestionId": "1ebf5b6f-9d0f-4067-af6a-2e7d16c47cf1",
@@ -151,7 +151,7 @@
         "Help": "Ah, the good old order of operations. Remember, math is like a recipe, you need to add, subtract, multiply, and divide in the right order. Don't forget the parentheses, they're the seasoning in this equation!",
         "Difficulty": "HARD",
         "Category": "MENTAL",
-        "ExperiencePoints": 40
+        "ExperiencePoints": 20
     },
     {
         "QuestionId": "a470df48-cc98-4267-8c8a-9cb26eeceef9",
@@ -165,7 +165,7 @@
         "Help": "A farmer fencing in a river? Sounds like he's really up the creek without a paddle. But let's focus on the task at hand. Remember, the biggest area comes from the perfect rectangle. So, let's use all that fencing to create the perfect rectangular pen for our herd of cows!",
         "Difficulty": "HARD",
         "Category": "MENTAL",
-        "ExperiencePoints": 50
+        "ExperiencePoints": 19
     },
     {
         "QuestionId": "4c8d1e57-17a6-4227-a080-8c9acdcf06d9",
@@ -179,7 +179,7 @@
         "Help": "When it comes to exponents, it's all about the power! But don't get too carried away with all that power, or you might just blow up the math lab. Just kidding, but let's take a deep breath and solve this one step by step.",
         "Difficulty": "HARD",
         "Category": "MENTAL",
-        "ExperiencePoints": 40
+        "ExperiencePoints": 17
     },
     {
         "QuestionId": "0d8f59c7-28b6-42af-bf03-55dc0d6e172e",
@@ -193,7 +193,7 @@
         "Help": "A profit question, huh? Sounds like this company is rolling in the dough! But let's not get too ahead of ourselves, we need to calculate the profit first. Remember, profit is the difference between the selling price and the cost, so let's get that calculator out and crunch those numbers!",
         "Difficulty": "HARD",
         "Category": "MENTAL",
-        "ExperiencePoints": 50
+        "ExperiencePoints": 20
     },
     {
         "QuestionId": "c9cb9f63-63a5-4e5c-b45d-c8a12bc45c92",
@@ -207,6 +207,6 @@
         "Help": "It's time to simplify! We need to get rid of those parentheses and combine like terms. Don't worry, we won't be taking away any of the fun in this equation, but we will be reducing it to its simplest form. Ready to simplify? Let's go!",
         "Difficulty": "HARD",
         "Category": "MENTAL",
-        "ExperiencePoints": 40
+        "ExperiencePoints": 28
     }
 ]
