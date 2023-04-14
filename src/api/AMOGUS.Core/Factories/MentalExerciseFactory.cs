@@ -1,11 +1,6 @@
 ﻿using AMOGUS.Core.Common.Interfaces.Game;
-using AngouriMath.Core.Exceptions;
 using AngouriMath;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using AngouriMath.Core.Exceptions;
 
 namespace AMOGUS.Core.Factories {
     public class MentalExerciseFactory : IExerciseFactory {
@@ -21,7 +16,8 @@ namespace AMOGUS.Core.Factories {
                     expr = set;
                 }
                 return expr.Simplify().ToString();
-            } catch (CannotEvalException) {
+            }
+            catch (CannotEvalException) {
                 return string.Empty;
             }
         }
@@ -32,15 +28,17 @@ namespace AMOGUS.Core.Factories {
 
             var signRng = rng.NextDouble();
             var sign = signRng > .5 ? (signRng > .75 ? '+' : '-') : (signRng < .25 ? '/' : '*');
-            if(sign == '+' || sign == '-') {
+            if (sign == '+' || sign == '-') {
                 quest += rng.NextDouble() * 250;
                 quest += sign;
                 quest += rng.NextDouble() * 250;
-            }else if(sign == '*') {
+            }
+            else if (sign == '*') {
                 quest += rng.NextDouble() * 20;
                 quest += sign;
                 quest += rng.NextDouble() * 10;
-            }else {
+            }
+            else {
                 quest += rng.NextDouble() * 50;
                 quest += sign;
                 quest += rng.NextDouble() * 10;

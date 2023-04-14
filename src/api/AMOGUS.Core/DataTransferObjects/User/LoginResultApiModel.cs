@@ -1,9 +1,5 @@
-﻿using AMOGUS.Core.Common.Communication;
-
-namespace AMOGUS.Core.DataTransferObjects.User {
+﻿namespace AMOGUS.Core.DataTransferObjects.User {
     public class LoginResultApiModel {
-        public Result Result { get; private set; }
-
         public string? Token { get; private set; } = null;
 
         public DateTime? Expiration { get; private set; } = null;
@@ -12,16 +8,8 @@ namespace AMOGUS.Core.DataTransferObjects.User {
 
         public string? Email { get; private set; } = null;
 
-        public LoginResultApiModel() {
-            this.Result = Result.Failure("Login failed");
-        }
 
-        public LoginResultApiModel(Result res) {
-            this.Result = res;
-        }
-
-        public LoginResultApiModel(Result res, string token, DateTime expiration, string Username, string Email) {
-            this.Result = res;
+        public LoginResultApiModel(string token, DateTime expiration, string Username, string Email) {
             this.Token = token;
             this.Expiration = expiration;
             this.Username = Username;

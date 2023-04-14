@@ -1,4 +1,6 @@
-﻿namespace AMOGUS.Core.DataTransferObjects.User {
+﻿using AMOGUS.Infrastructure.Identity;
+
+namespace AMOGUS.Core.DataTransferObjects.User {
     public class UserApiModel {
 
         public string UserId { get; set; }
@@ -14,6 +16,16 @@
             UserName = userName;
             Email = email;
             PlayedToday = playedToday;
+        }
+
+
+        public static UserApiModel MapFromUserModel(ApplicationUser user) {
+            return new(
+                user.Id,
+                user.UserName,
+                user.Email,
+                user.PlayedToday
+            );
         }
     }
 }
