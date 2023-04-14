@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace AMOGUS.Infrastructure.Persistence.Repositories {
     internal class UserStatsRepository : IUserStatsRepository {
-        
+
         private readonly IApplicationDbContext _context;
 
         public UserStatsRepository(IApplicationDbContext context) {
@@ -15,7 +15,7 @@ namespace AMOGUS.Infrastructure.Persistence.Repositories {
 
         public async Task<int> DeleteUserStatsAsync(string userId) {
             var stats = await GetUserStatsAsync(userId);
-            if(stats ==  null) {
+            if (stats == null) {
                 return 0;
             }
             _context.UserStats.Remove(stats);
