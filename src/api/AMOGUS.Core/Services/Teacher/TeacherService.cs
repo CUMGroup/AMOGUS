@@ -21,11 +21,11 @@ namespace AMOGUS.Core.Services.Teacher {
             try {
                 _questionFileAccessor.GetAllQuestions().Add(question);
                 await _questionFileAccessor.SaveQuestionFilesAsync();
-            } 
+            }
             catch (IOException ex) {
                 return ex;
             }
-            catch(Exception ex) {
+            catch (Exception ex) {
                 return ex;
             }
             return question;

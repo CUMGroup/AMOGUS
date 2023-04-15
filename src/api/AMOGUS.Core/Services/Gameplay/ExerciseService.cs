@@ -18,7 +18,7 @@ namespace AMOGUS.Core.Services.Gameplay {
             if (qOrig is null)
                 return false;
             try {
-                if(!answer.Category.Equals(CategoryType.MENTAL)) {
+                if (!answer.Category.Equals(CategoryType.MENTAL)) {
                     return qOrig.Answer.Equals(answer.Answer);
                 }
                 Entity exprTrue = qOrig.Answer;
