@@ -1,6 +1,8 @@
 ﻿using AMOGUS.Core.Common.Interfaces.Configuration;
 using AMOGUS.Core.Common.Interfaces.Game;
+using AMOGUS.Core.Common.Interfaces.Teacher;
 using AMOGUS.Core.Services.Gameplay;
+using AMOGUS.Core.Services.Teacher;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace AMOGUS.Core {
@@ -12,6 +14,7 @@ namespace AMOGUS.Core {
             services.AddTransient<IGameService, GameService>();
             services.AddTransient<IQuestionFileAccessor, QuestionFileAccessor>();
             services.AddTransient<IStatsService, StatsService>();
+            services.AddTransient<ITeacherService, TeacherService>();
 
             services.AddConfigurations();
 

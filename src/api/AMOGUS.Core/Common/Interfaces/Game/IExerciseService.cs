@@ -8,6 +8,6 @@ namespace AMOGUS.Core.Common.Interfaces.Game {
 
         bool CheckAnswer(Question answer);
 
-        List<Question> GenerateRandomExercises(CategoryType category, int amount);
+        List<Question> GenerateRandomMentalExercises(int amount);
     }
 }

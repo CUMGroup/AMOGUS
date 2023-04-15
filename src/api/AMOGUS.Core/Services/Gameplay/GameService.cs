@@ -26,7 +26,7 @@ namespace AMOGUS.Core.Services.Gameplay {
         public async Task<Result> EndSessionAsync(GameSession session, string userId) {
             var user = await _userManager.FindByIdAsync(userId);
             if (user == null) {
-                return new UserNotFoundException($"Could not find user with id {userId}");
+                return new RecordNotFoundException($"Could not find user with id {userId}");
             }
             session.User = user;
 
