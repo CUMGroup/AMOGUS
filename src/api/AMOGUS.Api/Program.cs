@@ -34,7 +34,7 @@ builder.Services.AddSwaggerGen(c => {
     });
 });
 
-builder.Services.AddDataServices(builder.Configuration);
+builder.Services.AddDataServices(builder.Configuration, builder.Environment.IsDevelopment());
 builder.Services.AddCoreServices();
 
 builder.Configuration.AddJsonFile("appsettings.json").AddEnvironmentVariables();

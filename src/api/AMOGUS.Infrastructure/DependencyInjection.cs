@@ -16,9 +16,9 @@ using System.Text;
 namespace AMOGUS.Infrastructure {
     public static class DependencyInjection {
 
-        public static IServiceCollection AddDataServices(this IServiceCollection services, IConfiguration configuration) {
+        public static IServiceCollection AddDataServices(this IServiceCollection services, IConfiguration configuration, bool isDevelopment) {
 
-            services.AddDatabaseContext(configuration);
+            services.AddDatabaseContext(configuration, isDevelopment);
             services.AddScoped<IApplicationDbContext>(provider => provider.GetRequiredService<ApplicationDbContext>());
 
             services.AddIdentitiyServices();
@@ -34,10 +34,18 @@ namespace AMOGUS.Infrastructure {
             return services;
         }
 
-        private static IServiceCollection AddDatabaseContext(this IServiceCollection services, IConfiguration configuration) {
-            services.AddDbContext<ApplicationDbContext>(options =>
-                            options.UseSqlite(configuration.GetConnectionString("DefaultConnection"))
-                        );
+        private static IServiceCollection AddDatabaseContext(this IServiceCollection services, IConfiguration configuration, bool isDevelopment) {
+            if (isDevelopment) {
+                services.AddDbContext<ApplicationDbContext>(options =>
+                                options.UseSqlite(configuration.GetConnectionString("DefaultConnection"))
+                            );
+            }
+            else {
+                services.AddDbContext<ApplicationDbContext>(options =>
+                                options.UseMySql(configuration.GetConnectionString("DefaultConnection")!,
+                                    new MariaDbServerVersion(new Version(configuration["DatabaseConfig:Version"]!)))
+                            );
+            }
             return services;
         }
 
