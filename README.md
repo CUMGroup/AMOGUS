@@ -13,27 +13,7 @@ Once you have everything installed, you can clone the repository from GitHub by 
 ```console
 git clone https://github.com/CUMGroup/AMOGUS.git 
 ```
-After cloning the repository, you have to add a file named `appsettings.json` in `AMOGUS/src/api/AMOGUS.Api/` which should look something like this:
-```json
-{
-  "Logging": {
-    "LogLevel": {
-      "Default": "Information",
-      "Microsoft.AspNetCore": "Warning"
-    }
-  },
-  "ConnectionStrings": {
-    "DefaultConnection": "YOUR DATABASE CONNECTION STRING"
-  },
-  "Jwt": {
-    "Issuer": "YOUR JWT ISSUER",
-    "Audience": "YOUR JWT AUDIENCE",
-    "Key": "YOUR JWT KEY"
-  },
-  "ExercisePath": "./Content/"
-}
-```
-Additionally you have to install all node dependencies by running the following command in the `AMOGUS/src/ui/` directory:
+After cloning you have to install all node dependencies by running the following command in the `AMOGUS/src/ui/` directory:
 ```console
 npm install
 ```
