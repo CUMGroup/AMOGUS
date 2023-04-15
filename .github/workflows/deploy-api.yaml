@@ -32,7 +32,7 @@ jobs:
     runs-on: ubuntu-18.04
     needs: [build]
     env:
-      REPO: ${{ secrets.DOCKER_REPO }}
+      REPO: ${{ secrets.DOCKER_REPO_API }}
     steps:
       - uses: actions/checkout@v2
       - name: Login to REPO
@@ -50,4 +50,4 @@ jobs:
       - name: Deploy docker container webhook
         uses: joelwmale/webhook-action@master
         env:
-          WEBHOOK_URL: ${{ secrets.DEPLOY_WEBHOOK_URL }}
+          WEBHOOK_URL: ${{ secrets.DEPLOY_WEBHOOK_URL_API }}
