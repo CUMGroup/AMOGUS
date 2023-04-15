@@ -1,4 +1,4 @@
-name: Test, Build & Redeploy
+name: Test, Build & Redeploy Api
 
 on:
   push:
@@ -17,6 +17,11 @@ jobs:
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: '6.0.x'
+        
+    - name: Dependencies
+      run: |
+        cd src/api/AMOGUS.Api
+        dotnet restore
         
     - name: Build
       run: |
