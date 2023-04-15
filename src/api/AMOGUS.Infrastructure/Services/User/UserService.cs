@@ -1,6 +1,7 @@
 ﻿using AMOGUS.Core.Common.Communication;
 using AMOGUS.Core.Common.Exceptions;
 using AMOGUS.Core.Common.Interfaces.Database;
+using AMOGUS.Core.Common.Interfaces.Repositories;
 using AMOGUS.Core.Common.Interfaces.User;
 using AMOGUS.Infrastructure.Identity;
 using Microsoft.AspNetCore.Identity;
@@ -8,11 +9,16 @@ using Microsoft.AspNetCore.Identity;
 namespace AMOGUS.Infrastructure.Services.User {
     internal class UserService : IUserService {
         private readonly IUserManager _userManager;
-        private readonly IApplicationDbContext _dbContext;
 
-        public UserService(IUserManager userManager, IApplicationDbContext dbContext) {
+        private readonly IUserMedalRepository _userMedalRepository;
+        private readonly IGameSessionRepository _gameSessionRepository;
+        private readonly IUserStatsRepository _userStatsRepository;
+
+        public UserService(IUserManager userManager, IUserMedalRepository userMedalRepository, IGameSessionRepository gameSessionRepository, IUserStatsRepository userStatsRepository) {
             _userManager = userManager!;
-            _dbContext = dbContext!;
+            _userMedalRepository = userMedalRepository!;
+            _gameSessionRepository = gameSessionRepository!;
+            _userStatsRepository = userStatsRepository!;
         }
 
         public async Task<Result> DeleteUserAsync(string userId) {
@@ -32,19 +38,14 @@ namespace AMOGUS.Infrastructure.Services.User {
         }
 
         private async Task<bool> DeleteUserHistoryAsync(string userId) {
-            var medalsToDelete = _dbContext.UserMedals.Where(m => m.UserId.Equals(userId)).ToList();
-            _dbContext.UserMedals.RemoveRange(medalsToDelete);
-
-            var statsToDelete = _dbContext.UserStats.Where(us => us.UserId.Equals(userId)).ToList();
-            _dbContext.UserStats.RemoveRange(statsToDelete);
-
-            var sessionsToDelete = _dbContext.GameSessions.Where(gs => gs.UserId.Equals(userId)).ToList();
-            _dbContext.GameSessions.RemoveRange(sessionsToDelete);
-
             try {
-                await _dbContext.SaveChangesAsync();
+                await _userMedalRepository.DeleteUserMedalsByUserIdAsync(userId);
+
+                await _userStatsRepository.DeleteUserStatsAsync(userId);
+
+                await _gameSessionRepository.DeleteGameSessionsByUserIdAsync(userId);
             }
-            catch (Exception ex) {
+            catch (Exception) {
                 return false;
             }
             return true;

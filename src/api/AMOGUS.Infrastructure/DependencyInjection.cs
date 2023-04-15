@@ -1,8 +1,10 @@
 ﻿using AMOGUS.Core.Common.Interfaces.Database;
+using AMOGUS.Core.Common.Interfaces.Repositories;
 using AMOGUS.Core.Common.Interfaces.Security;
 using AMOGUS.Core.Common.Interfaces.User;
 using AMOGUS.Infrastructure.Identity;
 using AMOGUS.Infrastructure.Persistence;
+using AMOGUS.Infrastructure.Persistence.Repositories;
 using AMOGUS.Infrastructure.Persistence.User;
 using AMOGUS.Infrastructure.Services.User;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -20,6 +22,8 @@ namespace AMOGUS.Infrastructure {
 
             services.AddDatabaseContext(configuration, isDevelopment);
             services.AddScoped<IApplicationDbContext>(provider => provider.GetRequiredService<ApplicationDbContext>());
+
+            services.AddDataRepositories();
 
             services.AddIdentitiyServices();
             services.AddAuthenticationServices(configuration);
@@ -46,6 +50,15 @@ namespace AMOGUS.Infrastructure {
                                     new MariaDbServerVersion(new Version(configuration["DatabaseConfig:Version"]!)))
                             );
             }
+            return services;
+        }
+
+        private static IServiceCollection AddDataRepositories(this IServiceCollection services) {
+
+            services.AddTransient<IGameSessionRepository, GameSessionRepository>();
+            services.AddTransient<IUserMedalRepository, UserMedalRepository>();
+            services.AddTransient<IUserStatsRepository, UserStatsRepository>();
+
             return services;
         }
 
