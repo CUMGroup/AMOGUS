@@ -6,7 +6,6 @@ root = true
 
 #### Wichtige EditorConfig-Optionen ####
 
-
 # Einzüge und Abstände
 indent_size = 4
 indent_style = space
