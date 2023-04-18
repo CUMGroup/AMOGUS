@@ -3,7 +3,6 @@ using AMOGUS.Core.Domain.Enums;
 using AMOGUS.Core.Domain.Models.Entities;
 using AMOGUS.Core.Factories;
 using AngouriMath;
-using AngouriMath.Core.Exceptions;
 
 namespace AMOGUS.Core.Services.Gameplay {
     internal class ExerciseService : IExerciseService {
@@ -18,13 +17,16 @@ namespace AMOGUS.Core.Services.Gameplay {
             var qOrig = _questionFileAccessor.Find(e => e.QuestionId.Equals(answer.QuestionId));
             if (qOrig is null)
                 return false;
-            Entity exprTrue = qOrig.Answer;
-            Entity exprUser = answer.Answer;
             try {
+                if (!answer.Category.Equals(CategoryType.MENTAL)) {
+                    return qOrig.Answer.Equals(answer.Answer);
+                }
+                Entity exprTrue = qOrig.Answer;
+                Entity exprUser = answer.Answer;
                 return new Entity.Equalsf(exprTrue, exprUser).Simplify().EvalBoolean();
             }
-            catch (CannotEvalException) {
-                return false;
+            catch (Exception) {
+                return qOrig.Answer.Equals(answer.Answer);
             }
         }
 
@@ -33,8 +35,8 @@ namespace AMOGUS.Core.Services.Gameplay {
         }
 
 
-        public List<Question> GenerateRandomExercises(CategoryType category, int amount) {
-            var factory = GetExerciseFactory(category);
+        public List<Question> GenerateRandomMentalExercises(int amount) {
+            var factory = new MentalExerciseFactory();
             var questions = new List<Question>();
             for (int i = 0; i < amount; ++i) {
                 var questString = factory.GenerateRandomExerciseString();
@@ -44,7 +46,7 @@ namespace AMOGUS.Core.Services.Gameplay {
                     continue;
                 }
                 questions.Add(new Question {
-                    Category = category,
+                    Category = CategoryType.MENTAL,
                     QuestionId = Guid.NewGuid().ToString(),
                     Exercise = questString,
                     Answer = answString,
@@ -54,13 +56,6 @@ namespace AMOGUS.Core.Services.Gameplay {
                 });
             }
             return questions;
-        }
-
-        private IExerciseFactory GetExerciseFactory(CategoryType category) {
-            return category switch {
-                CategoryType.MENTAL => new MentalExerciseFactory(),
-                _ => throw new ArgumentException(),
-            };
         }
     }
 }

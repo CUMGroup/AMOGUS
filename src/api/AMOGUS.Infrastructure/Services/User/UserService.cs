@@ -54,7 +54,7 @@ namespace AMOGUS.Infrastructure.Services.User {
         public async Task<Result<ApplicationUser>> GetUserAsync(string userId) {
             ApplicationUser user = await _userManager.FindByIdAsync(userId);
             if (user == null) {
-                return new UserNotFoundException($"The user with the userID {userId} couldn't be found qwq.");
+                return new RecordNotFoundException($"The user with the userID {userId} couldn't be found qwq.");
             }
             return user;
         }
