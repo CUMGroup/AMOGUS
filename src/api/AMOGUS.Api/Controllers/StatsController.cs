@@ -24,7 +24,7 @@ namespace AMOGUS.Api.Controllers {
             if (userId == null) {
                 return Forbid();
             }
-            var res = await _statsService.GetDetailedUserStatsModel(userId);
+            var res = await _statsService.GetDetailedUserStatsModelAsync(userId);
             return res.Match<IActionResult>(
                 Ok,
                 err => {
