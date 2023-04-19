@@ -25,8 +25,8 @@ export class LevelProgressComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     //this.currentLevel = this.xpToLevel(this.stats.Level);
     this.statsSubscription = this.stats$.subscribe(e => {
-      this.currentLevel = this.xpToLevelConverter(e.Level);
-      this.currentXp = e.Level;
+      this.currentLevel = this.xpToLevelConverter(e.level);
+      this.currentXp = e.level;
       this.xpToNext = this.levelToXpConverter(this.currentLevel + 1);
       this.xpPerc = Math.floor((this.currentXp / this.xpToNext) * 100);
       this.stats = e;
@@ -43,7 +43,7 @@ export class LevelProgressComponent implements OnInit, OnDestroy {
   }
 
   levelToXpConverter(level: number): number {
-    return Math.floor(Math.pow(level, 2) / 5);
+    return Math.ceil(Math.pow(level, 2) / 5);
   }
 
 }

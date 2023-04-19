@@ -2,15 +2,6 @@
 
     {{currentXp}} / {{xpToNext}} Xp</p>
 <div class="levelbar-container">
-    <div class="levelbar" style="width: 75%"><span>{{xpPerc}}%</span></div>
+    <div class="levelbar" [style.width]="xpPerc + '%'"><span>{{xpPerc}}%</span></div>
 </div>
 <br />
-<details>
-    <summary>Next Prize</summary>
-    <p>{{stats?.NextPrize?.level}} {{stats?.NextPrize?.prize}}</p>
-</details>
-<br />
-<details>
-    <summary>Unlocked</summary>
-    <p *ngFor="let p of stats?.Unlocked?.reverse()">{{p}}</p>
-</details>

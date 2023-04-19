@@ -23,8 +23,9 @@ export class StatsTableComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.statsSubscription = this.stats$.subscribe(e => {
       this.stats = e;
-      this.currentLevel = this.xpToLevelConverter(e.Level);
-      this.ciRatio = e.CorrectAnswers / Math.max(e.OverallAnswered - e.CorrectAnswers, 1);
+      this.currentLevel = this.xpToLevelConverter(e.level);
+      this.ciRatio = e.correctAnswers / Math.max(e.overallAnswered - e.correctAnswers, 1);
+      console.log(this.stats);
     })
   }
 
