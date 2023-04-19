@@ -19,9 +19,15 @@ import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatIconModule } from "@angular/material/icon";
 import { MatInputModule } from "@angular/material/input";
 import { MatSlideToggleModule } from "@angular/material/slide-toggle";
-import { MatDialogModule } from "@angular/material/dialog";
+import {MatDialogModule, MatDialogRef} from "@angular/material/dialog";
 import {MatRadioModule} from "@angular/material/radio";
 import { GameSelectionComponent } from './pages/game-selection/game-selection.component';
+import { TeacherViewComponent } from './pages/teacher-view/teacher-view.component';
+import {MatSelectModule} from "@angular/material/select";
+import { QuestionViewComponent } from './pages/question-view/question-view.component';
+import {QuestionComponent, QuestionPreviewComponent} from './pages/question/question.component';
+import {MatSnackBarModule} from "@angular/material/snack-bar";
+import { ExerciseComponent } from './pages/exercise/exercise.component';
 
 @NgModule({
   declarations: [
@@ -33,27 +39,34 @@ import { GameSelectionComponent } from './pages/game-selection/game-selection.co
     GameViewComponent,
     LoginRegisterComponent,
     AnswerDialog,
-    GameSelectionComponent
+    GameSelectionComponent,
+    TeacherViewComponent,
+    QuestionViewComponent,
+    QuestionComponent,
+    ExerciseComponent,
+    QuestionPreviewComponent,
   ],
-  imports: [
-    CommonModule,
-    UserRoutingModule,
-    MatExpansionModule,
-    MatCheckboxModule,
-    MatButtonModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatIconModule,
-    MatSlideToggleModule,
-    NgxEchartsModule.forRoot({
-      echarts: () => import('echarts')
-    }),
-    FormsModule,
-    MatCardModule,
-    ReactiveFormsModule,
-    FormsModule,
-    MatDialogModule,
-    MatRadioModule
-  ]
+    imports: [
+        CommonModule,
+        UserRoutingModule,
+        MatExpansionModule,
+        MatCheckboxModule,
+        MatButtonModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatIconModule,
+        MatSlideToggleModule,
+        NgxEchartsModule.forRoot({
+            echarts: () => import('echarts')
+        }),
+        FormsModule,
+        MatCardModule,
+        ReactiveFormsModule,
+        FormsModule,
+        MatDialogModule,
+        MatRadioModule,
+        MatSelectModule,
+        MatSnackBarModule,
+    ]
 })
 export class UserModule { }

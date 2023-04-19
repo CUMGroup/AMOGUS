@@ -6,8 +6,8 @@ import { TextParallaxComponent } from 'src/app/shared/components/text-parallax/t
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { AmongusParallaxComponent } from './components/amongus-parallax/amongus-parallax.component';
 import { LandingComponent } from './pages/landing/landing.component';
-import { NavBarComponent } from 'src/app/shared/components/nav-bar/nav-bar.component';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { HowToPageComponent } from './pages/how-to-page/how-to-page.component';
 
 
 @NgModule({
@@ -16,7 +16,8 @@ import { SharedModule } from 'src/app/shared/shared.module';
         TextParallaxComponent,
         LandingPageComponent,
         AmongusParallaxComponent,
-        LandingComponent
+        LandingComponent,
+        HowToPageComponent
     ],
     exports: [
         LandingTextParallaxComponent

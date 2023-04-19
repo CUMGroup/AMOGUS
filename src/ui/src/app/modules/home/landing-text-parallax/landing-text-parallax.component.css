@@ -12,17 +12,12 @@ h2+p {
     margin-top: 1rem;
 }
 
-p {
-    max-width: 65ch;
-    line-height: 1.5;
-}
-
-.blue {
-    background-color: rgb(196, 196, 248);
+.grey {
+  background-color: var(--background1);
 }
 
 .section {
-    height: 100vh;
+    height: 30rem;
     width: 100%;
     padding: 2rem;
     display: flex;
@@ -41,7 +36,7 @@ p {
 
 .text {
     overflow: hidden;
-    width: 400px;
     white-space: nowrap;
-    height: 20px
+    font-size: 20px;
+    opacity: 0;
 }

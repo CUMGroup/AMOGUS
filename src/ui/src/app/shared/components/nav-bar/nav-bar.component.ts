@@ -24,21 +24,25 @@ export class NavBarComponent implements OnInit {
 
     this.menuArray = [
       {
-        text:"login/register",
+        text:"Login/Register",
         path:"/user/login",
       },
       {
-        text:"stats",
+        text:"Stats",
         path:"/user/stats",
       },
       {
-        text:"game",
+        text:"Game",
         path:"/user/game-selection",
       },
-      // {
-      //   text:"text",
-      //   path:"/home/text",
-      // },
+      {
+        text:"Create Questions",
+        path:"/user/teacher-view",
+      },
+      {
+        text:"How To Play",
+        path:"/home/how-to",
+      },
     ]
   }
 
