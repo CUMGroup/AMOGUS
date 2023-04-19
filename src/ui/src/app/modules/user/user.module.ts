@@ -28,6 +28,8 @@ import { QuestionViewComponent } from './pages/question-view/question-view.compo
 import {QuestionComponent, QuestionPreviewComponent} from './pages/question/question.component';
 import {MatSnackBarModule} from "@angular/material/snack-bar";
 import { ExerciseComponent } from './pages/exercise/exercise.component';
+import { PieGraphComponent } from './components/stats-graphs/pie-graph/pie-graph.component';
+import { LineGraphComponent } from './components/stats-graphs/line-graph/line-graph.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +47,8 @@ import { ExerciseComponent } from './pages/exercise/exercise.component';
     QuestionComponent,
     ExerciseComponent,
     QuestionPreviewComponent,
+    PieGraphComponent,
+    LineGraphComponent,
   ],
     imports: [
         CommonModule,

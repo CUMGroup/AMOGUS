@@ -1,0 +1,18 @@
+.graphs-container {
+    display: flex;
+    justify-content: center;
+}
+
+.pi-chart {
+    width: 700px;
+}
+
+@media screen and (max-width: 850px) {
+    .graphs-container {
+        display: block;
+    }
+
+    .pi-chart {
+        width: 100%;
+    }
+}

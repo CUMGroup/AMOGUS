@@ -9,12 +9,17 @@ p {
 .stats-container {
     display: flex;
     justify-content: center;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: last baseline;  
 }
 
 :host {
     display: block;
+}
+
+.graphs-container {
+    display: flex;
+    align-items: center;  
 }
 
 .text-box {

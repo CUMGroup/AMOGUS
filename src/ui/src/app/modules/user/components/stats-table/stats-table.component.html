@@ -27,7 +27,10 @@
             </div>
         </div>
     </div>
-    <div class="answer-amount">
+</div>
+<div class="graphs-container">
+    <app-line-graph [stats$]="stats$"></app-line-graph>
+    <div>
         <div>
             <div class="text-box">
                 <i class="fa-solid fa-stopwatch fa-lg"></i> <span class="blue-highlight"> {{stats?.QuickestAnswer?.totalMilliseconds}}ms</span>

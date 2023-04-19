@@ -16,3 +16,11 @@ app-stats-table {
 .app-stats-title {
     text-align: center;
 }
+
+.data-container {
+    margin: 1em auto;
+    width: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
