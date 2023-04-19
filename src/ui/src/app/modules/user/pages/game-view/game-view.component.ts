@@ -1,5 +1,5 @@
 import {Component, Inject, OnDestroy, OnInit} from '@angular/core';
-import {FormBuilder} from "@angular/forms";
+import {FormBuilder, FormControl} from "@angular/forms";
 import {gsap} from "gsap";
 import {question} from "../../../../core/interfaces/question";
 import {GameService} from "../../../../core/services/game.service";
@@ -17,11 +17,12 @@ import {Subject, Subscription, takeUntil, timer} from 'rxjs'
 export class GameViewComponent implements OnInit,OnDestroy {
 
   currentQuestion: question;
-  test: number;
   correctAnswers: Array<boolean> = [];
   gameProgress: Subscription;
-  selectedAnswer: string;
   answers: string[] = [];
+  questionType: string = "Analysis"
+
+  selectedAnswer = this.formBuilder.control("")
 
   protected componentDestroyed$: Subject<void> = new Subject<void>();
 
@@ -40,16 +41,14 @@ export class GameViewComponent implements OnInit,OnDestroy {
   ngOnDestroy(){
     this.componentDestroyed$.next();
     this.componentDestroyed$.complete();
-    //TODO: kill all subscriptions to prevent funky behavior with Dialog (Subject)
   }
 
   newQuestion() {
     this.currentQuestion = this.gameService.getQuestion();
     if (this.currentQuestion.finished) {
-      this.gameProgress.unsubscribe()
       const dialogRef = this.dialog.open(AnswerDialog, {
-        data: {answers: this.correctAnswers},
-      });
+        data: {answers: this.correctAnswers}, panelClass: 'mat-dialog-class'}
+      );
 
       dialogRef.afterClosed().pipe(takeUntil(this.componentDestroyed$)).subscribe(() => {
         this.router.navigate([""])
@@ -59,19 +58,7 @@ export class GameViewComponent implements OnInit,OnDestroy {
       this.animate();
       this.gameProgress = timer(this.currentQuestion.time * 1000).pipe(takeUntil(this.componentDestroyed$)).subscribe(() => this.submit())
     }
-    switch (this.currentQuestion.type) {
-      case "text":
-        break;
-      case "multipleChoice":
-        this.answers = this.currentQuestion.multipleChoiceAnswers;
-        break;
-      default:
-        console.log("error occurred");
-    }
-  }
-
-  log() {
-    console.log(this.correctAnswers)
+    this.answers = this.currentQuestion.multipleChoiceAnswers;
   }
 
   animate() {
@@ -81,8 +68,7 @@ export class GameViewComponent implements OnInit,OnDestroy {
   }
 
   submit() {
-    this.gameProgress.unsubscribe()
-    if (this.currentQuestion.answer === this.selectedAnswer) {
+    if (this.currentQuestion.answer === this.selectedAnswer.value) {
       this.correctAnswers.push(true);
     } else {
       this.correctAnswers.push(false);
@@ -96,6 +82,7 @@ export class GameViewComponent implements OnInit,OnDestroy {
 @Component({
   selector: 'answer-dialog',
   templateUrl: 'answer-dialog.html',
+  styleUrls: ['./game-view.component.css']
 })
 
 export class AnswerDialog {
