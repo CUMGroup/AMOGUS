@@ -1,9 +1,7 @@
-﻿using AMOGUS.Infrastructure.Identity;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.ComponentModel.DataAnnotations;
+﻿using AMOGUS.Core.Domain.Enums;
 using AMOGUS.Core.Domain.Models.Entities;
-using AMOGUS.Core.Domain.Enums;
-using AMOGUS.Core.Common.Interfaces.Abstractions;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace AMOGUS.Core.DataTransferObjects.User {
     public class UserStatsApiModel {

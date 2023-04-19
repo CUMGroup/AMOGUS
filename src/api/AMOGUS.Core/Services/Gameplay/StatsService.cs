@@ -7,7 +7,6 @@ using AMOGUS.Core.DataTransferObjects.User;
 using AMOGUS.Core.Domain.Enums;
 using AMOGUS.Core.Domain.Models.Entities;
 using AMOGUS.Infrastructure.Identity;
-using System.ComponentModel.DataAnnotations;
 
 namespace AMOGUS.Core.Services.Gameplay {
     internal class StatsService : IStatsService {
@@ -30,7 +29,7 @@ namespace AMOGUS.Core.Services.Gameplay {
             return res;
         }
 
-        public async Task<Result<UserStatsApiModel>> GetDetailedUserStatsModel(string userId) {
+        public async Task<Result<UserStatsApiModel>> GetDetailedUserStatsModelAsync(string userId) {
             var res = await _userStatsRepository.GetUserStatsAsync(userId);
             if (res == null)
                 return new RecordNotFoundException($"Could not find stats for user with id {userId}");
@@ -47,7 +46,7 @@ namespace AMOGUS.Core.Services.Gameplay {
             var categories = Enum.GetValues<CategoryType>();
 
             var answersPerCategory = new Dictionary<CategoryType, int>();
-            foreach(var categorie in categories) {
+            foreach (var categorie in categories) {
                 answersPerCategory.Add(
                     categorie,
                     gamesPlayed.Where(e => e.Category.Equals(categorie))
@@ -83,7 +82,7 @@ namespace AMOGUS.Core.Services.Gameplay {
         public async Task<bool> UpdateUserStatsAsync(GameSession session, bool[] answers, ApplicationUser user) {
             var userStats = await (await GetUserStatsAsync(user.Id))
                 .ValueOrDefaultAsync(
-                    () => CreateInitialUserStatsModel(session, user)
+                    () => CreateInitialUserStatsModelAsync(session, user)
                 );
 
             userStats.OverallAnswered += session.GivenAnswersCount;
@@ -103,7 +102,7 @@ namespace AMOGUS.Core.Services.Gameplay {
             return await UpdateUserStatsAsync(userStats);
         }
 
-        private async Task<UserStats> CreateInitialUserStatsModel(GameSession session, ApplicationUser user) {
+        private async Task<UserStats> CreateInitialUserStatsModelAsync(GameSession session, ApplicationUser user) {
             var stats = new UserStats() {
                 UserId = user.Id,
                 User = user,
@@ -117,7 +116,7 @@ namespace AMOGUS.Core.Services.Gameplay {
         private DateTime[] GetLastDays(int amount) {
             var ret = new DateTime[amount];
             ret[0] = _dateTime.Now.Date;
-            for(int i = 1; i < amount; ++i) {
+            for (int i = 1; i < amount; ++i) {
                 ret[i] = ret[i - 1].AddDays(-1);
             }
 

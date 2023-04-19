@@ -1,6 +1,5 @@
 ﻿using AMOGUS.Core.Common.Exceptions;
 using AMOGUS.Core.Common.Interfaces.Game;
-using AMOGUS.Core.DataTransferObjects.User;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;

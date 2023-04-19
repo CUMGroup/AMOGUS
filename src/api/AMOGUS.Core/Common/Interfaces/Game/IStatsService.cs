@@ -12,6 +12,6 @@ namespace AMOGUS.Core.Common.Interfaces.Game {
 
         Task<bool> UpdateUserStatsAsync(GameSession session, bool[] answers, ApplicationUser user);
 
-        Task<Result<UserStatsApiModel>> GetDetailedUserStatsModel(string userId);
+        Task<Result<UserStatsApiModel>> GetDetailedUserStatsModelAsync(string userId);
     }
 }
