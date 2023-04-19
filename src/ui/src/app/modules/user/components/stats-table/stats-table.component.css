@@ -10,7 +10,7 @@ p {
     display: flex;
     justify-content: center;
     justify-content: space-around;
-    align-items: last baseline;  
+    align-items: center;  
 }
 
 :host {

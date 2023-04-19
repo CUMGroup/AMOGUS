@@ -4,14 +4,14 @@
         <p>Longest Streak: {{stats?.LongestStreak}}d</p>
     </div>
     
-    <div>
+    <div class="questions">
         <p class="blue-highlight">Total questions answered: {{stats?.OverallAnswered}}</p><br>
         <div class="answer-amount">
             <div>
                 <div class="text-box">
                     <span class="correct-highlight"><i class="fa-solid fa-check fa-lg"></i> </span> {{stats?.CorrectAnswers}}
                 </div>
-                <p>Correct</p>
+                <p>Correct Answers</p>
             </div>
             <div>
                 <div class="text-box">
@@ -23,7 +23,7 @@
                 <div class="text-box">
                     {{ciRatio | number : '1.0-2'}}
                 </div>
-                <p>Correct/Incorrect Ratio</p>
+                <p>Cor./Incor. Ratio</p>
             </div>
         </div>
     </div>
