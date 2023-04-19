@@ -30,18 +30,18 @@
 </div>
 <div class="graphs-container">
     <app-line-graph [stats$]="stats$"></app-line-graph>
-    <div>
+    <div class="time-block">
         <div>
             <div class="text-box">
                 <i class="fa-solid fa-stopwatch fa-lg"></i> <span class="blue-highlight"> {{stats?.QuickestAnswer?.totalMilliseconds}}ms</span>
             </div>
-            <p>Quickest</p>
+            <p>Quickest Answer</p>
         </div>
         <div>
             <div class="text-box">
                 <i class="fa-solid fa-shrimp fa-lg"></i> <span class="blue-highlight"> {{stats?.SlowestAnswer?.totalSeconds}}s</span>
             </div>
-            <p>Slowest</p>
+            <p>Slowest Answer</p>
         </div>
     </div>
 </div>

@@ -42,3 +42,21 @@ p {
     display: flex;
     justify-content: space-around;
 }
+
+@media screen and (max-width: 950px) {
+    .graphs-container {
+        display: block;
+    }
+
+    .time-block {
+        display: flex;
+    }
+
+    .answer-amount {
+        display: block;
+    }
+
+    .stats-container {
+        display: block;
+    }
+}
