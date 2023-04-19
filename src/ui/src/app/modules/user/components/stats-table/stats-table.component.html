@@ -1,17 +1,44 @@
 <div class="stats-container">
-    <h1>Statistics</h1>
-
-    <h3><b>Level {{currentLevel}}</b></h3>
-    <p>Current Streak: {{stats?.CurrentStreak}}</p>
-    <p>{{stats?.OverallAnswered}} Questions Answered</p>
-    <p><span class="correct-highlight">{{stats?.CorrectAnswers}}</span> Correct | <span
-            class="wrong-highlight">{{stats?.OverallAnswered - stats?.CorrectAnswers}}</span> Wrong</p>
-    <p>{{stats?.TotalTimePlayed?.totalHours}} hours played</p>
-    <details>
-        <summary>More stats</summary>
-        <p>Correct/Incorrect Ratio: {{ciRatio | number : '1.0-2'}}</p>
-        <p>Quickest Answer: {{stats?.QuickestAnswer?.totalMilliseconds}}ms</p>
-        <p>Slowest Answer: {{stats?.SlowestAnswer?.totalSeconds}}s</p>
+    <div class="streak-container">
+        <div class="text-box">Streak {{stats?.CurrentStreak}}d</div>
         <p>Longest Streak: {{stats?.LongestStreak}}d</p>
-    </details>
+    </div>
+    
+    <div>
+        <p class="blue-highlight">Total questions answered: {{stats?.OverallAnswered}}</p><br>
+        <div class="answer-amount">
+            <div>
+                <div class="text-box">
+                    <span class="correct-highlight"><i class="fa-solid fa-check fa-lg"></i> </span> {{stats?.CorrectAnswers}}
+                </div>
+                <p>Correct</p>
+            </div>
+            <div>
+                <div class="text-box">
+                    <span class="wrong-highlight"><i class="fa-solid fa-xmark fa-lg"></i> </span> {{stats?.OverallAnswered - stats?.CorrectAnswers}}
+                </div>
+                <p>Incorrect</p>
+            </div>
+            <div>
+                <div class="text-box">
+                    {{ciRatio | number : '1.0-2'}}
+                </div>
+                <p>Correct/Incorrect Ratio</p>
+            </div>
+        </div>
+    </div>
+    <div class="answer-amount">
+        <div>
+            <div class="text-box">
+                <i class="fa-solid fa-stopwatch fa-lg"></i> <span class="blue-highlight"> {{stats?.QuickestAnswer?.totalMilliseconds}}ms</span>
+            </div>
+            <p>Quickest</p>
+        </div>
+        <div>
+            <div class="text-box">
+                <i class="fa-solid fa-shrimp fa-lg"></i> <span class="blue-highlight"> {{stats?.SlowestAnswer?.totalSeconds}}s</span>
+            </div>
+            <p>Slowest</p>
+        </div>
+    </div>
 </div>

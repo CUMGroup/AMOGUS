@@ -10,6 +10,7 @@ app-stats-graphs {
 
 app-stats-table {
     margin: 1em auto 4em auto;
+    width: 90%;
 }
 
 .app-stats-title {

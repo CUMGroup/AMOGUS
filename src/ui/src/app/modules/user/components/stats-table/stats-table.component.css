@@ -1,7 +1,39 @@
+* {
+    box-sizing: border-box;
+  }
+
+p {
+    color: var(--background4);
+}
+
 .stats-container {
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    justify-content: space-between;
+    align-items: last baseline;  
 }
 
 :host {
     display: block;
+}
+
+.text-box {
+    border: 2px solid var(--background4);
+    border-radius: 10%;
+    background:  var(--background3);
+    width: auto;
+    padding: 1em;
+    margin: 0 3em 0 0;
+    font-weight: bold;
+    display: inline-block
+}
+
+.blue-highlight {
+    color: var(--leading-color0);
+    font-weight: bold;
+}
+
+.answer-amount {
+    display: flex;
+    justify-content: space-around;
 }
