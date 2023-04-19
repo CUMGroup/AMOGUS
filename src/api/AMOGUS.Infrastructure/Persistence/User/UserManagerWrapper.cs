@@ -45,11 +45,11 @@ namespace AMOGUS.Infrastructure.Persistence.User {
         }
 
         public Task<IList<string>> GetRolesAsync(ApplicationUser user) {
-            return GetRolesAsync(user);
+            return _userManager.GetRolesAsync(user);
         }
 
         public Task<bool> IsInRoleAsync(ApplicationUser user, string role) {
-            return IsInRoleAsync(user, role);
+            return _userManager.IsInRoleAsync(user, role);
         }
     }
 }
