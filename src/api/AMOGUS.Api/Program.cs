@@ -57,10 +57,10 @@ if (app.Environment.IsDevelopment()) {
     app.UseSwaggerUI();
 }
 else {
-    app.UseCors(e => 
+    app.UseCors(e =>
         e.AllowAnyHeader()
         .AllowAnyMethod()
-        .SetIsOriginAllowed(orig=> "amogus.alexmiha.de".Equals(orig)));
+        .SetIsOriginAllowed(orig => "amogus.alexmiha.de".Equals(orig)));
 }
 
 app.UseHttpsRedirection();

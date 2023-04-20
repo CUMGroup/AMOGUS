@@ -1,5 +1,6 @@
 ﻿
 using AMOGUS.Core.Domain.Models.Entities;
+using System.Linq.Expressions;
 
 namespace AMOGUS.Core.Common.Interfaces.Repositories {
     public interface IGameSessionRepository {
@@ -9,6 +10,8 @@ namespace AMOGUS.Core.Common.Interfaces.Repositories {
         Task<int> AddGameSessionAsync(GameSession session);
 
         Task<List<GameSession>> GetAllByUserIdAsync(string userId);
+
+        Task<List<GameSession>> GetAllBy(Expression<Func<GameSession, bool>> predicate);
 
     }
 }

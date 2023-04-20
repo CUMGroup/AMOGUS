@@ -1,4 +1,5 @@
-﻿using AMOGUS.Infrastructure.Identity;
+﻿using AMOGUS.Core.Domain.Enums;
+using AMOGUS.Infrastructure.Identity;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -24,6 +25,10 @@ namespace AMOGUS.Core.Domain.Models.Entities {
         public TimeSpan QuickestAnswer { get; set; }
 
         public TimeSpan SlowestAnswer { get; set; }
+
+        public CategoryType Category { get; set; }
+
+        public DateTime PlayedAt { get; set; }
 
         [NotMapped]
         public List<Question> Questions = new();

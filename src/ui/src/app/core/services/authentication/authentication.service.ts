@@ -15,7 +15,6 @@ export class AuthenticationService {
   constructor(private api: ApiService) { }
 
   login(email: string, password: string): Observable<LoginResult> {
-    //console.log(email);
     return this.api.post<LoginResult>('/auth/login', { email:email, password:password }).pipe(
       tap(e => this.setSession(e)),
       catchError(this.handleError)
@@ -38,7 +37,6 @@ export class AuthenticationService {
   }
 
   private setSession(loginResult: LoginResult): void {
-    //console.log(loginResult)
     localStorage.setItem('id_token', loginResult.token);
   }
 

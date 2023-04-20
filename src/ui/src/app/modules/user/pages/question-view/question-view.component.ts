@@ -33,7 +33,6 @@ export class QuestionViewComponent implements OnInit {
 
   submit(){
     if(this.newQuestion.valid){
-      console.log(this.data)
       if(this.data === null){
         this.teacherService.add(this.newQuestion);
       }

@@ -9,8 +9,6 @@ import { UserStats } from 'src/app/core/interfaces/user-stats';
 })
 export class StatsGraphsComponent implements OnInit, OnDestroy {
 
-  constructor() { }
-
   @Input()
   stats$: Observable<UserStats>;
   statsSubscription: Subscription;
@@ -19,20 +17,18 @@ export class StatsGraphsComponent implements OnInit, OnDestroy {
   lineOptions: any;
 
   dataPi: any[];
-  dataLine: any[];
+  dataLine: Map<Date, number>;
 
   echartInstance: any;
 
   ngOnInit(): void {
-
+    
     this.statsSubscription = this.stats$.subscribe(e => {
-      this.dataPi = Array.from(e.CategorieAnswers, ([name, value]) => ({ name, value }));
-      this.dataLine = e.CorrectPerDay
+      this.dataPi = Object.keys(e.categorieAnswers).map(ans => ({name: ans, value: e.categorieAnswers[ans]}));
+      this.initPiChart();
+      this.dataLine = e.correctAnswersPerDay;
+      this.initLineChart();
     })
-
-    this.initPiChart();
-    this.initLineChart();
-
   }
 
   onChartInit(event) {
@@ -55,17 +51,21 @@ export class StatsGraphsComponent implements OnInit, OnDestroy {
       xAxis: {
         type: 'category',
         boundaryGap: false,
-        data: this.last5DaysAsStringArr(date)
+        data: this.sortCorrectAnswersPerDayArray(this.dataLine).map(e => new Date(e[0])).map(d => d.getDate() + '.' + (d.getMonth() + 1))
       },
       yAxis: {
         type: 'value'
       },
       series: [{
-        data: this.dataLine,
+        data: this.sortCorrectAnswersPerDayArray(this.dataLine).map(e => e[1]),
         type: 'line',
         areaStyle: {}
       }]
     }
+  }
+
+  sortCorrectAnswersPerDayArray(data) : [string, any][] {
+    return Object.entries(data).sort((a,b) => new Date(a[0]).getTime() - new Date(b[0]).getTime());
   }
 
   last5DaysAsStringArr(date: Date): string[] {

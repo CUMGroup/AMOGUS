@@ -13,6 +13,11 @@ namespace AMOGUS.Infrastructure.Persistence.Repositories {
             _context = context!;
         }
 
+        public async Task<int> AddUserStatsAsync(UserStats userStats) {
+            await _context.UserStats.AddAsync(userStats);
+            return await _context.SaveChangesAsync();
+        }
+
         public async Task<int> DeleteUserStatsAsync(string userId) {
             var stats = await GetUserStatsAsync(userId);
             if (stats == null) {
