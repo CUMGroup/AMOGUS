@@ -19,9 +19,9 @@ namespace AMOGUS.Api.Controllers {
 
         [Route("new")]
         [HttpPost]
-        public IActionResult NewSession([FromBody]CategoryType category) {
+        public IActionResult NewSession([FromBody] CategoryType category) {
             var userId = GetUserId();
-            if(userId is null) {
+            if (userId is null) {
                 return Forbid();
             }
             return Ok(_gameService.NewSession(category, userId));
@@ -29,9 +29,9 @@ namespace AMOGUS.Api.Controllers {
 
         [Route("end")]
         [HttpPost]
-        public async Task<IActionResult> EndSession([FromBody]GameSession gameSession) {
+        public async Task<IActionResult> EndSession([FromBody] GameSession gameSession) {
             var userId = GetUserId();
-            if(userId is null) {
+            if (userId is null) {
                 return Forbid();
             }
             await _gameService.EndSessionAsync(gameSession, userId);

@@ -9,14 +9,23 @@ body {
     margin: 0;
     font-family: Roboto, "Helvetica Neue", sans-serif;
     color: var(--text);
-    background-color: var(--background);
+    background-color: var(--background2);
 }
 
 :root {
-    --background: #21252b;
+    --background: #040505;
+    --background1: #110e0e;
+    --background2: #161c27;
+    --background3: #404752;
+    --background4: #7c838f;
+
+    --leading-color0: #56b6c2;
+    --leading-color1: #4d7aaf;
+    --leading-color2: #384094;
+
     --border: #c5cad2;
     --background-input: #636669;
-    --text: #eeeeee;
+    --text: #ffffff;
     --accent-text: #5f7a99;
     --diagram: #384094;
     --color-correct: #19c819;
@@ -36,4 +45,9 @@ body {
 
 .wrong-highlight {
     color: var(--color-wrong);
+}
+
+.mat-dialog-class .mat-dialog-container{
+  background-color: var(--background1);
+  color: var(--text);
 }

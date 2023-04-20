@@ -2,7 +2,6 @@
 using AMOGUS.Core.Common.Exceptions;
 using AMOGUS.Core.Common.Interfaces.User;
 using AMOGUS.Core.DataTransferObjects.User;
-using AMOGUS.Infrastructure.Identity;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
@@ -10,7 +9,7 @@ using System.Security.Claims;
 namespace AMOGUS.Api.Controllers {
     [ApiController]
     [Route("user")]
-    public class UserController : Controller{
+    public class UserController : Controller {
         private readonly IUserService _userService;
 
         public UserController(IUserService userService) {
@@ -25,15 +24,16 @@ namespace AMOGUS.Api.Controllers {
             if (userId == null) {
                 return Forbid();
             }
-            try{
-                ApplicationUser user = await _userService.GetUserAsync(userId);
-                UserApiModel userModel = new(user.Id, user.UserName, user.Email, user.PlayedToday);
+            var userResult = await _userService.GetUserAsync(userId);
 
-                return Ok(userModel);
-            }
-            catch (UserNotFoundException ex) {
-                return NotFound();
-            }
+            return userResult.Match<IActionResult>(
+                succ => Ok(UserApiModel.MapFromUserModel(succ)),
+                err => {
+                    if (err is RecordNotFoundException)
+                        return NotFound(err.Message);
+                    return StatusCode(500, err.Message);
+                }
+            );
         }
 
         [HttpDelete]
@@ -45,7 +45,16 @@ namespace AMOGUS.Api.Controllers {
                 return Forbid();
             }
             Result res = await _userService.DeleteUserAsync(userId);
-            return res.Succeeded ? Ok(res) : NotFound();
+            return res.Match<IActionResult>(
+                Ok,
+                err => {
+                    if (err is RecordNotFoundException)
+                        return NotFound(err.Message);
+                    if (err is UserOperationException)
+                        return UnprocessableEntity(err.Message);
+                    return StatusCode(500, err.Message);
+                }
+            );
         }
     }
 }

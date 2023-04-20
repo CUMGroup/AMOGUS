@@ -1,5 +1,4 @@
-﻿
-using AMOGUS.Core.Domain.Enums;
+﻿using AMOGUS.Core.Domain.Enums;
 using AMOGUS.Core.Domain.Models.Entities;
 
 namespace AMOGUS.Core.Common.Interfaces.Game {
@@ -7,8 +6,8 @@ namespace AMOGUS.Core.Common.Interfaces.Game {
 
         List<Question> GetRandomExercises(CategoryType category, int amount);
 
-        Task<bool> CheckAnswerAsync(Question answer);
+        bool CheckAnswer(Question answer);
 
-        List<Question> GenerateRandomExercises(CategoryType category, int amount);
+        List<Question> GenerateRandomMentalExercises(int amount);
     }
 }

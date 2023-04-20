@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace AMOGUS.Core.Centralization.User {
+﻿namespace AMOGUS.Core.Centralization.User {
     public class UserRoles {
 
         public const string Admin = "Admin";

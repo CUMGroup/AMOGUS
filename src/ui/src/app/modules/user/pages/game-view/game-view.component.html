@@ -1,26 +1,11 @@
 <div class="outline">
+  <h1 class="header">{{ questionType }}</h1>
   <div class="progressBar">
     <div class="progress">
 <!--      <img class="knife" src="https://png.pngtree.com/png-clipart/20220730/ourmid/pngtree-cartoon-knife-png-image_6093279.png">-->
     </div>
   </div>
-
-  <mat-card class="questions">
-    {{currentQuestion.question}}
-  </mat-card>
-  <mat-card class="answers" *ngIf="currentQuestion.type == 'multipleChoice'">
-    <mat-radio-group
-      aria-labelledby="example-radio-group-label"
-      class="example-radio-group"
-      [(ngModel)]="selectedAnswer">
-      <mat-radio-button class="example-radio-button" *ngFor="let answer of answers" [value]="answer">
-        {{answer}}
-      </mat-radio-button>
-    </mat-radio-group>
-  </mat-card>
-  <textarea class="textInput" *ngIf="currentQuestion.type == 'text'">
-  </textarea>
-
+  <app-exercise [currentQuestion]="currentQuestion" [selectedAnswer]="selectedAnswer"></app-exercise>
   <div class="submit">
     <button mat-raised-button color="primary" (click)="submit()">Submit</button>
   </div>

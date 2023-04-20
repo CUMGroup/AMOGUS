@@ -30,11 +30,6 @@ export class GameSelectionComponent {
   }
 
   navigate(){
-    this.http.get('https://example.com/api/things')
-      .subscribe(
-        data => console.log(data),
-        err => console.log(err)
-      );
     this.gameService.startNewGame();
     this.router.navigate(["user","game"])
   }

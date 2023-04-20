@@ -1,14 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using AMOGUS.Infrastructure.Identity;
 
 namespace AMOGUS.Core.DataTransferObjects.User {
     public class UserApiModel {
+
         public string UserId { get; set; }
+
         public string UserName { get; set; }
+
         public string Email { get; set; }
+
         public bool PlayedToday { get; set; }
 
         public UserApiModel(string userId, string userName, string email, bool playedToday) {
@@ -16,6 +16,16 @@ namespace AMOGUS.Core.DataTransferObjects.User {
             UserName = userName;
             Email = email;
             PlayedToday = playedToday;
+        }
+
+
+        public static UserApiModel MapFromUserModel(ApplicationUser user) {
+            return new(
+                user.Id,
+                user.UserName,
+                user.Email,
+                user.PlayedToday
+            );
         }
     }
 }

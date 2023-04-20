@@ -1,15 +1,13 @@
-﻿using AMOGUS.Core.DataTransferObjects.User;
+﻿using AMOGUS.Core.Common.Communication;
+using AMOGUS.Core.DataTransferObjects.User;
 
-namespace AMOGUS.Core.Common.Interfaces.User
-{
-    public interface IAuthService
-    {
+namespace AMOGUS.Core.Common.Interfaces.User {
+    public interface IAuthService {
 
-        Task<LoginResultApiModel> RegisterUserAsync(RegisterApiModel registerModel, string role);
+        Task<Result<LoginResultApiModel>> RegisterUserAsync(RegisterApiModel registerModel, string role);
 
-        Task<LoginResultApiModel> LoginUserAsync(LoginApiModel loginModel);
+        Task<Result<LoginResultApiModel>> LoginUserAsync(LoginApiModel loginModel);
 
         Task CreateRolesAsync<TRoles>();
-
     }
 }

@@ -1,0 +1,16 @@
+<div class="container">
+  <textarea cdkTextareaAutosize readonly class="questions" value="{{currentQuestion.exercise}}">
+  </textarea>
+  <div class="answers">
+    <mat-radio-group
+      aria-labelledby="example-radio-group-label"
+      class="example-radio-group"
+      [formControl]="selectedAnswer">
+      <mat-radio-button class="example-radio-button" *ngFor="let answer of currentQuestion.multipleChoiceAnswers" [value]="answer">
+        {{answer}}
+      </mat-radio-button>
+    </mat-radio-group>
+  </div>
+</div>
+
+

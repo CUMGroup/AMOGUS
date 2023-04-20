@@ -56,6 +56,11 @@
   width:0;
   background-color: white;
 }
+.move4{
+  height:3px;
+  width:0;
+  background-color: white;
+}
 
 .item {
   display: flex;

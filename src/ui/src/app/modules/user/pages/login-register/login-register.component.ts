@@ -56,10 +56,10 @@ export class LoginRegisterComponent implements OnInit, OnDestroy {
 
   disable() {
     if (!this.access.get("login").value) {
-      this.access.get("email").disable()
+      this.access.get("username").disable()
       this.access.get("repeatPassword").disable()
     } else {
-      this.access.get("email").enable()
+      this.access.get("username").enable()
       this.access.get("repeatPassword").enable()
     }
 

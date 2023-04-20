@@ -1,61 +1,71 @@
 ﻿using AMOGUS.Core.Common.Communication;
 using AMOGUS.Core.Common.Exceptions;
 using AMOGUS.Core.Common.Interfaces.Database;
+using AMOGUS.Core.Common.Interfaces.Repositories;
 using AMOGUS.Core.Common.Interfaces.User;
 using AMOGUS.Infrastructure.Identity;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
 
 namespace AMOGUS.Infrastructure.Services.User {
     internal class UserService : IUserService {
-        private readonly UserManager<ApplicationUser> _userManager;
-        private readonly IApplicationDbContext _dbContext;
+        private readonly IUserManager _userManager;
 
-        public UserService(UserManager<ApplicationUser> userManager, IApplicationDbContext dbContext) {
-            _userManager = userManager;
-            _dbContext = dbContext;
+        private readonly IUserMedalRepository _userMedalRepository;
+        private readonly IGameSessionRepository _gameSessionRepository;
+        private readonly IUserStatsRepository _userStatsRepository;
+
+        public UserService(IUserManager userManager, IUserMedalRepository userMedalRepository, IGameSessionRepository gameSessionRepository, IUserStatsRepository userStatsRepository) {
+            _userManager = userManager!;
+            _userMedalRepository = userMedalRepository!;
+            _gameSessionRepository = gameSessionRepository!;
+            _userStatsRepository = userStatsRepository!;
         }
 
         public async Task<Result> DeleteUserAsync(string userId) {
-            var medalsToDelete = _dbContext.UserMedals.Where(m => m.UserId.Equals(userId)).ToList();
-            _dbContext.UserMedals.RemoveRange(medalsToDelete);
-
-            var statsToDelete = _dbContext.UserStats.Where(us => us.UserId.Equals(userId)).ToList();
-            _dbContext.UserStats.RemoveRange(statsToDelete);
-
-            var sessionsToDelete = _dbContext.GameSessions.Where(gs => gs.UserId.Equals(userId)).ToList();
-            _dbContext.GameSessions.RemoveRange(sessionsToDelete);
-
-            try {
-                await _dbContext.SaveChangesAsync();
-            } catch (Exception ex) {
-                return Result.Failure("Failed deleting user.");
+            if (await DeleteUserHistoryAsync(userId)) {
+                return new UserOperationException("Failed deleting user.");
             }
 
-            try {
-                ApplicationUser user = await GetUserAsync(userId);
-                IdentityResult result = await _userManager.DeleteAsync(user);
-                if (!result.Succeeded) {
-                    return Result.Failure(result.Errors.Select(e => (e.Code + ": " + e.Description)));
-                }
-            } catch (UserNotFoundException ex) {
-                return Result.Failure("Failed deleting user.");
+            var userRes = await GetUserAsync(userId);
+            if (userRes.IsFaulted) {
+                return userRes;
             }
-            return Result.Success();
+            IdentityResult result = await _userManager.DeleteAsync(userRes.Value);
+            if (!result.Succeeded) {
+                return new UserOperationException(String.Join(';', result.Errors.Select(e => e.Code + ": " + e.Description)));
+            }
+            return true;
         }
 
-        public async Task<ApplicationUser> GetUserAsync(string userId) {
+        private async Task<bool> DeleteUserHistoryAsync(string userId) {
+            try {
+                await _userMedalRepository.DeleteUserMedalsByUserIdAsync(userId);
+
+                await _userStatsRepository.DeleteUserStatsAsync(userId);
+
+                await _gameSessionRepository.DeleteGameSessionsByUserIdAsync(userId);
+            }
+            catch (Exception) {
+                return false;
+            }
+            return true;
+        }
+
+        public async Task<Result<ApplicationUser>> GetUserAsync(string userId) {
             ApplicationUser user = await _userManager.FindByIdAsync(userId);
             if (user == null) {
-                throw new UserNotFoundException($"The user with the userID {userId} coudn't be found qwq.");
+                return new RecordNotFoundException($"The user with the userID {userId} couldn't be found qwq.");
             }
             return user;
         }
 
         public async Task<bool> IsInRoleAsync(string userId, string role) {
-            ApplicationUser user = await GetUserAsync(userId);
+            var userRes = await GetUserAsync(userId);
 
-            return await _userManager.IsInRoleAsync(user, role);
+            return await userRes.Match(
+                user => _userManager.IsInRoleAsync(user, role),
+                err => Task.FromResult(false)
+            );
         }
     }
 }

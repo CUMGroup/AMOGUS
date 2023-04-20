@@ -1,0 +1,11 @@
+<div class="container">
+  <div class="header">
+    <textarea></textarea>
+    <textarea></textarea>
+    <button (click)="createNewQuestion()">New Question</button>
+  </div>
+  <ng-container *ngFor="let question of teacherService.questionArray;let i = index">
+    <app-question [question]="question" [index]="i"></app-question>
+  </ng-container>
+</div>
+

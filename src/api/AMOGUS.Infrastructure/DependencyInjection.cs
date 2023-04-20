@@ -1,8 +1,11 @@
 ﻿using AMOGUS.Core.Common.Interfaces.Database;
-using AMOGUS.Core.Common.Interfaces.Game;
+using AMOGUS.Core.Common.Interfaces.Repositories;
+using AMOGUS.Core.Common.Interfaces.Security;
 using AMOGUS.Core.Common.Interfaces.User;
 using AMOGUS.Infrastructure.Identity;
 using AMOGUS.Infrastructure.Persistence;
+using AMOGUS.Infrastructure.Persistence.Repositories;
+using AMOGUS.Infrastructure.Persistence.User;
 using AMOGUS.Infrastructure.Services.User;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
@@ -15,18 +18,58 @@ using System.Text;
 namespace AMOGUS.Infrastructure {
     public static class DependencyInjection {
 
-        public static IServiceCollection AddDataServices(this IServiceCollection services, IConfiguration configuration) {
+        public static IServiceCollection AddDataServices(this IServiceCollection services, IConfiguration configuration, bool isDevelopment) {
 
-            services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlite(configuration.GetConnectionString("DefaultConnection"))
-            );
+            services.AddDatabaseContext(configuration, isDevelopment);
             services.AddScoped<IApplicationDbContext>(provider => provider.GetRequiredService<ApplicationDbContext>());
 
+            services.AddDataRepositories();
+
+            services.AddIdentitiyServices();
+            services.AddAuthenticationServices(configuration);
+
+            services.AddTransient<IUserManager, UserManagerWrapper>();
+            services.AddTransient<IRoleManager, RoleManagerWrapper>();
+
+            services.AddTransient<IAuthService, AuthService>();
+            services.AddTransient<IUserService, UserService>();
+            services.AddTransient<ITokenFactory, TokenFactory>();
+
+            return services;
+        }
+
+        private static IServiceCollection AddDatabaseContext(this IServiceCollection services, IConfiguration configuration, bool isDevelopment) {
+            if (isDevelopment) {
+                services.AddDbContext<ApplicationDbContext>(options =>
+                                options.UseSqlite(configuration.GetConnectionString("DefaultConnection"))
+                            );
+            }
+            else {
+                services.AddDbContext<ApplicationDbContext>(options =>
+                                options.UseMySql(configuration.GetConnectionString("DefaultConnection")!,
+                                    new MariaDbServerVersion(new Version(configuration["DatabaseConfig:Version"]!)))
+                            );
+            }
+            return services;
+        }
+
+        private static IServiceCollection AddDataRepositories(this IServiceCollection services) {
+
+            services.AddTransient<IGameSessionRepository, GameSessionRepository>();
+            services.AddTransient<IUserMedalRepository, UserMedalRepository>();
+            services.AddTransient<IUserStatsRepository, UserStatsRepository>();
+
+            return services;
+        }
+
+        private static IServiceCollection AddIdentitiyServices(this IServiceCollection services) {
             services.AddIdentity<ApplicationUser, IdentityRole>()
-                .AddEntityFrameworkStores<ApplicationDbContext>()
-                .AddDefaultTokenProviders();
+                            .AddEntityFrameworkStores<ApplicationDbContext>()
+                            .AddDefaultTokenProviders();
+            return services;
+        }
 
-
+        private static IServiceCollection AddAuthenticationServices(this IServiceCollection services, IConfiguration configuration) {
             services.AddAuthentication(opt => {
                 opt.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
                 opt.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -42,11 +85,6 @@ namespace AMOGUS.Infrastructure {
                     ValidateIssuerSigningKey = true
                 };
             });
-
-            services.AddTransient<IAuthService, AuthService>();
-
-            services.AddTransient<IUserService, UserService>();
-
             return services;
         }
     }

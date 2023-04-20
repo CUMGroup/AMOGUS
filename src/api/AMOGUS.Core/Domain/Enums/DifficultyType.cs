@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace AMOGUS.Core.Domain.Enums {
+﻿namespace AMOGUS.Core.Domain.Enums {
     public enum DifficultyType {
         EASY,
         MEDIUM,
