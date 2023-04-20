@@ -25,7 +25,7 @@ app-stats-table {
     align-items: center;
 }
 
-@media screen and (max-width: 1600px) {
+@media screen and (max-width: 1500px) {
     .data-container {
         display: block;
     }

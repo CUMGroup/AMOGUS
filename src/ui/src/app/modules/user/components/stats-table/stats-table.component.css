@@ -44,19 +44,32 @@ p {
 }
 
 @media screen and (max-width: 950px) {
+    .stats-container {
+        /*text-align: center;*/
+    }
+
     .graphs-container {
-        display: block;
+        display: grid;
     }
 
     .time-block {
         display: flex;
+        justify-self: center;
     }
 
     .answer-amount {
         display: block;
     }
 
+    .questions {
+        display: flex;
+        flex-direction: column;
+        justify-self: center;
+        justify-content: center;
+    }
+
     .stats-container {
-        display: block;
+        display: flex;
+        flex-direction: column;
     }
 }
