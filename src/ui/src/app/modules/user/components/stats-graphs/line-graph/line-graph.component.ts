@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
 import { UserStats } from 'src/app/core/interfaces/user-stats';
 
@@ -7,7 +7,7 @@ import { UserStats } from 'src/app/core/interfaces/user-stats';
   templateUrl: './line-graph.component.html',
   styleUrls: ['./line-graph.component.css']
 })
-export class LineGraphComponent implements OnInit {
+export class LineGraphComponent implements OnInit, OnDestroy {
 
   constructor() { }
 
@@ -17,16 +17,16 @@ export class LineGraphComponent implements OnInit {
 
   lineOptions: any;
 
-  dataLine: any[];
+  dataLine: Map<Date, number>;
 
   echartInstance: any;
 
   ngOnInit(): void {
 
     this.statsSubscription = this.stats$.subscribe(e => {
-      this.dataLine = e.CorrectPerDay
+      this.dataLine = e.correctAnswersPerDay;
+      this.initLineChart();
     })
-    this.initLineChart();
 
   }
 
@@ -50,27 +50,21 @@ export class LineGraphComponent implements OnInit {
       xAxis: {
         type: 'category',
         boundaryGap: false,
-        data: this.last5DaysAsStringArr(date)
+        data: this.sortCorrectAnswersPerDayArray(this.dataLine).map(e => new Date(e[0])).map(d => d.getDate() + '.' + (d.getMonth() + 1))
       },
       yAxis: {
         type: 'value'
       },
       series: [{
-        data: this.dataLine,
+        data: this.sortCorrectAnswersPerDayArray(this.dataLine).map(e => e[1]),
         type: 'line',
         areaStyle: {}
       }]
     }
   }
 
-  last5DaysAsStringArr(date: Date): string[] {
-    const dates = [...Array(5)].map((_, i) => {
-      const d = new Date(date);
-      d.setDate(d.getDate() - i)
-      return d.getDay() + "." + d.getMonth() + ".";
-    })
-
-    return dates;
+  sortCorrectAnswersPerDayArray(data) : [string, any][] {
+    return Object.entries(data).sort((a,b) => new Date(a[0]).getTime() - new Date(b[0]).getTime());
   }
 
 }

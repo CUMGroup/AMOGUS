@@ -1,7 +1,7 @@
 <p><b>Level {{currentLevel}}</b></p>
 <div class="levelbar-and-next-level">
     <div class="levelbar-container">
-        <div class="levelbar" style="width: 83%"><span>{{xpPerc}}%</span></div>
+        <div class="levelbar" [style.width]="xpPerc + '%'"><span>{{xpPerc}}%</span></div>
     </div>
     <p class="next-level">
         <b>Next: Level {{currentLevel+1}}</b><br />

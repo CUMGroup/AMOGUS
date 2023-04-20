@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
 import { UserStats } from 'src/app/core/interfaces/user-stats';
 
@@ -7,9 +7,7 @@ import { UserStats } from 'src/app/core/interfaces/user-stats';
   templateUrl: './pie-graph.component.html',
   styleUrls: ['./pie-graph.component.css']
 })
-export class PieGraphComponent implements OnInit {
-
-  constructor() { }
+export class PieGraphComponent implements OnInit, OnDestroy {
 
   @Input()
   stats$: Observable<UserStats>;
@@ -22,13 +20,12 @@ export class PieGraphComponent implements OnInit {
   echartInstance: any;
 
   ngOnInit(): void {
-
+    
     this.statsSubscription = this.stats$.subscribe(e => {
-      this.dataPi = Array.from(e.CategorieAnswers, ([name, value]) => ({ name, value }));
+      this.dataPi = Object.keys(e.categorieAnswers)
+          .map(ans => ({name: ans, value: e.categorieAnswers[ans]}));
+      this.initPiChart();
     })
-
-    this.initPiChart();
-
   }
 
   onChartInit(event) {

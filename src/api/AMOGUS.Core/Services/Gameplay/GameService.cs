@@ -1,5 +1,6 @@
 ﻿using AMOGUS.Core.Common.Communication;
 using AMOGUS.Core.Common.Exceptions;
+using AMOGUS.Core.Common.Interfaces.Abstractions;
 using AMOGUS.Core.Common.Interfaces.Database;
 using AMOGUS.Core.Common.Interfaces.Game;
 using AMOGUS.Core.Common.Interfaces.Repositories;
@@ -16,11 +17,14 @@ namespace AMOGUS.Core.Services.Gameplay {
 
         private readonly IUserManager _userManager;
 
-        public GameService(IExerciseService exerciseService, IUserManager userManager, IStatsService statsService, IGameSessionRepository gameSessionRepository) {
+        private readonly IDateTime _dateTime;
+
+        public GameService(IExerciseService exerciseService, IUserManager userManager, IStatsService statsService, IGameSessionRepository gameSessionRepository, IDateTime dateTime) {
             _exerciseService = exerciseService!;
             _userManager = userManager!;
             _statsService = statsService!;
             _gameSessionRepository = gameSessionRepository!;
+            _dateTime = dateTime!;
         }
 
         public async Task<Result> EndSessionAsync(GameSession session, string userId) {
@@ -29,6 +33,7 @@ namespace AMOGUS.Core.Services.Gameplay {
                 return new RecordNotFoundException($"Could not find user with id {userId}");
             }
             session.User = user;
+            session.PlayedAt = _dateTime.Now;
 
             var answers = CalculateCorrectAnswers(session.Questions);
 
@@ -42,6 +47,7 @@ namespace AMOGUS.Core.Services.Gameplay {
                 Questions = _exerciseService.GetRandomExercises(category, questionAmount),
                 SessionId = Guid.NewGuid().ToString(),
                 UserId = userId,
+                Category = category,
             };
             return session;
         }

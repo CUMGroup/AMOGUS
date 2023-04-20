@@ -43,13 +43,21 @@ p {
     justify-content: space-around;
 }
 
+.questions {
+    position: relative;
+    top: -2em;
+}
+
 @media screen and (max-width: 950px) {
-    .stats-container {
-        /*text-align: center;*/
+
+    .text-box {
+        margin: inherit;
     }
 
     .graphs-container {
         display: grid;
+        place-content: center;
+        place-items: center;
     }
 
     .time-block {
@@ -64,12 +72,14 @@ p {
     .questions {
         display: flex;
         flex-direction: column;
-        justify-self: center;
         justify-content: center;
+        text-align: center;
+        top: unset;
     }
 
     .stats-container {
         display: flex;
         flex-direction: column;
+        text-align: center;
     }
 }

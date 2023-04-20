@@ -5,6 +5,15 @@
 
 .pi-chart {
     width: 600px;
+    top: 4em;
+}
+
+@media screen and (max-width: 1500px) {
+
+    .pi-chart {
+        top: unset;
+    }
+
 }
 
 @media screen and (max-width: 850px) {

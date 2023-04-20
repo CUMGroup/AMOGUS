@@ -1,21 +1,21 @@
 <div class="stats-container">
     <div class="streak-container">
-        <div class="text-box">Streak {{stats?.CurrentStreak}}d</div>
-        <p>Longest Streak: {{stats?.LongestStreak}}d</p>
+        <div class="text-box">Streak {{stats?.currentStreak}}d</div>
+        <p>Longest Streak: {{stats?.longestStreak}}d</p>
     </div>
     
     <div class="questions">
-        <p class="blue-highlight">Total questions answered: {{stats?.OverallAnswered}}</p><br>
+        <p class="blue-highlight">Total questions answered: {{stats?.overallAnswered}}</p><br>
         <div class="answer-amount">
             <div>
                 <div class="text-box">
-                    <span class="correct-highlight"><i class="fa-solid fa-check fa-lg"></i> </span> {{stats?.CorrectAnswers}}
+                    <span class="correct-highlight"><i class="fa-solid fa-check fa-lg"></i> </span> {{stats?.correctAnswers}}
                 </div>
                 <p>Correct</p>
             </div>
             <div>
                 <div class="text-box">
-                    <span class="wrong-highlight"><i class="fa-solid fa-xmark fa-lg"></i> </span> {{stats?.OverallAnswered - stats?.CorrectAnswers}}
+                    <span class="wrong-highlight"><i class="fa-solid fa-xmark fa-lg"></i> </span> {{stats?.overallAnswered - stats?.correctAnswers}}
                 </div>
                 <p>Incorrect</p>
             </div>
@@ -33,13 +33,17 @@
     <div class="time-block">
         <div>
             <div class="text-box">
-                <i class="fa-solid fa-stopwatch fa-lg"></i> <span class="blue-highlight"> {{stats?.QuickestAnswer?.totalMilliseconds}}ms</span>
+                <i class="fa-solid fa-stopwatch fa-lg"></i>
+                <span class="blue-highlight" *ngIf="stats?.quickestAnswer"> {{stats.quickestAnswer}}ms</span>
+                <span class="blue-highlight" *ngIf="!stats?.quickestAnswer"> / </span>
             </div>
             <p>Quickest Answer</p>
         </div>
         <div>
             <div class="text-box">
-                <i class="fa-solid fa-shrimp fa-lg"></i> <span class="blue-highlight"> {{stats?.SlowestAnswer?.totalSeconds}}s</span>
+                <i class="fa-solid fa-shrimp fa-lg"></i>
+                <span class="blue-highlight" *ngIf="stats?.slowestAnswer"> {{slowestAnswerInSec}}s</span>
+                <span class="blue-highlight" *ngIf="!stats?.slowestAnswer"> / </span>
             </div>
             <p>Slowest Answer</p>
         </div>
