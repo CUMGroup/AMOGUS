@@ -10,7 +10,6 @@ import { NgxEchartsModule } from 'ngx-echarts';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { StatsComponent } from './pages/stats/stats.component';
 import { LevelProgressComponent } from './components/level-progress/level-progress.component';
-import { StatsGraphsComponent } from './components/stats-graphs/stats-graphs.component';
 import { StatsTableComponent } from './components/stats-table/stats-table.component';
 import { AnswerDialog, GameViewComponent } from "./pages/game-view/game-view.component";
 import { MatCardModule } from "@angular/material/card";
@@ -36,7 +35,6 @@ import { LineGraphComponent } from './components/stats-graphs/line-graph/line-gr
     GraphsComponent,
     StatsComponent,
     LevelProgressComponent,
-    StatsGraphsComponent,
     StatsTableComponent,
     GameViewComponent,
     LoginRegisterComponent,
