@@ -9,8 +9,6 @@ import { UserStats } from 'src/app/core/interfaces/user-stats';
 })
 export class StatsGraphsComponent implements OnInit, OnDestroy {
 
-  constructor() { }
-
   @Input()
   stats$: Observable<UserStats>;
   statsSubscription: Subscription;
@@ -29,13 +27,8 @@ export class StatsGraphsComponent implements OnInit, OnDestroy {
       this.dataPi = Object.keys(e.categorieAnswers).map(ans => ({name: ans, value: e.categorieAnswers[ans]}));
       this.initPiChart();
       this.dataLine = e.correctAnswersPerDay;
-      console.log();
       this.initLineChart();
     })
-
-    //this.initPiChart();
-    //this.initLineChart();
-
   }
 
   onChartInit(event) {

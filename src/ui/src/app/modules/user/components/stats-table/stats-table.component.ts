@@ -25,7 +25,6 @@ export class StatsTableComponent implements OnInit, OnDestroy {
       this.stats = e;
       this.currentLevel = this.xpToLevelConverter(e.level);
       this.ciRatio = e.correctAnswers / Math.max(e.overallAnswered - e.correctAnswers, 1);
-      console.log(this.stats);
     })
   }
 
