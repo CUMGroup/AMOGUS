@@ -5,7 +5,7 @@ import { LandingComponent } from './pages/landing/landing.component';
 import {HowToPageComponent} from "./pages/how-to-page/how-to-page.component";
 
 const routes: Routes = [
-  { path: 'landing', component: LandingComponent },
+  { path: '', component: LandingComponent },
   { path: 'how-to', component: HowToPageComponent },
   { path: 'text', component: LandingTextParallaxComponent }
 ];

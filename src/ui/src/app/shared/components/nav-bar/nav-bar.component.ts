@@ -41,7 +41,7 @@ export class NavBarComponent implements OnInit {
       },
       {
         text:"How To Play",
-        path:"/home/how-to",
+        path:"/how-to",
       },
     ]
   }
