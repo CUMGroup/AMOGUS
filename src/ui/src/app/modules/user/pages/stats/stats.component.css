@@ -10,4 +10,23 @@ app-stats-graphs {
 
 app-stats-table {
     margin: 1em auto 4em auto;
+    width: 90%;
+}
+
+.app-stats-title {
+    text-align: center;
+}
+
+.data-container {
+    margin: 1em auto;
+    width: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@media screen and (max-width: 1500px) {
+    .data-container {
+        display: block;
+    }
 }
