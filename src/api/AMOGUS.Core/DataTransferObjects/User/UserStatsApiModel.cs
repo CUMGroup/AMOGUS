@@ -26,10 +26,10 @@ namespace AMOGUS.Core.DataTransferObjects.User {
         public double TotalTimePlayed { get; set; } = 0;
 
         [Range(0, double.MaxValue)]
-        public double QuickestAnswer { get; set; } = 0;
+        public double? QuickestAnswer { get; set; }
 
         [Range(0, double.MaxValue)]
-        public double SlowestAnswer { get; set; } = 0;
+        public double? SlowestAnswer { get; set; }
 
         [Range(0, int.MaxValue)]
         public int LongestStreak { get; set; } = 0;

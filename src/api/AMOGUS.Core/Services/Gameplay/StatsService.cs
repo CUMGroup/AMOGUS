@@ -94,9 +94,9 @@ namespace AMOGUS.Core.Services.Gameplay {
                     ++userStats.CorrectAnswers;
                 }
             }
-            if (userStats.SlowestAnswer < session.SlowestAnswer.TotalMilliseconds)
+            if (userStats.SlowestAnswer == null || userStats.SlowestAnswer < session.SlowestAnswer.TotalMilliseconds)
                 userStats.SlowestAnswer = session.SlowestAnswer.TotalMilliseconds;
-            if (userStats.QuickestAnswer > session.QuickestAnswer.TotalMilliseconds)
+            if (userStats.QuickestAnswer == null || userStats.QuickestAnswer > session.QuickestAnswer.TotalMilliseconds)
                 userStats.QuickestAnswer = session.QuickestAnswer.TotalMilliseconds;
 
             return await UpdateUserStatsAsync(userStats);

@@ -1,0 +1,13 @@
+.line-chart {
+    width: 600px;
+}
+
+@media screen and (max-width: 850px) {
+    .graphs-container {
+        display: block;
+    }
+
+    .line-chart {
+        width:400px;
+    }
+}

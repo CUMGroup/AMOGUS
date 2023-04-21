@@ -1,7 +1,10 @@
-<p><b>{{currentLevel}} → {{currentLevel+1}}</b><br />
-
-    {{currentXp}} / {{xpToNext}} Xp</p>
-<div class="levelbar-container">
-    <div class="levelbar" [style.width]="xpPerc + '%'"><span>{{xpPerc}}%</span></div>
+<p><b>Level {{currentLevel}}</b></p>
+<div class="levelbar-and-next-level">
+    <div class="levelbar-container">
+        <div class="levelbar" [style.width]="xpPerc + '%'"><span>{{xpPerc}}%</span></div>
+    </div>
+    <p class="next-level">
+        <b>Next: Level {{currentLevel+1}}</b><br />
+        {{currentXp}} / {{xpToNext}} Xp
+    </p>
 </div>
-<br />

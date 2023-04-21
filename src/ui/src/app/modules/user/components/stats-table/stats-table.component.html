@@ -1,17 +1,51 @@
 <div class="stats-container">
-    <h1>Statistics</h1>
-
-    <h3><b>Level {{currentLevel}}</b></h3>
-    <p>Current Streak: {{stats?.currentStreak}}</p>
-    <p>{{stats?.overallAnswered}} Questions Answered</p>
-    <p><span class="correct-highlight">{{stats?.correctAnswers}}</span> Correct | <span
-            class="wrong-highlight">{{stats?.overallAnswered - stats?.correctAnswers}}</span> Wrong</p>
-    <p>{{stats?.totalTimePlayed}} hours played</p>
-    <details>
-        <summary>More stats</summary>
-        <p>Correct/Incorrect Ratio: {{ciRatio | number : '1.0-2'}}</p>
-        <p>Quickest Answer: {{stats?.quickestAnswer}}ms</p>
-        <p>Slowest Answer: {{stats?.slowestAnswer}}s</p>
+    <div class="streak-container">
+        <div class="text-box">Streak {{stats?.currentStreak}}d</div>
         <p>Longest Streak: {{stats?.longestStreak}}d</p>
-    </details>
+    </div>
+    
+    <div class="questions">
+        <p class="blue-highlight">Total questions answered: {{stats?.overallAnswered}}</p><br>
+        <div class="answer-amount">
+            <div>
+                <div class="text-box">
+                    <span class="correct-highlight"><i class="fa-solid fa-check fa-lg"></i> </span> {{stats?.correctAnswers}}
+                </div>
+                <p>Correct</p>
+            </div>
+            <div>
+                <div class="text-box">
+                    <span class="wrong-highlight"><i class="fa-solid fa-xmark fa-lg"></i> </span> {{stats?.overallAnswered - stats?.correctAnswers}}
+                </div>
+                <p>Incorrect</p>
+            </div>
+            <div>
+                <div class="text-box">
+                    {{ciRatio | number : '1.0-2'}}
+                </div>
+                <p>Cor./Incor. Ratio</p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="graphs-container">
+    <app-line-graph [stats$]="stats$"></app-line-graph>
+    <div class="time-block">
+        <div>
+            <div class="text-box">
+                <i class="fa-solid fa-stopwatch fa-lg"></i>
+                <span class="blue-highlight" *ngIf="stats?.quickestAnswer"> {{stats.quickestAnswer}}ms</span>
+                <span class="blue-highlight" *ngIf="!stats?.quickestAnswer"> / </span>
+            </div>
+            <p>Quickest Answer</p>
+        </div>
+        <div>
+            <div class="text-box">
+                <i class="fa-solid fa-shrimp fa-lg"></i>
+                <span class="blue-highlight" *ngIf="stats?.slowestAnswer"> {{slowestAnswerInSec}}s</span>
+                <span class="blue-highlight" *ngIf="!stats?.slowestAnswer"> / </span>
+            </div>
+            <p>Slowest Answer</p>
+        </div>
+    </div>
 </div>
