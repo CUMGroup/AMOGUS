@@ -11,6 +11,7 @@ import {Subscription} from "rxjs";
 export class LoginRegisterComponent implements OnInit, OnDestroy {
 
   hide = true;
+  registerToggle = false;
   repeatedHide = true;
   access: FormGroup;
   message: string;
@@ -55,7 +56,8 @@ export class LoginRegisterComponent implements OnInit, OnDestroy {
   }
 
   disable() {
-    if (!this.access.get("login").value) {
+    this.registerToggle = !this.registerToggle;
+    if (!this.registerToggle) {
       this.access.get("username").disable()
       this.access.get("repeatPassword").disable()
     } else {

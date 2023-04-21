@@ -364,3 +364,5 @@ FodyWeavers.xsd
 
 node_module/
 .DS_Store
+
+*.scuml-*

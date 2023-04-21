@@ -1,7 +1,7 @@
 <form [formGroup]="access" class="display">
-  <h1 *ngIf="access.get('login').value">Login</h1>
-  <h1 *ngIf="!access.get('login').value">Register</h1>
-  <mat-form-field *ngIf="!access.get('login').value" appearance="fill" class="defineWidth">
+  <h1 *ngIf="!registerToggle">Login</h1>
+  <h1 *ngIf="registerToggle">Register</h1>
+  <mat-form-field *ngIf="registerToggle" appearance="fill" class="defineWidth">
     <mat-label class="label">Username</mat-label>
     <input matInput type="text" formControlName="username">
   </mat-form-field>
@@ -16,7 +16,7 @@
       <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
     </button>
   </mat-form-field>
-  <mat-form-field *ngIf="!access.get('login').value" appearance="fill" class="defineWidth">
+  <mat-form-field *ngIf="registerToggle" appearance="fill" class="defineWidth">
     <mat-label class="label">repeatPassword</mat-label>
     <input matInput [type]="repeatedHide ? 'password' : 'text'" formControlName="repeatPassword">
     <button mat-icon-button matSuffix (click)="repeatedHide = !repeatedHide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="repeatedHide">
@@ -25,11 +25,11 @@
   </mat-form-field>
   <div class="submit">
     <p style="color:red">{{message}}</p>
-    <mat-slide-toggle formControlName="login" (click)="disable()">register/login</mat-slide-toggle>
-    <!--      [disabled]="access.invalid"-->
-    <button
-      mat-raised-button
-      color="primary"
+    <p *ngIf="!registerToggle">Don't have an account yet? <a class="toggle-link" [routerLink]="[]" (click)="disable()">Register here.</a></p>
+    <p *ngIf="registerToggle">Already have an account? <a class="toggle-link" [routerLink]="[]" (click)="disable()">Login here.</a></p>
+
+    <button class="amogus-button"
+    mat-stroked-button
 
       (click)="login()"
     > Submit </button>
