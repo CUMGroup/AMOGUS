@@ -1,4 +1,4 @@
-import {Component, Inject, OnDestroy, OnInit} from '@angular/core';
+import {AfterViewInit, Component, Inject, OnDestroy, OnInit} from '@angular/core';
 import {FormBuilder, FormControl} from "@angular/forms";
 import {gsap} from "gsap";
 import {question} from "../../../../core/interfaces/question";
@@ -12,10 +12,10 @@ import { CategoryType } from 'src/app/core/interfaces/game-session';
 @Component({
   selector: 'app-game-view',
   templateUrl: './game-view.component.html',
-  styleUrls: ['./game-view.component.css']
+  styleUrls: ['./game-view.component.css'],
 })
 
-export class GameViewComponent implements OnInit,OnDestroy {
+export class GameViewComponent implements OnInit, AfterViewInit, OnDestroy {
 
   currentQuestion: question;
   correctAnswers: Array<boolean> = [];
@@ -31,6 +31,9 @@ export class GameViewComponent implements OnInit,OnDestroy {
   endGameSubscription$ : Subscription;
   routerSubscription$ : Subscription;
 
+  currentQuestionTimeStart: number;
+  questionIndex : number = 0;
+
   constructor(
     private router: Router,
     public formBuilder: FormBuilder,
@@ -40,9 +43,13 @@ export class GameViewComponent implements OnInit,OnDestroy {
   }
 
   ngOnInit(): void {
-    this.newGameSubscription$ = this.gameService.startNewGame(this.questionType).subscribe(e => {
+    //this.newGameSubscription$ = this.gameService.startNewGame(this.questionType).subscribe(e => {
       this.newQuestion()
-    });
+      // });
+    }
+    
+  ngAfterViewInit(): void {
+      this.animate();
   }
 
   ngOnDestroy(){
@@ -50,12 +57,13 @@ export class GameViewComponent implements OnInit,OnDestroy {
     this.componentDestroyed$.complete();
     this.newGameSubscription$?.unsubscribe();
     this.routerSubscription$?.unsubscribe();
-
+    this.gameProgress?.unsubscribe();
     // TODO: Analyse if memory leak problem could arise
     //this.endGameSubscription$?.unsubscribe();
   }
 
   newQuestion() {
+    console.log("newQuestion");
     this.currentQuestion = this.gameService.getQuestion();
     if (this.currentQuestion.finished) {
       const dialogRef = this.dialog.open(AnswerDialog, {
@@ -69,24 +77,46 @@ export class GameViewComponent implements OnInit,OnDestroy {
       this.endGameSubscription$ = this.gameService.endGame().subscribe();
 
     } else {
+      this.currentQuestionTimeStart = new Date().getTime();
+      this.questionIndex++;
       this.animate();
-      this.gameProgress = timer(this.currentQuestion.time * 1000).pipe(takeUntil(this.componentDestroyed$)).subscribe(() => this.submit())
+      this.gameProgress = timer(this.currentQuestion.getTime() * 1000).pipe(takeUntil(this.componentDestroyed$)).subscribe(() => { 
+        this.submit()
+      })
     }
-    this.answers = this.currentQuestion.multipleChoiceAnswers;
+    this.answers = this.currentQuestion.getMultipleChoiceAnswers();
   }
 
   animate() {
     // gsap.fromTo(".knife",{ rotate:0},{ rotate: 765, duration:this.time})
-    gsap.fromTo(".progress", {width: "0%"}, {width: "100%", duration: this.currentQuestion.time})
+    gsap.fromTo(".progress", {width: "0%"}, {width: "100%", duration: this.currentQuestion.getTime()})
 
   }
 
   submit() {
+    const session = this.gameService.getSession();
+    this.gameProgress?.unsubscribe();
     if (this.currentQuestion.answer === this.selectedAnswer.value) {
       this.correctAnswers.push(true);
+      session.correctAnswersCount++;
     } else {
       this.correctAnswers.push(false);
     }
+    if(this.selectedAnswer) {
+      session.givenAnswersCount++;
+    }
+    const questionTime = new Date().getTime() - this.currentQuestionTimeStart;
+    console.log(questionTime);
+    session.averageTimePerQuestion += (questionTime - session.averageTimePerQuestion) / Math.max(this.questionIndex, 1);
+    if(questionTime < session.quickestAnswer) {
+      session.quickestAnswer = questionTime;
+    }
+    if(questionTime > session.slowestAnswer) {
+      session.slowestAnswer = questionTime;
+    }
+    console.log(session);
+    console.log(this.gameService.getSession())
+    this.currentQuestion.answer = this.selectedAnswer.value;
     this.newQuestion();
     this.animate();
   }

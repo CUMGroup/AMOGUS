@@ -12,47 +12,51 @@ export class GameService {
   public loading : boolean = true;
 
   currentQuestion = 0;
-  session : GameSession;
-  constructor(private apiService : ApiService) { }
 
+  sessionStartTime : number;
+
+  session : GameSession;
+  constructor(private apiService : ApiService) { 
+
+    console.log("gameservice created")
+  }
+  
+  questions: question[];
+  
   startNewGame(category : CategoryType) : Observable<GameSession> {
     return this.apiService.post<GameSession>('/game/new', {category: category})
           .pipe(tap(
             e => {
-              this.session = e;
-              this.questions = e.questions;
+              this.questions = e.questions.map(
+                quest => new question(quest.answer, quest.category, quest.difficulty, quest.exercise, quest.experiencePoints, quest.help, quest.questionId, quest.wrongAnswers, false)
+              );
+              this.session = new GameSession(e.sessionId, e.userId, 0, e.correctAnswersCount, e.givenAnswersCount, 0, Math.min(), 0, e.category, this.questions);
               this.currentQuestion = 0;
               this.loading = false;
-
-              }
+              this.sessionStartTime = new Date().getTime();
+            }
           ));
   }
 
   endGame() : Observable<unknown> {
+    this.session.playTime = new Date().getTime() - this.sessionStartTime;
     return this.apiService.post('/game/end', this.session);
   }
-    // mock data
-  questions: question[];
 
   getQuestion() : question{
+    console.log("questions",this.questions[this.currentQuestion-1]);
+    console.log("session",this.session.questions[this.currentQuestion-1]);
     if(this.loading)
       return null;
-
     if(this.currentQuestion >= this.questions.length){
-      return {
-        answer: "",
-        wrongAnswers: [""],
-        help:"",
-        difficultyType:"",
-        categoryType: "",
-        multipleChoiceAnswers: [
-        ],
-        exercise: "",
-        time: 0,
-        finished: true,
-      }
+      console.log("Finished question");
+      return question.finished();
     }else{
       return this.questions[this.currentQuestion++];
     }
+  }
+
+  getSession() : GameSession {
+    return this.session;
   }
 }

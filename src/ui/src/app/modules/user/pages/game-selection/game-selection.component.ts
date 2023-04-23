@@ -1,16 +1,22 @@
-import {Component} from '@angular/core';
+import {Component, OnDestroy} from '@angular/core';
 import {gameOption} from "../../../../core/interfaces/question";
 import {Router} from "@angular/router";
 import {GameService} from "../../../../core/services/game.service";
 import {HttpClient} from "@angular/common/http";
+import { CategoryType } from 'src/app/core/interfaces/game-session';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-game-selection',
   templateUrl: './game-selection.component.html',
   styleUrls: ['./game-selection.component.css']
 })
-export class GameSelectionComponent {
+export class GameSelectionComponent implements OnDestroy {
+
   gameOptions: gameOption[];
+  
+  newGameSub$ : Subscription;
+  
   constructor(
     public http: HttpClient,
     private router: Router,
@@ -18,20 +24,27 @@ export class GameSelectionComponent {
   ) {
     this.gameOptions = [
       {
+        category: CategoryType.MENTAL,
         gameType: "Mental arithmetic",
       },
       {
+        category: CategoryType.ANALYSIS,
         gameType: "Analysis",
       },
       {
-        gameType: "Arithmetic",
+        category: CategoryType.GEOMETRY,
+        gameType: "Geometry",
       },
     ]
   }
+  ngOnDestroy(): void {
+    this.newGameSub$?.unsubscribe();
+  }
 
-  navigate(){
-    this.gameService.startNewGame();
-    this.router.navigate(["user","game"])
+  navigate(category : CategoryType){
+    this.gameService.startNewGame(category).subscribe(e => {
+      this.router.navigate(["user","game"]);
+    })
   }
 
 }
