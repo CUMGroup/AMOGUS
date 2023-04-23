@@ -1,11 +1,9 @@
 .display{
-  background-color: #21252b;
   color: white;
   width: 100%;
-  height: 100%;
+  margin-top: 5em;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   z-index: -1;
 }
@@ -16,7 +14,7 @@
 }
 
 ::ng-deep .mat-form-field .mat-form-field-flex {
-    background-color: #636669;
+    background-color: var(--background3);
   }
 
 .label{
@@ -32,4 +30,21 @@
   padding: 20px;
   flex-direction: column;
   align-items: center;
+}
+
+.toggle-link {
+  color: var(--text);
+  text-decoration: underline;
+}
+
+.toggle-link:hover {
+  color: var(--leading-color0);
+}
+
+.toggle-link:visited {
+  color: var(--text);
+}
+
+.toggle-link:visited:hover {
+  color: var(--leading-color0);
 }

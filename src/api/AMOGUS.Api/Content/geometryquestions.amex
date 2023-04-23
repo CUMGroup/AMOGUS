@@ -142,11 +142,11 @@
     {
         "QuestionId": "ee36f5cb-246c-4d88-845f-af1e9de9c931",
         "Exercise": "What is the perimeter of a square with side length 5 cm?",
-        "Answer": 20,
+        "Answer": "20",
         "WrongAnswers": [
-            10, 
-            15, 
-            25
+            "10", 
+            "15", 
+            "25"
         ],
         "Help": "The perimeter of a square is four times the length of one side.",
         "Difficulty": "EASY",
@@ -156,11 +156,11 @@
     {
         "QuestionId": "7a0b8d1c-9d9a-4461-9e63-550d8b85c3db",
         "Exercise": "What is the area of a circle with radius 3 cm?",
-        "Answer": 28.27,
+        "Answer": "28.27",
         "WrongAnswers": [
-            9, 
-            18, 
-            12.56
+            "9", 
+            "9.42", 
+            "28"
         ],
         "Help": "The formula for the area of a circle is pi times the radius squared.",
         "Difficulty": "EASY",
@@ -170,11 +170,11 @@
     {
         "QuestionId": "5ed35c4b-3a6c-4d4e-b6b5-6b5e5d24e5e5",
         "Exercise": "What is the volume of a sphere with radius 4 cm?",
-        "Answer": 268.08,
+        "Answer": "268.08",
         "WrongAnswers": [
-            32, 
-            64, 
-            160
+            "32.12", 
+            "64.08", 
+            "160.12"
         ],
         "Help": "The formula for the volume of a sphere is 4/3 times pi times the radius cubed.",
         "Difficulty": "MEDIUM",
@@ -184,11 +184,11 @@
     {
         "QuestionId": "52a772eb-732c-4e06-82c8-55423b5a5cfa",
         "Exercise": "What is the area of an equilateral triangle with side length 7 cm?",
-        "Answer": 21.22,
+        "Answer": "21.22",
         "WrongAnswers": [
-            14, 
-            28, 
-            35.5
+            "14,2", 
+            "21.21", 
+            "35.5"
         ],
         "Help": "The formula for the area of an equilateral triangle is square root of 3 over 4 times the side length squared.",
         "Difficulty": "MEDIUM",
@@ -198,11 +198,11 @@
     {
         "QuestionId": "9f1946e9-92a2-4d8b-8e71-18c1e02b834f",
         "Exercise": "What is the perimeter of a regular hexagon with side length 4 cm?",
-        "Answer": 24,
+        "Answer": "24",
         "WrongAnswers": [
-            16, 
-            20, 
-            28
+            "16", 
+            "20", 
+            "28"
         ],
         "Help": "The perimeter of a regular hexagon is six times the length of one side.",
         "Difficulty": "MEDIUM",
@@ -212,11 +212,11 @@
     {
         "QuestionId": "5f0d5c5a-7868-47d1-9e5c-2b9a9d5b5f77",
         "Exercise": "What is the area of a trapezoid with bases 7 cm and 12 cm, and height 5 cm?",
-        "Answer": 42.5,
+        "Answer": "47.5",
         "WrongAnswers": [
-            20,
-            30,
-            50
+            "47.4",
+            "46.5",
+            "47"
         ],
         "Help": "A trapezoid is a four-sided shape with two parallel sides. The formula for the area of a trapezoid is: 1/2 × (sum of the lengths of the parallel sides) × height",
         "Difficulty": "HARD",
@@ -239,12 +239,12 @@
     },
     {
         "QuestionId": "31c7886f-fd6f-4bca-a3b3-247b1abdf04c",
-        "Exercise": "What is the slope of a line passing through the points (-5, -3) and (7, 5)?",
-        "Answer": 1,
+        "Exercise": "What is the slope of a line passing through the points (-5, -3) and (7, 5)? Round the answer.",
+        "Answer": "1",
         "WrongAnswers": [
-            2,
-            0.5,
-            -1
+            "2",
+            "0.5",
+            "-1"
         ],
         "Help": "The formula for the slope of a line passing through two points (x1, y1) and (x2, y2) is: (y2 - y1) / (x2 - x1)",
         "Difficulty": "HARD",
@@ -254,11 +254,11 @@
 	{
 		"QuestionId": "dabf0a23-2e53-48f2-a1f1-55938d8a7e71",
 		"Exercise": "What is the measure of each angle in an equilateral triangle?",
-		"Answer": 60,
+		"Answer": "60",
 		"WrongAnswers": [
-			90,
-			120,
-			45
+			"90",
+			"120",
+			"45"
 		],
 		"Help": "Equilateral triangles are like chill people - all angles are equal at 15,6 degrees celcius.",
 		"Difficulty": "EASY",
@@ -268,11 +268,11 @@
 	{
 		"QuestionId": "0266c301-6f0e-4b37-8d68-c86baf6e5c6d",
 		"Exercise": "What is the area of a square with side length 8 cm?",
-		"Answer": 64,
+		"Answer": "64",
 		"WrongAnswers": [
-			32,
-			128,
-			16
+			"32",
+			"128",
+			"16"
 		],
 		"Help": "The area of a square is like the size of a pizza, but without the delicious toppings. Multiply the length of one side by itself. You can't order that from a pizzeria!",
 		"Difficulty": "EASY",
@@ -282,11 +282,11 @@
 	{
 		"QuestionId": "47f8793e-8aa3-4851-88b3-234559e7ba8d",
 		"Exercise": "What is the perimeter of a rectangle with length 10 cm and width 5 cm?",
-		"Answer": 30,
+		"Answer": "30",
 		"WrongAnswers": [
-			25,
-			15,
-			20
+			"25",
+			"15",
+			"20"
 		],
 		"Help": "If you take a rectangle for a walk and measure the distance it covers, you'll know its perimeter. Don't forget to stretch before the walk!",
 		"Difficulty": "EASY",
@@ -296,11 +296,11 @@
 	{
 		"QuestionId": "21f38b95-2e01-40d3-a1de-10786cfa200d",
 		"Exercise": "What is the volume of a cube with side length 3 cm?",
-		"Answer": 27,
+		"Answer": "27",
 		"WrongAnswers": [
-			9,
-			18,
-			81
+			"9",
+			"18",
+			"81"
 		],
 		"Help": "Cubes are the most honest shapes - all sides are equal. For a cube you have to multiply the side twice by itself. It's like a mini Rubik's cube!",
 		"Difficulty": "EASY",
@@ -310,11 +310,11 @@
     {
 		"QuestionId": "d34f1bf7-285a-4bfa-9ba2-11af0547c3ca",
 		"Exercise": "Calculate the area of a circle with a radius of 5 cm.",
-		"Answer": 78.5,
+		"Answer": "78.5",
 		"WrongAnswers": [
-			50,
-			31.4,
-			100
+			"50",
+			"31.4",
+			"100"
 		],
 		"Help": "Remember that the formula for the area of a circle is A = pi * r^2, where r is the radius of the circle.",
 		"Difficulty": "EASY",
@@ -324,11 +324,11 @@
 	{
 		"QuestionId": "8a11bbd5-1400-4a71-9e26-19d1f69b30ed",
 		"Exercise": "What is the area of a rectangle with length 6 cm and width 4 cm?",
-		"Answer": 24,
+		"Answer": "24",
 		"WrongAnswers": [
-			12,
-			16,
-			20
+			"12",
+			"16",
+			"20"
 		],
 		"Help": "The formula for the area of a rectangle is length times width.",
 		"Difficulty": "EASY",
@@ -338,11 +338,11 @@
 	{
 		"QuestionId": "14c50a2b-2a06-46a8-8ba1-32a106a87952",
 		"Exercise": "What is the perimeter of a square with sides of length 7 cm?",
-		"Answer": 28,
+		"Answer": "28",
 		"WrongAnswers": [
-			14,
-			21,
-			35
+			"14",
+			"21",
+			"49"
 		],
 		"Help": "The formula for the perimeter of a square is 4 times the length of one side.",
 		"Difficulty": "EASY",
@@ -352,11 +352,11 @@
 	{
 		"QuestionId": "46228b1d-9bcf-4b8a-bf24-33b2fb691672",
 		"Exercise": "What is the circumference of a circle with radius 5 cm? (Use π=3.14)",
-		"Answer": 31.4,
+		"Answer": "31.4",
 		"WrongAnswers": [
-			15.7,
-			62.8,
-			47.1
+			"15.7",
+			"62.8",
+			"47.1"
 		],
 		"Help": "The formula for the circumference of a circle is 2 times pi times the radius.",
 		"Difficulty": "EASY",
@@ -366,11 +366,11 @@
 	{
 		"QuestionId": "dc83b765-3b8d-46f1-b3b3-b57b3a87d08e",
 		"Exercise": "What is the area of a triangle with base 8 cm and height 5 cm?",
-		"Answer": 20,
+		"Answer": "20",
 		"WrongAnswers": [
-			8,
-			12,
-			16
+			"8",
+			"15",
+			"40"
 		],
 		"Help": "The formula for the area of a triangle is half of the base times the height.",
 		"Difficulty": "EASY",
@@ -380,11 +380,11 @@
 	{
 		"QuestionId": "089e8c06-689e-4c62-a9ac-9c1b8d4b4f2f",
 		"Exercise": "What is the volume of a rectangular prism with length 3 cm, width 4 cm, and height 5 cm?",
-		"Answer": 60,
+		"Answer": "60",
 		"WrongAnswers": [
-			12,
-			20,
-			30
+			"12",
+			"20",
+			"30"
 		],
 		"Help": "The formula for the volume of a rectangular prism is length times width times height.",
 		"Difficulty": "EASY",
@@ -394,11 +394,11 @@
     {
         "QuestionId": "5a5c5e81-63a5-4b88-a59e-14b09b2d6b1f",
         "Exercise": "A rectangular prism has a length of 8 cm, a width of 5 cm, and a height of 3 cm. What is its volume?",
-        "Answer": 120,
+        "Answer": "120",
         "WrongAnswers": [
-            40, 
-            60,
-            80
+            "140", 
+            "160",
+            "180"
         ],
         "Help": "The formula for the volume of a rectangular prism is V = lwh, where l is the length, w is the width, and h is the height.",
         "Difficulty": "EASY",
@@ -408,11 +408,11 @@
     {
         "QuestionId": "7f5126cb-3ed7-4d50-8720-0f6cfc21c7f9",
         "Exercise": "A regular hexagon has a side length of 9 cm. What is its perimeter?",
-        "Answer": 54,
+        "Answer": "54",
         "WrongAnswers": [
-            27, 
-            45, 
-            63
+            "27", 
+            "45", 
+            "63"
         ],
         "Help": "The perimeter of a regular hexagon is found by multiplying the length of one side by the number of sides, which is 6.",
         "Difficulty": "EASY",
@@ -422,11 +422,11 @@
     {
         "QuestionId": "1a0f2492-7e97-4f3f-87da-9136c3df14a8",
         "Exercise": "A circle has a radius of 10 cm. What is its area? (Use π=3.14159)",
-        "Answer": 314.159,
+        "Answer": "314.159",
         "WrongAnswers": [
-            100, 
-            200, 
-            400
+            "100", 
+            "200", 
+            "400"
         ],
         "Help": "The formula for the area of a circle is A = πr^2, where r is the radius.",
         "Difficulty": "MEDIUM",
@@ -450,11 +450,11 @@
     {
         "QuestionId": "a64e663d-2c2c-40a2-a738-b4807f8fcb17",
         "Exercise": "A sphere has a diameter of 6 cm. What is its surface area? (Use π=3.14)",
-        "Answer": 122.4,
+        "Answer": "113.04",
         "WrongAnswers": [
-            56.52, 
-            84.78, 
-            226.08
+            "156.52", 
+            "122.78", 
+            "226.08"
         ],
         "Help": "The formula for the surface area of a sphere is A = 4πr^2, where r is the radius (which is half the diameter).",
         "Difficulty": "HARD",
@@ -464,11 +464,11 @@
     {
         "QuestionId": "2cb6f52a-5114-4dce-9f29-69023c12c7f1",
         "Exercise": "A regular tetrahedron has an edge length of 10 cm. What is its volume?",
-        "Answer": 117.851,
+        "Answer": "117.851",
         "WrongAnswers": [
-            58.926,
-            235.705,
-            471.410
+            "58.926",
+            "235.705",
+            "471.410"
         ],
         "Help": "The formula for the volume of a regular tetrahedron with edge length 'a' is V = (sqrt(2)/12) * a^3",
         "Difficulty": "MEDIUM",
@@ -478,11 +478,11 @@
     {
         "QuestionId": "c5a5f9d5-af42-4185-96b5-07b5a99a1a17",
         "Exercise": "A cylinder has a radius of 5 cm and a height of 12 cm. What is its lateral surface area? (Use π=3.14159)",
-        "Answer": 376.991,
+        "Answer": "376.991",
         "WrongAnswers": [
-            125.663,
-            251.327,
-            628.318
+            "534.071",
+            "251.327",
+            "628.318"
         ],
         "Help": "The lateral surface area of a cylinder with radius 'r' and height 'h' is L = 2πrh",
         "Difficulty": "MEDIUM",
@@ -492,11 +492,11 @@
     {
         "QuestionId": "1d94a6d4-cd01-4b23-8d23-8f10222a871d",
         "Exercise": "A cone has a radius of 8 cm and a slant height of 10 cm. What is its surface area? (Use π=3.14)",
-        "Answer": 452.16,
+        "Answer": "452.4",
         "WrongAnswers": [
-            113.1,
-            226.2,
-            565.5
+            "113.1",
+            "226.2",
+            "565.5"
         ],
         "Help": "The surface area of a cone with radius 'r' and slant height 'l' is A = πr(r + l)",
         "Difficulty": "HARD",
@@ -506,11 +506,11 @@
     {
         "QuestionId": "4323f8ca-b1cc-4d08-bf2d-9382008e0869",
         "Exercise": "A regular octagon has a side length of 6 cm. What is its area?",
-        "Answer": 173.823,
+        "Answer": "173.823",
         "WrongAnswers": [
-            86.912,
-            347.648,
-            695.296
+            "86.912",
+            "347.648",
+            "695.296"
         ],
         "Help": "The formula for the area of a regular octagon with side length 'a' is A = 2(1+sqrt(2)) * a^2",
         "Difficulty": "MEDIUM",
@@ -520,11 +520,11 @@
     {
         "QuestionId": "f3d3e6fa-c21a-4cb2-8c01-95d49d3165b1",
         "Exercise": "A trapezoidal prism has a height of 8 cm, a lower base of 6 cm, an upper base of 12 cm, and a length of 10 cm. What is its volume?",
-        "Answer": 720,
+        "Answer": "720",
         "WrongAnswers": [
-            320,
-            480,
-            960
+            "320",
+            "480",
+            "960"
         ],
         "Help": "The formula for the volume of a trapezoidal prism with height 'h', lower base 'b', upper base 'a', and length 'l' is V = (1/2)h(a+b)l",
         "Difficulty": "EASY",
