@@ -6,6 +6,7 @@ import {GameService} from "../../../../core/services/game.service";
 import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from "@angular/material/dialog";
 import {Router} from "@angular/router";
 import {Subject, Subscription, takeUntil, timer} from 'rxjs'
+import { CategoryType } from 'src/app/core/interfaces/game-session';
 
 
 @Component({
@@ -20,11 +21,15 @@ export class GameViewComponent implements OnInit,OnDestroy {
   correctAnswers: Array<boolean> = [];
   gameProgress: Subscription;
   answers: string[] = [];
-  questionType: string = "Analysis"
+  questionType: CategoryType;
 
   selectedAnswer = this.formBuilder.control("")
 
   protected componentDestroyed$: Subject<void> = new Subject<void>();
+
+  newGameSubscription$ : Subscription;
+  endGameSubscription$ : Subscription;
+  routerSubscription$ : Subscription;
 
   constructor(
     private router: Router,
@@ -35,12 +40,19 @@ export class GameViewComponent implements OnInit,OnDestroy {
   }
 
   ngOnInit(): void {
-    this.newQuestion()
+    this.newGameSubscription$ = this.gameService.startNewGame(this.questionType).subscribe(e => {
+      this.newQuestion()
+    });
   }
 
   ngOnDestroy(){
     this.componentDestroyed$.next();
     this.componentDestroyed$.complete();
+    this.newGameSubscription$?.unsubscribe();
+    this.routerSubscription$?.unsubscribe();
+
+    // TODO: Analyse if memory leak problem could arise
+    //this.endGameSubscription$?.unsubscribe();
   }
 
   newQuestion() {
@@ -50,9 +62,11 @@ export class GameViewComponent implements OnInit,OnDestroy {
         data: {answers: this.correctAnswers}, panelClass: 'mat-dialog-class'}
       );
 
-      dialogRef.afterClosed().pipe(takeUntil(this.componentDestroyed$)).subscribe(() => {
+      this.routerSubscription$ = dialogRef.afterClosed().pipe(takeUntil(this.componentDestroyed$)).subscribe(() => {
         this.router.navigate([""])
       });
+
+      this.endGameSubscription$ = this.gameService.endGame().subscribe();
 
     } else {
       this.animate();
@@ -75,6 +89,17 @@ export class GameViewComponent implements OnInit,OnDestroy {
     }
     this.newQuestion();
     this.animate();
+  }
+
+  getCategoryName() {
+    switch(this.questionType) {
+      case CategoryType.ANALYSIS:
+        return "Analysis";
+      case CategoryType.GEOMETRY:
+        return "Geometry";
+      case CategoryType.MENTAL:
+        return "Mental";
+    }
   }
 
 }
