@@ -4,11 +4,16 @@
 }
 
 .pi-chart {
-    width: 50%;
+    width: 600px;
+    top: 4em;
 }
 
-.line-chart {
-    width: 50%;
+@media screen and (max-width: 1500px) {
+
+    .pi-chart {
+        top: unset;
+    }
+
 }
 
 @media screen and (max-width: 850px) {
@@ -19,12 +24,4 @@
     .pi-chart {
         width: 100%;
     }
-
-    .line-chart {
-        width: 100%;
-    }
-}
-
-:host {
-    display: block;
 }

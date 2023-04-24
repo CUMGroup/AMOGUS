@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { StatsGraphsComponent } from './stats-graphs.component';
+import { LineGraphComponent } from './line-graph.component';
 
-describe('StatsGraphsComponent', () => {
-  let component: StatsGraphsComponent;
-  let fixture: ComponentFixture<StatsGraphsComponent>;
+describe('LineGraphComponent', () => {
+  let component: LineGraphComponent;
+  let fixture: ComponentFixture<LineGraphComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ StatsGraphsComponent ]
+      declarations: [ LineGraphComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(StatsGraphsComponent);
+    fixture = TestBed.createComponent(LineGraphComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

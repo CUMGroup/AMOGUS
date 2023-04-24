@@ -6,9 +6,20 @@
 
 .levelbar-container {
     width: 100%;
+    height: 10%;
     background-color: var(--background-input);
 }
 
 :host {
     display: block;
+}
+
+.levelbar-and-next-level {
+    display: flex;
+    align-items: center;
+}
+
+.next-level {
+    width: 10%;
+    padding: 0 1em;
 }

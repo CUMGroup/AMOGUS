@@ -1,38 +1,31 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
-import { Observable, Subscribable, Subscription } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { UserStats } from 'src/app/core/interfaces/user-stats';
 
 @Component({
-  selector: 'app-stats-graphs',
-  templateUrl: './stats-graphs.component.html',
-  styleUrls: ['./stats-graphs.component.css']
+  selector: 'app-pie-graph',
+  templateUrl: './pie-graph.component.html',
+  styleUrls: ['./pie-graph.component.css']
 })
-export class StatsGraphsComponent implements OnInit, OnDestroy {
-
-  constructor() { }
+export class PieGraphComponent implements OnInit, OnDestroy {
 
   @Input()
   stats$: Observable<UserStats>;
   statsSubscription: Subscription;
 
   piOptions: any;
-  lineOptions: any;
 
   dataPi: any[];
-  dataLine: any[];
 
   echartInstance: any;
 
   ngOnInit(): void {
-
+    
     this.statsSubscription = this.stats$.subscribe(e => {
-      this.dataPi = Array.from(e.CategorieAnswers, ([name, value]) => ({ name, value }));
-      this.dataLine = e.CorrectPerDay
+      this.dataPi = Object.keys(e.categorieAnswers)
+          .map(ans => ({name: ans, value: e.categorieAnswers[ans]}));
+      this.initPiChart();
     })
-
-    this.initPiChart();
-    this.initLineChart();
-
   }
 
   onChartInit(event) {
@@ -41,41 +34,6 @@ export class StatsGraphsComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.statsSubscription.unsubscribe();
-  }
-
-  initLineChart(): void {
-    const date = new Date();
-    this.lineOptions = {
-      title: {
-        text: 'Correct Answers per Day',
-        textStyle: {
-          color: '#eeeeee'
-        }
-      },
-      xAxis: {
-        type: 'category',
-        boundaryGap: false,
-        data: this.last5DaysAsStringArr(date)
-      },
-      yAxis: {
-        type: 'value'
-      },
-      series: [{
-        data: this.dataLine,
-        type: 'line',
-        areaStyle: {}
-      }]
-    }
-  }
-
-  last5DaysAsStringArr(date: Date): string[] {
-    const dates = [...Array(5)].map((_, i) => {
-      const d = new Date(date);
-      d.setDate(d.getDate() - i)
-      return d.getDay() + "." + d.getMonth() + ".";
-    })
-
-    return dates;
   }
 
   initPiChart(): void {

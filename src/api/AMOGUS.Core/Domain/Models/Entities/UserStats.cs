@@ -13,20 +13,28 @@ namespace AMOGUS.Core.Domain.Models.Entities {
 
         public ApplicationUser User { get; set; }
 
+        [Range(0, int.MaxValue)]
         public int Level { get; set; } = 0;
 
+        [Range(0, int.MaxValue)]
         public int CurrentStreak { get; set; } = 0;
 
+        [Range(0, int.MaxValue)]
         public int OverallAnswered { get; set; } = 0;
 
+        [Range(0, int.MaxValue)]
         public int CorrectAnswers { get; set; } = 0;
 
+        [Range(0, double.MaxValue)]
         public double TotalTimePlayed { get; set; } = 0;
 
-        public double QuickestAnswer { get; set; } = 0;
+        [Range(0, double.MaxValue)]
+        public double? QuickestAnswer { get; set; }
 
-        public double SlowestAnswer { get; set; } = 0;
+        [Range(0, double.MaxValue)]
+        public double? SlowestAnswer { get; set; }
 
+        [Range(0, int.MaxValue)]
         public int LongestStreak { get; set; } = 0;
     }
 }

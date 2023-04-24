@@ -1,8 +1,8 @@
-﻿
-using AMOGUS.Core.Common.Interfaces.Database;
+﻿using AMOGUS.Core.Common.Interfaces.Database;
 using AMOGUS.Core.Common.Interfaces.Repositories;
 using AMOGUS.Core.Domain.Models.Entities;
 using Microsoft.EntityFrameworkCore;
+using System.Linq.Expressions;
 
 namespace AMOGUS.Infrastructure.Persistence.Repositories {
     internal class GameSessionRepository : IGameSessionRepository {
@@ -22,6 +22,10 @@ namespace AMOGUS.Infrastructure.Persistence.Repositories {
             var sessions = await GetAllByUserIdAsync(userId);
             _context.GameSessions.RemoveRange(sessions);
             return await _context.SaveChangesAsync();
+        }
+
+        public Task<List<GameSession>> GetAllBy(Expression<Func<GameSession, bool>> predicate) {
+            return _context.GameSessions.Where(predicate).ToListAsync();
         }
 
         public Task<List<GameSession>> GetAllByUserIdAsync(string userId) {

@@ -1,9 +1,11 @@
 ﻿using AMOGUS.Core.Common.Communication;
 using AMOGUS.Core.Common.Exceptions;
 using AMOGUS.Core.Common.Interfaces.Database;
+using AMOGUS.Core.Common.Interfaces.Repositories;
 using AMOGUS.Core.Common.Interfaces.Security;
 using AMOGUS.Core.Common.Interfaces.User;
 using AMOGUS.Core.DataTransferObjects.User;
+using AMOGUS.Core.Domain.Models.Entities;
 using AMOGUS.Infrastructure.Identity;
 using Microsoft.AspNetCore.Identity;
 using System.IdentityModel.Tokens.Jwt;
@@ -17,10 +19,13 @@ namespace AMOGUS.Infrastructure.Services.User {
         private readonly IRoleManager _roleManager;
         private readonly IUserManager _userManager;
 
-        public AuthService(IRoleManager _roleManager, IUserManager _userManager, ITokenFactory _tokenFactory) {
+        private readonly IUserStatsRepository _userStatsRepository;
+
+        public AuthService(IRoleManager _roleManager, IUserManager _userManager, ITokenFactory _tokenFactory, IUserStatsRepository userStatsRepository) {
             this._roleManager = _roleManager!;
             this._userManager = _userManager!;
             this._tokenFactory = _tokenFactory!;
+            _userStatsRepository = userStatsRepository!;
         }
 
         public async Task CreateRolesAsync<TRoles>() {
@@ -68,6 +73,10 @@ namespace AMOGUS.Infrastructure.Services.User {
 
             await _userManager.AddToRoleAsync(user, role);
 
+            var res = await CreateNewUserStatsAsync(user);
+            if (res.IsFaulted)
+                return new Exception("Did not finish creating the user", res);
+
             return await LoginUserAsync(new LoginApiModel { Email = registerModel.Email, Password = registerModel.Password });
         }
 
@@ -77,6 +86,15 @@ namespace AMOGUS.Infrastructure.Services.User {
                 UserName = registerModel.UserName,
                 SecurityStamp = Guid.NewGuid().ToString()
             };
+        }
+
+        private async Task<Result<UserStats>> CreateNewUserStatsAsync(ApplicationUser user) {
+            var stats = new UserStats {
+                User = user,
+                UserId = user.Id
+            };
+            var res = await _userStatsRepository.AddUserStatsAsync(stats);
+            return res > 0 ? stats : new UserOperationException("Could not create stats object");
         }
     }
 }

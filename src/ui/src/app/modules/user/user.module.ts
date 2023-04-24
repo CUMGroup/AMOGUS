@@ -10,7 +10,6 @@ import { NgxEchartsModule } from 'ngx-echarts';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { StatsComponent } from './pages/stats/stats.component';
 import { LevelProgressComponent } from './components/level-progress/level-progress.component';
-import { StatsGraphsComponent } from './components/stats-graphs/stats-graphs.component';
 import { StatsTableComponent } from './components/stats-table/stats-table.component';
 import { AnswerDialog, GameViewComponent } from "./pages/game-view/game-view.component";
 import { MatCardModule } from "@angular/material/card";
@@ -28,13 +27,14 @@ import { QuestionViewComponent } from './pages/question-view/question-view.compo
 import {QuestionComponent, QuestionPreviewComponent} from './pages/question/question.component';
 import {MatSnackBarModule} from "@angular/material/snack-bar";
 import { ExerciseComponent } from './pages/exercise/exercise.component';
+import { PieGraphComponent } from './components/stats-graphs/pie-graph/pie-graph.component';
+import { LineGraphComponent } from './components/stats-graphs/line-graph/line-graph.component';
 
 @NgModule({
   declarations: [
     GraphsComponent,
     StatsComponent,
     LevelProgressComponent,
-    StatsGraphsComponent,
     StatsTableComponent,
     GameViewComponent,
     LoginRegisterComponent,
@@ -45,6 +45,8 @@ import { ExerciseComponent } from './pages/exercise/exercise.component';
     QuestionComponent,
     ExerciseComponent,
     QuestionPreviewComponent,
+    PieGraphComponent,
+    LineGraphComponent,
   ],
     imports: [
         CommonModule,

@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, share } from 'rxjs';
 import { UserStats } from 'src/app/core/interfaces/user-stats';
 import { StatsService } from 'src/app/core/services/stats.service';
 
@@ -15,7 +15,7 @@ export class StatsComponent implements OnInit {
   userStats$: Observable<UserStats>;
 
   ngOnInit(): void {
-    this.userStats$ = this.statsService.getUserStats();
+      this.userStats$ = this.statsService.getUserStats().pipe(share());
   }
 
 }
