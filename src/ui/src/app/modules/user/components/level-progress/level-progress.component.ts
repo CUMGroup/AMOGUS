@@ -39,11 +39,11 @@ export class LevelProgressComponent implements OnInit, OnDestroy {
 
 
   xpToLevelConverter(xp: number): number {
-    return Math.floor(Math.sqrt(5 * xp));
+    return Math.floor(Math.sqrt(0.1 * xp));
   }
 
   levelToXpConverter(level: number): number {
-    return Math.ceil(Math.pow(level, 2) / 5);
+    return Math.ceil(Math.pow(level, 2) * 10);
   }
 
 }
