@@ -7,7 +7,6 @@ import { AmongusParallaxComponent } from './components/amongus-parallax/amongus-
 import { TemplateComponent } from './pages/template/template.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { HowToPageComponent } from './pages/how-to-page/how-to-page.component';
-import { AmogusButtonComponent } from './components/amogus-button/amogus-button.component';
 import { LandingComponent } from './pages/landing/landing.component';
 
 
@@ -18,7 +17,6 @@ import { LandingComponent } from './pages/landing/landing.component';
         AmongusParallaxComponent,
         TemplateComponent,
         HowToPageComponent,
-        AmogusButtonComponent,
         LandingComponent,
     ],
     exports: [

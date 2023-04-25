@@ -32,9 +32,7 @@ p {
   padding-left: 30px;
 }
 .text{
-  overflow: hidden;
   width: 400px;
-  white-space: nowrap;
   height: 20px
 }
 

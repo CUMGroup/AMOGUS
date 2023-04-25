@@ -4,6 +4,24 @@
     flex-wrap: wrap;
     justify-content: center;
     width: 100%;
-    margin-top: 5rem;
+    margin-top: 3rem;
     gap: 1.5em;
+}
+
+app-amogus-button {
+    width: 10em;
+    height: 3em;
+    font-size: 2rem;
+}
+
+@media screen and (max-width: 800px) {
+    app-amogus-button {
+        font-size: 1.7rem;
+    }
+}
+
+@media screen and (max-width: 550px) {
+    :host,.landing-container {
+        margin-top: 0;
+    }
 }

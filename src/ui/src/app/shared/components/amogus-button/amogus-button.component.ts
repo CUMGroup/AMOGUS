@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-amogus-button',
@@ -9,9 +9,10 @@ export class AmogusButtonComponent implements OnInit {
 
   constructor() { }
 
-  @Input() link: string;
+  @Input() link?: string;
+
+  @Output() click = new EventEmitter();
 
   ngOnInit(): void {
   }
-
 }

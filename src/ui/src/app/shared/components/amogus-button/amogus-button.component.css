@@ -1,0 +1,25 @@
+.amogus-button{
+    width: 100%;
+    height: 100%;
+    color: #FFF;
+    font-size: inherit;
+    background-color: #4D7AAF;
+    border: solid .1em #FFF;
+    border-radius: 0.5em;
+}
+.amogus-button:hover{
+    background-color: #384094;
+}
+
+
+:host {
+    width: 10em;
+    height: 3em;
+    font-size: 2rem;
+}
+
+@media screen and (max-width: 800px) {
+    :host {
+        font-size: 1.7rem;
+    }
+}

@@ -6,6 +6,7 @@ import { TemplateComponent } from "./modules/home/pages/template/template.compon
 const routes: Routes = [
     {
         path: '', component: TemplateComponent, children: [
+            //{ path: '', redirectTo:'home', pathMatch:'full'},
             { path: '', loadChildren: () => import('./modules/home/home.module').then(e => e.HomeModule) },
             { path: 'user', loadChildren: () => import('./modules/user/user.module').then(e => e.UserModule) }
         ]
