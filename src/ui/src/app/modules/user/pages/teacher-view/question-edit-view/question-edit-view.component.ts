@@ -1,26 +1,25 @@
 import {Component, Inject, Input, OnInit} from '@angular/core';
 import {FormArray, FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
-import {HttpClient} from "@angular/common/http";
-import {TeacherService} from "../../../../core/services/user/teacher.service";
+import {TeacherService} from "../../../../../core/services/user/teacher.service";
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import {MatSnackBar} from "@angular/material/snack-bar";
+import {Constants} from "../../../interfaces/selection";
 
 @Component({
-  selector: 'app-question-view',
-  templateUrl: './question-view.component.html',
-  styleUrls: ['./question-view.component.css']
+  selector: 'app-question-edit-view',
+  templateUrl: './question-edit-view.component.html',
+  styleUrls: ['./question-edit-view.component.css']
 })
-export class QuestionViewComponent implements OnInit {
+export class QuestionEditViewComponent implements OnInit {
 
   @Input() question: FormGroup|undefined;
   newQuestion : FormGroup;
-  difficulties = ["Easy","Medium","Hard"];
-  categories = ["1"];
   constructor(
     private formBuilder:FormBuilder,
     public teacherService:TeacherService,
-    public dialogRef: MatDialogRef<QuestionViewComponent>,
+    public dialogRef: MatDialogRef<QuestionEditViewComponent>,
     public snackBar:MatSnackBar,
+    public constants: Constants,
 
     @Inject(MAT_DIALOG_DATA) public data: FormGroup,
 

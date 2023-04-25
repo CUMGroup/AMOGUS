@@ -6,6 +6,8 @@ import {GameService} from "../../../../core/services/game.service";
 import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from "@angular/material/dialog";
 import {Router} from "@angular/router";
 import {Subject, Subscription, takeUntil, timer} from 'rxjs'
+import {ExerciseComponent} from "../shared/exercise/exercise.component";
+import {QuestionPreviewComponent} from "../shared/question-preview/question-preview.component";
 
 
 @Component({
@@ -47,7 +49,7 @@ export class GameViewComponent implements OnInit,OnDestroy {
     this.currentQuestion = this.gameService.getQuestion();
     if (this.currentQuestion.finished) {
       const dialogRef = this.dialog.open(AnswerDialog, {
-        data: {answers: this.correctAnswers}, panelClass: 'mat-dialog-class'}
+        data: {answers: this.correctAnswers, questions: this.gameService.questions}, panelClass: 'mat-dialog-class'}
       );
 
       dialogRef.afterClosed().pipe(takeUntil(this.componentDestroyed$)).subscribe(() => {
@@ -88,8 +90,18 @@ export class GameViewComponent implements OnInit,OnDestroy {
 export class AnswerDialog {
   constructor(
     public dialogRef: MatDialogRef<AnswerDialog>,
-    @Inject(MAT_DIALOG_DATA) public data: { answers: Array<boolean> },
+    public dialog: MatDialog,
+
+  @Inject(MAT_DIALOG_DATA) public data: { answers: Array<boolean>; questions: Array<question> },
   ) {
+  }
+
+  showQuestion(index:number){
+    this.dialog.open(QuestionPreviewComponent, { data: this.getQuestion(index), width:"40rem", panelClass: 'mat-dialog-class'});
+  }
+
+  getQuestion(index:number): question{
+    return this.data.questions[index]
   }
 
   onNoClick(): void {

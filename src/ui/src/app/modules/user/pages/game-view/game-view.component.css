@@ -8,22 +8,6 @@ app-exercise{
   height: 10rem;
 }
 
-.questions{
-  background: var(--background);
-  color: var(--text);
-  border: solid 3px #c5cad2;
-  margin: 10px;
-  padding: 10px;
-  width: 50%;
-  text-align: center;
-  height: 10rem;
-  font-size: 18px;
-  user-select: none;
-  user-focus: none;
-  min-height: 4rem;
-  border-radius: 10px;
-}
-
 .answers{
   background: var(--background2);
   /*border: solid 2px #c5cad2;*/
@@ -62,7 +46,7 @@ app-exercise{
   background-color: var(--background);
   border: solid #c5cad2;
   border-radius: 10px;
-  margin: auto;
+  margin: auto auto 2rem;
 }
 
 .submit{
@@ -72,31 +56,30 @@ app-exercise{
   flex-wrap: nowrap;
 }
 
-.example-radio-group {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
-  gap: 1rem 0px;
-  grid-template-areas:
-    ". ."
-    ". .";
-  margin: 15px 0;
+.submitButton{
+  max-width: 20rem;
+  min-width: 10rem;
+  width: 20%;
+  height: 5rem;
+  font-size: 2rem;
+  border: solid #c5cad2;
 }
 
-.example-radio-button {
-  margin: 5px;
+.submitButton:hover{
+  background-color: var(--leading-color2);
+}
+
+.resultItem{
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  justify-content: space-between;
+  border: solid var(--text);
+  border-radius: 1rem;
+  margin: 1rem;
+  padding:0.5rem
 }
 
-::ng-deep .mat-radio-container{
-  background: white;
-  border-radius: 10px;
-}
-
-::ng-deep .mat-radio-button .mat-radio-label{
-  width: unset;
+.previewButton{
+  align-self: center;
 }
 
 /*.knife{*/

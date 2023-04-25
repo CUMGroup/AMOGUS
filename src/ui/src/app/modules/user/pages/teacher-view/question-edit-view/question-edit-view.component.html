@@ -3,7 +3,7 @@
   <div class="container">
     <mat-form-field>
       <mat-select placeholder="Category" formControlName="categoryType">
-        <mat-option *ngFor="let category of categories" [value]="category">
+        <mat-option *ngFor="let category of constants.Categories" [value]="category">
           {{ category }}
         </mat-option>
       </mat-select>
@@ -11,7 +11,7 @@
 
     <mat-form-field>
       <mat-select placeholder="Difficulty" formControlName="difficultyType">
-        <mat-option *ngFor="let difficulty of difficulties" [value]="difficulty">
+        <mat-option *ngFor="let difficulty of constants.Difficulties" [value]="difficulty">
           {{ difficulty }}
         </mat-option>
       </mat-select>

@@ -6,7 +6,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 @Component({
   selector: 'app-text-parallax',
   templateUrl: './text-parallax.component.html',
-  styleUrls: ['./text-parallax.component.css']
+  styleUrls: ['./text-parallax.component.scss']
 })
 export class TextParallaxComponent implements OnInit {
   constructor() { }

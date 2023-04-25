@@ -4,6 +4,7 @@
   <ng-container *ngFor="let gameOption of gameOptions">
     <button
       mat-raised-button
+      color="primary"
       class="gameOptionButton"
       (click)="navigate()"
     >{{ gameOption.gameType }}</button>

@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { QuestionViewComponent } from './question-view.component';
+import { QuestionEditViewComponent } from './question-edit-view.component';
 
 describe('QuestionViewComponent', () => {
-  let component: QuestionViewComponent;
-  let fixture: ComponentFixture<QuestionViewComponent>;
+  let component: QuestionEditViewComponent;
+  let fixture: ComponentFixture<QuestionEditViewComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ QuestionViewComponent ]
+      declarations: [ QuestionEditViewComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(QuestionViewComponent);
+    fixture = TestBed.createComponent(QuestionEditViewComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
