@@ -14,7 +14,6 @@ namespace AMOGUS.Infrastructure.Persistence {
         public DbSet<GameSession> GameSessions { get; set; }
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) {
-
         }
 
         protected override void OnModelCreating(ModelBuilder builder) {

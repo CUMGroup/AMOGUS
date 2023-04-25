@@ -2,14 +2,26 @@
 using AMOGUS.Core.Common.Interfaces.Database;
 using AMOGUS.Infrastructure.Identity;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
+using System.Linq.Expressions;
 
 namespace AMOGUS.Infrastructure.Persistence.User {
     internal class UserManagerWrapper : IUserManager {
 
         private readonly UserManager<ApplicationUser> _userManager;
+        private readonly IApplicationDbContext _context;
 
-        public UserManagerWrapper(UserManager<ApplicationUser> userManager) {
+        public UserManagerWrapper(UserManager<ApplicationUser> userManager, IApplicationDbContext context) {
             _userManager = userManager!;
+            _context = context!;
+        }
+
+        public Task<List<ApplicationUser>> GetAllAsync() {
+            return _context.Users.ToListAsync();
+        }
+
+        public Task<List<ApplicationUser>> GetAllByAsync(Expression<Func<ApplicationUser, bool>> predicate) {
+            return _context.Users.Where(predicate).ToListAsync();
         }
 
         public Task<IdentityResult> AddToRoleAsync(ApplicationUser user, string role) {
