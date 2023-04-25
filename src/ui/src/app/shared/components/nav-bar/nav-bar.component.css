@@ -20,6 +20,14 @@
   height: 100%;
 }
 
+.bar :first-child {
+  margin-left: .2em;
+}
+
+.bar :last-child {
+  margin-right: .2em;
+}
+
 .bar div {
   display: flex;
   gap: .5em;
@@ -29,6 +37,7 @@
   background: transparent;
   border: none;
   outline: none;
+  color: var(--text);
 }
 .bar div button span {
   font-size: 20pt;

@@ -51,7 +51,7 @@ export class LoginRegisterComponent implements OnInit, OnDestroy {
         this.access.get("password").value
       )
       .pipe(catchError(e => this.handleError(e)))
-      .subscribe(e => this.navigateToHome())
+      .subscribe(e => this.navigateToHome(false))
     } else {
       this.signSubscription = this.authService.register(
         this.access.get("email").value,
@@ -59,7 +59,7 @@ export class LoginRegisterComponent implements OnInit, OnDestroy {
         this.access.get("password").value
       )
       .pipe(catchError(e => this.handleError(e)))
-      .subscribe(e => this.navigateToHome())
+      .subscribe(e => this.navigateToHome(false))
     }
   }
 
@@ -73,8 +73,11 @@ export class LoginRegisterComponent implements OnInit, OnDestroy {
     return throwError(() => new Error('Something bad happened; please try again later.'));
   }
 
-  navigateToHome() {
-    this.router.navigateByUrl('');
+  navigateToHome(keepState = true) {
+    if(keepState)
+      this.router.navigateByUrl('');
+    else
+      window.location.href = '';
   }
 
 
