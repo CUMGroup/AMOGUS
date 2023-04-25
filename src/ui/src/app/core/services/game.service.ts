@@ -24,7 +24,7 @@ export class GameService {
   questions: question[];
   
   startNewGame(category : CategoryType) : Observable<GameSession> {
-    return this.apiService.post<GameSession>('/game/new', {category: category})
+    return this.apiService.post<GameSession>('/game/new', category)
           .pipe(tap(
             e => {
               this.questions = e.questions.map(
