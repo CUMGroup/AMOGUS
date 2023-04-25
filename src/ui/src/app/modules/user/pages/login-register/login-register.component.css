@@ -48,3 +48,9 @@
 .toggle-link:visited:hover {
   color: var(--leading-color0);
 }
+
+@media screen and (max-width: 600px) {
+  .display {
+    margin-top: 0;
+  }
+}

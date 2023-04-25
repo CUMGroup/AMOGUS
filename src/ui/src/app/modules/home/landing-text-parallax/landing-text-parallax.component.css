@@ -17,7 +17,6 @@ h2+p {
 }
 
 .section {
-    height: 30rem;
     width: 100%;
     padding: 2rem;
     display: flex;
@@ -35,8 +34,12 @@ h2+p {
 }
 
 .text {
-    overflow: hidden;
-    white-space: nowrap;
     font-size: 20px;
     opacity: 0;
+}
+
+@media screen and (max-width: 860px) {
+    .outline > h1 {
+        margin-bottom: 2rem;
+    }
 }
