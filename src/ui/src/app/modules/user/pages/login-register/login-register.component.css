@@ -49,8 +49,35 @@
   color: var(--leading-color0);
 }
 
+
+.error-popup {
+  transition: all ease-in-out 500ms;
+
+  opacity: 0;
+  position: fixed;
+  top: 20rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--color-pink);
+  border-radius: 5px;
+  padding: .2em 1em;
+  max-width: 60%;
+
+  pointer-events: none;
+}
+
+.error-popup .error-description {
+  word-wrap: break-word;
+  word-break: normal;
+}
+
+
 @media screen and (max-width: 600px) {
   .display {
     margin-top: 0;
+  }
+
+  .error-popup {
+    top: 17rem;
   }
 }

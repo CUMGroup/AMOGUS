@@ -1,7 +1,9 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {AuthenticationService} from "../../../../core/services/authentication/authentication.service";
-import {Subscription} from "rxjs";
+import {Subscription, catchError, throwError} from "rxjs";
+import { Router } from '@angular/router';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-login-register',
@@ -17,7 +19,9 @@ export class LoginRegisterComponent implements OnInit, OnDestroy {
   message: string;
   signSubscription: Subscription;
 
-  constructor(public formBuilder: FormBuilder, public authService: AuthenticationService) {
+  @ViewChild('errorPopup') errorPopup! : ElementRef;
+
+  constructor(public formBuilder: FormBuilder, public authService: AuthenticationService, private router : Router) {
   }
 
   ngOnInit(): void {
@@ -31,7 +35,7 @@ export class LoginRegisterComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.signSubscription.unsubscribe()
+    this.signSubscription?.unsubscribe()
   }
 
   login() {
@@ -45,15 +49,34 @@ export class LoginRegisterComponent implements OnInit, OnDestroy {
       this.signSubscription = this.authService.login(
         this.access.get("email").value,
         this.access.get("password").value
-      ).subscribe()
+      )
+      .pipe(catchError(e => this.handleError(e)))
+      .subscribe(e => this.navigateToHome())
     } else {
       this.signSubscription = this.authService.register(
         this.access.get("email").value,
         this.access.get("username").value,
         this.access.get("password").value
-      ).subscribe()
+      )
+      .pipe(catchError(e => this.handleError(e)))
+      .subscribe(e => this.navigateToHome())
     }
   }
+
+  private handleError(error: HttpErrorResponse) {
+    console.log(error)
+    if(error.status === 401 || error.status === 422) {
+      this.errorPopup.nativeElement.style.opacity='100';
+      this.errorPopup.nativeElement.getElementsByClassName('error-description')[0].innerText = error.error.message;
+      setTimeout(() => this.errorPopup.nativeElement.style.opacity='0', 5000);
+    }
+    return throwError(() => new Error('Something bad happened; please try again later.'));
+  }
+
+  navigateToHome() {
+    this.router.navigateByUrl('');
+  }
+
 
   disable() {
     this.registerToggle = !this.registerToggle;
