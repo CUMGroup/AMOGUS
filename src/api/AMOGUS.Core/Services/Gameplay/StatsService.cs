@@ -86,7 +86,7 @@ namespace AMOGUS.Core.Services.Gameplay {
                 );
 
             userStats.OverallAnswered += session.GivenAnswersCount;
-            userStats.TotalTimePlayed += session.Playtime.TotalMilliseconds;
+            userStats.TotalTimePlayed += session.Playtime;
             userStats.User.PlayedToday = true;
             for (int i = 0; i < session.Questions.Count; ++i) {
                 if (answers[i]) {
@@ -94,10 +94,10 @@ namespace AMOGUS.Core.Services.Gameplay {
                     ++userStats.CorrectAnswers;
                 }
             }
-            if (userStats.SlowestAnswer == null || userStats.SlowestAnswer < session.SlowestAnswer.TotalMilliseconds)
-                userStats.SlowestAnswer = session.SlowestAnswer.TotalMilliseconds;
-            if (userStats.QuickestAnswer == null || userStats.QuickestAnswer > session.QuickestAnswer.TotalMilliseconds)
-                userStats.QuickestAnswer = session.QuickestAnswer.TotalMilliseconds;
+            if (userStats.SlowestAnswer == null || userStats.SlowestAnswer < session.SlowestAnswer)
+                userStats.SlowestAnswer = session.SlowestAnswer;
+            if (userStats.QuickestAnswer == null || userStats.QuickestAnswer > session.QuickestAnswer)
+                userStats.QuickestAnswer = session.QuickestAnswer;
 
             return await UpdateUserStatsAsync(userStats);
         }
@@ -106,8 +106,8 @@ namespace AMOGUS.Core.Services.Gameplay {
             var stats = new UserStats() {
                 UserId = user.Id,
                 User = user,
-                QuickestAnswer = session.QuickestAnswer.TotalMilliseconds,
-                SlowestAnswer = session.SlowestAnswer.TotalMilliseconds,
+                QuickestAnswer = session.QuickestAnswer,
+                SlowestAnswer = session.SlowestAnswer,
             };
             await _userStatsRepository.AddUserStatsAsync(stats);
             return stats;

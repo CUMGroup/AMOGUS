@@ -8,6 +8,26 @@ app-exercise{
   height: 10rem;
 }
 
+.loading {
+  border: 0.4em solid var(--background-light);
+  border-top: 0.4em solid var(--red);
+  border-radius: 50%;
+  width: 3em;
+  height: 3em;
+  animation: spin 2s linear infinite;
+  margin: 0 auto;
+}
+
+@keyframes spin {
+  0% {
+      transform: rotate(0deg);
+  }
+
+  100% {
+      transform: rotate(360deg);
+  }
+}
+
 .questions{
   background: var(--background);
   color: var(--text);

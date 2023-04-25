@@ -41,9 +41,6 @@ export class QuestionPreviewComponent{
     @Inject(MAT_DIALOG_DATA) public data:question,
     public formBuilder: FormBuilder,
   ) {
-    this.data.multipleChoiceAnswers = [];
-    this.data.multipleChoiceAnswers.push(this.data.answer)
-    this.data.wrongAnswers.forEach((answer) => this.data.multipleChoiceAnswers.push(answer))
   }
 
   close(){
