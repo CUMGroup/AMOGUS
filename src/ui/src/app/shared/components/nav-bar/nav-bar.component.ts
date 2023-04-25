@@ -15,12 +15,7 @@ export class NavBarComponent implements OnInit {
 
   constructor() {}
 
-  // tl:any = gsap.timeline({defaults:{duration:2}})
-
   ngOnInit(): void {
-    // this.tl
-    //   .to(".item", {width:100, duration:0.3})
-    //   .to(".menu", {left:0, duration:1})
 
     this.menuArray = [
       {
@@ -46,7 +41,6 @@ export class NavBarComponent implements OnInit {
     ]
   }
 
-  //needs work / simply proof of concept
   expand(){
     if(this.expanded){
 
@@ -54,7 +48,6 @@ export class NavBarComponent implements OnInit {
       gsap.to(".middle",  {autoAlpha: 1});
       gsap.to(".lower",  {attr: {d: "M10,8 L2,8"}, x: 0, ease:"InOut"});
 
-      // this.tl.reverse()
 
       gsap.timeline()
         .to(".item", {width:0, duration:0.3})
@@ -67,7 +60,6 @@ export class NavBarComponent implements OnInit {
       gsap.to(".middle",  {autoAlpha: 0});
       gsap.to(".lower",  {attr: {d: "M8,8 L2,2"}, x: 1, ease:"InOut"});
 
-      // this.tl.play()
 
       gsap.timeline()
         .to(".item", {width:100, duration:0.3})

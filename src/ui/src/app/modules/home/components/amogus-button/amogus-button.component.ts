@@ -10,7 +10,6 @@ export class AmogusButtonComponent implements OnInit {
   constructor() { }
 
   @Input() link: string;
-  @Input() text: string;
 
   ngOnInit(): void {
   }
