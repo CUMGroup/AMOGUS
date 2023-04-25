@@ -16,6 +16,8 @@ namespace AMOGUS.Core {
             services.AddTransient<IStatsService, StatsService>();
             services.AddTransient<ITeacherService, TeacherService>();
 
+            services.AddTransient<IStreakService, StreaksService>();
+
             services.AddConfigurations();
 
             return services;
