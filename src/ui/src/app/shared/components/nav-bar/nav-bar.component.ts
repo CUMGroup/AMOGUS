@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Router } from '@angular/router';
 import {gsap} from "gsap";
+import { AuthenticationService } from 'src/app/core/services/authentication/authentication.service';
 
 @Component({
   selector: 'app-nav-bar',
@@ -9,79 +11,16 @@ import {gsap} from "gsap";
 
 export class NavBarComponent implements OnInit {
 
-  expanded = false;
+  isLoggedIn : boolean;
 
-  menuArray: any[];
-
-  constructor() {}
-
-  // tl:any = gsap.timeline({defaults:{duration:2}})
-
+  constructor(private authService : AuthenticationService, private router : Router) {}
+  
   ngOnInit(): void {
-    // this.tl
-    //   .to(".item", {width:100, duration:0.3})
-    //   .to(".menu", {left:0, duration:1})
-
-    this.menuArray = [
-      {
-        text:"Login/Register",
-        path:"/user/login",
-      },
-      {
-        text:"Stats",
-        path:"/user/stats",
-      },
-      {
-        text:"Game",
-        path:"/user/game-selection",
-      },
-      {
-        text:"Create Questions",
-        path:"/user/teacher-view",
-      },
-      {
-        text:"How To Play",
-        path:"/home/how-to",
-      },
-    ]
+    this.isLoggedIn = this.authService.isLoggedIn();
   }
 
-  //needs work / simply proof of concept
-  expand(){
-    if(this.expanded){
-
-      gsap.to(".upper",  {attr: {d: "M10,2 L2,2"}, x: 0, ease:"InOut"});
-      gsap.to(".middle",  {autoAlpha: 1});
-      gsap.to(".lower",  {attr: {d: "M10,8 L2,8"}, x: 0, ease:"InOut"});
-
-      // this.tl.reverse()
-
-      gsap.timeline()
-        .to(".item", {width:0, duration:0.3})
-        .to(".menu", {left:-200, duration:1})
-
-      this.expanded = false;
-    }else{
-
-      gsap.to(".upper",  {attr: {d: "M8,2 L2,8"}, x: 1, ease:"InOut"});
-      gsap.to(".middle",  {autoAlpha: 0});
-      gsap.to(".lower",  {attr: {d: "M8,8 L2,2"}, x: 1, ease:"InOut"});
-
-      // this.tl.play()
-
-      gsap.timeline()
-        .to(".item", {width:100, duration:0.3})
-        .to(".menu", {left:0, duration:1})
-
-      this.expanded = true;
-    }
-  }
-
-  animate(name:string){
-    gsap.to("." + name, {width:200,duration:0.4})
-  }
-
-  reverseAnimation(name:string){
-    gsap.to("." + name, {width:0,duration:0.4})
+  logout() {
+    this.authService.logout();
+    window.location.href = '';
   }
 }

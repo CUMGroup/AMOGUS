@@ -1,78 +1,27 @@
-.parallax {
-    --parallax-height: 15em;
-    height: var(--parallax-height);
-}
-
-.navbarplaceholder {
-    height: 3em;
+:host,
+.landing-container{
     display: flex;
-    align-items: center;
-}
-
-.profilebannerplaceholder {
-    position: absolute;
-    right: 10px;
-    width: 2.5em;
-    height: 2.5em;
-    background-color: var(--background-input);
-    border-radius: 100%;
-}
-
-.profilebannerplaceholder:hover {
-    background-color: var(--accent-text);
-}
-
-.hamburgerplaceholder {
-    margin-left: 10px;
-}
-
-.hamburgerplaceholder,
-.hamburgerplaceholder,
-.hamburgerplaceholder {
-    display: block;
-    background-color: var(--text);
-    position: absolute;
-    height: 4px;
-    width: 30px;
-    border-radius: 2px;
-}
-
-.hamburgerplaceholder::before {
-    content: '';
-    margin-top: -8px;
-    display: block;
-    position: absolute;
-    background-color: var(--text);
-    height: 4px;
-    width: 30px;
-    border-radius: 2px;
-}
-
-.hamburgerplaceholder::after {
-    content: '';
-    position: absolute;
-    margin-top: 8px;
-    display: block;
-    background-color: var(--text);
-    height: 4px;
-    width: 30px;
-    border-radius: 2px;
-}
-
-
-.amogush {
-    font-size: 4em;
-    font-weight: bolder;
-    color: var(--accent-text)
-}
-
-.headertextcontainer {
-    position: absolute;
-    top: 3em;
-    width: 100%;
-    height: var(--parallax-height);
-    pointer-events: none;
-    display: flex;
+    flex-wrap: wrap;
     justify-content: center;
-    align-items: center;
+    width: 100%;
+    margin-top: 3rem;
+    gap: 1.5em;
+}
+
+app-amogus-button {
+    width: 10em;
+    height: 3em;
+    font-size: 2rem;
+}
+
+@media screen and (max-width: 800px) {
+    app-amogus-button {
+        font-size: 1.7rem;
+    }
+}
+
+@media screen and (max-width: 550px) {
+    :host,.landing-container {
+        margin-top: 0;
+    }
 }

@@ -9,8 +9,8 @@ import {TeacherViewComponent} from "./pages/teacher-view/teacher-view.component"
 const routes: Routes = [
   { path: 'stats', component: StatsComponent },
   { path: 'game', component: GameViewComponent },
-  { path: 'game-selection', component: GameSelectionComponent },
   { path: 'login', component: LoginRegisterComponent },
+  { path: 'game-selection', component: GameSelectionComponent },
   { path: 'teacher-view', component: TeacherViewComponent },
 ];
 

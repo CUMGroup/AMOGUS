@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { LandingPageComponent } from './landing-page.component';
+import { AmogusButtonComponent } from './amogus-button.component';
 
-describe('LandingPageComponent', () => {
-  let component: LandingPageComponent;
-  let fixture: ComponentFixture<LandingPageComponent>;
+describe('AmogusButtonComponent', () => {
+  let component: AmogusButtonComponent;
+  let fixture: ComponentFixture<AmogusButtonComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ LandingPageComponent ]
+      declarations: [ AmogusButtonComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(LandingPageComponent);
+    fixture = TestBed.createComponent(AmogusButtonComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

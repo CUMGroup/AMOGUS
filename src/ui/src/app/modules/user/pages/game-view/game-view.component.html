@@ -1,13 +1,18 @@
 <div class="outline">
-  <h1 class="header">{{ questionType }}</h1>
-  <div class="progressBar">
-    <div class="progress">
-<!--      <img class="knife" src="https://png.pngtree.com/png-clipart/20220730/ourmid/pngtree-cartoon-knife-png-image_6093279.png">-->
-    </div>
+  <h1 class="header">{{ getCategoryName() }}</h1>
+  <div class="loading" *ngIf="gameService.loading">
+
   </div>
-  <app-exercise [currentQuestion]="currentQuestion" [selectedAnswer]="selectedAnswer"></app-exercise>
-  <div class="submit">
-    <button mat-raised-button color="primary" (click)="submit()">Submit</button>
+  <div *ngIf="!gameService.loading">
+    <div class="progressBar">
+      <div class="progress">
+  <!--      <img class="knife" src="https://png.pngtree.com/png-clipart/20220730/ourmid/pngtree-cartoon-knife-png-image_6093279.png">-->
+      </div>
+    </div>
+    <app-exercise [currentQuestion]="currentQuestion" [selectedAnswer]="selectedAnswer"></app-exercise>
+    <div class="submit">
+      <button mat-raised-button color="primary" (click)="submit()">Submit</button>
+    </div>
   </div>
 </div>
 

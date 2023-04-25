@@ -2,26 +2,20 @@
   text-align: center;
 }
 
-.selectionContainer{
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  width: 15rem;
-  border: solid #c5cad2;
-  border-radius: 1rem;
-  padding: 0.5rem;
-  display: flex;
+.selectionContainer {
+  display:flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: 1em;
 }
 
-.gameOptionButton{
-  width: 80%;
-  margin: 0.1rem;
-  background: #21252b;
-  border: solid white;
-  color: white;
-  border-radius: 0.5rem;
+app-amogus-button {
+  font-size: 1.7rem;
+}
+
+@media screen and (max-width: 300px) {
+  app-amogus-button {
+      font-size: 1.3rem;
+  }
 }

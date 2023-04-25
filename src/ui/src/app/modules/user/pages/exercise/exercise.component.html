@@ -6,7 +6,7 @@
       aria-labelledby="example-radio-group-label"
       class="example-radio-group"
       [formControl]="selectedAnswer">
-      <mat-radio-button class="example-radio-button" *ngFor="let answer of currentQuestion.multipleChoiceAnswers" [value]="answer">
+      <mat-radio-button class="example-radio-button" *ngFor="let answer of currentQuestion.getMultipleChoiceAnswers()" [value]="answer">
         {{answer}}
       </mat-radio-button>
     </mat-radio-group>

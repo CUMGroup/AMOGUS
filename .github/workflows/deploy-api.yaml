@@ -49,5 +49,6 @@ jobs:
     steps:
       - name: Deploy docker container webhook
         uses: joelwmale/webhook-action@master
-        env:
-          WEBHOOK_URL: ${{ secrets.DEPLOY_WEBHOOK_URL_API }}
+        with:
+          url: ${{ secrets.DEPLOY_WEBHOOK_URL_API }}
+          headers: ${{ secrets.DEPLOY_WEBHOOK_HEADER_API }}

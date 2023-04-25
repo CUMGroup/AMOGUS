@@ -1,9 +1,14 @@
 ﻿
 using AMOGUS.Infrastructure.Identity;
 using Microsoft.AspNetCore.Identity;
+using System.Linq.Expressions;
 
 namespace AMOGUS.Core.Common.Interfaces.Database {
     public interface IUserManager {
+
+        Task<List<ApplicationUser>> GetAllAsync();
+
+        Task<List<ApplicationUser>> GetAllByAsync(Expression<Func<ApplicationUser, bool>> predicate);
 
         Task<IdentityResult> CreateAsync(ApplicationUser user, string password);
 

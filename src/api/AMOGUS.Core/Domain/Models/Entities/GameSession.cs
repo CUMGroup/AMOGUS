@@ -14,37 +14,24 @@ namespace AMOGUS.Core.Domain.Models.Entities {
 
         public ApplicationUser User { get; set; }
 
-        public TimeSpan Playtime { get; set; }
+        public double Playtime { get; set; }
 
         public int CorrectAnswersCount { get; set; }
 
         public int GivenAnswersCount { get; set; }
 
-        public TimeSpan AverageTimePerQuestion { get; set; }
+        public double AverageTimePerQuestion { get; set; }
 
-        public TimeSpan QuickestAnswer { get; set; }
+        public double QuickestAnswer { get; set; }
 
-        public TimeSpan SlowestAnswer { get; set; }
+        public double SlowestAnswer { get; set; }
 
         public CategoryType Category { get; set; }
 
         public DateTime PlayedAt { get; set; }
 
         [NotMapped]
-        public List<Question> Questions = new();
+        public List<Question> Questions { get; set; } = new();
 
-        [NotMapped]
-        public double QuickestAnswerInMillis {
-            get {
-                return QuickestAnswer.TotalMilliseconds;
-            }
-        }
-
-        [NotMapped]
-        public double SlowestAnswerInSeconds {
-            get {
-                return SlowestAnswer.TotalSeconds;
-            }
-        }
     }
 }

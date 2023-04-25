@@ -29,6 +29,7 @@ import {MatSnackBarModule} from "@angular/material/snack-bar";
 import { ExerciseComponent } from './pages/exercise/exercise.component';
 import { PieGraphComponent } from './components/stats-graphs/pie-graph/pie-graph.component';
 import { LineGraphComponent } from './components/stats-graphs/line-graph/line-graph.component';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -69,6 +70,7 @@ import { LineGraphComponent } from './components/stats-graphs/line-graph/line-gr
         MatRadioModule,
         MatSelectModule,
         MatSnackBarModule,
+        SharedModule
     ]
 })
 export class UserModule { }
