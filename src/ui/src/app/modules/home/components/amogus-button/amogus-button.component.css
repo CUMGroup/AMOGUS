@@ -1,0 +1,12 @@
+.amogus-button{
+    width: 10em;
+    height: 3em;
+    color: #FFF;
+    font-size: 2em;
+    background-color: #4D7AAF;
+    border: solid .1em #FFF;
+    border-radius: 0.5em;
+}
+.amogus-button:hover{
+    background-color: #384094;
+}
