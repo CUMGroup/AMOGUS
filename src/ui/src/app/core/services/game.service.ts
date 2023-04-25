@@ -17,8 +17,6 @@ export class GameService {
 
   session : GameSession;
   constructor(private apiService : ApiService) { 
-
-    console.log("gameservice created")
   }
   
   questions: question[];
@@ -44,12 +42,9 @@ export class GameService {
   }
 
   getQuestion() : question{
-    console.log("questions",this.questions[this.currentQuestion-1]);
-    console.log("session",this.session.questions[this.currentQuestion-1]);
     if(this.loading)
       return null;
     if(this.currentQuestion >= this.questions.length){
-      console.log("Finished question");
       return question.finished();
     }else{
       return this.questions[this.currentQuestion++];

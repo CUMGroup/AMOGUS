@@ -63,7 +63,6 @@ export class GameViewComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   newQuestion() {
-    console.log("newQuestion");
     this.currentQuestion = this.gameService.getQuestion();
     if (this.currentQuestion.finished) {
       const dialogRef = this.dialog.open(AnswerDialog, {
@@ -106,7 +105,6 @@ export class GameViewComponent implements OnInit, AfterViewInit, OnDestroy {
       session.givenAnswersCount++;
     }
     const questionTime = new Date().getTime() - this.currentQuestionTimeStart;
-    console.log(questionTime);
     session.averageTimePerQuestion += (questionTime - session.averageTimePerQuestion) / Math.max(this.questionIndex, 1);
     if(questionTime < session.quickestAnswer) {
       session.quickestAnswer = questionTime;
@@ -114,8 +112,6 @@ export class GameViewComponent implements OnInit, AfterViewInit, OnDestroy {
     if(questionTime > session.slowestAnswer) {
       session.slowestAnswer = questionTime;
     }
-    console.log(session);
-    console.log(this.gameService.getSession())
     this.currentQuestion.answer = this.selectedAnswer.value;
     this.newQuestion();
     this.animate();
