@@ -16,8 +16,8 @@ namespace AMOGUS.Api.BackgroundWorker {
         }
 
         protected override async Task ExecuteAsync(CancellationToken stoppingToken) {
-        
-            while(!stoppingToken.IsCancellationRequested) {
+
+            while (!stoppingToken.IsCancellationRequested) {
                 var millis = GetMillisecondsToMidnight();
                 await Task.Delay(millis, stoppingToken);
 

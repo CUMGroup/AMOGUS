@@ -2,7 +2,6 @@
 using AMOGUS.Core.Common.Interfaces.Database;
 using AMOGUS.Core.Common.Interfaces.Game;
 using AMOGUS.Core.Domain.Models.Entities;
-using Microsoft.EntityFrameworkCore.Update.Internal;
 
 namespace AMOGUS.Core.Services.Gameplay {
     internal class StreaksService : IStreakService {
@@ -23,7 +22,7 @@ namespace AMOGUS.Core.Services.Gameplay {
         public async Task UpdateAllStreaksAsync() {
             var allUsers = await _userManager.GetAllAsync();
 
-            foreach(var user in allUsers) {
+            foreach (var user in allUsers) {
                 var statsResult = await _statsService.GetUserStatsAsync(user.Id);
                 if (statsResult.IsFaulted)
                     continue;
