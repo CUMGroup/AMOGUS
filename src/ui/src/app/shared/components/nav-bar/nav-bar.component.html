@@ -4,7 +4,11 @@
     <path d="M2,5 L10,5" class="middle" style="fill: none;stroke: #c5cad2;stroke-linecap: round;" />
     <path d="M10,8 L2,8" class="lower" style="fill: none;stroke: #c5cad2;stroke-linecap: round;" />
   </svg>
-  <a href=""><img class="home" src="assets/well.png" alt="well"></a>
+  <div>
+    <button routerLink="/user/teacher-view"><span class="fa-solid fa-pen"></span></button>
+    <button routerLink="/user/stats"><span class="fa-solid fa-bar-chart"></span></button>
+    <a routerLink=""><img class="home" src="assets/well.png" alt="well"></a>
+  </div>
 </div>
 <div class="menu">
   <div class="item" *ngFor="let item of menuArray; let i = index">

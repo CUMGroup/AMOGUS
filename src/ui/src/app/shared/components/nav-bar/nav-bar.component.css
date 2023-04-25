@@ -20,6 +20,21 @@
   height: 100%;
 }
 
+.bar div {
+  display: flex;
+  gap: .5em;
+}
+.bar div button {
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  outline: none;
+}
+.bar div button span {
+  font-size: 20pt;
+  color: var(--border)
+}
+
 .menu{
   display: flex;
   flex-direction: column;
