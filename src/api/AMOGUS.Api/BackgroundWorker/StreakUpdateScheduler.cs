@@ -4,14 +4,13 @@ using AMOGUS.Core.Common.Interfaces.Game;
 namespace AMOGUS.Api.BackgroundWorker {
     public class StreakUpdateScheduler : BackgroundService {
 
-        private readonly IStreakService _streakService;
+        private readonly IServiceScopeFactory _serviceScopeFactory;
         private readonly IDateTime _dateTime;
-
         private readonly ILogger<StreakUpdateScheduler> _logger;
 
-        public StreakUpdateScheduler(IStreakService streakService, IDateTime dateTime, ILogger<StreakUpdateScheduler> logger) {
-            _streakService = streakService!;
+        public StreakUpdateScheduler(IDateTime dateTime, IServiceScopeFactory serviceScopeFactory, ILogger<StreakUpdateScheduler> logger) {
             _dateTime = dateTime!;
+            _serviceScopeFactory = serviceScopeFactory!;
             _logger = logger!;
         }
 
@@ -21,10 +20,18 @@ namespace AMOGUS.Api.BackgroundWorker {
                 var millis = GetMillisecondsToMidnight();
                 await Task.Delay(millis, stoppingToken);
 
+                await UpdateStreaksAsync();
+            }
+        }
+
+        private async Task UpdateStreaksAsync() {
+            using (var scope = _serviceScopeFactory.CreateScope()) {
+                var streakService = scope.ServiceProvider.GetRequiredService<IStreakService>();
+
                 if (_logger.IsEnabled(LogLevel.Information)) {
                     _logger.LogInformation("Updating Streak for all users");
                 }
-                await _streakService.UpdateAllStreaksAsync();
+                await streakService.UpdateAllStreaksAsync();
             }
         }
 
