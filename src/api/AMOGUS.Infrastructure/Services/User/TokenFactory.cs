@@ -3,10 +3,12 @@ using AMOGUS.Core.Common.Interfaces.Security;
 using AMOGUS.Infrastructure.Identity;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
+using System.Runtime.CompilerServices;
 using System.Security.Claims;
 using System.Security.Cryptography;
 using System.Text;
 
+[assembly: InternalsVisibleTo("AMOGUS.UnitTests")]
 namespace AMOGUS.Infrastructure.Services.User {
     internal class TokenFactory : ITokenFactory {
 
@@ -48,7 +50,7 @@ namespace AMOGUS.Infrastructure.Services.User {
             };
 
             foreach (var userRole in userRoles) {
-                authClaims.Add(new Claim(ClaimTypes.Role, userRole));
+                authClaims.Add(new Claim("role", userRole));
             }
 
             return authClaims;

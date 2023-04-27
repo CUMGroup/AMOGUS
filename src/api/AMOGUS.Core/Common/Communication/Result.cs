@@ -9,7 +9,7 @@ namespace AMOGUS.Core.Common.Communication {
 
         internal readonly ResultState State;
         public readonly A Value;
-        readonly Exception? exception;
+        public readonly Exception? exception;
 
         public Result(A value) {
             State = ResultState.Success;

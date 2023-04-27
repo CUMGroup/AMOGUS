@@ -5,7 +5,9 @@ using AMOGUS.Core.Common.Interfaces.Repositories;
 using AMOGUS.Core.Common.Interfaces.User;
 using AMOGUS.Infrastructure.Identity;
 using Microsoft.AspNetCore.Identity;
+using System.Runtime.CompilerServices;
 
+[assembly: InternalsVisibleTo("AMOGUS.UnitTests")]
 namespace AMOGUS.Infrastructure.Services.User {
     internal class UserService : IUserService {
         private readonly IUserManager _userManager;

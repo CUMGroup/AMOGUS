@@ -3,7 +3,9 @@ using AMOGUS.Core.Domain.Enums;
 using AMOGUS.Core.Domain.Models.Entities;
 using AMOGUS.Core.Factories;
 using AngouriMath;
+using System.Runtime.CompilerServices;
 
+[assembly: InternalsVisibleTo("AMOGUS.UnitTests")]
 namespace AMOGUS.Core.Services.Gameplay {
     internal class ExerciseService : IExerciseService {
 

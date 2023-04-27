@@ -4,7 +4,9 @@ using AMOGUS.Core.Common.Interfaces.Game;
 using AMOGUS.Core.Common.Interfaces.Security;
 using AMOGUS.Core.Common.Interfaces.Teacher;
 using AMOGUS.Core.Domain.Models.Entities;
+using System.Runtime.CompilerServices;
 
+[assembly: InternalsVisibleTo("AMOGUS.UnitTests")]
 namespace AMOGUS.Core.Services.Teacher {
     internal class TeacherService : ITeacherService {
 
