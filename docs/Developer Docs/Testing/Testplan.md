@@ -24,9 +24,9 @@ Every Endpoint had been testet via Swagger.
 
 ### Unit testing
 
-- [xUnit]([GitHub - xunit/xunit: xUnit.net is a free, open source, community-focused unit testing tool for .NET.](https://github.com/xunit/xunit "https://github.com/xunit/xunit")): Unit test framework
+- [xUnit](https://github.com/xunit/xunit): Unit test framework
 
-- [Moq]([GitHub - moq/moq4: Repo for managing Moq 4.x](https://github.com/moq/moq4 "https://github.com/moq/moq4")): Mock framework to mock services
+- [Moq](https://github.com/moq/moq4): Mock framework to mock services
 
 ### API testing
 
