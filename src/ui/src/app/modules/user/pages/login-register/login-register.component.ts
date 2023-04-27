@@ -45,7 +45,7 @@ export class LoginRegisterComponent implements OnInit, OnDestroy {
     } else {
       this.message = "";
     }
-    if (this.access.get("login").value) {
+    if (!this.registerToggle) {
       this.signSubscription = this.authService.login(
         this.access.get("email").value,
         this.access.get("password").value
