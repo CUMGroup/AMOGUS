@@ -34,7 +34,7 @@ Every Endpoint had been testet via Swagger.
 
 ### Beta tests
 
-- [Humans]([Human - Wikipedia](https://en.wikipedia.org/wiki/Human)): Some random dudes who will test the application e. g. [Luca Hackl](https://luca.hackl.digital/)
+- [Humans](https://en.wikipedia.org/wiki/Human): Some random dudes who will test the application e. g. [Luca Hackl](https://luca.hackl.digital/)
 
 - Test server
 
