@@ -21,18 +21,19 @@ namespace AMOGUS.Core.Services.Gameplay {
             _exercisePath = _questionRepoConfiguration.ExercisePath;
 
             if (_questions is null) {
-                ReloadQuestionsAsync().Wait();
+                ReloadQuestions();
             }
         }
 
-        public async Task ReloadQuestionsAsync() {
+        public void ReloadQuestions() {
             _questions = new();
 
             List<string> files = Directory.GetFiles(_exercisePath)
                 .Where(e => Path.GetExtension(e).Equals(_exerciseExtension))
                 .ToList();
             foreach (var f in files) {
-                _questions.AddRange(JsonConvert.DeserializeObject<List<Question>>(await File.ReadAllTextAsync(f))!);
+                var convertedQuestions = JsonConvert.DeserializeObject<List<Question>>(File.ReadAllText(f));
+                _questions.AddRange(convertedQuestions!);
             }
         }
 
