@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<coverage version="1.0" date="2023-04-28_16-07-34" tag="">
+  <assembly name="AMOGUS.Core">
+    <class name="AMOGUS.Core.Common.Communication.Result" coveredlines="12" coverablelines="61" totallines="226" coveredbranches="1" totalbranches="54" coveredcodeelements="6" totalcodeelements="24" />
+    <class name="AMOGUS.Core.Common.Communication.Result`1" coveredlines="17" coverablelines="70" totallines="226" coveredbranches="3" totalbranches="72" coveredcodeelements="9" totalcodeelements="29" />
+    <class name="AMOGUS.Core.Common.Exceptions.AuthFailureException" coveredlines="2" coverablelines="8" totallines="17" coveredbranches="0" totalbranches="0" coveredcodeelements="1" totalcodeelements="4" />
+    <class name="AMOGUS.Core.Common.Exceptions.RecordNotFoundException" coveredlines="1" coverablelines="1" totallines="7" coveredbranches="0" totalbranches="0" coveredcodeelements="1" totalcodeelements="1" />
+    <class name="AMOGUS.Core.Common.Exceptions.UserOperationException" coveredlines="2" coverablelines="8" totallines="18" coveredbranches="0" totalbranches="0" coveredcodeelements="1" totalcodeelements="4" />
+    <class name="AMOGUS.Core.Common.Interfaces.Configuration.JwtConfiguration" coveredlines="0" coverablelines="6" totallines="26" coveredbranches="0" totalbranches="0" coveredcodeelements="0" totalcodeelements="4" />
+    <class name="AMOGUS.Core.Common.Interfaces.Configuration.QuestionRepoConfiguration" coveredlines="0" coverablelines="4" totallines="21" coveredbranches="0" totalbranches="0" coveredcodeelements="0" totalcodeelements="2" />
+    <class name="AMOGUS.Core.DataTransferObjects.User.LoginApiModel" coveredlines="2" coverablelines="2" totallines="8" coveredbranches="0" totalbranches="0" coveredcodeelements="2" totalcodeelements="2" />
+    <class name="AMOGUS.Core.DataTransferObjects.User.LoginResultApiModel" coveredlines="10" coverablelines="10" totallines="19" coveredbranches="0" totalbranches="0" coveredcodeelements="5" totalcodeelements="5" />
+    <class name="AMOGUS.Core.DataTransferObjects.User.RegisterApiModel" coveredlines="3" coverablelines="3" totallines="10" coveredbranches="0" totalbranches="0" coveredcodeelements="3" totalcodeelements="3" />
+    <class name="AMOGUS.Core.DataTransferObjects.User.UserApiModel" coveredlines="0" coverablelines="18" totallines="31" coveredbranches="0" totalbranches="0" coveredcodeelements="0" totalcodeelements="6" />
+    <class name="AMOGUS.Core.DataTransferObjects.User.UserStatsApiModel" coveredlines="0" coverablelines="24" totallines="56" coveredbranches="0" totalbranches="0" coveredcodeelements="0" totalcodeelements="12" />
+    <class name="AMOGUS.Core.DependencyInjection" coveredlines="0" coverablelines="15" totallines="33" coveredbranches="0" totalbranches="0" coveredcodeelements="0" totalcodeelements="2" />
+    <class name="AMOGUS.Core.Domain.Models.Entities.GameSession" coveredlines="0" coverablelines="12" totallines="37" coveredbranches="0" totalbranches="0" coveredcodeelements="0" totalcodeelements="12" />
+    <class name="AMOGUS.Core.Domain.Models.Entities.Question" coveredlines="0" coverablelines="8" totallines="21" coveredbranches="0" totalbranches="0" coveredcodeelements="0" totalcodeelements="8" />
+    <class name="AMOGUS.Core.Domain.Models.Entities.UserMedal" coveredlines="0" coverablelines="8" totallines="34" coveredbranches="0" totalbranches="0" coveredcodeelements="0" totalcodeelements="6" />
+    <class name="AMOGUS.Core.Domain.Models.Entities.UserStats" coveredlines="8" coverablelines="10" totallines="40" coveredbranches="0" totalbranches="0" coveredcodeelements="8" totalcodeelements="10" />
+    <class name="AMOGUS.Core.Factories.MentalExerciseFactory" coveredlines="0" coverablelines="37" totallines="49" coveredbranches="0" totalbranches="18" coveredcodeelements="0" totalcodeelements="2" />
+    <class name="AMOGUS.Core.Services.Gameplay.ExerciseService" coveredlines="0" coverablelines="40" totallines="63" coveredbranches="0" totalbranches="8" coveredcodeelements="0" totalcodeelements="4" />
+    <class name="AMOGUS.Core.Services.Gameplay.GameService" coveredlines="0" coverablelines="38" totallines="70" coveredbranches="0" totalbranches="4" coveredcodeelements="0" totalcodeelements="5" />
+    <class name="AMOGUS.Core.Services.Gameplay.QuestionFileAccessor" coveredlines="0" coverablelines="45" totallines="76" coveredbranches="0" totalbranches="6" coveredcodeelements="0" totalcodeelements="9" />
+    <class name="AMOGUS.Core.Services.Gameplay.StatsService" coveredlines="0" coverablelines="89" totallines="128" coveredbranches="0" totalbranches="22" coveredcodeelements="0" totalcodeelements="9" />
+    <class name="AMOGUS.Core.Services.Gameplay.StreaksService" coveredlines="0" coverablelines="31" totallines="52" coveredbranches="0" totalbranches="10" coveredcodeelements="0" totalcodeelements="4" />
+    <class name="AMOGUS.Core.Services.Teacher.TeacherService" coveredlines="0" coverablelines="39" totallines="66" coveredbranches="0" totalbranches="4" coveredcodeelements="0" totalcodeelements="5" />
+    <class name="AMOGUS.Infrastructure.Identity.ApplicationUser" coveredlines="0" coverablelines="1" totallines="7" coveredbranches="0" totalbranches="0" coveredcodeelements="0" totalcodeelements="1" />
+  </assembly>
+  <assembly name="AMOGUS.Infrastructure">
+    <class name="AMOGUS.Infrastructure.DependencyInjection" coveredlines="0" coverablelines="58" totallines="94" coveredbranches="0" totalbranches="2" coveredcodeelements="0" totalcodeelements="5" />
+    <class name="AMOGUS.Infrastructure.Persistence.ApplicationDbContext" coveredlines="0" coverablelines="21" totallines="41" coveredbranches="0" totalbranches="0" coveredcodeelements="0" totalcodeelements="9" />
+    <class name="AMOGUS.Infrastructure.Persistence.Repositories.GameSessionRepository" coveredlines="0" coverablelines="18" totallines="35" coveredbranches="0" totalbranches="0" coveredcodeelements="0" totalcodeelements="5" />
+    <class name="AMOGUS.Infrastructure.Persistence.Repositories.UserMedalRepository" coveredlines="0" coverablelines="11" totallines="25" coveredbranches="0" totalbranches="0" coveredcodeelements="0" totalcodeelements="3" />
+    <class name="AMOGUS.Infrastructure.Persistence.Repositories.UserStatsRepository" coveredlines="0" coverablelines="24" totallines="43" coveredbranches="0" totalbranches="2" coveredcodeelements="0" totalcodeelements="6" />
+    <class name="AMOGUS.Infrastructure.Persistence.User.RoleManagerWrapper" coveredlines="0" coverablelines="9" totallines="22" coveredbranches="0" totalbranches="0" coveredcodeelements="0" totalcodeelements="3" />
+    <class name="AMOGUS.Infrastructure.Persistence.User.UserManagerWrapper" coveredlines="0" coverablelines="40" totallines="67" coveredbranches="0" totalbranches="0" coveredcodeelements="0" totalcodeelements="13" />
+    <class name="AMOGUS.Infrastructure.Services.Date.DateTimeWrapper" coveredlines="0" coverablelines="1" totallines="7" coveredbranches="0" totalbranches="0" coveredcodeelements="0" totalcodeelements="1" />
+    <class name="AMOGUS.Infrastructure.Services.User.AuthService" coveredlines="54" coverablelines="57" totallines="102" coveredbranches="23" totalbranches="32" coveredcodeelements="6" totalcodeelements="6" />
+    <class name="AMOGUS.Infrastructure.Services.User.TokenFactory" coveredlines="0" coverablelines="33" totallines="59" coveredbranches="0" totalbranches="2" coveredcodeelements="0" totalcodeelements="5" />
+    <class name="AMOGUS.Infrastructure.Services.User.UserService" coveredlines="36" coverablelines="40" totallines="73" coveredbranches="7" totalbranches="8" coveredcodeelements="5" totalcodeelements="5" />
+  </assembly>
+  <assembly name="AMOGUS.Validation" />
+</coverage>
