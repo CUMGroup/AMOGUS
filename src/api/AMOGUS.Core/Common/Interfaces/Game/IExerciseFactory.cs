@@ -1,11 +1,14 @@
 ﻿
 
+using AMOGUS.Core.Domain.Models.Entities;
 using AMOGUS.Core.Domain.Models.Generators;
 
 namespace AMOGUS.Core.Common.Interfaces.Game {
     public interface IExerciseFactory {
 
-        MentalExerciseModel GenerateRandomExerciseString(bool insaneMode = false);
+        Question GenerateRandomQuestion(bool insaneMode);
+
+        MentalExerciseModel GenerateRandomExerciseModel(bool insaneMode);
 
         string CalcAnswer(string question);
 

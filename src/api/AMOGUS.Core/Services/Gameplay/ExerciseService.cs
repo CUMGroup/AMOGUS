@@ -35,25 +35,11 @@ namespace AMOGUS.Core.Services.Gameplay {
         }
 
 
-        public List<Question> GenerateRandomMentalExercises(int amount) {
+        public List<Question> GenerateRandomMentalExercises(int amount, bool insaneMode) {
             var factory = new MentalExerciseFactory();
             var questions = new List<Question>();
             for (int i = 0; i < amount; ++i) {
-                var questString = factory.GenerateRandomExerciseString();
-                var answString = factory.CalcAnswer(questString);
-                if (String.IsNullOrWhiteSpace(answString)) {
-                    --i;
-                    continue;
-                }
-                questions.Add(new Question {
-                    Category = CategoryType.MENTAL,
-                    QuestionId = Guid.NewGuid().ToString(),
-                    Exercise = questString,
-                    Answer = answString,
-                    Difficulty = DifficultyType.EASY,
-                    ExperiencePoints = 5,
-                    Help = string.Empty
-                });
+                questions.Add(factory.GenerateRandomQuestion(insaneMode));
             }
             return questions;
         }

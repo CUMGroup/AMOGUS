@@ -1,4 +1,6 @@
 ﻿using AMOGUS.Core.Common.Interfaces.Game;
+using AMOGUS.Core.Domain.Enums;
+using AMOGUS.Core.Domain.Models.Entities;
 using AMOGUS.Core.Domain.Models.Generators;
 using AngouriMath;
 using AngouriMath.Core.Exceptions;
@@ -15,12 +17,59 @@ namespace AMOGUS.Core.Factories {
         private const int sumMaxXp = numOperandsMaxXp + avgOperandsMaxXp + avgOperatorsMaxXp + answerMaxXp;
 
 
+        public Question GenerateRandomQuestion(bool insaneMode) {
+
+            int tryCount = 0;
+            while (tryCount++ < 10) {
+
+                var expr = GenerateRandomExerciseModel(insaneMode);
+                var ansString = CalcAnswer(expr.Expression);
+                
+                if(String.IsNullOrWhiteSpace(ansString))
+                    continue;
+
+                bool succ = !int.TryParse(ansString, out int ans);
+                if (!succ)
+                    continue;
+                
+                expr.Answer = ans;
+
+                try {
+                    expr = CalcXp(expr);
+                    if (expr.Difficulty == null)
+                        continue;
+                    if (expr.Xp == null)
+                        continue;
+                    return new Question {
+                        Answer = ans.ToString(),
+                        Category = CategoryType.MENTAL,
+                        Difficulty = (DifficultyType) expr.Difficulty!,
+                        Exercise = expr.Expression,
+                        ExperiencePoints = (int) expr.Xp!,
+                        QuestionId = "random"
+                    };
+                }
+                catch (ArgumentException) {
+                    continue;
+                }
+            }
+            // Should be pretty much unreachable
+            return new Question {
+                Answer = "37",
+                Category = CategoryType.MENTAL,
+                Difficulty = DifficultyType.EASY,
+                Exercise = "30 + 7",
+                ExperiencePoints = 4,
+                QuestionId = "random"
+            };
+        }
+
         public string CalcAnswer(string question) {
             if (question is null)
                 return string.Empty;
             Entity expr = question;
             try {
-                if (question.Contains("x")) {
+                if (question.Contains('x')) {
                     var set = expr.Solve("x");
                     if (set is Entity.Set.FiniteSet finiteset)
                         expr = finiteset.First();
@@ -33,7 +82,7 @@ namespace AMOGUS.Core.Factories {
             }
         }
 
-        public MentalExerciseModel GenerateRandomExerciseString(bool insaneMode = false) {
+        public MentalExerciseModel GenerateRandomExerciseModel(bool insaneMode = false) {
             var numOperands = insaneMode ?
         GenerateIntWithFallingProbability(3, 7)
         : GenerateIntWithFallingProbability(2, 5);
@@ -95,12 +144,12 @@ namespace AMOGUS.Core.Factories {
             double avgOperatorsNormalized = Median(expr.Operators) / 2;
             double answerNormalized = Math.Abs((int) expr.Answer) / 10_000d;
 
-            expr.Xp = (int) (((numOperandsMaxXp * numOperandsNormalized
+            expr.Xp = Math.Max( (int) (((numOperandsMaxXp * numOperandsNormalized
                 + avgOperandsMaxXp * avgOperandsNormalized
                 + avgOperatorsMaxXp * avgOperatorsNormalized
-                + answerMaxXp * answerNormalized) / (double) Math.Max((amountMod5 - (expr.Operands.Length - amountMod5 + 1)), 1)) / (double) amountMod10);
+                + answerMaxXp * answerNormalized) / (double) Math.Max((amountMod5 - (expr.Operands.Length - amountMod5 + 1)), 1)) / (double) amountMod10) , 0 );
 
-            expr.Difficulty = (int) Math.Round(-Math.Exp((-4d / sumMaxXp) * (int) expr.Xp + 1.4) + 4);
+            expr.Difficulty = Math.Max( Math.Min( (int) Math.Round(-Math.Exp((-4d / sumMaxXp) * (int) expr.Xp + 1.4) + 4) , 4) , 0);
 
             return expr;
         }
@@ -138,5 +187,7 @@ namespace AMOGUS.Core.Factories {
                 return arr[(int) mid];
             return (arr[(int) mid] + arr[Math.Min((int) mid + 1, arr.Length - 1)]) / 2d;
         }
+
+        
     }
 }
