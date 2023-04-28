@@ -24,14 +24,14 @@ namespace AMOGUS.Core.Factories {
 
                 var expr = GenerateRandomExerciseModel(insaneMode);
                 var ansString = CalcAnswer(expr.Expression);
-                
-                if(String.IsNullOrWhiteSpace(ansString))
+
+                if (String.IsNullOrWhiteSpace(ansString))
                     continue;
 
                 bool succ = !int.TryParse(ansString, out int ans);
                 if (!succ)
                     continue;
-                
+
                 expr.Answer = ans;
 
                 try {
@@ -144,12 +144,12 @@ namespace AMOGUS.Core.Factories {
             double avgOperatorsNormalized = Median(expr.Operators) / 2;
             double answerNormalized = Math.Abs((int) expr.Answer) / 10_000d;
 
-            expr.Xp = Math.Max( (int) (((numOperandsMaxXp * numOperandsNormalized
+            expr.Xp = Math.Max((int) (((numOperandsMaxXp * numOperandsNormalized
                 + avgOperandsMaxXp * avgOperandsNormalized
                 + avgOperatorsMaxXp * avgOperatorsNormalized
-                + answerMaxXp * answerNormalized) / (double) Math.Max((amountMod5 - (expr.Operands.Length - amountMod5 + 1)), 1)) / (double) amountMod10) , 0 );
+                + answerMaxXp * answerNormalized) / (double) Math.Max((amountMod5 - (expr.Operands.Length - amountMod5 + 1)), 1)) / (double) amountMod10), 0);
 
-            expr.Difficulty = Math.Max( Math.Min( (int) Math.Round(-Math.Exp((-4d / sumMaxXp) * (int) expr.Xp + 1.4) + 4) , 4) , 0);
+            expr.Difficulty = Math.Max(Math.Min((int) Math.Round(-Math.Exp((-4d / sumMaxXp) * (int) expr.Xp + 1.4) + 4), 4), 0);
 
             return expr;
         }
@@ -188,6 +188,6 @@ namespace AMOGUS.Core.Factories {
             return (arr[(int) mid] + arr[Math.Min((int) mid + 1, arr.Length - 1)]) / 2d;
         }
 
-        
+
     }
 }

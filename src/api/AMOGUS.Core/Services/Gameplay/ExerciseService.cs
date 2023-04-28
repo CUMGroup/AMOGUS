@@ -10,11 +10,11 @@ namespace AMOGUS.Core.Services.Gameplay {
         private readonly IQuestionFileAccessor _questionFileAccessor;
 
         private IExerciseFactory? _exerciseFactory;
-        public IExerciseFactory ExerciseFactory { 
+        public IExerciseFactory ExerciseFactory {
             get {
                 return _exerciseFactory ??= new MentalExerciseFactory();
             }
-            set { 
+            set {
                 _exerciseFactory = value;
             }
         }
@@ -51,7 +51,7 @@ namespace AMOGUS.Core.Services.Gameplay {
         }
 
         public List<Question> GetRandomExercises(CategoryType category, int amount) {
-            if(category == CategoryType.RANDOMMENTAL || category == CategoryType.RANDOMMENTAL_INSANE) {
+            if (category == CategoryType.RANDOMMENTAL || category == CategoryType.RANDOMMENTAL_INSANE) {
                 return GenerateRandomMentalExercises(amount, category == CategoryType.RANDOMMENTAL_INSANE);
             }
             return _questionFileAccessor.GetRandomQuestionsByCategory(category, amount);
