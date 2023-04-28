@@ -9,9 +9,9 @@ namespace AMOGUS.Core.Domain.Models.Entities {
 
         [Key]
         [ForeignKey("User")]
-        public string UserId { get; set; }
+        public string UserId { get; set; } = string.Empty;
 
-        public ApplicationUser User { get; set; }
+        public ApplicationUser? User { get; set; }
 
         [Range(0, int.MaxValue)]
         public int Level { get; set; } = 0;

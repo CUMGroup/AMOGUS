@@ -13,8 +13,9 @@ namespace AMOGUS.Core.Services.Gameplay {
         private readonly string _exercisePath;
         private readonly string _exerciseExtension = ".amex";
 
+#pragma warning disable 8618 // Value cannot be null after constructor
         private static List<Question> _questions;
-
+#pragma warning restore 8618
 
         public QuestionFileAccessor(IQuestionRepoConfiguration questionRepoConfiguration) {
             _questionRepoConfiguration = questionRepoConfiguration!;
