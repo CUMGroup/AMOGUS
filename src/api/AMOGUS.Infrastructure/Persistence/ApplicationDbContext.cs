@@ -14,7 +14,7 @@ namespace AMOGUS.Infrastructure.Persistence {
         public DbSet<GameSession> GameSessions { get; set; }
 
 
-#pragma warning disable 8618
+#pragma warning disable 8618  // Fields cannot be null after constructor
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) {
         }
 #pragma warning restore 8618
