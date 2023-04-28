@@ -16,7 +16,7 @@ namespace AMOGUS.Core.Services.Gameplay {
         public bool CheckAnswer(Question answer) {
             var qOrig = _questionFileAccessor.Find(e => e.QuestionId.Equals(answer.QuestionId));
             if (qOrig is null)
-                return false;
+                return false; // maybe a random question? -> Test!
             try {
                 if (!answer.Category.Equals(CategoryType.MENTAL)) {
                     return qOrig.Answer.Equals(answer.Answer);
