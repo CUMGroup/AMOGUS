@@ -127,7 +127,7 @@ namespace AMOGUS.Core.Common.Communication {
     public readonly struct Result : IEquatable<Result>, IComparable<Result> {
 
         internal readonly ResultState State;
-        readonly Exception? exception;
+        public readonly Exception? exception;
 
         public Result() {
             State = ResultState.Success;

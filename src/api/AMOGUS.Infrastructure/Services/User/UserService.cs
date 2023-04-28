@@ -24,7 +24,7 @@ namespace AMOGUS.Infrastructure.Services.User {
         }
 
         public async Task<Result> DeleteUserAsync(string userId) {
-            if (await DeleteUserHistoryAsync(userId)) {
+            if (!await DeleteUserHistoryAsync(userId)) {
                 return new UserOperationException("Failed deleting user.");
             }
 
