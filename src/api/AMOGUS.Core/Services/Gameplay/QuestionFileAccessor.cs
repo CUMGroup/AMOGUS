@@ -26,14 +26,16 @@ namespace AMOGUS.Core.Services.Gameplay {
         }
 
         public void ReloadQuestions() {
-            _questions = new();
+            _questions = new List<Question>();
 
             List<string> files = Directory.GetFiles(_exercisePath)
                 .Where(e => Path.GetExtension(e).Equals(_exerciseExtension))
                 .ToList();
             foreach (var f in files) {
                 var convertedQuestions = JsonConvert.DeserializeObject<List<Question>>(File.ReadAllText(f));
-                _questions.AddRange(convertedQuestions!);
+                foreach(var q in convertedQuestions!) {
+                    _questions.Add(q);
+                }
             }
         }
 
