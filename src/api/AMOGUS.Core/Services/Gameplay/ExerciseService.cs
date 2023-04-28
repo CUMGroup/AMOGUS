@@ -31,6 +31,9 @@ namespace AMOGUS.Core.Services.Gameplay {
         }
 
         public List<Question> GetRandomExercises(CategoryType category, int amount) {
+            if(category == CategoryType.RANDOMMENTAL || category == CategoryType.RANDOMMENTAL_INSANE) {
+                return GenerateRandomMentalExercises(amount, category == CategoryType.RANDOMMENTAL_INSANE);
+            }
             return _questionFileAccessor.GetRandomQuestionsByCategory(category, amount);
         }
 
