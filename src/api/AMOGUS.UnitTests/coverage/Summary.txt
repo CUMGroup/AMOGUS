@@ -1,0 +1,35 @@
+Summary
+  Generated on: 28.04.2023 - 19:42:01
+  Coverage date: 28.04.2023 - 19:42:01
+  Parser: Cobertura
+  Assemblies: 3
+  Classes: 11
+  Files: 11
+  Line coverage: 20.0%
+  Covered lines: 90
+  Uncovered lines: 360
+  Coverable lines: 450
+  Total lines: 745
+  Branch coverage: 26.3% (30 of 114)
+  Covered branches: 30
+  Total branches: 114
+  Method coverage: 20% (11 of 55)
+  Covered methods: 11
+  Total methods: 55
+
+AMOGUS.Core                                              0.0%
+  AMOGUS.Core.Factories.MentalExerciseFactory            0.0%
+  AMOGUS.Core.Services.Gameplay.ExerciseService          0.0%
+  AMOGUS.Core.Services.Gameplay.GameService              0.0%
+  AMOGUS.Core.Services.Gameplay.QuestionFileAccessor     0.0%
+  AMOGUS.Core.Services.Gameplay.StatsService             0.0%
+  AMOGUS.Core.Services.Gameplay.StreaksService           0.0%
+  AMOGUS.Core.Services.Teacher.TeacherService            0.0%
+
+AMOGUS.Infrastructure                                   68.7%
+  AMOGUS.Infrastructure.Services.Date.DateTimeWrapper    0.0%
+  AMOGUS.Infrastructure.Services.User.AuthService       94.7%
+  AMOGUS.Infrastructure.Services.User.TokenFactory       0.0%
+  AMOGUS.Infrastructure.Services.User.UserService       90.0%
+
+AMOGUS.Validation                                            

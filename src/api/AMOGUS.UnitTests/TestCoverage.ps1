@@ -27,7 +27,7 @@ if (!(Test-Path -path $dir\CoverageHistory)) {
 }
 
 # Generate the Code Coverage HTML Report
-reportgenerator -reports:"$dir/**/coverage.cobertura.xml" -targetdir:"$dir/coveragereport" -reporttypes:Html -historydir:$dir/CoverageHistory 
+reportgenerator -reports:"$dir/**/coverage.cobertura.xml" -targetdir:"$dir/coveragereport" -reporttypes:Html -historydir:$dir/CoverageHistory "-classfilters:-AMOGUS.Core.Common*;-AMOGUS.Core.DataTransferObjects*;-AMOGUS.*.DependencyInjection;-AMOGUS.Core.Domain*;-AMOGUS.Infrastructure.Identity*;-AMOGUS.Infrastructure.Persistence*"
 
 # Open the Code Coverage HTML Report (if running on a WorkStation)
 $osInfo = Get-CimInstance -ClassName Win32_OperatingSystem
