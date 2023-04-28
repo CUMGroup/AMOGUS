@@ -9,24 +9,44 @@ namespace AMOGUS.Core.Services.Gameplay {
 
         private readonly IQuestionFileAccessor _questionFileAccessor;
 
+        private IExerciseFactory? _exerciseFactory;
+        public IExerciseFactory ExerciseFactory { 
+            get {
+                return _exerciseFactory ??= new MentalExerciseFactory();
+            }
+            set { 
+                _exerciseFactory = value;
+            }
+        }
+
         public ExerciseService(IQuestionFileAccessor questionFileAccessor) {
             _questionFileAccessor = questionFileAccessor!;
         }
 
         public bool CheckAnswer(Question answer) {
+            bool isRandomMental = answer.Category == CategoryType.RANDOMMENTAL || answer.Category == CategoryType.RANDOMMENTAL_INSANE;
+
             var qOrig = _questionFileAccessor.Find(e => e.QuestionId.Equals(answer.QuestionId));
-            if (qOrig is null)
-                return false; // maybe a random question? -> Test!
+            string origAnswer = qOrig?.Answer ?? "";
+
+            if (qOrig is null) {
+                if (!isRandomMental)
+                    return false;
+                origAnswer = new MentalExerciseFactory().CalcAnswer(answer.Exercise);
+                if (String.IsNullOrWhiteSpace(origAnswer))
+                    return false;
+            }
+
             try {
-                if (!answer.Category.Equals(CategoryType.MENTAL)) {
-                    return qOrig.Answer.Equals(answer.Answer);
+                if (!(answer.Category == CategoryType.MENTAL || isRandomMental)) {
+                    return origAnswer.Equals(answer.Answer);
                 }
-                Entity exprTrue = qOrig.Answer;
+                Entity exprTrue = origAnswer;
                 Entity exprUser = answer.Answer;
                 return new Entity.Equalsf(exprTrue, exprUser).Simplify().EvalBoolean();
             }
             catch (Exception) {
-                return qOrig.Answer.Equals(answer.Answer);
+                return origAnswer.Equals(answer.Answer);
             }
         }
 
@@ -39,7 +59,7 @@ namespace AMOGUS.Core.Services.Gameplay {
 
 
         public List<Question> GenerateRandomMentalExercises(int amount, bool insaneMode) {
-            var factory = new MentalExerciseFactory();
+            var factory = ExerciseFactory;
             var questions = new List<Question>();
             for (int i = 0; i < amount; ++i) {
                 questions.Add(factory.GenerateRandomQuestion(insaneMode));
