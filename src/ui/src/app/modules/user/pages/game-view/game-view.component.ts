@@ -95,7 +95,8 @@ export class GameViewComponent implements OnInit, AfterViewInit, OnDestroy {
   submit() {
     const session = this.gameService.getSession();
     this.gameProgress?.unsubscribe();
-    if (this.currentQuestion.answer === this.selectedAnswer.value) {
+    const correctAnswer = this.currentQuestion.answer === this.selectedAnswer.value
+    if (correctAnswer) {
       this.correctAnswers.push(true);
       session.correctAnswersCount++;
     } else {
@@ -106,13 +107,16 @@ export class GameViewComponent implements OnInit, AfterViewInit, OnDestroy {
     }
     const questionTime = new Date().getTime() - this.currentQuestionTimeStart;
     session.averageTimePerQuestion += (questionTime - session.averageTimePerQuestion) / Math.max(this.questionIndex, 1);
-    if(questionTime < session.quickestAnswer) {
+    if(questionTime < session.quickestAnswer && correctAnswer) {
       session.quickestAnswer = questionTime;
     }
     if(questionTime > session.slowestAnswer) {
       session.slowestAnswer = questionTime;
     }
     this.currentQuestion.answer = this.selectedAnswer.value;
+
+    this.selectedAnswer.reset();
+
     this.newQuestion();
     this.animate();
   }
@@ -125,6 +129,10 @@ export class GameViewComponent implements OnInit, AfterViewInit, OnDestroy {
         return "Geometry";
       case CategoryType.MENTAL:
         return "Mental";
+      case CategoryType.RANDOMMENTAL:
+        return "Random Mode";
+      case CategoryType.RANDOMMENTAL_INSANE:
+        return "Random Insane Mode";
     }
   }
 

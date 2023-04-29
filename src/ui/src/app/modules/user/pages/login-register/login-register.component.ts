@@ -64,7 +64,6 @@ export class LoginRegisterComponent implements OnInit, OnDestroy {
   }
 
   private handleError(error: HttpErrorResponse) {
-    console.log(error)
     if(error.status === 401 || error.status === 422) {
       this.errorPopup.nativeElement.style.opacity='100';
       this.errorPopup.nativeElement.getElementsByClassName('error-description')[0].innerText = error.error.message;

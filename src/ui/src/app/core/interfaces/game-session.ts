@@ -33,5 +33,7 @@ export class GameSession {
 export enum CategoryType {
     MENTAL,
     ANALYSIS,
-    GEOMETRY
+    GEOMETRY,
+    RANDOMMENTAL,
+    RANDOMMENTAL_INSANE
 }
