@@ -4,6 +4,7 @@ using AMOGUS.Core.Centralization.User;
 using AMOGUS.Core.Common.Interfaces.Database;
 using AMOGUS.Core.Common.Interfaces.User;
 using AMOGUS.Infrastructure;
+using AMOGUS.Validation;
 using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -35,6 +36,7 @@ builder.Services.AddSwaggerGen(c => {
     });
 });
 
+builder.Services.AddValidators();
 builder.Services.AddDataServices(builder.Configuration, builder.Environment.IsDevelopment());
 builder.Services.AddCoreServices();
 
