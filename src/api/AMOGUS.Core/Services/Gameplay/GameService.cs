@@ -6,6 +6,7 @@ using AMOGUS.Core.Common.Interfaces.Game;
 using AMOGUS.Core.Common.Interfaces.Repositories;
 using AMOGUS.Core.Domain.Enums;
 using AMOGUS.Core.Domain.Models.Entities;
+using FluentValidation;
 
 namespace AMOGUS.Core.Services.Gameplay {
     internal class GameService : IGameService {
@@ -19,12 +20,15 @@ namespace AMOGUS.Core.Services.Gameplay {
 
         private readonly IDateTime _dateTime;
 
-        public GameService(IExerciseService exerciseService, IUserManager userManager, IStatsService statsService, IGameSessionRepository gameSessionRepository, IDateTime dateTime) {
+        private readonly IValidator<GameSession> _gameSessionValidator;
+
+        public GameService(IExerciseService exerciseService, IUserManager userManager, IStatsService statsService, IGameSessionRepository gameSessionRepository, IDateTime dateTime, IValidator<GameSession> gameSessionValidator) {
             _exerciseService = exerciseService!;
             _userManager = userManager!;
             _statsService = statsService!;
             _gameSessionRepository = gameSessionRepository!;
             _dateTime = dateTime!;
+            _gameSessionValidator = gameSessionValidator!;
         }
 
         public async Task<Result> EndSessionAsync(GameSession session, string userId) {
@@ -35,6 +39,10 @@ namespace AMOGUS.Core.Services.Gameplay {
             session.SessionId = Guid.NewGuid().ToString();
             session.User = user;
             session.PlayedAt = _dateTime.Now;
+
+            var validRes = _gameSessionValidator.Validate(session);
+            if (!validRes.IsValid)
+                return new ValidationException(validRes.Errors);
 
             var answers = CalculateCorrectAnswers(session.Questions);
 
