@@ -8,6 +8,7 @@ using AMOGUS.Core.Domain.Enums;
 using AMOGUS.Core.Domain.Models.Entities;
 using AMOGUS.Infrastructure.Identity;
 using System.Runtime.CompilerServices;
+using FluentValidation;
 
 [assembly: InternalsVisibleTo("AMOGUS.UnitTests")]
 namespace AMOGUS.Core.Services.Gameplay {
@@ -17,10 +18,13 @@ namespace AMOGUS.Core.Services.Gameplay {
         private readonly IGameSessionRepository _gameSessionRepository;
         private readonly IDateTime _dateTime;
 
-        public StatsService(IUserStatsRepository userStatsRepository, IGameSessionRepository gameSessionRepository, IDateTime dateTime) {
+        private readonly IValidator<UserStats> _statsValidator;
+
+        public StatsService(IUserStatsRepository userStatsRepository, IGameSessionRepository gameSessionRepository, IDateTime dateTime, IValidator<UserStats> statsValidator) {
             _userStatsRepository = userStatsRepository!;
             _gameSessionRepository = gameSessionRepository!;
             _dateTime = dateTime!;
+            _statsValidator = statsValidator!;
         }
 
         public async Task<Result<UserStats>> GetUserStatsAsync(string userId) {
@@ -77,6 +81,10 @@ namespace AMOGUS.Core.Services.Gameplay {
 
 
         public async Task<bool> UpdateUserStatsAsync(UserStats userStats) {
+            var validRes = _statsValidator.Validate(userStats);
+            if (!validRes.IsValid)
+                return false;
+
             var res = await _userStatsRepository.UpdateUserStatsAsync(userStats);
             return res > 0;
         }
