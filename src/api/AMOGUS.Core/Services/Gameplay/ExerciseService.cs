@@ -3,6 +3,7 @@ using AMOGUS.Core.Domain.Enums;
 using AMOGUS.Core.Domain.Models.Entities;
 using AMOGUS.Core.Factories;
 using AngouriMath;
+using System.Diagnostics.CodeAnalysis;
 using System.Runtime.CompilerServices;
 
 [assembly: InternalsVisibleTo("AMOGUS.UnitTests")]
@@ -53,6 +54,7 @@ namespace AMOGUS.Core.Services.Gameplay {
             }
         }
 
+        [ExcludeFromCodeCoverage]
         public List<Question> GetRandomExercises(CategoryType category, int amount) {
             if (category == CategoryType.RANDOMMENTAL || category == CategoryType.RANDOMMENTAL_INSANE) {
                 return GenerateRandomMentalExercises(amount, category == CategoryType.RANDOMMENTAL_INSANE);
@@ -60,7 +62,7 @@ namespace AMOGUS.Core.Services.Gameplay {
             return _questionFileAccessor.GetRandomQuestionsByCategory(category, amount);
         }
 
-
+        [ExcludeFromCodeCoverage]
         public List<Question> GenerateRandomMentalExercises(int amount, bool insaneMode) {
             var questions = new List<Question>();
             for (int i = 0; i < amount; ++i) {
