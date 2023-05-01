@@ -10,9 +10,9 @@ namespace AMOGUS.Core.Domain.Models.Entities {
         public UserMedalType MedalId { get; set; }
 
         [ForeignKey("User")]
-        public string UserId { get; set; }
+        public string UserId { get; set; } = string.Empty;
 
-        public ApplicationUser User { get; set; }
+        public ApplicationUser? User { get; set; }
 
         [Required]
         public DateTime AquisitionTime { get; set; }

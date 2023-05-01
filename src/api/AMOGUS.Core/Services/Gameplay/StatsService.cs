@@ -87,7 +87,8 @@ namespace AMOGUS.Core.Services.Gameplay {
 
             userStats.OverallAnswered += session.GivenAnswersCount;
             userStats.TotalTimePlayed += session.Playtime;
-            userStats.User.PlayedToday = true;
+            if (userStats.User is not null)
+                userStats.User.PlayedToday = true;
             for (int i = 0; i < session.Questions.Count; ++i) {
                 if (answers[i]) {
                     userStats.Level += session.Questions[i].ExperiencePoints;
