@@ -36,7 +36,7 @@ namespace AMOGUS.Core.Services.Gameplay {
                 .ToList();
             foreach (var f in files) {
                 var convertedQuestions = JsonConvert.DeserializeObject<List<Question>>(File.ReadAllText(f));
-                foreach(var q in convertedQuestions!) {
+                foreach (var q in convertedQuestions!) {
                     _questions.Add(q);
                 }
             }
