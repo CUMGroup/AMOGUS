@@ -4,10 +4,12 @@ using AMOGUS.Core.Common.Interfaces.Game;
 using AMOGUS.Core.Domain.Enums;
 using AMOGUS.Core.Domain.Models.Entities;
 using Newtonsoft.Json;
+using System.Diagnostics.CodeAnalysis;
 using System.Runtime.CompilerServices;
 
 [assembly: InternalsVisibleTo("AMOGUS.UnitTests")]
 namespace AMOGUS.Core.Services.Gameplay {
+    [ExcludeFromCodeCoverage]
     internal class QuestionFileAccessor : IQuestionFileAccessor {
 
         private readonly IQuestionRepoConfiguration _questionRepoConfiguration;

@@ -2,6 +2,7 @@
 using AMOGUS.Core.Common.Interfaces.Security;
 using AMOGUS.Infrastructure.Identity;
 using Microsoft.IdentityModel.Tokens;
+using System.Diagnostics.CodeAnalysis;
 using System.IdentityModel.Tokens.Jwt;
 using System.Runtime.CompilerServices;
 using System.Security.Claims;
@@ -10,6 +11,7 @@ using System.Text;
 
 [assembly: InternalsVisibleTo("AMOGUS.UnitTests")]
 namespace AMOGUS.Infrastructure.Services.User {
+    [ExcludeFromCodeCoverage]
     internal class TokenFactory : ITokenFactory {
 
         private readonly IJwtConfiguration _jwtConfiguration;
