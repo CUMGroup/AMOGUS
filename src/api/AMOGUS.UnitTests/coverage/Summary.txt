@@ -1,38 +1,35 @@
 Summary
-  Generated on: 01.05.2023 - 18:29:38
-  Coverage date: 01.05.2023 - 18:29:35
+  Generated on: 01.05.2023 - 18:34:20
+  Coverage date: 01.05.2023 - 18:34:19
   Parser: Cobertura
   Assemblies: 3
-  Classes: 14
-  Files: 14
-  Line coverage: 27.9%
+  Classes: 11
+  Files: 11
+  Line coverage: 32.3%
   Covered lines: 169
-  Uncovered lines: 436
-  Coverable lines: 605
-  Total lines: 1036
-  Branch coverage: 33.7% (56 of 166)
+  Uncovered lines: 354
+  Coverable lines: 523
+  Total lines: 890
+  Branch coverage: 35.8% (56 of 156)
   Covered branches: 56
-  Total branches: 166
-  Method coverage: 31.7% (20 of 63)
+  Total branches: 156
+  Method coverage: 41.6% (20 of 48)
   Covered methods: 20
-  Total methods: 63
+  Total methods: 48
 
-AMOGUS.Core                                             18.2%
-  AMOGUS.Core.Factories.MentalExerciseFactory            8.0%
-  AMOGUS.Core.Services.Gameplay.ExerciseService         83.3%
-  AMOGUS.Core.Services.Gameplay.GameService             95.2%
-  AMOGUS.Core.Services.Gameplay.QuestionFileAccessor     0.0%
-  AMOGUS.Core.Services.Gameplay.StatsService             0.0%
-  AMOGUS.Core.Services.Gameplay.StreaksService           0.0%
-  AMOGUS.Core.Services.Teacher.TeacherService            0.0%
+AMOGUS.Core                                           20.7%
+  AMOGUS.Core.Factories.MentalExerciseFactory          8.0%
+  AMOGUS.Core.Services.Gameplay.ExerciseService       83.3%
+  AMOGUS.Core.Services.Gameplay.GameService           95.2%
+  AMOGUS.Core.Services.Gameplay.StatsService           0.0%
+  AMOGUS.Core.Services.Gameplay.StreaksService         0.0%
+  AMOGUS.Core.Services.Teacher.TeacherService          0.0%
 
-AMOGUS.Infrastructure                                   69.6%
-  AMOGUS.Infrastructure.Services.Date.DateTimeWrapper    0.0%
-  AMOGUS.Infrastructure.Services.User.AuthService       95.0%
-  AMOGUS.Infrastructure.Services.User.TokenFactory       0.0%
-  AMOGUS.Infrastructure.Services.User.UserService       90.0%
+AMOGUS.Infrastructure                                 93.0%
+  AMOGUS.Infrastructure.Services.User.AuthService     95.0%
+  AMOGUS.Infrastructure.Services.User.UserService     90.0%
 
-AMOGUS.Validation                                        0.0%
-  AMOGUS.Validation.Validators.GameSessionValidator      0.0%
-  AMOGUS.Validation.Validators.RegisterValidator         0.0%
-  AMOGUS.Validation.Validators.StatsValidator            0.0%
+AMOGUS.Validation                                      0.0%
+  AMOGUS.Validation.Validators.GameSessionValidator    0.0%
+  AMOGUS.Validation.Validators.RegisterValidator       0.0%
+  AMOGUS.Validation.Validators.StatsValidator          0.0%
