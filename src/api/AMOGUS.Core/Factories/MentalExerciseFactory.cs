@@ -28,7 +28,7 @@ namespace AMOGUS.Core.Factories {
                 if (String.IsNullOrWhiteSpace(ansString))
                     continue;
 
-                bool succ = !int.TryParse(ansString, out int ans);
+                bool succ = int.TryParse(ansString, out int ans);
                 if (!succ)
                     continue;
 
@@ -42,7 +42,7 @@ namespace AMOGUS.Core.Factories {
                         continue;
                     return new Question {
                         Answer = ans.ToString(),
-                        Category = CategoryType.MENTAL,
+                        Category = insaneMode ? CategoryType.RANDOMMENTAL_INSANE : CategoryType.RANDOMMENTAL,
                         Difficulty = (DifficultyType) expr.Difficulty!,
                         Exercise = expr.Expression,
                         ExperiencePoints = (int) expr.Xp!,
@@ -56,7 +56,7 @@ namespace AMOGUS.Core.Factories {
             // Should be pretty much unreachable
             return new Question {
                 Answer = "37",
-                Category = CategoryType.MENTAL,
+                Category = insaneMode ? CategoryType.RANDOMMENTAL_INSANE : CategoryType.RANDOMMENTAL,
                 Difficulty = DifficultyType.EASY,
                 Exercise = "30 + 7",
                 ExperiencePoints = 4,
