@@ -12,7 +12,8 @@ namespace AMOGUS.Core.Services.Gameplay {
         private IExerciseFactory? _exerciseFactory;
         public IExerciseFactory ExerciseFactory {
             get {
-                return _exerciseFactory ??= new MentalExerciseFactory();
+                _exerciseFactory ??= new MentalExerciseFactory();
+                return _exerciseFactory;
             }
             set {
                 _exerciseFactory = value;
@@ -32,7 +33,7 @@ namespace AMOGUS.Core.Services.Gameplay {
             if (qOrig is null) {
                 if (!isRandomMental)
                     return false;
-                origAnswer = new MentalExerciseFactory().CalcAnswer(answer.Exercise);
+                origAnswer = ExerciseFactory.CalcAnswer(answer.Exercise);
                 if (String.IsNullOrWhiteSpace(origAnswer))
                     return false;
             }
@@ -59,10 +60,9 @@ namespace AMOGUS.Core.Services.Gameplay {
 
 
         public List<Question> GenerateRandomMentalExercises(int amount, bool insaneMode) {
-            var factory = ExerciseFactory;
             var questions = new List<Question>();
             for (int i = 0; i < amount; ++i) {
-                questions.Add(factory.GenerateRandomQuestion(insaneMode));
+                questions.Add(ExerciseFactory.GenerateRandomQuestion(insaneMode));
             }
             return questions;
         }
