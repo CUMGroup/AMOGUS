@@ -6,6 +6,8 @@ using AMOGUS.Core.DataTransferObjects.User;
 using AMOGUS.Core.Domain.Models.Entities;
 using AMOGUS.Infrastructure.Identity;
 using AMOGUS.Infrastructure.Services.User;
+using FluentValidation;
+using FluentValidation.Results;
 using Microsoft.AspNetCore.Identity;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
@@ -18,6 +20,7 @@ namespace AMOGUS.UnitTests {
         private Mock<IRoleManager> CreateRoleManagerMock() => new();
         private Mock<IUserManager> CreateUserManagerMock() => new();
         private Mock<IUserStatsRepository> CreateUserStatsRepositoryMock() => new();
+        private Mock<IValidator<RegisterApiModel>> CreateValidatorMock() => new();
 
         #region CreateRolesAsync
         [Fact]
@@ -32,7 +35,7 @@ namespace AMOGUS.UnitTests {
                 .Setup(x => x.CreateAsync(It.IsAny<IdentityRole>()))
                 .Callback((IdentityRole ir) => createdIdentityRoles.Add(ir));
 
-            var authService = new AuthService(roleManager.Object, CreateUserManagerMock().Object, CreateTokenFactoryMock().Object, CreateUserStatsRepositoryMock().Object);
+            var authService = new AuthService(roleManager.Object, CreateUserManagerMock().Object, CreateTokenFactoryMock().Object, CreateUserStatsRepositoryMock().Object, CreateValidatorMock().Object);
 
             await authService.CreateRolesAsync<UserRoles>();
 
@@ -53,7 +56,7 @@ namespace AMOGUS.UnitTests {
                 .Setup(x => x.CreateAsync(It.IsAny<IdentityRole>()))
                 .Callback((IdentityRole ir) => createdIdentityRoles.Add(ir));
 
-            var authService = new AuthService(roleManager.Object, CreateUserManagerMock().Object, CreateTokenFactoryMock().Object, CreateUserStatsRepositoryMock().Object);
+            var authService = new AuthService(roleManager.Object, CreateUserManagerMock().Object, CreateTokenFactoryMock().Object, CreateUserStatsRepositoryMock().Object, CreateValidatorMock().Object);
 
             await authService.CreateRolesAsync<UserRoles>();
 
@@ -71,7 +74,7 @@ namespace AMOGUS.UnitTests {
                 .Setup(x => x.FindByEmailAsync(It.IsAny<string>()))
                 .ReturnsAsync((ApplicationUser) null);
 
-            var authService = new AuthService(CreateRoleManagerMock().Object, userManagerMock.Object, CreateTokenFactoryMock().Object, CreateUserStatsRepositoryMock().Object);
+            var authService = new AuthService(CreateRoleManagerMock().Object, userManagerMock.Object, CreateTokenFactoryMock().Object, CreateUserStatsRepositoryMock().Object, CreateValidatorMock().Object);
 
             var loginForm = new LoginApiModel() {
                 Email = "test@test.com",
@@ -94,7 +97,7 @@ namespace AMOGUS.UnitTests {
                 .Setup(x => x.CheckPasswordAsync(It.IsAny<ApplicationUser>(), It.IsAny<string>()))
                 .ReturnsAsync(false);
 
-            var authService = new AuthService(CreateRoleManagerMock().Object, userManagerMock.Object, CreateTokenFactoryMock().Object, CreateUserStatsRepositoryMock().Object);
+            var authService = new AuthService(CreateRoleManagerMock().Object, userManagerMock.Object, CreateTokenFactoryMock().Object, CreateUserStatsRepositoryMock().Object, CreateValidatorMock().Object);
 
             var loginForm = new LoginApiModel() {
                 Email = "test@test.com",
@@ -128,7 +131,7 @@ namespace AMOGUS.UnitTests {
                 .Setup(x => x.GenerateNewJwtSecurityToken(It.IsAny<List<Claim>>()))
                 .Returns(new JwtSecurityToken());
 
-            var authService = new AuthService(CreateRoleManagerMock().Object, userManagerMock.Object, tokenFactoryMock.Object, CreateUserStatsRepositoryMock().Object);
+            var authService = new AuthService(CreateRoleManagerMock().Object, userManagerMock.Object, tokenFactoryMock.Object, CreateUserStatsRepositoryMock().Object, CreateValidatorMock().Object);
 
             var loginForm = new LoginApiModel() {
                 Email = "test@test.com",
@@ -143,13 +146,41 @@ namespace AMOGUS.UnitTests {
 
         #region RegisterUserAsync
         [Fact]
+        public async Task RegisterUserAsync_WhenValidationFails_Exception() {
+            var validator = CreateValidatorMock();
+            validator
+                .Setup(x => x.Validate(It.IsAny<RegisterApiModel>()))
+                .Returns(new ValidationResult(new List<ValidationFailure>() {
+                    new ValidationFailure("Test", "Test error lol")
+                }));
+
+            var authService = new AuthService(CreateRoleManagerMock().Object, CreateUserManagerMock().Object, CreateTokenFactoryMock().Object, CreateUserStatsRepositoryMock().Object, validator.Object);
+
+            var registerApiModel = new RegisterApiModel() {
+                Email = "testlel",
+                Password = "1",
+                UserName = "tt"
+            };
+
+            var result = await authService.RegisterUserAsync(registerApiModel, "User");
+
+            Assert.True(result.IsFaulted);
+            Assert.True(result.exception is ValidationException);
+        }
+
+        [Fact]
         public async Task RegisterUserAsync_WhenGivenRegisterModel_AndUserAlreadyExists_Exception() {
             var userManagerMock = CreateUserManagerMock();
             userManagerMock
                 .Setup(x => x.FindByEmailAsync(It.IsAny<string>()))
                 .ReturnsAsync(new ApplicationUser());
 
-            var authService = new AuthService(CreateRoleManagerMock().Object, userManagerMock.Object, CreateTokenFactoryMock().Object, CreateUserStatsRepositoryMock().Object);
+            var validator = CreateValidatorMock();
+            validator
+                .Setup(x => x.Validate(It.IsAny<RegisterApiModel>()))
+                .Returns(new ValidationResult());
+
+            var authService = new AuthService(CreateRoleManagerMock().Object, userManagerMock.Object, CreateTokenFactoryMock().Object, CreateUserStatsRepositoryMock().Object, validator.Object);
 
             var registerApiModel = new RegisterApiModel() {
                 Email = "test@test.com",
@@ -172,7 +203,12 @@ namespace AMOGUS.UnitTests {
                 .Setup(x => x.CreateAsync(It.IsAny<ApplicationUser>(), It.IsAny<string>()))
                 .ReturnsAsync(IdentityResult.Failed());
 
-            var authService = new AuthService(CreateRoleManagerMock().Object, userManagerMock.Object, CreateTokenFactoryMock().Object, CreateUserStatsRepositoryMock().Object);
+            var validator = CreateValidatorMock();
+            validator
+                .Setup(x => x.Validate(It.IsAny<RegisterApiModel>()))
+                .Returns(new ValidationResult());
+
+            var authService = new AuthService(CreateRoleManagerMock().Object, userManagerMock.Object, CreateTokenFactoryMock().Object, CreateUserStatsRepositoryMock().Object, validator.Object);
 
             var registerApiModel = new RegisterApiModel() {
                 Email = "test@test.com",
@@ -201,7 +237,12 @@ namespace AMOGUS.UnitTests {
                 .Setup(x => x.RoleExistsAsync(It.IsAny<string>()))
                 .ReturnsAsync(false);
 
-            var authService = new AuthService(roleManager.Object, userManagerMock.Object, CreateTokenFactoryMock().Object, CreateUserStatsRepositoryMock().Object);
+            var validator = CreateValidatorMock();
+            validator
+                .Setup(x => x.Validate(It.IsAny<RegisterApiModel>()))
+                .Returns(new ValidationResult());
+
+            var authService = new AuthService(roleManager.Object, userManagerMock.Object, CreateTokenFactoryMock().Object, CreateUserStatsRepositoryMock().Object, validator.Object);
 
             var registerApiModel = new RegisterApiModel() {
                 Email = "test@test.com",
@@ -250,7 +291,12 @@ namespace AMOGUS.UnitTests {
             statsServiceMock.Setup(x => x.AddUserStatsAsync(It.IsAny<UserStats>()))
                 .ReturnsAsync(1);
 
-            var authService = new AuthService(roleManager.Object, userManagerMock.Object, tokenFactoryMock.Object, statsServiceMock.Object);
+            var validator = CreateValidatorMock();
+            validator
+                .Setup(x => x.Validate(It.IsAny<RegisterApiModel>()))
+                .Returns(new ValidationResult());
+
+            var authService = new AuthService(roleManager.Object, userManagerMock.Object, tokenFactoryMock.Object, statsServiceMock.Object, validator.Object);
 
             var registerApiModel = new RegisterApiModel() {
                 Email = "test@test.com",
