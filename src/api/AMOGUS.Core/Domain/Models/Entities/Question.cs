@@ -10,7 +10,7 @@ namespace AMOGUS.Core.Domain.Models.Entities {
         public string Answer { get; set; } = string.Empty;
         public List<string> WrongAnswers { get; set; } = new();
 
-        public string Help { get; set; } = string.Empty;
+        public string? Help { get; set; }
 
         public DifficultyType Difficulty { get; set; }
 

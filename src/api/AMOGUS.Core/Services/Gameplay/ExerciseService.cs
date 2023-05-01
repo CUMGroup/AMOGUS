@@ -9,51 +9,60 @@ namespace AMOGUS.Core.Services.Gameplay {
 
         private readonly IQuestionFileAccessor _questionFileAccessor;
 
+        private IExerciseFactory? _exerciseFactory;
+        public IExerciseFactory ExerciseFactory {
+            get {
+                _exerciseFactory ??= new MentalExerciseFactory();
+                return _exerciseFactory;
+            }
+            set {
+                _exerciseFactory = value;
+            }
+        }
+
         public ExerciseService(IQuestionFileAccessor questionFileAccessor) {
             _questionFileAccessor = questionFileAccessor!;
         }
 
         public bool CheckAnswer(Question answer) {
+            bool isRandomMental = answer.Category == CategoryType.RANDOMMENTAL || answer.Category == CategoryType.RANDOMMENTAL_INSANE;
+
             var qOrig = _questionFileAccessor.Find(e => e.QuestionId.Equals(answer.QuestionId));
-            if (qOrig is null)
-                return false;
+            string origAnswer = qOrig?.Answer ?? "";
+
+            if (qOrig is null) {
+                if (!isRandomMental)
+                    return false;
+                origAnswer = ExerciseFactory.CalcAnswer(answer.Exercise);
+                if (String.IsNullOrWhiteSpace(origAnswer))
+                    return false;
+            }
+
             try {
-                if (!answer.Category.Equals(CategoryType.MENTAL)) {
-                    return qOrig.Answer.Equals(answer.Answer);
+                if (!(answer.Category == CategoryType.MENTAL || isRandomMental)) {
+                    return origAnswer.Equals(answer.Answer);
                 }
-                Entity exprTrue = qOrig.Answer;
+                Entity exprTrue = origAnswer;
                 Entity exprUser = answer.Answer;
                 return new Entity.Equalsf(exprTrue, exprUser).Simplify().EvalBoolean();
             }
             catch (Exception) {
-                return qOrig.Answer.Equals(answer.Answer);
+                return origAnswer.Equals(answer.Answer);
             }
         }
 
         public List<Question> GetRandomExercises(CategoryType category, int amount) {
+            if (category == CategoryType.RANDOMMENTAL || category == CategoryType.RANDOMMENTAL_INSANE) {
+                return GenerateRandomMentalExercises(amount, category == CategoryType.RANDOMMENTAL_INSANE);
+            }
             return _questionFileAccessor.GetRandomQuestionsByCategory(category, amount);
         }
 
 
-        public List<Question> GenerateRandomMentalExercises(int amount) {
-            var factory = new MentalExerciseFactory();
+        public List<Question> GenerateRandomMentalExercises(int amount, bool insaneMode) {
             var questions = new List<Question>();
             for (int i = 0; i < amount; ++i) {
-                var questString = factory.GenerateRandomExerciseString();
-                var answString = factory.CalcAnswer(questString);
-                if (String.IsNullOrWhiteSpace(answString)) {
-                    --i;
-                    continue;
-                }
-                questions.Add(new Question {
-                    Category = CategoryType.MENTAL,
-                    QuestionId = Guid.NewGuid().ToString(),
-                    Exercise = questString,
-                    Answer = answString,
-                    Difficulty = DifficultyType.EASY,
-                    ExperiencePoints = 5,
-                    Help = string.Empty
-                });
+                questions.Add(ExerciseFactory.GenerateRandomQuestion(insaneMode));
             }
             return questions;
         }
