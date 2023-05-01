@@ -9,7 +9,6 @@ using Microsoft.AspNetCore.Identity;
 namespace AMOGUS.UnitTests {
     public class ExerciseServiceTests {
         private Mock<IQuestionFileAccessor> CreateQuestionFileAccessorMock() => new();
-        private Mock<IExerciseFactory> CreateExerciseFactoryMock() => new();
 
         #region CheckAnswer
         [Fact]
