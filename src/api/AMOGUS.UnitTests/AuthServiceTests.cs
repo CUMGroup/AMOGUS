@@ -2,17 +2,13 @@ using AMOGUS.Core.Centralization.User;
 using AMOGUS.Core.Common.Exceptions;
 using AMOGUS.Core.Common.Interfaces.Database;
 using AMOGUS.Core.Common.Interfaces.Repositories;
-using AMOGUS.Core.Common.Interfaces.Security;
 using AMOGUS.Core.DataTransferObjects.User;
 using AMOGUS.Core.Domain.Models.Entities;
 using AMOGUS.Infrastructure.Identity;
 using AMOGUS.Infrastructure.Services.User;
-using Antlr4.Runtime;
 using Microsoft.AspNetCore.Identity;
-using Moq;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
-using Xunit;
 using ITokenFactory = AMOGUS.Core.Common.Interfaces.Security.ITokenFactory;
 
 namespace AMOGUS.UnitTests {
@@ -40,7 +36,7 @@ namespace AMOGUS.UnitTests {
 
             await authService.CreateRolesAsync<UserRoles>();
 
-            Assert.Contains(createdIdentityRoles,  x => "Admin".Equals(x.Name));
+            Assert.Contains(createdIdentityRoles, x => "Admin".Equals(x.Name));
             Assert.Contains(createdIdentityRoles, x => "Moderator".Equals(x.Name));
             Assert.Contains(createdIdentityRoles, x => "User".Equals(x.Name));
         }

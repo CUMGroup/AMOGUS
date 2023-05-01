@@ -1,16 +1,9 @@
-﻿using AMOGUS.Core.Centralization.User;
-using AMOGUS.Core.Common.Exceptions;
+﻿using AMOGUS.Core.Common.Exceptions;
 using AMOGUS.Core.Common.Interfaces.Database;
 using AMOGUS.Core.Common.Interfaces.Repositories;
 using AMOGUS.Infrastructure.Identity;
 using AMOGUS.Infrastructure.Services.User;
 using Microsoft.AspNetCore.Identity;
-using Moq;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AMOGUS.UnitTests {
     public class UserServiceTests {
@@ -18,7 +11,7 @@ namespace AMOGUS.UnitTests {
         private Mock<IUserMedalRepository> CreateUserMedalRepositoryMock() => new();
         private Mock<IGameSessionRepository> CreateGameSessionRepositoryMock() => new();
         private Mock<IUserStatsRepository> CreateUserStatsRepositoryMock() => new();
-        
+
         #region GetUserAsync
         [Fact]
         public async Task GetUserAsync_WhenGivenAUserId_AndNoUserWithThatIdExists_Exception() {
