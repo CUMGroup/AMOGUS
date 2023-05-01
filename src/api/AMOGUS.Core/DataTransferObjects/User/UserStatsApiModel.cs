@@ -8,7 +8,7 @@ namespace AMOGUS.Core.DataTransferObjects.User {
 
         [Key]
         [ForeignKey("User")]
-        public string UserId { get; set; }
+        public string UserId { get; set; } = string.Empty;
 
         [Range(0, int.MaxValue)]
         public int Level { get; set; } = 0;

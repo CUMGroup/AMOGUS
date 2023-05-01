@@ -7,12 +7,12 @@ namespace AMOGUS.Core.Domain.Models.Entities {
     public class GameSession {
 
         [Key]
-        public string SessionId { get; set; }
+        public string SessionId { get; set; } = string.Empty;
 
         [ForeignKey("User")]
-        public string UserId { get; set; }
+        public string UserId { get; set; } = string.Empty;
 
-        public ApplicationUser User { get; set; }
+        public ApplicationUser? User { get; set; }
 
         public double Playtime { get; set; }
 

@@ -29,7 +29,8 @@ namespace AMOGUS.Core.Services.Gameplay {
                 var stats = statsResult.Value;
 
                 UpdateStatsModel(stats, user.PlayedToday);
-                stats.User.PlayedToday = false;
+                if (stats.User is not null)
+                    stats.User.PlayedToday = false;
 
                 await _statsService.UpdateUserStatsAsync(stats);
             }
