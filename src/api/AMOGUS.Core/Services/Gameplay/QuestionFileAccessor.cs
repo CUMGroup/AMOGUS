@@ -15,26 +15,30 @@ namespace AMOGUS.Core.Services.Gameplay {
         private readonly string _exercisePath;
         private readonly string _exerciseExtension = ".amex";
 
+#pragma warning disable 8618 // Value cannot be null after constructor
         private static List<Question> _questions;
-
+#pragma warning restore 8618
 
         public QuestionFileAccessor(IQuestionRepoConfiguration questionRepoConfiguration) {
             _questionRepoConfiguration = questionRepoConfiguration!;
             _exercisePath = _questionRepoConfiguration.ExercisePath;
 
             if (_questions is null) {
-                ReloadQuestionsAsync().Wait();
+                ReloadQuestions();
             }
         }
 
-        public async Task ReloadQuestionsAsync() {
-            _questions = new();
+        public void ReloadQuestions() {
+            _questions = new List<Question>();
 
             List<string> files = Directory.GetFiles(_exercisePath)
                 .Where(e => Path.GetExtension(e).Equals(_exerciseExtension))
                 .ToList();
             foreach (var f in files) {
-                _questions.AddRange(JsonConvert.DeserializeObject<List<Question>>(await File.ReadAllTextAsync(f))!);
+                var convertedQuestions = JsonConvert.DeserializeObject<List<Question>>(File.ReadAllText(f));
+                foreach(var q in convertedQuestions!) {
+                    _questions.Add(q);
+                }
             }
         }
 

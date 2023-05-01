@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {question} from "../../../../core/interfaces/question";
 import {FormControl} from "@angular/forms";
 
