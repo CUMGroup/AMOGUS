@@ -96,6 +96,46 @@ namespace AMOGUS.UnitTests {
 
             Assert.False(result);
         }
+
+        [Fact]
+        public void CheckAnswer_WhenGivenAnswer_AndQuestionIsRandomMental_ReturnAnswerIsCorrect() {
+            var questionFileAccessorMock = CreateQuestionFileAccessorMock();
+            questionFileAccessorMock.Setup(x => x.Find(It.IsAny<Predicate<Question>>()))
+                .Returns((Question) null);
+
+            var exerciseService = new ExerciseService(questionFileAccessorMock.Object);
+
+            var testAnswer = new Question() {
+                QuestionId = "test",
+                Exercise = "1 + 1",
+                Answer = "2",
+                Category = CategoryType.RANDOMMENTAL
+            };
+
+            var result = exerciseService.CheckAnswer(testAnswer);
+
+            Assert.True(result);
+        }
+
+        [Fact]
+        public void CheckAnswer_WhenGivenAnswer_AndQuestionIsRandomMental_ReturnAnswerIsNotCorrect() {
+            var questionFileAccessorMock = CreateQuestionFileAccessorMock();
+            questionFileAccessorMock.Setup(x => x.Find(It.IsAny<Predicate<Question>>()))
+                .Returns((Question) null);
+
+            var exerciseService = new ExerciseService(questionFileAccessorMock.Object);
+
+            var testAnswer = new Question() {
+                QuestionId = "test",
+                Exercise = "1 + 1",
+                Answer = "4",
+                Category = CategoryType.ANALYSIS
+            };
+
+            var result = exerciseService.CheckAnswer(testAnswer);
+
+            Assert.False(result);
+        }
         #endregion
     }
 }
