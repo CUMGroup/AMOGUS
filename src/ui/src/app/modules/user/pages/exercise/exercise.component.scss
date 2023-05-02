@@ -1,0 +1,17 @@
+@import "../game-view/game-view.component.css";
+
+.container{
+  height: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.answer-input {
+  display: block;
+  margin: auto;
+  width: 80%;
+  height: 40%;
+  padding: 0 2em;
+}

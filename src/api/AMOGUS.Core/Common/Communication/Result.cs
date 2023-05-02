@@ -16,13 +16,15 @@ namespace AMOGUS.Core.Common.Communication {
             this.Value = value;
             exception = null;
         }
-
+#pragma warning disable 8601 // Possible null reference
+#pragma warning disable 8618 // Value cannot be null after constructor
         public Result(Exception ex) {
             State = ResultState.Faulted;
             this.exception = ex;
             Value = default;
         }
-
+#pragma warning restore 8618
+#pragma warning restore 8601
         public static implicit operator Result<A>(A value) => new(value);
 
         public static implicit operator Result<A>(Exception ex) => new(ex);

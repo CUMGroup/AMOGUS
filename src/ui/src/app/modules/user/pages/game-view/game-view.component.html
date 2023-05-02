@@ -9,10 +9,12 @@
   <!--      <img class="knife" src="https://png.pngtree.com/png-clipart/20220730/ourmid/pngtree-cartoon-knife-png-image_6093279.png">-->
       </div>
     </div>
-    <app-exercise [currentQuestion]="currentQuestion" [selectedAnswer]="selectedAnswer"></app-exercise>
-    <div class="submit">
-      <button mat-raised-button color="primary" (click)="submit()">Submit</button>
-    </div>
+    <form>
+      <app-exercise [currentQuestion]="currentQuestion" [selectedAnswer]="selectedAnswer"></app-exercise>
+      <div class="submit">
+        <button type="submit" mat-raised-button color="primary" (click)="submit()">Submit</button>
+      </div>
+    </form>
   </div>
 </div>
 
