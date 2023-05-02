@@ -178,6 +178,8 @@ namespace AMOGUS.UnitTests {
         public async Task UpdateAllStreaksAsync_StreaksOfAllPlayersAreUpdated() {
             var testUsersList = new List<ApplicationUser>();
             var testStatsList = new List<UserStats>();
+            var testStatsQueue = new Queue<UserStats>();
+
 
             for(int i = 0;i < 5; i++) {
                 var testUser = new ApplicationUser() {
@@ -192,26 +194,27 @@ namespace AMOGUS.UnitTests {
 
                 testUsersList.Add(testUser);
                 testStatsList.Add(testStats);
+                testStatsQueue.Enqueue(testStats);
             }
 
+            var userManagerMock = CreateUserManagerMock();
+            userManagerMock
+                .Setup(x => x.GetAllAsync())
+                .ReturnsAsync(testUsersList);
 
-            //var statsServiceMock = CreateStatsServiceMock();
-            //statsServiceMock
-            //    .Setup(x => x.GetUserStatsAsync(It.IsAny<string>()))
-            //    .ReturnsAsync();
+            var statsServiceMock = CreateStatsServiceMock();
+            statsServiceMock
+                .Setup(x => x.GetUserStatsAsync(It.IsAny<string>()))
+                .ReturnsAsync(() => testStatsQueue.Dequeue());
 
-            //var userManagerMock = CreateUserManagerMock();
-            //userManagerMock
-            //    .Setup(x => x.GetAllAsync())
-            //    .ReturnsAsync(testUsersList);
+            var streaksService = new StreaksService(statsServiceMock.Object, userManagerMock.Object) { };
 
-            //var streaksService = new StreaksService(statsServiceMock.Object, userManagerMock.Object) { };
-
-            //await streaksService.UpdateAllStreaksAsync();
-
-            //Assert.True(testStats.CurrentStreak == 421, "current streak was not increased");
-            //Assert.True(testStats.LongestStreak == 421, "current streak was not increased");
-            //Assert.False(testUser.PlayedToday, "user has played");
+            await streaksService.UpdateAllStreaksAsync();
+            
+            foreach(var testStats in testStatsList) {
+                Assert.True(testStats.CurrentStreak == 421, $"current streak was not increased User: {testStats?.User?.Id}");
+                Assert.True(testStats?.LongestStreak == 421, "current streak was not increased");
+            }
         }
         #endregion
     }
