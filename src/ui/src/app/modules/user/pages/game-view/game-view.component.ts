@@ -1,4 +1,4 @@
-import {Component, Inject, OnDestroy, OnInit} from '@angular/core';
+import {AfterViewInit, Component, Inject, OnDestroy, OnInit} from '@angular/core';
 import {FormBuilder, FormControl} from "@angular/forms";
 import {gsap} from "gsap";
 import {question} from "../../../../core/interfaces/question";

@@ -58,8 +58,8 @@ export class QuestionEditViewComponent implements OnInit {
           this.formBuilder.control("",Validators.required),
         ]),
         help: ["", Validators.required ],
-        difficultyType: ["", Validators.required ],
-        categoryType: ["", Validators.required ],
+        difficulty: ["", Validators.required ],
+        category: ["", Validators.required ],
         multipleChoiceAnswers: [],
       })
     }

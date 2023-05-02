@@ -4,6 +4,7 @@ import {TeacherService} from "../../../../../core/services/user/teacher.service"
 import {MatDialog} from "@angular/material/dialog";
 import {QuestionEditViewComponent} from "../question-edit-view/question-edit-view.component";
 import {QuestionPreviewComponent} from "../../shared/question-preview/question-preview.component";
+import {question} from "../../../../../core/interfaces/question";
 
 @Component({
   selector: 'app-question',
@@ -25,7 +26,9 @@ export class QuestionComponent implements OnInit {
   }
 
   preview(){
-    this.dialog.open(QuestionPreviewComponent, { data: this.question.value, width:"40rem", panelClass: 'mat-dialog-class'});
+    let quest = this.question.value
+    let questionData = new question(quest.answer, quest.category, quest.difficulty, quest.exercise, quest.experiencePoints, quest.help, quest.questionId, quest.wrongAnswers, false)
+    this.dialog.open(QuestionPreviewComponent, { data: questionData, width:"40rem", panelClass: 'mat-dialog-class'});
   }
 }
 

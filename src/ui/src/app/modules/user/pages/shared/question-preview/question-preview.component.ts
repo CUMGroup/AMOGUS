@@ -10,15 +10,13 @@ import {FormBuilder} from "@angular/forms";
   styleUrls: ['./question-preview.component.css']
 })
 export class QuestionPreviewComponent{
-  selectedAnswer = this.formBuilder.control("")
+  selectedAnswer = this.formBuilder.control(this.data.answer)
   constructor(
     public dialogRef: MatDialogRef<QuestionEditViewComponent>,
     @Inject(MAT_DIALOG_DATA) public data:question,
     public formBuilder: FormBuilder,
   ) {
-    this.data.multipleChoiceAnswers = [];
-    this.data.multipleChoiceAnswers.push(this.data.answer)
-    this.data.wrongAnswers.forEach((answer) => this.data.multipleChoiceAnswers.push(answer))
+
   }
 
   close(){

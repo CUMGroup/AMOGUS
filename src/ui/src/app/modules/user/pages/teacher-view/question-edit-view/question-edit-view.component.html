@@ -2,7 +2,7 @@
 <form mat-dialog-content [formGroup]="newQuestion">
   <div class="container">
     <mat-form-field>
-      <mat-select placeholder="Category" formControlName="categoryType">
+      <mat-select placeholder="Category" formControlName="category">
         <mat-option *ngFor="let category of constants.Categories" [value]="category">
           {{ category }}
         </mat-option>
@@ -10,7 +10,7 @@
     </mat-form-field>
 
     <mat-form-field>
-      <mat-select placeholder="Difficulty" formControlName="difficultyType">
+      <mat-select placeholder="Difficulty" formControlName="difficulty">
         <mat-option *ngFor="let difficulty of constants.Difficulties" [value]="difficulty">
           {{ difficulty }}
         </mat-option>
