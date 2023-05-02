@@ -32,6 +32,7 @@ import { LineGraphComponent } from './components/stats-graphs/line-graph/line-gr
 import {MatRippleModule} from "@angular/material/core";
 import {QuestionPreviewComponent} from "./pages/shared/question-preview/question-preview.component";
 import {Constants} from "./interfaces/selection";
+import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -72,10 +73,10 @@ import {Constants} from "./interfaces/selection";
         MatRadioModule,
         MatSelectModule,
         MatSnackBarModule,
-        MatRippleModule,
+        SharedModule
     ],
-    providers:[
-      Constants
-    ]
+  providers:[
+    Constants
+  ]
 })
 export class UserModule { }

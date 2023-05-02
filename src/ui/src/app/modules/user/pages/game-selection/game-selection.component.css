@@ -2,31 +2,20 @@
   text-align: center;
 }
 
-.selectionContainer{
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  width: 50%;
-  max-width: 30rem;
-  min-width: 15rem;
-  padding: 0.5rem;
-  display: flex;
+.selectionContainer {
+  display:flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: 1em;
 }
 
-.gameOptionButton{
-  width: 80%;
-  height: 5rem;
-  margin: 0.5rem;
-  background: var(--background);
-  border: solid white;
-  color: white;
-  border-radius: 0.5rem;
+app-amogus-button {
+  font-size: 1.7rem;
 }
 
-.gameOptionButton:hover{
-  background-color: var(--leading-color2);
+@media screen and (max-width: 300px) {
+  app-amogus-button {
+      font-size: 1.3rem;
+  }
 }

@@ -1,3 +1,4 @@
+using AMOGUS.Api.BackgroundWorker;
 using AMOGUS.Core;
 using AMOGUS.Core.Centralization.User;
 using AMOGUS.Core.Common.Interfaces.Database;
@@ -36,6 +37,8 @@ builder.Services.AddSwaggerGen(c => {
 
 builder.Services.AddDataServices(builder.Configuration, builder.Environment.IsDevelopment());
 builder.Services.AddCoreServices();
+
+builder.Services.AddHostedService<StreakUpdateScheduler>();
 
 builder.Configuration.AddJsonFile("appsettings.json").AddEnvironmentVariables();
 

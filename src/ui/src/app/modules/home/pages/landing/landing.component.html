@@ -1,5 +1,11 @@
-<div class="parallax">
-  <app-amongus-parallax></app-amongus-parallax>
-  <div class="headertextcontainer">
-  </div>
+<h1>Welcome to AMOGUS 👋</h1>
+<div class="landing-container">
+    <ng-container *ngIf="isLoggedIn">
+        <app-amogus-button link="/user/game-selection"><span class="fa-solid fa-duotone fa-play"></span> Play</app-amogus-button>
+    </ng-container>
+
+    <ng-container *ngIf="!isLoggedIn">
+        <app-amogus-button routerLink="/user/login"><span class="fa-solid fa-duotone fa-user"></span> Login</app-amogus-button>
+    </ng-container>
+    <app-amogus-button link="/how-to">How to play <span class="fa-solid fa-question"></span></app-amogus-button>
 </div>

@@ -21,9 +21,7 @@ namespace AMOGUS.Core.Services.Gameplay {
             _exercisePath = _questionRepoConfiguration.ExercisePath;
 
             if (_questions is null) {
-                Task.Run(async () => {
-                    await ReloadQuestionsAsync();
-                });
+                ReloadQuestionsAsync().Wait();
             }
         }
 

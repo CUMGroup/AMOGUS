@@ -32,6 +32,7 @@ namespace AMOGUS.Core.Services.Gameplay {
             if (user == null) {
                 return new RecordNotFoundException($"Could not find user with id {userId}");
             }
+            session.SessionId = Guid.NewGuid().ToString();
             session.User = user;
             session.PlayedAt = _dateTime.Now;
 

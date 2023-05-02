@@ -1,4 +1,5 @@
 ﻿using AMOGUS.Core.Domain.Models.Entities;
+using AMOGUS.Infrastructure.Identity;
 using Microsoft.EntityFrameworkCore;
 
 namespace AMOGUS.Core.Common.Interfaces.Database {
@@ -8,6 +9,8 @@ namespace AMOGUS.Core.Common.Interfaces.Database {
         public DbSet<UserMedal> UserMedals { get; set; }
 
         public DbSet<GameSession> GameSessions { get; set; }
+
+        public DbSet<ApplicationUser> Users { get; set; }
 
         Task<int> SaveChangesAsync(CancellationToken cancellationToken);
 
