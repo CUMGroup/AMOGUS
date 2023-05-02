@@ -3,6 +3,7 @@ using AMOGUS.Core.Common.Interfaces.Configuration;
 using AMOGUS.Core.Common.Interfaces.Game;
 using AMOGUS.Core.Domain.Enums;
 using AMOGUS.Core.Domain.Models.Entities;
+using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 
 namespace AMOGUS.Core.Services.Gameplay {
@@ -17,9 +18,12 @@ namespace AMOGUS.Core.Services.Gameplay {
         private static List<Question> _questions;
 #pragma warning restore 8618
 
-        public QuestionFileAccessor(IQuestionRepoConfiguration questionRepoConfiguration) {
+        private readonly ILogger<QuestionFileAccessor> _logger;
+
+        public QuestionFileAccessor(IQuestionRepoConfiguration questionRepoConfiguration, ILogger<QuestionFileAccessor> logger) {
             _questionRepoConfiguration = questionRepoConfiguration!;
             _exercisePath = _questionRepoConfiguration.ExercisePath;
+            _logger = logger!;
 
             if (_questions is null) {
                 ReloadQuestions();
@@ -27,6 +31,9 @@ namespace AMOGUS.Core.Services.Gameplay {
         }
 
         public void ReloadQuestions() {
+            if(_logger.IsEnabled(LogLevel.Information)) {
+                _logger.LogInformation("Loading questions from files at {dir}", _exercisePath);
+            }
             _questions = new List<Question>();
 
             List<string> files = Directory.GetFiles(_exercisePath)
@@ -34,6 +41,9 @@ namespace AMOGUS.Core.Services.Gameplay {
                 .ToList();
             foreach (var f in files) {
                 var convertedQuestions = JsonConvert.DeserializeObject<List<Question>>(File.ReadAllText(f));
+                if(_logger.IsEnabled(LogLevel.Information)) {
+                    _logger.LogInformation("Loaded question {q}", convertedQuestions?.Select(x => x.ToString() + "\n"));
+                }
                 foreach(var q in convertedQuestions!) {
                     _questions.Add(q);
                 }

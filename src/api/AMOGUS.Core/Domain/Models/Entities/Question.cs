@@ -17,5 +17,10 @@ namespace AMOGUS.Core.Domain.Models.Entities {
         public CategoryType Category { get; set; }
 
         public int ExperiencePoints { get; set; }
+
+        public override string ToString() {
+
+            return $"{{{QuestionId} - {Category}}} - {Exercise}";
+        }
     }
 }
