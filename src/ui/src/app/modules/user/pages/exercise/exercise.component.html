@@ -3,6 +3,7 @@
   </textarea>
   <div class="answers">
     <mat-radio-group
+      *ngIf="+currentQuestion.category < 3"
       aria-labelledby="example-radio-group-label"
       class="example-radio-group"
       [formControl]="selectedAnswer">
@@ -10,6 +11,8 @@
         {{answer}}
       </mat-radio-button>
     </mat-radio-group>
+
+    <input *ngIf="+currentQuestion.category >= 3" class="answer-input" [formControl]="selectedAnswer" />
   </div>
 </div>
 

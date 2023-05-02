@@ -35,6 +35,14 @@ export class GameSelectionComponent implements OnDestroy {
         category: CategoryType.GEOMETRY,
         gameType: "Geometry",
       },
+      {
+        category: CategoryType.RANDOMMENTAL,
+        gameType: "Randomized Mental Mode",
+      },
+      {
+        category: CategoryType.RANDOMMENTAL_INSANE,
+        gameType: "Randomized Mental Insane Mode",
+      },
     ]
   }
   ngOnDestroy(): void {
@@ -44,7 +52,7 @@ export class GameSelectionComponent implements OnDestroy {
   navigate(category : CategoryType){
     this.gameService.startNewGame(category).subscribe(e => {
       this.router.navigate(["user","game"]);
-    })
+    });
   }
 
 }

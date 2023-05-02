@@ -22,8 +22,8 @@ export class AuthenticationService {
   }
 
   register(email: string, username: string, password: string): Observable<LoginResult> {
-    return this.api.post<LoginResult>('/auth/register', JSON.stringify({ email, username, password })).pipe(
-      tap(e => this.setSession),
+    return this.api.post<LoginResult>('/auth/register', { email, username, password }).pipe(
+      tap(e => this.setSession(e)),
       catchError(this.handleError)
     )
   }

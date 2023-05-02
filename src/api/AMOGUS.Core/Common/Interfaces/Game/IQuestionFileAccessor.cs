@@ -4,7 +4,7 @@ using AMOGUS.Core.Domain.Models.Entities;
 namespace AMOGUS.Core.Common.Interfaces.Game {
     public interface IQuestionFileAccessor {
 
-        Task ReloadQuestionsAsync();
+        void ReloadQuestions();
 
         List<Question> GetAllQuestions();
 
