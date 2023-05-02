@@ -139,6 +139,9 @@ namespace AMOGUS.UnitTests {
 
         [Fact]
         public async Task DeleteUserAsync_WhenGivenAUserId_AndEverythingIsFine_ReturnTrue() {
+
+            var deleltedUser = new List<ApplicationUser>();
+
             var medalRepositoryMock = CreateUserMedalRepositoryMock();
             medalRepositoryMock
                 .Setup(x => x.DeleteUserMedalsByUserIdAsync(It.IsAny<string>()));
@@ -154,9 +157,10 @@ namespace AMOGUS.UnitTests {
             var userManager = CreateUserManagerMock();
             userManager
                 .Setup(x => x.FindByIdAsync(It.IsAny<string>()))
-                .ReturnsAsync(new ApplicationUser());
+                .ReturnsAsync(new ApplicationUser() { Id = "testID" });
             userManager
                 .Setup(x => x.DeleteAsync(It.IsAny<ApplicationUser>()))
+                .Callback((ApplicationUser x) => deleltedUser.Add(x))
                 .ReturnsAsync(IdentityResult.Success);
 
             var userService = new UserService(userManager.Object, medalRepositoryMock.Object, gameSessionRepositoryMock.Object, userStatsRepositoryMock.Object) { };
@@ -164,6 +168,7 @@ namespace AMOGUS.UnitTests {
             var result = await userService.DeleteUserAsync("testID");
 
             Assert.True(result.IsSuccess);
+            Assert.Contains(deleltedUser, e => "testID".Equals(e.Id));
         }
         #endregion
     }
