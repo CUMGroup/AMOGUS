@@ -11,8 +11,6 @@ export class AmogusButtonComponent implements OnInit {
 
   @Input() link?: string;
 
-  @Output() click = new EventEmitter();
-
   ngOnInit(): void {
   }
 }
