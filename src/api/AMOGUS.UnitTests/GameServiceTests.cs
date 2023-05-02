@@ -29,7 +29,8 @@ namespace AMOGUS.UnitTests {
         [Fact]
         public void NewSession_WithoutQuestionAmount_ReturnsSessionWith10Questions() {
             var exerciseServiceMock = CreateExerciseServiceMock();
-            exerciseServiceMock.Setup(x => x.GetRandomExercises(It.IsAny<CategoryType>(), 10))
+            exerciseServiceMock
+                .Setup(x => x.GetRandomExercises(It.IsAny<CategoryType>(), 10))
                 .Returns(new List<Question>() { new Question(), new Question(), new Question(), new Question(), new Question(), new Question(), new Question(), new Question(), new Question(), new Question() });
 
             var gameService = new GameService(exerciseServiceMock.Object, CreateUserManagerMock().Object, CreateStatsServiceMock().Object, CreateGameSessionRepositoryMock().Object, CreateDateTimeMock().Object, CreateValidatorMock().Object);
@@ -42,7 +43,8 @@ namespace AMOGUS.UnitTests {
         [Fact]
         public void NewSession_WithQuestionAmount1_ReturnsSessionWith1Question() {
             var exerciseServiceMock = CreateExerciseServiceMock();
-            exerciseServiceMock.Setup(x => x.GetRandomExercises(It.IsAny<CategoryType>(), It.IsAny<int>()))
+            exerciseServiceMock
+                .Setup(x => x.GetRandomExercises(It.IsAny<CategoryType>(), It.IsAny<int>()))
                 .Returns(new List<Question>() { new Question() });
 
             var gameService = new GameService(exerciseServiceMock.Object, CreateUserManagerMock().Object, CreateStatsServiceMock().Object, CreateGameSessionRepositoryMock().Object, CreateDateTimeMock().Object, CreateValidatorMock().Object);
@@ -57,7 +59,8 @@ namespace AMOGUS.UnitTests {
         [Fact]
         public async Task EndSessionAsync_AndUserNotFound_ReturnsException() {
             var userServiceMock = CreateUserManagerMock();
-            userServiceMock.Setup(x => x.FindByIdAsync(It.IsAny<string>()))
+            userServiceMock
+                .Setup(x => x.FindByIdAsync(It.IsAny<string>()))
                 .ReturnsAsync((ApplicationUser) null);
 
             var gameService = new GameService(CreateExerciseServiceMock().Object, userServiceMock.Object, CreateStatsServiceMock().Object, CreateGameSessionRepositoryMock().Object, CreateDateTimeMock().Object, CreateValidatorMock().Object);
@@ -71,11 +74,13 @@ namespace AMOGUS.UnitTests {
         [Fact]
         public async Task EndSessionAsync_AndUserFound_AndValidationFails_ReturnsException() {
             var userServiceMock = CreateUserManagerMock();
-            userServiceMock.Setup(x => x.FindByIdAsync(It.IsAny<string>()))
+            userServiceMock
+                .Setup(x => x.FindByIdAsync(It.IsAny<string>()))
                 .ReturnsAsync(new ApplicationUser());
 
             var dateTimeMock = CreateDateTimeMock();
-            dateTimeMock.Setup(x => x.Now)
+            dateTimeMock
+                .Setup(x => x.Now)
                 .Returns(DateTime.Now);
 
             var validatorMock = CreateValidatorMock();
@@ -96,11 +101,13 @@ namespace AMOGUS.UnitTests {
         [Fact]
         public async Task EndSessionAsync_AndUserFound_AndSessionValid_ButDbNotAffected_ReturnsFaulted() {
             var userServiceMock = CreateUserManagerMock();
-            userServiceMock.Setup(x => x.FindByIdAsync(It.IsAny<string>()))
+            userServiceMock
+                .Setup(x => x.FindByIdAsync(It.IsAny<string>()))
                 .ReturnsAsync(new ApplicationUser());
 
             var dateTimeMock = CreateDateTimeMock();
-            dateTimeMock.Setup(x => x.Now)
+            dateTimeMock
+                .Setup(x => x.Now)
                 .Returns(DateTime.Now);
 
             var validatorMock = CreateValidatorMock();
@@ -109,11 +116,13 @@ namespace AMOGUS.UnitTests {
                 .Returns(new ValidationResult());
 
             var statsServiceMock = CreateStatsServiceMock();
-            statsServiceMock.Setup(x => x.UpdateUserStatsAsync(It.IsAny<GameSession>(), It.IsAny<bool[]>(), It.IsAny<ApplicationUser>()))
+            statsServiceMock
+                .Setup(x => x.UpdateUserStatsAsync(It.IsAny<GameSession>(), It.IsAny<bool[]>(), It.IsAny<ApplicationUser>()))
                 .ReturnsAsync(true);
 
             var gameSessionRepositoryMock = CreateGameSessionRepositoryMock();
-            gameSessionRepositoryMock.Setup(x => x.AddGameSessionAsync(It.IsAny<GameSession>()))
+            gameSessionRepositoryMock
+                .Setup(x => x.AddGameSessionAsync(It.IsAny<GameSession>()))
                 .ReturnsAsync(0);
 
             var gameService = new GameService(CreateExerciseServiceMock().Object, userServiceMock.Object, statsServiceMock.Object, gameSessionRepositoryMock.Object, dateTimeMock.Object, validatorMock.Object);
@@ -129,11 +138,13 @@ namespace AMOGUS.UnitTests {
         [Fact]
         public async Task EndSessionAsync_AndUserFound_AndSessionValid_AndDbAffected_ReturnsSuccess() {
             var userServiceMock = CreateUserManagerMock();
-            userServiceMock.Setup(x => x.FindByIdAsync(It.IsAny<string>()))
+            userServiceMock
+                .Setup(x => x.FindByIdAsync(It.IsAny<string>()))
                 .ReturnsAsync(new ApplicationUser());
 
             var dateTimeMock = CreateDateTimeMock();
-            dateTimeMock.Setup(x => x.Now)
+            dateTimeMock
+                .Setup(x => x.Now)
                 .Returns(DateTime.Now);
 
             var validatorMock = CreateValidatorMock();
@@ -142,11 +153,13 @@ namespace AMOGUS.UnitTests {
                 .Returns(new ValidationResult());
 
             var statsServiceMock = CreateStatsServiceMock();
-            statsServiceMock.Setup(x => x.UpdateUserStatsAsync(It.IsAny<GameSession>(), It.IsAny<bool[]>(), It.IsAny<ApplicationUser>()))
+            statsServiceMock
+                .Setup(x => x.UpdateUserStatsAsync(It.IsAny<GameSession>(), It.IsAny<bool[]>(), It.IsAny<ApplicationUser>()))
                 .ReturnsAsync(true);
 
             var gameSessionRepositoryMock = CreateGameSessionRepositoryMock();
-            gameSessionRepositoryMock.Setup(x => x.AddGameSessionAsync(It.IsAny<GameSession>()))
+            gameSessionRepositoryMock
+                .Setup(x => x.AddGameSessionAsync(It.IsAny<GameSession>()))
                 .ReturnsAsync(1);
 
             var gameService = new GameService(CreateExerciseServiceMock().Object, userServiceMock.Object, statsServiceMock.Object, gameSessionRepositoryMock.Object, dateTimeMock.Object, validatorMock.Object);
@@ -158,7 +171,6 @@ namespace AMOGUS.UnitTests {
 
             Assert.True(result.IsSuccess);
         }
-
         #endregion
     }
 }
