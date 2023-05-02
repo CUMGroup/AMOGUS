@@ -52,7 +52,7 @@ export class GameSelectionComponent implements OnDestroy {
   navigate(category : CategoryType){
     this.gameService.startNewGame(category).subscribe(e => {
       this.router.navigate(["user","game"]);
-    })
+    });
   }
 
 }
