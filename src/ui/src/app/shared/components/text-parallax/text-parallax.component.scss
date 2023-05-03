@@ -3,37 +3,42 @@
   box-sizing: border-box;
   font-family: sans-serif;
 }
+
 h2 {
   font-size: 3rem;
 }
-h2 + p {
+
+h2+p {
   margin-top: 1rem;
 }
-p {
-  max-width: 65ch;
-  line-height: 1.5;
+
+.grey {
+  background-color: var(--background1);
 }
-.blue {
-  background-color: rgb(196, 196, 248);
-}
+
 .section {
-  height: 100vh;
+  max-height: 60rem;
   width: 100%;
   padding: 2rem;
   display: flex;
 }
-.image{
+
+.image {
   border-radius: 500px;
   height: 200px;
 }
-.textcon{
+
+.textcon {
   display: flex;
   flex-direction: column;
   padding-left: 30px;
 }
-.text{
-  width: 400px;
-  height: 20px
+
+.text {
+  font-size: 20px;
+  opacity: 0;
 }
 
-
+.outline{
+  display: contents;
+}

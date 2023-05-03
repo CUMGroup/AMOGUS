@@ -7,6 +7,8 @@ import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from "@angular/material/dialog
 import {Router} from "@angular/router";
 import {Subject, Subscription, takeUntil, timer} from 'rxjs'
 import { CategoryType } from 'src/app/core/interfaces/game-session';
+import {ExerciseComponent} from "../shared/exercise/exercise.component";
+import {QuestionPreviewComponent} from "../shared/question-preview/question-preview.component";
 
 
 @Component({
@@ -47,7 +49,7 @@ export class GameViewComponent implements OnInit, AfterViewInit, OnDestroy {
       this.newQuestion()
       // });
     }
-    
+
   ngAfterViewInit(): void {
       this.animate();
   }
@@ -66,7 +68,7 @@ export class GameViewComponent implements OnInit, AfterViewInit, OnDestroy {
     this.currentQuestion = this.gameService.getQuestion();
     if (this.currentQuestion.finished) {
       const dialogRef = this.dialog.open(AnswerDialog, {
-        data: {answers: this.correctAnswers}, panelClass: 'mat-dialog-class'}
+        data: {answers: this.correctAnswers, questions: this.gameService.questions}, panelClass: 'mat-dialog-class'}
       );
 
       this.routerSubscription$ = dialogRef.afterClosed().pipe(takeUntil(this.componentDestroyed$)).subscribe(() => {
@@ -79,7 +81,7 @@ export class GameViewComponent implements OnInit, AfterViewInit, OnDestroy {
       this.currentQuestionTimeStart = new Date().getTime();
       this.questionIndex++;
       this.animate();
-      this.gameProgress = timer(this.currentQuestion.getTime() * 1000).pipe(takeUntil(this.componentDestroyed$)).subscribe(() => { 
+      this.gameProgress = timer(this.currentQuestion.getTime() * 1000).pipe(takeUntil(this.componentDestroyed$)).subscribe(() => {
         this.submit()
       })
     }
@@ -147,8 +149,18 @@ export class GameViewComponent implements OnInit, AfterViewInit, OnDestroy {
 export class AnswerDialog {
   constructor(
     public dialogRef: MatDialogRef<AnswerDialog>,
-    @Inject(MAT_DIALOG_DATA) public data: { answers: Array<boolean> },
+    public dialog: MatDialog,
+
+  @Inject(MAT_DIALOG_DATA) public data: { answers: Array<boolean>; questions: Array<question> },
   ) {
+  }
+
+  showQuestion(index:number){
+    this.dialog.open(QuestionPreviewComponent, { data: this.getQuestion(index), width:"40rem", panelClass: 'mat-dialog-class'});
+  }
+
+  getQuestion(index:number): question{
+    return this.data.questions[index]
   }
 
   onNoClick(): void {

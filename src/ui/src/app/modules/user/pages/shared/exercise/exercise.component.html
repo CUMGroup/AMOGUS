@@ -1,6 +1,18 @@
 <div class="container">
-  <textarea cdkTextareaAutosize readonly class="questions" value="{{currentQuestion.exercise}}">
+  <div class="top">
+    <div class="help">
+
+      <div class="question">?</div>
+
+      <div class="popup">
+        <h3>Need Help?</h3>
+        <p> {{ currentQuestion.help }}</p>
+      </div>
+
+    </div>
+    <textarea cdkTextareaAutosize readonly class="questions" value="{{currentQuestion.exercise}}">
   </textarea>
+  </div>
   <div class="answers">
     <mat-radio-group
       *ngIf="+currentQuestion.category < 3"
