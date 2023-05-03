@@ -99,6 +99,47 @@ Github Actions will show the amount of tests passed and failed per pull request.
 | 28   | DeleteUserAsync | DeleteUserAsync_WhenGivenAUserId_AndUserManagerCantDelete_Exception | valid userId but userManager cannot delete | Faulted result |
 | 29   | DeleteUserAsync | DeleteUserAsync_WhenGivenAUserId_AndEverythingIsFine_ReturnTrue | valid userId | Successful result and user is deleted |
 
+#### TeacherService
+
+| #   | Tested method | Objective | Input | Expected Result |
+| --- | ------------- | --------- | ----- | --------------- |
+| 30   | AddQuestionAsync | AddQuestionAsync_WhenGivenQuestion_AndEverythingIsFine_AddsQuestionAndReturnsQuestion | valid Question | Successful result and Question |
+| 31  | AddQuestionAsync | AddQuestionAsync_WhenGivenQuestion_AndIOException_ReturnsException | empty Question | faulted result |
+| 32   | DeleteQuestionByIdAsync | DeleteQuestionByIdAsync_WhenGivenQuestionId_AndQuestionDoesNotExist_ReturnsException | invalid QuestionID | faulted result |
+| 33   | DeleteQuestionByIdAsync | DeleteQuestionByIdAsync_WhenGivenQuestionId_AndQuestionFileNotAccessible_ReturnsException | valid QuestionID but not accessible | faulted result |
+| 34   | DeleteQuestionByIdAsync | DeleteQuestionByIdAsync_WhenGivenQuestionId_AndEverythingIsFine_ReturnsTrue_AndQuestionDeleted | valid QuestionID | Successful result and question deleted |
+| 35   | GetQuestionById | GetQuestionById_WhenGivenQuestionId_AndQuestionDoesNotExist_ReturnsException | invalid QuestionID | Faulted result |
+| 36   | GetQuestionById | GetQuestionById_WhenGivenQuestionId_AndQuestionDoesExist_ReturnsQuestion | valid QuestionID | Successful result and question |
+
+#### StreaksService
+
+| #   | Tested method | Objective | Input | Expected Result |
+| --- | ------------- | --------- | ----- | --------------- |
+| 37   | ReadStreakAsync | ReadStreakAsync_WhenGivenAUserId_AndUserHasNoStats_Exception | UserID with no stats | Faulted result |
+| 38  | ReadStreakAsync | ReadStreakAsync_WhenGivenAUserId_AndUserHasStats_ReturnsCurrentStreak | valid userid with stats | Successful result and current streak |
+| 39   | UpdateAllStreaksAsync | UpdateAllStreaksAsync_WhenPlayerHasNotPlayedToday_AndNotLongestStreak_StreakIsSetTo0 | player that hasn't played today | streak set to 0 |
+| 40   | UpdateAllStreaksAsync | UpdateAllStreaksAsync_WhenPlayerHasNotPlayedToday_AndLongestStreak_StreakIsSetTo0_ButKeepLongest | player that hasn't played today | streak set to 0 and longest streak kept |
+| 41   | UpdateAllStreaksAsync | UpdateAllStreaksAsync_WhenPlayerHasPlayedToday_ButNotLongestStreak_StreakIsIncreased | player that has played today | streak increased |
+| 42   | UpdateAllStreaksAsync | UpdateAllStreaksAsync_WhenPlayerHasPlayedToday_AndNewLongestStreak_StreakIsIncreased | player that has played today and it's the lonngest streak | current and longest streak are increased |
+| 43   | UpdateAllStreaksAsync | UpdateAllStreaksAsync_StreaksOfAllPlayersAreUpdated | multiple players that have played today | all streaks increased successfully |
+
+#### StatsService
+
+| #   | Tested method | Objective | Input | Expected Result |
+| --- | ------------- | --------- | ----- | --------------- |
+| 44  | GetUserStatsAsync | GetUserStatsAsync_WhenGivenAUserId_AndUserHasNoStats_Exception | userid that has no stats | Faulted result |
+| 45   | GetUserStatsAsync | GetUserStatsAsync_WhenGivenAUserId_AndUserHasStats_ReturnsStats | userId that has stats | Successful result and stats |
+| 46   | GetDetailedUserStatsModelAsync | GetDetailedUserStatsModelAsync_WhenGivenAUserId_AndUserHasNoStats_Exception | userid that has no stats | Faulted result |
+| 47   | GetDetailedUserStatsModelAsync | GetDetailedUserStatsModelAsync_WhenGivenAUserId_EverythingAlright_ReturnsDetailedUserstats | userId that has stats| Successful result and detailed UserStatsApiModel |
+| 48   | UpdateUserStatsAsync(UserStats userStats) | UpdateUserStatsAsync_WhenGivenUserStats_AndValidationFails_ReturnsFalse | invalid UserStats | false |
+| 49   | UpdateUserStatsAsync(UserStats userStats) | UpdateUserStatsAsync_WhenGivenUserStats_UpdateInDbFails_ReturnsFalse | valid UserStats but repository failed updating | false |
+| 50   | UpdateUserStatsAsync(UserStats userStats) | UpdateUserStatsAsync_WhenGivenUserStats_AndEverythingIsFine_ReturnsTrue | valid UserStats | true |
+| 51   | UpdateUserStatsAsync(GameSession session, bool[] answers, ApplicationUser user) | UpdateUserStatsAsync_WhenGivenGameSessionAnswersAndUser_AndValidationFails_ReturnsFalse | invalid GameSession, Answers and user | false |
+| 52   | UpdateUserStatsAsync(GameSession session, bool[] answers, ApplicationUser user) | UpdateUserStatsAsync_WhenGivenGameSessionAnswersAndUser_UpdateInDbFails_ReturnsFalse | valid GameSession, Answers and user but update in db fails | false |
+| 53   | UpdateUserStatsAsync(GameSession session, bool[] answers, ApplicationUser user) | UpdateUserStatsAsync_WhenGivenGameSessionAnswersAndUser_AndEverythingIsFine_ReturnsTrue | valid GameSession, Answers and user | true |
+| 54   | UpdateUserStatsAsync(GameSession session, bool[] answers, ApplicationUser user) | UpdateUserStatsAsync_WhenGivenGameSessionAnswersAndUser_AndEverythingIsFine_StatsAreUpdatedCorrectly | valid GameSession, Answers and user | true and stats updated correctly |
+| 55   | UpdateUserStatsAsync(GameSession session, bool[] answers, ApplicationUser user) | UpdateUserStatsAsync_WhenGivenGameSessionAnswersAndUser_AndEverythingIsFine_StatsAreUpdatedCorrectly2 | valid GameSession, Answers and user (other values than above so other changes happen) | true and stats updated correctly |
+
 ### API tests
 
 API tests are run manually
