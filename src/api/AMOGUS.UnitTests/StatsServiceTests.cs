@@ -1,5 +1,4 @@
-﻿using AMOGUS.Core.Common.Communication;
-using AMOGUS.Core.Common.Exceptions;
+﻿using AMOGUS.Core.Common.Exceptions;
 using AMOGUS.Core.Common.Interfaces.Abstractions;
 using AMOGUS.Core.Common.Interfaces.Repositories;
 using AMOGUS.Core.DataTransferObjects.User;
@@ -8,13 +7,7 @@ using AMOGUS.Core.Services.Gameplay;
 using AMOGUS.Infrastructure.Identity;
 using FluentValidation;
 using FluentValidation.Results;
-using Moq;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AMOGUS.UnitTests {
     public class StatsServiceTests {
@@ -85,12 +78,12 @@ namespace AMOGUS.UnitTests {
                     PlayedAt = new DateTime(2023, 5, 2)
                 }
             };
-            
+
             var userStatsRepositoryMock = CreateUserStatsRepositoryMock();
             userStatsRepositoryMock
                 .Setup(x => x.GetUserStatsAsync(It.IsAny<string>()))
                 .ReturnsAsync(new UserStats() {
-                    CorrectAnswers = 42+15
+                    CorrectAnswers = 42 + 15
                 });
 
             var gameSessionRepositoryMock = CreateGameSessionRepositoryMock();
@@ -111,7 +104,7 @@ namespace AMOGUS.UnitTests {
             Assert.True(result.IsSuccess, "Result was faulted");
             Assert.True(result.Value is UserStatsApiModel, "Result is not UserStatsApiModel");
             Assert.True(result.Value.CategorieAnswers.TryGetValue(Core.Domain.Enums.CategoryType.MENTAL, out value));
-            Assert.True(result.Value.CorrectAnswers == 42+15, $"Correct Answers was actually {result.Value.CorrectAnswers} and not {42+15}");
+            Assert.True(result.Value.CorrectAnswers == 42 + 15, $"Correct Answers was actually {result.Value.CorrectAnswers} and not {42 + 15}");
         }
         #endregion
 
@@ -260,7 +253,7 @@ namespace AMOGUS.UnitTests {
                 SlowestAnswer = 10,
                 LongestStreak = 1
             };
-            
+
             var statsValidatorMock = CreateValidatorMock();
             statsValidatorMock
                 .Setup(x => x.Validate(It.IsAny<UserStats>()))

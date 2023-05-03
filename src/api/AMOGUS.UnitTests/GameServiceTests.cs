@@ -3,18 +3,12 @@ using AMOGUS.Core.Common.Interfaces.Abstractions;
 using AMOGUS.Core.Common.Interfaces.Database;
 using AMOGUS.Core.Common.Interfaces.Game;
 using AMOGUS.Core.Common.Interfaces.Repositories;
-using AMOGUS.Core.DataTransferObjects.User;
 using AMOGUS.Core.Domain.Enums;
 using AMOGUS.Core.Domain.Models.Entities;
 using AMOGUS.Core.Services.Gameplay;
 using AMOGUS.Infrastructure.Identity;
 using FluentValidation;
 using FluentValidation.Results;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AMOGUS.UnitTests {
     public class GameServiceTests {

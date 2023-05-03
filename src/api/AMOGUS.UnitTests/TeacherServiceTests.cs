@@ -1,16 +1,8 @@
 ﻿using AMOGUS.Core.Common.Exceptions;
 using AMOGUS.Core.Common.Interfaces.Game;
 using AMOGUS.Core.Common.Interfaces.Security;
-using AMOGUS.Core.Common.Interfaces.Teacher;
 using AMOGUS.Core.Domain.Models.Entities;
-using AMOGUS.Core.Services.Gameplay;
 using AMOGUS.Core.Services.Teacher;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AMOGUS.UnitTests {
     public class TeacherServiceTests {
@@ -106,7 +98,7 @@ namespace AMOGUS.UnitTests {
 
         [Fact]
         public async Task DeleteQuestionByIdAsync_WhenGivenQuestionId_AndEverythingIsFine_ReturnsTrue_AndQuestionDeleted() {
-            var questionsList = new List<Question>() { 
+            var questionsList = new List<Question>() {
                 new Question() {QuestionId = "testId"}
             };
 

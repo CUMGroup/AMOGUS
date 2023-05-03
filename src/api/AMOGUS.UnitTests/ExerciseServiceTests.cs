@@ -1,10 +1,7 @@
-﻿using AMOGUS.Core.Centralization.User;
-using AMOGUS.Core.Common.Interfaces.Game;
+﻿using AMOGUS.Core.Common.Interfaces.Game;
 using AMOGUS.Core.Domain.Enums;
 using AMOGUS.Core.Domain.Models.Entities;
 using AMOGUS.Core.Services.Gameplay;
-using AMOGUS.Infrastructure.Services.User;
-using Microsoft.AspNetCore.Identity;
 
 namespace AMOGUS.UnitTests {
     public class ExerciseServiceTests {

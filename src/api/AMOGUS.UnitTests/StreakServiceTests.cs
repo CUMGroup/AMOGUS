@@ -4,13 +4,6 @@ using AMOGUS.Core.Common.Interfaces.Game;
 using AMOGUS.Core.Domain.Models.Entities;
 using AMOGUS.Core.Services.Gameplay;
 using AMOGUS.Infrastructure.Identity;
-using AMOGUS.Infrastructure.Services.User;
-using Moq;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AMOGUS.UnitTests {
     public class StreakServiceTests {
@@ -56,7 +49,7 @@ namespace AMOGUS.UnitTests {
                 Id = "testID",
                 PlayedToday = false
             };
-            var testStats = new UserStats() { 
+            var testStats = new UserStats() {
                 User = testUser,
                 CurrentStreak = 420,
                 LongestStreak = 600
@@ -181,7 +174,7 @@ namespace AMOGUS.UnitTests {
             var testStatsQueue = new Queue<UserStats>();
 
 
-            for(int i = 0;i < 5; i++) {
+            for (int i = 0; i < 5; i++) {
                 var testUser = new ApplicationUser() {
                     Id = $"{i}",
                     PlayedToday = true
@@ -210,8 +203,8 @@ namespace AMOGUS.UnitTests {
             var streaksService = new StreaksService(statsServiceMock.Object, userManagerMock.Object) { };
 
             await streaksService.UpdateAllStreaksAsync();
-            
-            foreach(var testStats in testStatsList) {
+
+            foreach (var testStats in testStatsList) {
                 Assert.True(testStats.CurrentStreak == 421, $"current streak was not increased User: {testStats?.User?.Id}");
                 Assert.True(testStats?.LongestStreak == 421, "current streak was not increased");
             }
