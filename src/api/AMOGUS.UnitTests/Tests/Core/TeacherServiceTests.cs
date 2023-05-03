@@ -4,7 +4,7 @@ using AMOGUS.Core.Common.Interfaces.Security;
 using AMOGUS.Core.Domain.Models.Entities;
 using AMOGUS.Core.Services.Teacher;
 
-namespace AMOGUS.UnitTests {
+namespace AMOGUS.UnitTests.Tests.Core {
     public class TeacherServiceTests {
         private Mock<IQuestionFileAccessor> CreateIQuestionFileAccessorMock() => new();
         private Mock<ITokenFactory> CreateTokenFactoryMock() => new();

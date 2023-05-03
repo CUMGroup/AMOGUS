@@ -5,7 +5,7 @@ using AMOGUS.Core.Domain.Models.Entities;
 using AMOGUS.Core.Services.Gameplay;
 using AMOGUS.Infrastructure.Identity;
 
-namespace AMOGUS.UnitTests {
+namespace AMOGUS.UnitTests.Tests.Core {
     public class StreakServiceTests {
         private Mock<IUserManager> CreateUserManagerMock() => new();
         private Mock<IStatsService> CreateStatsServiceMock() => new();

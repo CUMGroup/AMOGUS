@@ -3,7 +3,7 @@ using AMOGUS.Core.Domain.Enums;
 using AMOGUS.Core.Domain.Models.Entities;
 using AMOGUS.Core.Services.Gameplay;
 
-namespace AMOGUS.UnitTests {
+namespace AMOGUS.UnitTests.Tests.Core {
     public class ExerciseServiceTests {
         private Mock<IQuestionFileAccessor> CreateQuestionFileAccessorMock() => new();
 

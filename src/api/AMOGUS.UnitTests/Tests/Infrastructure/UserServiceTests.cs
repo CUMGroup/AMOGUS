@@ -5,7 +5,7 @@ using AMOGUS.Infrastructure.Identity;
 using AMOGUS.Infrastructure.Services.User;
 using Microsoft.AspNetCore.Identity;
 
-namespace AMOGUS.UnitTests {
+namespace AMOGUS.UnitTests.Tests.Infrastructure {
     public class UserServiceTests {
         private Mock<IUserManager> CreateUserManagerMock() => new();
         private Mock<IUserMedalRepository> CreateUserMedalRepositoryMock() => new();

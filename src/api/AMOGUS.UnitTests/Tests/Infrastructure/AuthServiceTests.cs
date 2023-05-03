@@ -13,7 +13,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using ITokenFactory = AMOGUS.Core.Common.Interfaces.Security.ITokenFactory;
 
-namespace AMOGUS.UnitTests {
+namespace AMOGUS.UnitTests.Tests.Infrastructure {
     public class AuthServiceTests {
 
         private Mock<ITokenFactory> CreateTokenFactoryMock() => new();

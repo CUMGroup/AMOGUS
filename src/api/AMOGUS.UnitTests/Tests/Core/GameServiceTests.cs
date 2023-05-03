@@ -10,7 +10,7 @@ using AMOGUS.Infrastructure.Identity;
 using FluentValidation;
 using FluentValidation.Results;
 
-namespace AMOGUS.UnitTests {
+namespace AMOGUS.UnitTests.Tests.Core {
     public class GameServiceTests {
         private Mock<IExerciseService> CreateExerciseServiceMock() => new();
         private Mock<IStatsService> CreateStatsServiceMock() => new();

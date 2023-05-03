@@ -2,6 +2,7 @@
 using AMOGUS.Core.Common.Interfaces.Abstractions;
 using AMOGUS.Core.Common.Interfaces.Repositories;
 using AMOGUS.Core.DataTransferObjects.User;
+using AMOGUS.Core.Domain.Enums;
 using AMOGUS.Core.Domain.Models.Entities;
 using AMOGUS.Core.Services.Gameplay;
 using AMOGUS.Infrastructure.Identity;
@@ -9,7 +10,7 @@ using FluentValidation;
 using FluentValidation.Results;
 using System.Linq.Expressions;
 
-namespace AMOGUS.UnitTests {
+namespace AMOGUS.UnitTests.Tests.Core {
     public class StatsServiceTests {
         private Mock<IUserStatsRepository> CreateUserStatsRepositoryMock() => new();
         private Mock<IGameSessionRepository> CreateGameSessionRepositoryMock() => new();
@@ -69,12 +70,12 @@ namespace AMOGUS.UnitTests {
             var testGamesList = new List<GameSession>() {
                 new GameSession() {
                     CorrectAnswersCount = 42,
-                    Category = Core.Domain.Enums.CategoryType.MENTAL,
+                    Category = CategoryType.MENTAL,
                     PlayedAt = new DateTime(2023, 5, 3)
                 },
                 new GameSession() {
                     CorrectAnswersCount = 15,
-                    Category = Core.Domain.Enums.CategoryType.MENTAL,
+                    Category = CategoryType.MENTAL,
                     PlayedAt = new DateTime(2023, 5, 2)
                 }
             };
@@ -103,7 +104,7 @@ namespace AMOGUS.UnitTests {
 
             Assert.True(result.IsSuccess, "Result was faulted");
             Assert.True(result.Value is UserStatsApiModel, "Result is not UserStatsApiModel");
-            Assert.True(result.Value.CategorieAnswers.TryGetValue(Core.Domain.Enums.CategoryType.MENTAL, out value));
+            Assert.True(result.Value.CategorieAnswers.TryGetValue(CategoryType.MENTAL, out value));
             Assert.True(result.Value.CorrectAnswers == 42 + 15, $"Correct Answers was actually {result.Value.CorrectAnswers} and not {42 + 15}");
         }
         #endregion
