@@ -31,7 +31,7 @@ namespace AMOGUS.Core.Services.Gameplay {
         }
 
         public void ReloadQuestions() {
-            if(_logger.IsEnabled(LogLevel.Information)) {
+            if (_logger.IsEnabled(LogLevel.Information)) {
                 _logger.LogInformation("Loading questions from files at {dir}", _exercisePath);
             }
             _questions = new List<Question>();
@@ -41,10 +41,11 @@ namespace AMOGUS.Core.Services.Gameplay {
                 .ToList();
             foreach (var f in files) {
                 var convertedQuestions = JsonConvert.DeserializeObject<List<Question>>(File.ReadAllText(f));
-                if(_logger.IsEnabled(LogLevel.Information)) {
+
+                if (_logger.IsEnabled(LogLevel.Information)) {
                     _logger.LogInformation("Loaded question {q}", convertedQuestions?.Select(x => x.ToString() + "\n"));
                 }
-                foreach(var q in convertedQuestions!) {
+                foreach (var q in convertedQuestions!) {
                     _questions.Add(q);
                 }
             }

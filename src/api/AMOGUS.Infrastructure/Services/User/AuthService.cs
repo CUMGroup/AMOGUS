@@ -7,6 +7,7 @@ using AMOGUS.Core.Common.Interfaces.User;
 using AMOGUS.Core.DataTransferObjects.User;
 using AMOGUS.Core.Domain.Models.Entities;
 using AMOGUS.Infrastructure.Identity;
+using FluentValidation;
 using Microsoft.AspNetCore.Identity;
 using System.IdentityModel.Tokens.Jwt;
 using System.Reflection;
@@ -21,11 +22,14 @@ namespace AMOGUS.Infrastructure.Services.User {
 
         private readonly IUserStatsRepository _userStatsRepository;
 
-        public AuthService(IRoleManager _roleManager, IUserManager _userManager, ITokenFactory _tokenFactory, IUserStatsRepository userStatsRepository) {
+        private readonly IValidator<RegisterApiModel> _registerValidator;
+
+        public AuthService(IRoleManager _roleManager, IUserManager _userManager, ITokenFactory _tokenFactory, IUserStatsRepository userStatsRepository, IValidator<RegisterApiModel> registerValidator) {
             this._roleManager = _roleManager!;
             this._userManager = _userManager!;
             this._tokenFactory = _tokenFactory!;
             _userStatsRepository = userStatsRepository!;
+            _registerValidator = registerValidator!;
         }
 
         public async Task CreateRolesAsync<TRoles>() {
@@ -55,6 +59,11 @@ namespace AMOGUS.Infrastructure.Services.User {
         }
 
         public async Task<Result<LoginResultApiModel>> RegisterUserAsync(RegisterApiModel registerModel, string role) {
+
+            var validRes = _registerValidator.Validate(registerModel);
+            if (!validRes.IsValid) {
+                return new ValidationException(validRes.Errors);
+            }
 
             var userExists = await _userManager.FindByEmailAsync(registerModel.Email);
             if (userExists != null) {
