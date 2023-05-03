@@ -38,7 +38,7 @@ jobs:
         npm run build
     - name: Run Unit Tests
       run: |
-        cd ../../api/AMOGUS.UnitTests
+        cd src/api/AMOGUS.UnitTests
         rm -rf coverage
         rm -rf TestResults
         dotnet tool install -g dotnet-reportgenerator-globaltool
