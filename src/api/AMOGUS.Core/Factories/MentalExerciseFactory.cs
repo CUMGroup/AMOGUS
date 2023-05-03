@@ -80,6 +80,9 @@ namespace AMOGUS.Core.Factories {
             catch (CannotEvalException) {
                 return string.Empty;
             }
+            catch (SolveRequiresStatementException) {
+                return string.Empty;
+            }
         }
 
         public MentalExerciseModel GenerateRandomExerciseModel(bool insaneMode = false) {

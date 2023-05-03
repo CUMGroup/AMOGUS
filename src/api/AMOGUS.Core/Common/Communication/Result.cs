@@ -9,7 +9,7 @@ namespace AMOGUS.Core.Common.Communication {
 
         internal readonly ResultState State;
         public readonly A Value;
-        readonly Exception? exception;
+        public readonly Exception? exception;
 
         public Result(A value) {
             State = ResultState.Success;
@@ -129,7 +129,7 @@ namespace AMOGUS.Core.Common.Communication {
     public readonly struct Result : IEquatable<Result>, IComparable<Result> {
 
         internal readonly ResultState State;
-        readonly Exception? exception;
+        public readonly Exception? exception;
 
         public Result() {
             State = ResultState.Success;

@@ -1,0 +1,31 @@
+name: Test on Pull Request
+
+on:
+  pull_request:
+    branches: [ main ]
+    paths:
+      - src/api/**
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Setup .NET Environment
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: '6.0.x'
+
+    - name: Run Unit Tests
+      run: |
+        cd src/api/AMOGUS.UnitTests
+        rm -rf coverage
+        rm -rf TestResults
+        dotnet tool install -g dotnet-reportgenerator-globaltool
+        dotnet test --logger "console;verbosity=detailed" --collect:"XPlat Code Coverage"
+        reportgenerator "-reports:TestResults/*/coverage*" "-targetdir:coverage" "-reporttypes:TextSummary" "-classfilters:-AMOGUS.Core.Common*;-AMOGUS.Core.DataTransferObjects*;-AMOGUS.*.DependencyInjection;-AMOGUS.Core.Domain*;-AMOGUS.Infrastructure.Identity*;-AMOGUS.Infrastructure.Persistence*"
+        cat coverage/Summary.txt
+        rm -rf coverage
+        rm -rf TestResults

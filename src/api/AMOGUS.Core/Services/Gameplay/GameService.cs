@@ -7,7 +7,9 @@ using AMOGUS.Core.Common.Interfaces.Repositories;
 using AMOGUS.Core.Domain.Enums;
 using AMOGUS.Core.Domain.Models.Entities;
 using FluentValidation;
+using System.Runtime.CompilerServices;
 
+[assembly: InternalsVisibleTo("AMOGUS.UnitTests")]
 namespace AMOGUS.Core.Services.Gameplay {
     internal class GameService : IGameService {
 
