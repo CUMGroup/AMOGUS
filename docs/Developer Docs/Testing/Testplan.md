@@ -119,9 +119,9 @@ Github Actions will show the amount of tests passed and failed per pull request.
 | 38  | ReadStreakAsync | ReadStreakAsync_WhenGivenAUserId_AndUserHasStats_ReturnsCurrentStreak | valid userid with stats | Successful result and current streak |
 | 39   | UpdateAllStreaksAsync | UpdateAllStreaksAsync_WhenPlayerHasNotPlayedToday_AndNotLongestStreak_StreakIsSetTo0 | player that hasn't played today | streak set to 0 |
 | 40   | UpdateAllStreaksAsync | UpdateAllStreaksAsync_WhenPlayerHasNotPlayedToday_AndLongestStreak_StreakIsSetTo0_ButKeepLongest | player that hasn't played today | streak set to 0 and longest streak kept |
-| 41   | UpdateAllStreaksAsync | UpdateAllStreaksAsync_WhenPlayerHasPlayedToday_ButNotLongestStreak_StreakIsIncreased | player that has played today | streak increased |
-| 42   | UpdateAllStreaksAsync | UpdateAllStreaksAsync_WhenPlayerHasPlayedToday_AndNewLongestStreak_StreakIsIncreased | player that has played today and it's the lonngest streak | current and longest streak are increased |
-| 43   | UpdateAllStreaksAsync | UpdateAllStreaksAsync_StreaksOfAllPlayersAreUpdated | multiple players that have played today | all streaks increased successfully |
+| 41   | UpdateAllStreaksAsync | UpdateAllStreaksAsync_WhenPlayerHasPlayedToday_ButNotLongestStreak_StreakIsNotLost | player that has played today | streak is kept |
+| 42   | UpdateAllStreaksAsync | UpdateAllStreaksAsync_WhenPlayerHasPlayedToday_AndNewLongestStreak_LongestStreakIsIncreased | player that has played today and it's the new lonngest streak | longest streak are increased |
+| 43   | UpdateAllStreaksAsync | UpdateAllStreaksAsync_StreaksOfAllPlayersAreUpdated | multiple players that have played today | all streaks updated successfully |
 
 #### StatsService
 
@@ -139,6 +139,8 @@ Github Actions will show the amount of tests passed and failed per pull request.
 | 53   | UpdateUserStatsAsync(GameSession session, bool[] answers, ApplicationUser user) | UpdateUserStatsAsync_WhenGivenGameSessionAnswersAndUser_AndEverythingIsFine_ReturnsTrue | valid GameSession, Answers and user | true |
 | 54   | UpdateUserStatsAsync(GameSession session, bool[] answers, ApplicationUser user) | UpdateUserStatsAsync_WhenGivenGameSessionAnswersAndUser_AndEverythingIsFine_StatsAreUpdatedCorrectly | valid GameSession, Answers and user | true and stats updated correctly |
 | 55   | UpdateUserStatsAsync(GameSession session, bool[] answers, ApplicationUser user) | UpdateUserStatsAsync_WhenGivenGameSessionAnswersAndUser_AndEverythingIsFine_StatsAreUpdatedCorrectly2 | valid GameSession, Answers and user (other values than above so other changes happen) | true and stats updated correctly |
+| 56   | UpdateUserStatsAsync(GameSession session, bool[] answers, ApplicationUser user) | UpdateUserStatsAsync_WhenGivenGameSessionAnswersAndUser_AndUserHasNotPlayedYet_StreakIsUpdated | like the above but playedtoday is false | played today is now true and streak is updated |
+| 57   | UpdateUserStatsAsync(GameSession session, bool[] answers, ApplicationUser user) | UpdateUserStatsAsync_WhenGivenGameSessionAnswersAndUser_AndUserHasPlayedAlready_StreakIsNotIncreased | like the above but playedtoday is true | streak is not increased |
 
 ### API tests
 
