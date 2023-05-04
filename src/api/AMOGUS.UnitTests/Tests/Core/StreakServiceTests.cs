@@ -106,7 +106,7 @@ namespace AMOGUS.UnitTests.Tests.Core {
         }
 
         [Fact]
-        public async Task UpdateAllStreaksAsync_WhenPlayerHasPlayedToday_ButNotLongestStreak_StreakIsIncreased() {
+        public async Task UpdateAllStreaksAsync_WhenPlayerHasPlayedToday_ButNotLongestStreak_StreakIsNotLost() {
             var testUser = new ApplicationUser() {
                 Id = "testID",
                 PlayedToday = true
@@ -131,13 +131,13 @@ namespace AMOGUS.UnitTests.Tests.Core {
 
             await streaksService.UpdateAllStreaksAsync();
 
-            Assert.True(testStats.CurrentStreak == 421, "current streak was not increased");
-            Assert.True(testStats.LongestStreak == 600, "current streak was modified");
+            Assert.True(testStats.CurrentStreak == 420, "current streak was modified");
+            Assert.True(testStats.LongestStreak == 600, "longest streak was modified");
             Assert.False(testUser.PlayedToday, "user has played");
         }
 
         [Fact]
-        public async Task UpdateAllStreaksAsync_WhenPlayerHasPlayedToday_AndNewLongestStreak_StreakIsIncreased() {
+        public async Task UpdateAllStreaksAsync_WhenPlayerHasPlayedToday_AndNewLongestStreak_LongestStreakIsIncreased() {
             var testUser = new ApplicationUser() {
                 Id = "testID",
                 PlayedToday = true
@@ -145,7 +145,7 @@ namespace AMOGUS.UnitTests.Tests.Core {
             var testStats = new UserStats() {
                 User = testUser,
                 CurrentStreak = 420,
-                LongestStreak = 420
+                LongestStreak = 419
             };
 
             var statsServiceMock = CreateStatsServiceMock();
@@ -162,8 +162,8 @@ namespace AMOGUS.UnitTests.Tests.Core {
 
             await streaksService.UpdateAllStreaksAsync();
 
-            Assert.True(testStats.CurrentStreak == 421, "current streak was not increased");
-            Assert.True(testStats.LongestStreak == 421, "current streak was not increased");
+            Assert.True(testStats.CurrentStreak == 420, "current streak was modified");
+            Assert.True(testStats.LongestStreak == 420, "longest streak was not increased");
             Assert.False(testUser.PlayedToday, "user has played");
         }
 
@@ -182,7 +182,7 @@ namespace AMOGUS.UnitTests.Tests.Core {
                 var testStats = new UserStats() {
                     User = testUser,
                     CurrentStreak = 420,
-                    LongestStreak = 420
+                    LongestStreak = 419
                 };
 
                 testUsersList.Add(testUser);
@@ -205,8 +205,8 @@ namespace AMOGUS.UnitTests.Tests.Core {
             await streaksService.UpdateAllStreaksAsync();
 
             foreach (var testStats in testStatsList) {
-                Assert.True(testStats.CurrentStreak == 421, $"current streak was not increased User: {testStats?.User?.Id}");
-                Assert.True(testStats?.LongestStreak == 421, "current streak was not increased");
+                Assert.True(testStats.CurrentStreak == 420, $"current streak was not increased User: {testStats?.User?.Id}");
+                Assert.True(testStats?.LongestStreak == 420, "current streak was not increased");
             }
         }
         #endregion
