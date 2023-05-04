@@ -1,6 +1,7 @@
 ﻿using AMOGUS.Core.Domain.Models.Entities;
 using AMOGUS.Infrastructure.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
 
 namespace AMOGUS.Core.Common.Interfaces.Database {
     public interface IApplicationDbContext {
@@ -19,6 +20,10 @@ namespace AMOGUS.Core.Common.Interfaces.Database {
         Task<bool> EnsureDatabaseAsync();
 
         Task MigrateDatabaseAsync();
+
+        void RevertChanges<TEntity>(TEntity entity) where TEntity : class;
+
+
 
     }
 }
