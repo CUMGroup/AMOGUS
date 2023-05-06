@@ -4,6 +4,7 @@ import {AuthenticationService} from "../../../../core/services/authentication/au
 import {Subscription, catchError, throwError} from "rxjs";
 import { Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Component({
   selector: 'app-login-register',
@@ -21,7 +22,12 @@ export class LoginRegisterComponent implements OnInit, OnDestroy {
 
   @ViewChild('errorPopup') errorPopup! : ElementRef;
 
-  constructor(public formBuilder: FormBuilder, public authService: AuthenticationService, private router : Router) {
+  constructor(
+    public formBuilder: FormBuilder,
+    public authService: AuthenticationService,
+    private router : Router,
+    public snackBar:MatSnackBar
+  ) {
   }
 
   ngOnInit(): void {
@@ -65,9 +71,11 @@ export class LoginRegisterComponent implements OnInit, OnDestroy {
 
   private handleError(error: HttpErrorResponse) {
     if(error.status === 401 || error.status === 422) {
-      this.errorPopup.nativeElement.style.opacity='100';
-      this.errorPopup.nativeElement.getElementsByClassName('error-description')[0].innerText = error.error.message;
-      setTimeout(() => this.errorPopup.nativeElement.style.opacity='0', 5000);
+      this.snackBar.open(error.error.message, "Close",{duration:2000})
+
+      // this.errorPopup.nativeElement.style.opacity='100';
+      // this.errorPopup.nativeElement.getElementsByClassName('error-description')[0].innerText = error.error.message;
+      // setTimeout(() => this.errorPopup.nativeElement.style.opacity='0', 5000);
     }
     return throwError(() => new Error('Something bad happened; please try again later.'));
   }

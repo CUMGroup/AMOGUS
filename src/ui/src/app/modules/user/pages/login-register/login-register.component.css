@@ -1,7 +1,15 @@
+:host{
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
 .display{
   color: white;
   width: 100%;
-  margin-top: 5em;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -27,7 +35,6 @@
   display: flex;
   justify-content: space-evenly;
   height: 75px;
-  padding: 20px;
   flex-direction: column;
   align-items: center;
 }
@@ -49,10 +56,8 @@
   color: var(--leading-color0);
 }
 
-
 .error-popup {
   transition: all ease-in-out 500ms;
-
   opacity: 0;
   position: fixed;
   top: 20rem;
