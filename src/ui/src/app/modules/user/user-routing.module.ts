@@ -5,13 +5,34 @@ import { GameViewComponent } from "./pages/game-view/game-view.component";
 import { LoginRegisterComponent } from "./pages/login-register/login-register.component";
 import {GameSelectionComponent} from "./pages/game-selection/game-selection.component";
 import {TeacherViewComponent} from "./pages/teacher-view/teacher-view.component";
+import { AuthGuardService } from 'src/app/core/services/authentication/auth-guard.service';
+import { RoleGuardService } from 'src/app/core/services/authentication/role-guard.service';
 
 const routes: Routes = [
-  { path: 'stats', component: StatsComponent },
-  { path: 'game', component: GameViewComponent },
-  { path: 'login', component: LoginRegisterComponent },
-  { path: 'game-selection', component: GameSelectionComponent },
-  { path: 'teacher-view', component: TeacherViewComponent },
+  { 
+    path: 'stats', 
+    component: StatsComponent,
+    canActivate: [AuthGuardService, RoleGuardService]
+  },
+  { 
+    path: 'game', 
+    component: GameViewComponent,
+    canActivate: [AuthGuardService, RoleGuardService]
+  },
+  { 
+    path: 'login', 
+    component: LoginRegisterComponent,
+  },
+  { 
+    path: 'game-selection', 
+    component: GameSelectionComponent,
+    canActivate: [AuthGuardService, RoleGuardService]
+  },
+  { 
+    path: 'teacher-view', 
+    component: TeacherViewComponent, 
+    canActivate: [AuthGuardService, RoleGuardService]
+  },
 ];
 
 @NgModule({
