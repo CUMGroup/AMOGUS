@@ -16,24 +16,24 @@ export class GameService {
   sessionStartTime : number;
 
   session : GameSession;
-  constructor(private apiService : ApiService) { 
+  constructor(private apiService : ApiService) {
   }
-  
+
   questions: question[];
-  
+
   startNewGame(category : CategoryType) : Observable<GameSession> {
     return this.apiService.post<GameSession>('/game/new', category)
-          .pipe(tap(
-            e => {
-              this.questions = e.questions.map(
-                quest => new question(quest.answer, quest.category, quest.difficulty, quest.exercise, quest.experiencePoints, quest.help, quest.questionId, quest.wrongAnswers, false)
-              );
-              this.session = new GameSession(e.sessionId, e.userId, 0, e.correctAnswersCount, e.givenAnswersCount, 0, Math.min(), 0, e.category, this.questions);
-              this.currentQuestion = 0;
-              this.loading = false;
-              this.sessionStartTime = new Date().getTime();
-            }
-          ));
+      .pipe(tap(
+        e => {
+          this.questions = e.questions.map(
+            quest => new question(quest.answer, quest.category, quest.difficulty, quest.exercise, quest.experiencePoints, quest.help, quest.questionId, quest.wrongAnswers, false)
+          );
+          this.session = new GameSession(e.sessionId, e.userId, 0, e.correctAnswersCount, e.givenAnswersCount, 0, Math.min(), 0, e.category, this.questions);
+          this.currentQuestion = 0;
+          this.loading = false;
+          this.sessionStartTime = new Date().getTime();
+        }
+      ));
   }
 
   endGame() : Observable<unknown> {

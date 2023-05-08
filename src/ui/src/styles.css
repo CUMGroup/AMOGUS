@@ -48,8 +48,9 @@ body {
 }
 
 .mat-dialog-class .mat-dialog-container{
-  background-color: var(--background1);
+  background-color: var(--background2);
   color: var(--text);
+  min-width: 20rem;
 }
 
 .mat-stroked-button {
@@ -57,7 +58,6 @@ body {
     background-color: var(--leading-color1);
     border: 5px solid var(--text);
     border-radius: 10%;
-
 }
 
 .mat-stroked-button:hover {

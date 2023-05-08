@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<coverage version="1.0" date="2023-04-28_19-48-25" tag="">
+  <assembly name="AMOGUS.Core">
+    <class name="AMOGUS.Core.Factories.MentalExerciseFactory" coveredlines="0" coverablelines="37" totallines="49" coveredbranches="0" totalbranches="18" coveredcodeelements="0" totalcodeelements="2" />
+    <class name="AMOGUS.Core.Services.Gameplay.ExerciseService" coveredlines="0" coverablelines="40" totallines="63" coveredbranches="0" totalbranches="8" coveredcodeelements="0" totalcodeelements="4" />
+    <class name="AMOGUS.Core.Services.Gameplay.GameService" coveredlines="0" coverablelines="38" totallines="70" coveredbranches="0" totalbranches="4" coveredcodeelements="0" totalcodeelements="5" />
+    <class name="AMOGUS.Core.Services.Gameplay.QuestionFileAccessor" coveredlines="0" coverablelines="45" totallines="76" coveredbranches="0" totalbranches="6" coveredcodeelements="0" totalcodeelements="9" />
+    <class name="AMOGUS.Core.Services.Gameplay.StatsService" coveredlines="0" coverablelines="89" totallines="128" coveredbranches="0" totalbranches="22" coveredcodeelements="0" totalcodeelements="9" />
+    <class name="AMOGUS.Core.Services.Gameplay.StreaksService" coveredlines="0" coverablelines="31" totallines="52" coveredbranches="0" totalbranches="10" coveredcodeelements="0" totalcodeelements="4" />
+    <class name="AMOGUS.Core.Services.Teacher.TeacherService" coveredlines="0" coverablelines="39" totallines="66" coveredbranches="0" totalbranches="4" coveredcodeelements="0" totalcodeelements="5" />
+  </assembly>
+  <assembly name="AMOGUS.Infrastructure">
+    <class name="AMOGUS.Infrastructure.Services.Date.DateTimeWrapper" coveredlines="0" coverablelines="1" totallines="7" coveredbranches="0" totalbranches="0" coveredcodeelements="0" totalcodeelements="1" />
+    <class name="AMOGUS.Infrastructure.Services.User.AuthService" coveredlines="54" coverablelines="57" totallines="102" coveredbranches="23" totalbranches="32" coveredcodeelements="6" totalcodeelements="6" />
+    <class name="AMOGUS.Infrastructure.Services.User.TokenFactory" coveredlines="0" coverablelines="33" totallines="59" coveredbranches="0" totalbranches="2" coveredcodeelements="0" totalcodeelements="5" />
+    <class name="AMOGUS.Infrastructure.Services.User.UserService" coveredlines="36" coverablelines="40" totallines="73" coveredbranches="7" totalbranches="8" coveredcodeelements="5" totalcodeelements="5" />
+  </assembly>
+  <assembly name="AMOGUS.Validation" />
+</coverage>

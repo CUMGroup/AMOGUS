@@ -29,4 +29,7 @@
   color: white;
 }
 
+::ng-deep .mat-form-field .mat-select-arrow-wrapper {
+  color: white;
+}
 

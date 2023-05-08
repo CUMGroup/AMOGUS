@@ -6,7 +6,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 @Component({
   selector: 'app-text-parallax',
   templateUrl: './text-parallax.component.html',
-  styleUrls: ['./text-parallax.component.css']
+  styleUrls: ['./text-parallax.component.scss']
 })
 export class TextParallaxComponent implements OnInit {
   constructor() { }
@@ -26,13 +26,14 @@ export class TextParallaxComponent implements OnInit {
         scrollTrigger: {
           trigger: section,
           start: "top bottom",
-          end: "+=1",
+          end: "+=100",
           scrub: 2,
         }
       })
         .from(title, {
           opacity: 0,
-          x: 120
+          x: 120,
+          toggleActions: "restart pause reverse pause",
         })
       time.add(gsap.timeline(
         ScrollTrigger.batch(".text", {

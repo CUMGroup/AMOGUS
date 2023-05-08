@@ -5,7 +5,9 @@ using AMOGUS.Core.Common.Interfaces.Repositories;
 using AMOGUS.Core.Common.Interfaces.User;
 using AMOGUS.Infrastructure.Identity;
 using Microsoft.AspNetCore.Identity;
+using System.Runtime.CompilerServices;
 
+[assembly: InternalsVisibleTo("AMOGUS.UnitTests")]
 namespace AMOGUS.Infrastructure.Services.User {
     internal class UserService : IUserService {
         private readonly IUserManager _userManager;
@@ -22,7 +24,7 @@ namespace AMOGUS.Infrastructure.Services.User {
         }
 
         public async Task<Result> DeleteUserAsync(string userId) {
-            if (await DeleteUserHistoryAsync(userId)) {
+            if (!await DeleteUserHistoryAsync(userId)) {
                 return new UserOperationException("Failed deleting user.");
             }
 

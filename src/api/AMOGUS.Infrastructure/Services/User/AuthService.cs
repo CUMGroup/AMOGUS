@@ -7,11 +7,14 @@ using AMOGUS.Core.Common.Interfaces.User;
 using AMOGUS.Core.DataTransferObjects.User;
 using AMOGUS.Core.Domain.Models.Entities;
 using AMOGUS.Infrastructure.Identity;
+using FluentValidation;
 using Microsoft.AspNetCore.Identity;
 using System.IdentityModel.Tokens.Jwt;
 using System.Reflection;
+using System.Runtime.CompilerServices;
 using System.Security.Claims;
 
+[assembly: InternalsVisibleTo("AMOGUS.UnitTests")]
 namespace AMOGUS.Infrastructure.Services.User {
     internal class AuthService : IAuthService {
 
@@ -21,11 +24,14 @@ namespace AMOGUS.Infrastructure.Services.User {
 
         private readonly IUserStatsRepository _userStatsRepository;
 
-        public AuthService(IRoleManager _roleManager, IUserManager _userManager, ITokenFactory _tokenFactory, IUserStatsRepository userStatsRepository) {
+        private readonly IValidator<RegisterApiModel> _registerValidator;
+
+        public AuthService(IRoleManager _roleManager, IUserManager _userManager, ITokenFactory _tokenFactory, IUserStatsRepository userStatsRepository, IValidator<RegisterApiModel> registerValidator) {
             this._roleManager = _roleManager!;
             this._userManager = _userManager!;
             this._tokenFactory = _tokenFactory!;
             _userStatsRepository = userStatsRepository!;
+            _registerValidator = registerValidator!;
         }
 
         public async Task CreateRolesAsync<TRoles>() {
@@ -56,6 +62,11 @@ namespace AMOGUS.Infrastructure.Services.User {
 
         public async Task<Result<LoginResultApiModel>> RegisterUserAsync(RegisterApiModel registerModel, string role) {
 
+            var validRes = _registerValidator.Validate(registerModel);
+            if (!validRes.IsValid) {
+                return new ValidationException(validRes.Errors);
+            }
+
             var userExists = await _userManager.FindByEmailAsync(registerModel.Email);
             if (userExists != null) {
                 return new AuthFailureException("Account already exists!");
@@ -65,10 +76,10 @@ namespace AMOGUS.Infrastructure.Services.User {
 
             var result = await _userManager.CreateAsync(user, registerModel.Password);
             if (!result.Succeeded)
-                return new AuthFailureException("Failed to create Account");
+                return new AuthFailureException($"Failed to create Account \n{String.Join("\n", result.Errors)}");
 
             if (!await _roleManager.RoleExistsAsync(role)) {
-                return new AuthFailureException("Failed to create Account");
+                return new AuthFailureException($"Failed to create Account with role {role}");
             }
 
             await _userManager.AddToRoleAsync(user, role);

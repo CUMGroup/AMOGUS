@@ -2,12 +2,14 @@
   border: solid var(--text);
   border-radius: 1rem;
   margin: 1rem;
+  padding: 1rem;
 }
 
-.delete{
+.buttons{
   float: right;
   width: 3rem;
   height: 3rem;
+  margin: 0.4rem;
 }
 
 .text{
