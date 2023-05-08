@@ -365,4 +365,8 @@ FodyWeavers.xsd
 node_module/
 .DS_Store
 
+*.dev.scuml*
 *.scuml-*
+coveragereport/
+coverage/
+TestResults/

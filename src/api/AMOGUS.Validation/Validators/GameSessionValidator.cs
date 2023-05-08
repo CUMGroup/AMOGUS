@@ -1,7 +1,9 @@
 ﻿
 using AMOGUS.Core.Domain.Models.Entities;
 using FluentValidation;
+using System.Runtime.CompilerServices;
 
+[assembly: InternalsVisibleTo("AMOGUS.UnitTests")]
 namespace AMOGUS.Validation.Validators {
     internal class GameSessionValidator : AbstractValidator<GameSession> {
 

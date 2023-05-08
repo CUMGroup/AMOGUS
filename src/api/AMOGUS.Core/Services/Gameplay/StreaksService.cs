@@ -2,7 +2,9 @@
 using AMOGUS.Core.Common.Interfaces.Database;
 using AMOGUS.Core.Common.Interfaces.Game;
 using AMOGUS.Core.Domain.Models.Entities;
+using System.Runtime.CompilerServices;
 
+[assembly: InternalsVisibleTo("AMOGUS.UnitTests")]
 namespace AMOGUS.Core.Services.Gameplay {
     internal class StreaksService : IStreakService {
 
@@ -37,13 +39,7 @@ namespace AMOGUS.Core.Services.Gameplay {
         }
 
         private void UpdateStatsModel(UserStats stats, bool playedToday) {
-            if (playedToday) {
-                stats.CurrentStreak += 1;
-                if (stats.CurrentStreak > stats.LongestStreak) {
-                    stats.LongestStreak = stats.CurrentStreak;
-                }
-            }
-            else {
+            if (!playedToday) {
                 stats.CurrentStreak = 0;
             }
         }

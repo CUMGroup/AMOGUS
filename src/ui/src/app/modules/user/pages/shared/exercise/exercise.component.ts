@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {question} from "../../../../core/interfaces/question";
 import {FormControl} from "@angular/forms";
+import {question} from "../../../../../core/interfaces/question";
 
 @Component({
   selector: 'app-exercise',

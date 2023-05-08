@@ -7,7 +7,9 @@ using AMOGUS.Core.Common.Interfaces.Repositories;
 using AMOGUS.Core.Domain.Enums;
 using AMOGUS.Core.Domain.Models.Entities;
 using FluentValidation;
+using System.Runtime.CompilerServices;
 
+[assembly: InternalsVisibleTo("AMOGUS.UnitTests")]
 namespace AMOGUS.Core.Services.Gameplay {
     internal class GameService : IGameService {
 
@@ -32,6 +34,7 @@ namespace AMOGUS.Core.Services.Gameplay {
         }
 
         public async Task<Result> EndSessionAsync(GameSession session, string userId) {
+            if (session == null) return new ArgumentNullException(nameof(session));
             var user = await _userManager.FindByIdAsync(userId);
             if (user == null) {
                 return new RecordNotFoundException($"Could not find user with id {userId}");

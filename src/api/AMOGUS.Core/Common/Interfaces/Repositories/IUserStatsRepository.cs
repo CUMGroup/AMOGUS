@@ -13,5 +13,7 @@ namespace AMOGUS.Core.Common.Interfaces.Repositories {
         Task<UserStats?> GetUserStatsIncludeUserAsync(string userId);
 
         Task<UserStats?> GetUserStatsAsync(string userId);
+
+        void RevertChanges(UserStats stats);
     }
 }
