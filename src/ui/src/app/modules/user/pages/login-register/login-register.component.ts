@@ -39,24 +39,19 @@ export class LoginRegisterComponent implements OnInit, OnDestroy {
   }
 
   login() {
+    if(this.access.get("email").invalid) {
+      this.message = "Enter a valid Email";
+      return;
+    }
+    if(this.access.get("password").invalid) {
+      this.message = "Password must have...<ul><li>at least one uppercase character</li><li>at least one lowercase character</li><li>at least one digit</li><li>at least one special character</li><li>at least 6 characters long</li></ul>"
+      return;
+    }
     if(this.registerToggle) {
-      if(this.access.get("password").invalid) {
-        this.message = "Password must have...<ul><li>at least one uppercase character</li><li>at least one lowercase character</li><li>at least one digit</li><li>at least one special character</li><li>at least 6 characters long</li></ul>"
-        return;
-      }
       if(this.access.get("repeatPassword").invalid) {
         this.message = "Passwords must match";
       }
       if(this.access.invalid) {
-        return;
-      }
-    }else {
-      if(this.access.get("email").invalid) {
-        this.message = "Enter a valid Email";
-        return;
-      }
-      if(this.access.get("password").invalid) {
-        this.message = "Password must have...<ul><li>at least one uppercase character</li><li>at least one lowercase character</li><li>at least one digit</li><li>at least one special character</li><li>at least 6 characters long</li></ul>"
         return;
       }
     }
