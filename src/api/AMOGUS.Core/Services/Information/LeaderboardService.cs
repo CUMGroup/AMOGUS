@@ -16,7 +16,9 @@ namespace AMOGUS.Core.Services.Information {
         public async Task<LeaderboardApiModel> GetLeaderboardAsync() {
             var longest = await _userStatsRepository.GetTopOrderedByAsync(5, e => e.LongestStreak);
             var current = await _userStatsRepository.GetTopOrderedByAsync(5, e => e.CurrentStreak);
-            var correctRatio = await _userStatsRepository.GetTopOrderedByAsync(5, e => e.GetCorrectRatio());
+            var correctRatio = await _userStatsRepository.GetTopOrderedByAsync(5,
+                (stats) => (double) stats.CorrectAnswers / Math.Max(stats.OverallAnswered - stats.CorrectAnswers, 1)
+            );
 
             return new LeaderboardApiModel(
                 LongestStreaks: longest.Select(x =>

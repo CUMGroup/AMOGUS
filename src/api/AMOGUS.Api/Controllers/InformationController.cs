@@ -1,4 +1,5 @@
 ﻿using AMOGUS.Core.Common.Interfaces.Game;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AMOGUS.Api.Controllers {
@@ -13,6 +14,8 @@ namespace AMOGUS.Api.Controllers {
             _leaderboardService = leaderboardService;
         }
 
+        [HttpGet]
+        [Authorize]
         [Route("leaderboards")]
         public async Task<ActionResult> GetLeaderboards() {
             var boards = await _leaderboardService.GetLeaderboardAsync();
