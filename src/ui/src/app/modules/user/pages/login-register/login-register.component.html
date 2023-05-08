@@ -7,24 +7,24 @@
   </mat-form-field>
   <mat-form-field appearance="fill" class="defineWidth">
     <mat-label class="label">email</mat-label>
-    <input matInput type="text" formControlName="email">
+    <input matInput type="email" formControlName="email">
   </mat-form-field>
   <mat-form-field appearance="fill" class="defineWidth">
     <mat-label class="label">password</mat-label>
-    <input matInput [type]="hide ? 'password' : 'text'" formControlName="password">
+    <input matInput [type]="hide ? 'password' : 'text'" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[#$^+=!*()@%&]).{6,}$" formControlName="password">
     <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
       <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
     </button>
   </mat-form-field>
   <mat-form-field *ngIf="registerToggle" appearance="fill" class="defineWidth">
     <mat-label class="label">repeatPassword</mat-label>
-    <input matInput [type]="repeatedHide ? 'password' : 'text'" formControlName="repeatPassword">
+    <input matInput [type]="repeatedHide ? 'password' : 'text'" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[#$^+=!*()@%&]).{6,}$" formControlName="repeatPassword">
     <button mat-icon-button matSuffix (click)="repeatedHide = !repeatedHide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="repeatedHide">
       <mat-icon>{{repeatedHide ? 'visibility_off' : 'visibility'}}</mat-icon>
     </button>
   </mat-form-field>
   <div class="submit">
-    <p style="color:red">{{message}}</p>
+    <p style="color:red" [innerHTML]="message"></p>
     <p *ngIf="!registerToggle">Don't have an account yet? <a class="toggle-link" [routerLink]="[]" (click)="disable()">Register here.</a></p>
     <p *ngIf="registerToggle">Already have an account? <a class="toggle-link" [routerLink]="[]" (click)="disable()">Login here.</a></p>
 

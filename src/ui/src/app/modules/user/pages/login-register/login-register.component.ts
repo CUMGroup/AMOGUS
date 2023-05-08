@@ -1,5 +1,5 @@
 import {AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {AbstractControl, FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {AuthenticationService} from "../../../../core/services/authentication/authentication.service";
 import {Subscription, catchError, throwError} from "rxjs";
 import { Router } from '@angular/router';
@@ -27,9 +27,9 @@ export class LoginRegisterComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.access = this.formBuilder.group({
       username: ["", Validators.required],
-      email: ["", Validators.required],
-      password: ["", Validators.required],
-      repeatPassword: ["", Validators.required],
+      email: ["", [Validators.required, Validators.email]],
+      password: ["", [Validators.required, Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[#$^+=!*()@%&]).{6,}$/)]],
+      repeatPassword: ["", [Validators.required, Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[#$^+=!*()@%&]).{6,}$/)]],
       login: true,
     })
   }
@@ -39,9 +39,32 @@ export class LoginRegisterComponent implements OnInit, OnDestroy {
   }
 
   login() {
-    if (this.access.get("password").value !== this.access.get("repeatPassword").value &&
-      !this.access.get("login").value) {
-      this.message = "enter the same password"
+    if(this.registerToggle) {
+      if(this.access.get("password").invalid) {
+        this.message = "Password must have...<ul><li>at least one uppercase character</li><li>at least one lowercase character</li><li>at least one digit</li><li>at least one special character</li><li>at least 6 characters long</li></ul>"
+        return;
+      }
+      if(this.access.get("repeatPassword").invalid) {
+        this.message = "Passwords must match";
+      }
+      if(this.access.invalid) {
+        return;
+      }
+    }else {
+      if(this.access.get("email").invalid) {
+        this.message = "Enter a valid Email";
+        return;
+      }
+      if(this.access.get("password").invalid) {
+        this.message = "Password must have...<ul><li>at least one uppercase character</li><li>at least one lowercase character</li><li>at least one digit</li><li>at least one special character</li><li>at least 6 characters long</li></ul>"
+        return;
+      }
+    }
+
+    if (this.access.get("password").value !== this.access.get("repeatPassword").value && this.registerToggle) {
+      this.message = "Passwords must match";
+      this.access.get("repeatPassword").setErrors({error: "Passwords must match"});
+      return;
     } else {
       this.message = "";
     }
