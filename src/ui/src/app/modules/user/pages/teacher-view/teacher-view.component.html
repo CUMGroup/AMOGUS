@@ -1,8 +1,22 @@
 <div class="container">
+  <h1 class="title">Questions</h1>
   <div class="header">
-    <textarea></textarea>
-    <textarea></textarea>
-    <button (click)="createNewQuestion()">New Question</button>
+    <mat-form-field>
+      <mat-select placeholder="Category">
+        <mat-option *ngFor="let category of constants.Categories" [value]="category">
+          {{ category }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-select placeholder="Difficulty">
+        <mat-option *ngFor="let difficulty of constants.Difficulties" [value]="difficulty">
+          {{ difficulty }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <button mat-raised-button color="primary" class="newQuestionButton" (click)="createNewQuestion()">New Question</button>
   </div>
   <ng-container *ngFor="let question of teacherService.questionArray;let i = index">
     <app-question [question]="question" [index]="i"></app-question>

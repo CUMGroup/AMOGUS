@@ -23,12 +23,15 @@ import {MatRadioModule} from "@angular/material/radio";
 import { GameSelectionComponent } from './pages/game-selection/game-selection.component';
 import { TeacherViewComponent } from './pages/teacher-view/teacher-view.component';
 import {MatSelectModule} from "@angular/material/select";
-import { QuestionViewComponent } from './pages/question-view/question-view.component';
-import {QuestionComponent, QuestionPreviewComponent} from './pages/question/question.component';
+import { QuestionEditViewComponent } from './pages/teacher-view/question-edit-view/question-edit-view.component';
+import {QuestionComponent} from './pages/teacher-view/question/question.component';
 import {MatSnackBarModule} from "@angular/material/snack-bar";
-import { ExerciseComponent } from './pages/exercise/exercise.component';
+import { ExerciseComponent } from './pages/shared/exercise/exercise.component';
 import { PieGraphComponent } from './components/stats-graphs/pie-graph/pie-graph.component';
 import { LineGraphComponent } from './components/stats-graphs/line-graph/line-graph.component';
+import {MatRippleModule} from "@angular/material/core";
+import {QuestionPreviewComponent} from "./pages/shared/question-preview/question-preview.component";
+import {Constants} from "./interfaces/selection";
 import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
@@ -42,7 +45,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
     AnswerDialog,
     GameSelectionComponent,
     TeacherViewComponent,
-    QuestionViewComponent,
+    QuestionEditViewComponent,
     QuestionComponent,
     ExerciseComponent,
     QuestionPreviewComponent,
@@ -71,6 +74,9 @@ import { SharedModule } from 'src/app/shared/shared.module';
         MatSelectModule,
         MatSnackBarModule,
         SharedModule
-    ]
+    ],
+  providers:[
+    Constants
+  ]
 })
 export class UserModule { }
