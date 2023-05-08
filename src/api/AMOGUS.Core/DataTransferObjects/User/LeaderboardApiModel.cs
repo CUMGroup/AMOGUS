@@ -1,6 +1,4 @@
-﻿using AMOGUS.Core.Domain.Models.Entities;
-
-namespace AMOGUS.Core.DataTransferObjects.User {
+﻿namespace AMOGUS.Core.DataTransferObjects.User {
     public class LeaderboardApiModel {
 
         public LeaderboardUserStreak[] LongestStreaks { get; set; }

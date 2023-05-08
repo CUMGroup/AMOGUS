@@ -1,9 +1,6 @@
-﻿using AMOGUS.Core.Common.Interfaces.Database;
-using AMOGUS.Core.Common.Interfaces.Game;
+﻿using AMOGUS.Core.Common.Interfaces.Game;
 using AMOGUS.Core.Common.Interfaces.Repositories;
-using AMOGUS.Core.Common.Interfaces.User;
 using AMOGUS.Core.DataTransferObjects.User;
-using System.Net.Http.Headers;
 using System.Runtime.CompilerServices;
 
 [assembly: InternalsVisibleTo("AMOGUS.UnitTests")]
