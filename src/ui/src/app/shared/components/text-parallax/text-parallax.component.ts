@@ -20,7 +20,6 @@ export class TextParallaxComponent implements OnInit {
     let sections: any = gsap.utils.toArray(".section");
 
     sections.forEach((section) => {
-      // let image = section.querySelector(".image");
       let title = section.querySelector(".title");
       let time = gsap.timeline({
         scrollTrigger: {

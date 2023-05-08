@@ -12,12 +12,12 @@ const routes: Routes = [
   { 
     path: 'stats', 
     component: StatsComponent,
-    canActivate: [AuthGuardService, RoleGuardService]
+    canActivate: [AuthGuardService]
   },
   { 
     path: 'game', 
     component: GameViewComponent,
-    canActivate: [AuthGuardService, RoleGuardService]
+    canActivate: [AuthGuardService]
   },
   { 
     path: 'login', 
@@ -26,12 +26,12 @@ const routes: Routes = [
   { 
     path: 'game-selection', 
     component: GameSelectionComponent,
-    canActivate: [AuthGuardService, RoleGuardService]
+    canActivate: [RoleGuardService]
   },
   { 
     path: 'teacher-view', 
     component: TeacherViewComponent, 
-    canActivate: [AuthGuardService, RoleGuardService]
+    canActivate: [RoleGuardService]
   },
 ];
 

@@ -48,7 +48,7 @@ namespace AMOGUS.Infrastructure.Services.User {
             };
 
             foreach (var userRole in userRoles) {
-                authClaims.Add(new Claim(ClaimTypes.Role, userRole));
+                authClaims.Add(new Claim("roles", userRole));
             }
 
             return authClaims;

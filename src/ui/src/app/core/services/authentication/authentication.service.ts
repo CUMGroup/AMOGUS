@@ -72,7 +72,9 @@ export class AuthenticationService {
       return [];
     }
     let encToken = jwtDecode(token);
-    return encToken['Roles'];
+    console.log(encToken);
+    console.log(encToken['roles']);
+    return encToken['roles'];
   }
 
   public isAuthenticated() {
@@ -91,7 +93,7 @@ export class AuthenticationService {
   }
 
   public isTeacherOrAdmin(): boolean {
-    if (this.getRoles().includes('Teacher') || this.getRoles().includes('Admin')){
+    if (this.hasRole('Moderator') || this.hasRole('Admin')){
       return true;
     }
     return false;
