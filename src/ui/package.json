@@ -23,6 +23,7 @@
     "@types/gsap": "^3.0.0",
     "echarts": "^5.4.0",
     "gsap": "^3.11.3",
+    "jwt-decode": "^3.1.2",
     "ngx-echarts": "^14.0.0",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
