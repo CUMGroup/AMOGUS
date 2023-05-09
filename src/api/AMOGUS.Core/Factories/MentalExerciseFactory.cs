@@ -5,7 +5,9 @@ using AMOGUS.Core.Domain.Models.Generators;
 using AngouriMath;
 using AngouriMath.Core.Exceptions;
 using System.Diagnostics.CodeAnalysis;
+using System.Runtime.CompilerServices;
 
+[assembly: InternalsVisibleTo("AMOGUS.UnitTests")]
 namespace AMOGUS.Core.Factories {
 
     public class MentalExerciseFactory : IExerciseFactory {
@@ -67,7 +69,7 @@ namespace AMOGUS.Core.Factories {
         }
 
         public string CalcAnswer(string question) {
-            if (question is null)
+            if (String.IsNullOrWhiteSpace(question))
                 return string.Empty;
             Entity expr = question;
             try {
@@ -188,11 +190,16 @@ namespace AMOGUS.Core.Factories {
         }
 
         internal static double Median(int[] arr) {
-            Array.Sort(arr);
-            double mid = arr.Length / 2d;
-            if (mid == (int) mid)
-                return arr[(int) mid];
-            return (arr[(int) mid] + arr[Math.Min((int) mid + 1, arr.Length - 1)]) / 2d;
+            if (arr.Length == 0)
+                return 0;
+            if (arr.Length == 1)
+                return arr[0];
+            int[] sortedArr = (int[])arr.Clone();
+            Array.Sort(sortedArr);
+            int mid = sortedArr.Length / 2;
+            if (sortedArr.Length % 2 != 0)
+                return sortedArr[mid];
+            return (sortedArr[mid] + sortedArr[Math.Max(Math.Min(mid - 1, sortedArr.Length - 1), 0)]) / 2d;
         }
 
 
