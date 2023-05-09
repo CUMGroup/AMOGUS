@@ -26,7 +26,7 @@ const routes: Routes = [
   { 
     path: 'game-selection', 
     component: GameSelectionComponent,
-    canActivate: [RoleGuardService]
+    canActivate: [AuthGuardService]
   },
   { 
     path: 'teacher-view', 

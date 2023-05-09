@@ -5,7 +5,7 @@ import { ApiService } from '../api.service';
 import { Observable, throwError } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 import { LoginResult } from '../../interfaces/loginResult';
-import { jwtDecode } from 'jwt-decode';
+import jwtDecode from 'jwt-decode';
 
 @Injectable({
   providedIn: 'root'
