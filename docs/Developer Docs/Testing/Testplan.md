@@ -141,6 +141,27 @@ Github Actions will show the amount of tests passed and failed per pull request.
 | 55   | UpdateUserStatsAsync(GameSession session, bool[] answers, ApplicationUser user) | UpdateUserStatsAsync_WhenGivenGameSessionAnswersAndUser_AndUserHasNotPlayedYet_StreakIsUpdated | like the above but playedtoday is false | played today is now true and streak is updated |
 | 56   | UpdateUserStatsAsync(GameSession session, bool[] answers, ApplicationUser user) | UpdateUserStatsAsync_WhenGivenGameSessionAnswersAndUser_AndUserHasPlayedAlready_StreakIsNotIncreased | like the above but playedtoday is true | streak is not increased |
 
+#### LeaderboardService
+| #   | Tested method | Objective | Input | Expected Result |
+| --- | ------------- | --------- | ----- | --------------- |
+| 57  | GetLeaderboardAsync | GetLeaderboardAsync_ReturnsCorrectObject | UserStats mock | Correct Object hirachy |
+
+#### MentalExerciseFactory
+| #   | Tested method | Objective | Input | Expected Result |
+| --- | ------------- | --------- | ----- | --------------- |
+| 58  | Median | Median_Returns0_ForEmptyArray | Empty Array | 0 |
+| 59  | Median | Median_ReturnsFirstElement_ForArrayWithSize1 | Array with 1 Element | The first element |
+| 60  | Median | Median_ReturnsAverage_ForArrayWithSize2 | Array with 2 Elements | Average |
+| 61  | Median | Median_ReturnsMedian_ForSortedArrayWithEvenCount | Sorted Array with even Elements | Correct median |
+| 62  | Median | Median_ReturnsMedian_ForSortedArrayWithOddCount | Sorted Array with Odd Elements | Correct median |
+| 63  | Median | Median_ReturnsMedian_ForRandomArrayWithEvenCount | Shuffled Array with even Elements | Correct median |
+| 64  | Median | Median_ReturnsMedian_ForRandomArrayWithOddCount | Shuffled Array with Odd Elements | Correct median |
+| 65  | CalcAnswer | CalcAnswer_ReturnsEmpty_WithEmptyQuestion | Empty Question | Empty String |
+| 66  | CalcAnswer | CalcAnswer_SolvesEquation_WithXInQuestion | Equation with x | set of solutions |
+| 67  | CalcAnswer | CalcAnswer_SolvesExpression_WithQuestion | Expressions without x | Correct answer for the expressions |
+| 68  | CalcAnswer | CalcAnswer_ReturnsEmpty_ForXInStatement | Expressions with x | empty string |
+
+
 ### API tests
 
 API tests are run manually
