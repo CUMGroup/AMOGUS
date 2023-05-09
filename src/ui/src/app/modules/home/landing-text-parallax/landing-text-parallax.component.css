@@ -1,0 +1,45 @@
+* {
+    margin: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+h2 {
+    font-size: 3rem;
+}
+
+h2+p {
+    margin-top: 1rem;
+}
+
+.grey {
+  background-color: var(--background1);
+}
+
+.section {
+    width: 100%;
+    padding: 2rem;
+    display: flex;
+}
+
+.image {
+    border-radius: 500px;
+    height: 200px;
+}
+
+.textcon {
+    display: flex;
+    flex-direction: column;
+    padding-left: 30px;
+}
+
+.text {
+    font-size: 20px;
+    /* opacity: 0; */
+}
+
+@media screen and (max-width: 860px) {
+    .outline > h1 {
+        margin-bottom: 2rem;
+    }
+}

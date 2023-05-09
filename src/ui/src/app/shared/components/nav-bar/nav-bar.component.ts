@@ -12,11 +12,13 @@ import { AuthenticationService } from 'src/app/core/services/authentication/auth
 export class NavBarComponent implements OnInit {
 
   isLoggedIn : boolean;
+  isTeacherOrAdmin: boolean;
 
   constructor(private authService : AuthenticationService, private router : Router) {}
   
   ngOnInit(): void {
     this.isLoggedIn = this.authService.isLoggedIn();
+    this.isTeacherOrAdmin = this.authService.isTeacherOrAdmin();
   }
 
   logout() {

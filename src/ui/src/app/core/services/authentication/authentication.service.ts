@@ -4,8 +4,8 @@ import { ApiService } from '../api.service';
 
 import { Observable, throwError } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
-import { User } from '../../interfaces/user';
 import { LoginResult } from '../../interfaces/loginResult';
+import jwtDecode from 'jwt-decode';
 
 @Injectable({
   providedIn: 'root'
@@ -65,6 +65,38 @@ export class AuthenticationService {
     return throwError(() => new Error('Something bad happened; please try again later.'));
   }
   //nobodys gonna know... ;-) @AlexMi-Ha
+
+  public getRoles() {
+    const token = this.getAuthToken();
+    if (token == null) {
+      return [];
+    }
+    let encToken = jwtDecode(token);
+    return encToken['roles'];
+  }
+
+  public isAuthenticated() {
+    const roles = this.getRoles();
+    if (roles.includes('User')) {
+      return true;
+    }
+    return false;
+  }
+
+  public hasRole(role: string) {
+    if (this.getRoles().includes(role)) {
+      return true;
+    }
+    return false;
+  }
+
+  public isTeacherOrAdmin(): boolean {
+    if (this.hasRole('Moderator') || this.hasRole('Admin')){
+      return true;
+    }
+    return false;
+  }
+
 }
 
 
