@@ -5,6 +5,7 @@ import {MatDialog} from "@angular/material/dialog";
 import {QuestionEditViewComponent} from "../question-edit-view/question-edit-view.component";
 import {QuestionPreviewComponent} from "../../shared/question-preview/question-preview.component";
 import {question} from "../../../../../core/interfaces/question";
+import {Constants} from "../../../interfaces/selection";
 
 @Component({
   selector: 'app-question',
@@ -15,8 +16,7 @@ export class QuestionComponent implements OnInit {
 
   @Input() question: FormGroup;
   @Input() index: number;
-
-  constructor(public teacherService:TeacherService, private dialog: MatDialog) { }
+  constructor(public teacherService:TeacherService, private dialog: MatDialog, public constants:Constants) {}
 
   ngOnInit(): void {
   }

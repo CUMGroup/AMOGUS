@@ -1,4 +1,5 @@
 import { question } from "./question";
+import {GeoJSONLineStringGeometry} from "echarts/types/src/coord/geo/Region";
 
 export class GameSession {
 
@@ -37,3 +38,4 @@ export enum CategoryType {
     RANDOMMENTAL,
     RANDOMMENTAL_INSANE
 }
+

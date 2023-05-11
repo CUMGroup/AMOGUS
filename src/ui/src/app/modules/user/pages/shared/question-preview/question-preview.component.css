@@ -1,14 +1,4 @@
-.dialogActions{
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-}
-
-.closeButton{
-  color: var(--text);
-  height: 3rem;
-  width: 6rem;
-}
+@import "../../../../../shared/common-styles.scss";
 
 .closeButton:hover{
   background-color: var(--leading-color2);

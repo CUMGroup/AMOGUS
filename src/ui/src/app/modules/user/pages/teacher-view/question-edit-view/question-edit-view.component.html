@@ -1,10 +1,10 @@
-<h1 mat-dialog-title>New Question</h1>
+<h1 mat-dialog-title class="header">Edit Question</h1>
 <form mat-dialog-content [formGroup]="newQuestion">
   <div class="container">
     <mat-form-field>
       <mat-select placeholder="Category" formControlName="category">
-        <mat-option *ngFor="let category of constants.Categories" [value]="category">
-          {{ category }}
+        <mat-option *ngFor="let category of constants.Categories" [value]="category.category">
+          {{ category.gameType }}
         </mat-option>
       </mat-select>
     </mat-form-field>
@@ -40,8 +40,9 @@
     </mat-form-field>
 
   </div>
-  <div mat-dialog-actions>
-    <button mat-raised-button color="primary" (click)="submit()"> Submit </button>
-    <button mat-raised-button color="warn" (click)="close()"> Close </button>
-  </div>
 </form>
+
+<div mat-dialog-actions class="actions">
+  <button mat-raised-button color="primary" (click)="submit()"> Submit </button>
+  <button mat-raised-button color="warn" (click)="close()"> Close </button>
+</div>

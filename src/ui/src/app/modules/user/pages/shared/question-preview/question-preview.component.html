@@ -1,6 +1,7 @@
-<h1 mat-dialog-title> Preview </h1>
-<app-exercise [currentQuestion]="data" [selectedAnswer]="selectedAnswer"></app-exercise>
-
-<div mat-dialog-actions class="dialogActions">
+<h1 mat-dialog-title class="header"> Preview </h1>
+<ng-container mat-dialog-content>
+  <app-exercise [currentQuestion]="data" [selectedAnswer]="selectedAnswer"></app-exercise>
+</ng-container>
+<div mat-dialog-actions class="actions">
   <button color="primary" mat-raised-button class="closeButton" (click)="close()">Close</button>
 </div>
