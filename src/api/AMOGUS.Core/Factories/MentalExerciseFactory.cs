@@ -4,8 +4,12 @@ using AMOGUS.Core.Domain.Models.Entities;
 using AMOGUS.Core.Domain.Models.Generators;
 using AngouriMath;
 using AngouriMath.Core.Exceptions;
+using System.Diagnostics.CodeAnalysis;
+using System.Runtime.CompilerServices;
 
+[assembly: InternalsVisibleTo("AMOGUS.UnitTests")]
 namespace AMOGUS.Core.Factories {
+
     public class MentalExerciseFactory : IExerciseFactory {
 
         private static readonly Random _rng = new();
@@ -16,7 +20,7 @@ namespace AMOGUS.Core.Factories {
 
         private const int sumMaxXp = numOperandsMaxXp + avgOperandsMaxXp + avgOperatorsMaxXp + answerMaxXp;
 
-
+        [ExcludeFromCodeCoverage]
         public Question GenerateRandomQuestion(bool insaneMode) {
 
             int tryCount = 0;
@@ -65,7 +69,7 @@ namespace AMOGUS.Core.Factories {
         }
 
         public string CalcAnswer(string question) {
-            if (question is null)
+            if (String.IsNullOrWhiteSpace(question))
                 return string.Empty;
             Entity expr = question;
             try {
@@ -85,6 +89,7 @@ namespace AMOGUS.Core.Factories {
             }
         }
 
+        [ExcludeFromCodeCoverage]
         public MentalExerciseModel GenerateRandomExerciseModel(bool insaneMode = false) {
             var numOperands = insaneMode ?
         GenerateIntWithFallingProbability(3, 7)
@@ -130,7 +135,7 @@ namespace AMOGUS.Core.Factories {
             return expr;
         }
 
-
+        [ExcludeFromCodeCoverage]
         public MentalExerciseModel CalcXp(MentalExerciseModel expr) {
             if (expr.Answer == null) {
                 throw new ArgumentException("No answer given");
@@ -167,6 +172,7 @@ namespace AMOGUS.Core.Factories {
          *  4 :  8% (8969867 Hits)
          *  5 :  6% (6938769 Hits)
          */
+        [ExcludeFromCodeCoverage]
         private static int GenerateIntWithFallingProbability(int min, int max) {
             // make max exclusive
             max -= 1;
@@ -183,12 +189,17 @@ namespace AMOGUS.Core.Factories {
             return generated;
         }
 
-        private static double Median(int[] arr) {
-            Array.Sort(arr);
-            double mid = arr.Length / 2d;
-            if (mid == (int) mid)
-                return arr[(int) mid];
-            return (arr[(int) mid] + arr[Math.Min((int) mid + 1, arr.Length - 1)]) / 2d;
+        internal static double Median(int[] arr) {
+            if (arr.Length == 0)
+                return 0;
+            if (arr.Length == 1)
+                return arr[0];
+            int[] sortedArr = (int[])arr.Clone();
+            Array.Sort(sortedArr);
+            int mid = sortedArr.Length / 2;
+            if (sortedArr.Length % 2 != 0)
+                return sortedArr[mid];
+            return (sortedArr[mid] + sortedArr[Math.Max(Math.Min(mid - 1, sortedArr.Length - 1), 0)]) / 2d;
         }
 
 

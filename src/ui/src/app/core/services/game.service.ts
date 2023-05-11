@@ -38,6 +38,8 @@ export class GameService {
 
   endGame() : Observable<unknown> {
     this.session.playTime = new Date().getTime() - this.sessionStartTime;
+    this.session.quickestAnswer = Math.min(this.session.playTime, this.session.quickestAnswer);
+    console.log(this.session)
     return this.apiService.post('/game/end', this.session);
   }
 

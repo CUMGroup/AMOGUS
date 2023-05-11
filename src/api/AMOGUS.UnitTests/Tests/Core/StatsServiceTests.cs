@@ -166,7 +166,6 @@ namespace AMOGUS.UnitTests.Tests.Core {
         #endregion
 
         #region UpdateUserStatsAsync(GameSession session, bool[] answers, ApplicationUser user)
-        // return false
         [Fact]
         public async Task UpdateUserStatsAsync_WhenGivenGameSessionAnswersAndUser_AndValidationFails_ReturnsFalse() {
             var statsValidatorMock = CreateValidatorMock();
@@ -190,7 +189,6 @@ namespace AMOGUS.UnitTests.Tests.Core {
             Assert.False(result);
         }
 
-        // res = 0
         [Fact]
         public async Task UpdateUserStatsAsync_WhenGivenGameSessionAnswersAndUser_UpdateInDbFails_ReturnsFalse() {
             var statsValidatorMock = CreateValidatorMock();
@@ -215,7 +213,6 @@ namespace AMOGUS.UnitTests.Tests.Core {
             Assert.False(result);
         }
 
-        // res > 0
         [Fact]
         public async Task UpdateUserStatsAsync_WhenGivenGameSessionAnswersAndUser_AndEverythingIsFine_ReturnsTrue() {
             var statsValidatorMock = CreateValidatorMock();
@@ -240,7 +237,6 @@ namespace AMOGUS.UnitTests.Tests.Core {
             Assert.True(result);
         }
 
-        // stats are updated
         [Fact]
         public async Task UpdateUserStatsAsync_WhenGivenGameSessionAnswersAndUser_AndEverythingIsFine_StatsAreUpdatedCorrectly() {
             var testStats = new UserStats() {
@@ -340,6 +336,113 @@ namespace AMOGUS.UnitTests.Tests.Core {
         }
 
         // [TODO] if not played so far, does streak increase? [TODO]
+        [Fact]
+        public async Task UpdateUserStatsAsync_WhenGivenGameSessionAnswersAndUser_AndUserHasNotPlayedYet_StreakIsUpdated() {
+            var testUser = new ApplicationUser() {
+                Id = "testId",
+                PlayedToday = false
+            };
+            
+            var testStats = new UserStats() {
+                UserId = "testId",
+                User = testUser,
+                Level = 1,
+                CurrentStreak = 1,
+                OverallAnswered = 2,
+                CorrectAnswers = 0,
+                TotalTimePlayed = 5,
+                QuickestAnswer = 5,
+                SlowestAnswer = 10,
+                LongestStreak = 1
+            };
+
+            var statsValidatorMock = CreateValidatorMock();
+            statsValidatorMock
+                .Setup(x => x.Validate(It.IsAny<UserStats>()))
+                .Returns(new ValidationResult());
+
+            var userStatsRepositoryMock = CreateUserStatsRepositoryMock();
+            userStatsRepositoryMock
+                .Setup(x => x.UpdateUserStatsAsync(It.IsAny<UserStats>()))
+                .ReturnsAsync(1);
+            userStatsRepositoryMock
+                .Setup(x => x.GetUserStatsIncludeUserAsync(It.IsAny<string>()))
+                .ReturnsAsync(testStats);
+
+            var statsService = new StatsService(userStatsRepositoryMock.Object, CreateGameSessionRepositoryMock().Object, CreateDateTimeMock().Object, statsValidatorMock.Object) { };
+
+            var testGameSession = new GameSession() {
+                SessionId = "testSession",
+                UserId = "testId",
+                User = testUser,
+                Playtime = 5,
+                CorrectAnswersCount = 1,
+                QuickestAnswer = 2,
+                SlowestAnswer = 11,
+                Questions = new List<Question>() { new Question(), new Question() }
+            };
+            bool[] answers = { true, false };
+
+            var result = await statsService.UpdateUserStatsAsync(testGameSession, answers, new ApplicationUser());
+
+            Assert.True(result, "result is faulted");
+            Assert.True(testStats.CurrentStreak == 2, $"Streak is actually {testStats.CurrentStreak}");
+            Assert.True(testUser.PlayedToday, "played today is actually false");
+        }
+
+        [Fact]
+        public async Task UpdateUserStatsAsync_WhenGivenGameSessionAnswersAndUser_AndUserHasPlayedAlready_StreakIsNotIncreased() {
+            var testUser = new ApplicationUser() {
+                Id = "testId",
+                PlayedToday = true
+            };
+
+            var testStats = new UserStats() {
+                UserId = "testId",
+                User = testUser,
+                Level = 1,
+                CurrentStreak = 1,
+                OverallAnswered = 2,
+                CorrectAnswers = 0,
+                TotalTimePlayed = 5,
+                QuickestAnswer = 5,
+                SlowestAnswer = 10,
+                LongestStreak = 1
+            };
+
+            var statsValidatorMock = CreateValidatorMock();
+            statsValidatorMock
+                .Setup(x => x.Validate(It.IsAny<UserStats>()))
+                .Returns(new ValidationResult());
+
+            var userStatsRepositoryMock = CreateUserStatsRepositoryMock();
+            userStatsRepositoryMock
+                .Setup(x => x.UpdateUserStatsAsync(It.IsAny<UserStats>()))
+                .ReturnsAsync(1);
+            userStatsRepositoryMock
+                .Setup(x => x.GetUserStatsIncludeUserAsync(It.IsAny<string>()))
+                .ReturnsAsync(testStats);
+
+            var statsService = new StatsService(userStatsRepositoryMock.Object, CreateGameSessionRepositoryMock().Object, CreateDateTimeMock().Object, statsValidatorMock.Object) { };
+
+            var testGameSession = new GameSession() {
+                SessionId = "testSession",
+                UserId = "testId",
+                User = testUser,
+                Playtime = 5,
+                CorrectAnswersCount = 1,
+                QuickestAnswer = 2,
+                SlowestAnswer = 11,
+                Questions = new List<Question>() { new Question(), new Question() }
+            };
+            bool[] answers = { true, false };
+
+            var result = await statsService.UpdateUserStatsAsync(testGameSession, answers, new ApplicationUser());
+
+            Assert.True(result, "result is faulted");
+            Assert.True(testStats.CurrentStreak == 1, "streak was modified");
+            Assert.True(testUser.PlayedToday, "playedToday is false");
+        }
         #endregion
     }
 }

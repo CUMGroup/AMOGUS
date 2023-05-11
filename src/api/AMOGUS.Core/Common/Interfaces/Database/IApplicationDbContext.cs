@@ -20,5 +20,9 @@ namespace AMOGUS.Core.Common.Interfaces.Database {
 
         Task MigrateDatabaseAsync();
 
+        void RevertChanges<TEntity>(TEntity entity) where TEntity : class;
+
+
+
     }
 }

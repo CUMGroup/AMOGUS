@@ -82,8 +82,10 @@ namespace AMOGUS.Core.Services.Gameplay {
 
         public async Task<bool> UpdateUserStatsAsync(UserStats userStats) {
             var validRes = _statsValidator.Validate(userStats);
-            if (!validRes.IsValid)
+            if (!validRes.IsValid) {
+                _userStatsRepository.RevertChanges(userStats);
                 return false;
+            }
 
             var res = await _userStatsRepository.UpdateUserStatsAsync(userStats);
             return res > 0;
@@ -97,8 +99,13 @@ namespace AMOGUS.Core.Services.Gameplay {
 
             userStats.OverallAnswered += session.GivenAnswersCount;
             userStats.TotalTimePlayed += session.Playtime;
-            if (userStats.User is not null)
+            if (userStats.User is not null && !userStats.User.PlayedToday) {
                 userStats.User.PlayedToday = true;
+                userStats.CurrentStreak += 1;
+                if (userStats.CurrentStreak > userStats.LongestStreak) {
+                    userStats.LongestStreak = userStats.CurrentStreak;
+                }
+            }
             for (int i = 0; i < session.Questions.Count; ++i) {
                 if (answers[i]) {
                     userStats.Level += session.Questions[i].ExperiencePoints;

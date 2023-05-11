@@ -2,7 +2,9 @@
 using AMOGUS.Core.Common.Interfaces.Database;
 using AMOGUS.Core.Common.Interfaces.Repositories;
 using AMOGUS.Core.Domain.Models.Entities;
+using HonkSharp.Fluency;
 using Microsoft.EntityFrameworkCore;
+using System.Linq.Expressions;
 
 namespace AMOGUS.Infrastructure.Persistence.Repositories {
     internal class UserStatsRepository : IUserStatsRepository {
@@ -27,12 +29,20 @@ namespace AMOGUS.Infrastructure.Persistence.Repositories {
             return await _context.SaveChangesAsync();
         }
 
+        public Task<List<UserStats>> GetTopOrderedByAsync<TKey>(int amount, Expression<Func<UserStats, TKey>> orderExpr) {
+            return _context.UserStats.OrderByDescending(orderExpr).Take(amount).Include(e => e.User).ToListAsync();
+        }
+
         public Task<UserStats?> GetUserStatsAsync(string userId) {
             return _context.UserStats.Where(e => e.UserId.Equals(userId)).FirstOrDefaultAsync();
         }
 
         public Task<UserStats?> GetUserStatsIncludeUserAsync(string userId) {
             return _context.UserStats.Where(e => e.UserId.Equals(userId)).Include(e => e.User).FirstOrDefaultAsync();
+        }
+
+        public void RevertChanges(UserStats stats) {
+            _context.RevertChanges(stats);
         }
 
         public async Task<int> UpdateUserStatsAsync(UserStats userStats) {
