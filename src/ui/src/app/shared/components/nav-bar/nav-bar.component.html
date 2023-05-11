@@ -1,7 +1,7 @@
 <div class="bar">
   <a routerLink=""><img class="home" src="assets/well.png" alt="well"></a>
   <div>
-    <button *ngIf="isLoggedIn" routerLink="/user/teacher-view"><span class="fa-solid fa-pen"></span></button>
+    <button *ngIf="isTeacherOrAdmin" routerLink="/user/teacher-view"><span class="fa-solid fa-pen"></span></button>
     <button *ngIf="isLoggedIn" routerLink="/user/stats"><span class="fa-solid fa-bar-chart"></span></button>
     <button *ngIf="isLoggedIn" (click)="logout()"><span class="fa-solid fa-sign-out"></span></button>
     <button *ngIf="!isLoggedIn" routerLink="/user/login"><span class="fa-solid fa-sign-in"></span></button>

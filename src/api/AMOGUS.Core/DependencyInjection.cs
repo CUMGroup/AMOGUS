@@ -2,6 +2,7 @@
 using AMOGUS.Core.Common.Interfaces.Game;
 using AMOGUS.Core.Common.Interfaces.Teacher;
 using AMOGUS.Core.Services.Gameplay;
+using AMOGUS.Core.Services.Information;
 using AMOGUS.Core.Services.Teacher;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -15,6 +16,7 @@ namespace AMOGUS.Core {
             services.AddTransient<IQuestionFileAccessor, QuestionFileAccessor>();
             services.AddTransient<IStatsService, StatsService>();
             services.AddTransient<ITeacherService, TeacherService>();
+            services.AddTransient<ILeaderboardService, LeaderboardService>();
 
             services.AddTransient<IStreakService, StreaksService>();
 

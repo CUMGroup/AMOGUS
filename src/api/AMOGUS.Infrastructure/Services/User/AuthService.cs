@@ -1,4 +1,5 @@
-﻿using AMOGUS.Core.Common.Communication;
+﻿using AMOGUS.Core.Centralization.User;
+using AMOGUS.Core.Common.Communication;
 using AMOGUS.Core.Common.Exceptions;
 using AMOGUS.Core.Common.Interfaces.Database;
 using AMOGUS.Core.Common.Interfaces.Repositories;
@@ -82,7 +83,10 @@ namespace AMOGUS.Infrastructure.Services.User {
                 return new AuthFailureException($"Failed to create Account with role {role}");
             }
 
-            await _userManager.AddToRoleAsync(user, role);
+            await _userManager.AddToRoleAsync(user, UserRoles.User);
+            if (!UserRoles.User.Equals(role)) {
+                await _userManager.AddToRoleAsync(user, role);
+               }
 
             var res = await CreateNewUserStatsAsync(user);
             if (res.IsFaulted)

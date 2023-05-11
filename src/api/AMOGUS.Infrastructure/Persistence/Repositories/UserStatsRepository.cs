@@ -4,6 +4,7 @@ using AMOGUS.Core.Common.Interfaces.Repositories;
 using AMOGUS.Core.Domain.Models.Entities;
 using HonkSharp.Fluency;
 using Microsoft.EntityFrameworkCore;
+using System.Linq.Expressions;
 
 namespace AMOGUS.Infrastructure.Persistence.Repositories {
     internal class UserStatsRepository : IUserStatsRepository {
@@ -26,6 +27,10 @@ namespace AMOGUS.Infrastructure.Persistence.Repositories {
             }
             _context.UserStats.Remove(stats);
             return await _context.SaveChangesAsync();
+        }
+
+        public Task<List<UserStats>> GetTopOrderedByAsync<TKey>(int amount, Expression<Func<UserStats, TKey>> orderExpr) {
+            return _context.UserStats.OrderByDescending(orderExpr).Take(amount).Include(e => e.User).ToListAsync();
         }
 
         public Task<UserStats?> GetUserStatsAsync(string userId) {
