@@ -7,6 +7,10 @@ import { TemplateComponent } from './pages/template/template.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { HowToPageComponent } from './pages/how-to-page/how-to-page.component';
 import { LandingComponent } from './pages/landing/landing.component';
+import { LeaderboardComponent } from './components/leaderboard/leaderboard.component';
+import {MatTabsModule} from '@angular/material/tabs';
+import {MatTableModule} from '@angular/material/table';
+
 
 
 @NgModule({
@@ -16,6 +20,7 @@ import { LandingComponent } from './pages/landing/landing.component';
         TemplateComponent,
         HowToPageComponent,
         LandingComponent,
+        LeaderboardComponent,
     ],
     exports: [
         TemplateComponent,
@@ -23,7 +28,9 @@ import { LandingComponent } from './pages/landing/landing.component';
     imports: [
         CommonModule,
         HomeRoutingModule,
-        SharedModule
+        SharedModule,
+        MatTabsModule,
+        MatTableModule
     ]
 })
 export class HomeModule { }

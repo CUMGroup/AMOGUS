@@ -1,6 +1,16 @@
 :host,
 .landing-container{
     display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin-top: 3rem;
+    gap: 1.5em;
+}
+
+.landing-buttons{
+    display: flex;
+    flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
     width: 100%;
@@ -12,6 +22,11 @@ app-amogus-button {
     width: 10em;
     height: 3em;
     font-size: 2rem;
+}
+
+app-leaderboard {
+    margin-top: 5em;
+    margin-bottom: 5em;
 }
 
 @media screen and (max-width: 800px) {
