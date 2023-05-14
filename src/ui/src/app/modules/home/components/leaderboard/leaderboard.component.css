@@ -2,6 +2,14 @@
     color: var(--text);
 }
 
+::ng-deep .mat-tab-header-pagination-controls-enabled .mat-tab-header-pagination{
+  background-color: var(--background2);
+}
+
+table {
+  width: 100%;
+}
+
 ::ng-deep .mat-tab-labels{
   background-color: var(--background2);
 } 
@@ -39,4 +47,10 @@ h2 {
 }
 ::ng-deep .mat-header-row {
   border-color: var(--leading-color0);  
+}
+
+@media screen and (max-width: 500px) {
+  :host,table {
+    width: 80%;
+  }
 }

@@ -28,6 +28,7 @@ footer {
   line-height: .8em;
   font-size: .9rem;
   border-top: var(--background2) solid;
+  z-index: 100000;
 }
 
 footer div {
