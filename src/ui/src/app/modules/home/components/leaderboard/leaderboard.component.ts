@@ -15,6 +15,7 @@ export class LeaderboardComponent implements OnInit, OnDestroy {
   leaderboards: LeaderboardModel;
   leaderboards$: Subscription;
   streakColumnsToDisplay = ['place', 'username', 'streak'];
+  streakColumnsToDisplayWithBadge = ['place', 'username', 'streak', 'badge'];
   
   ngOnInit(): void {
     this.leaderboards$ = this.leaderboardService.getLeaderboards().subscribe(e => { this.leaderboards = new LeaderboardModel();

@@ -15,11 +15,16 @@
       
         <ng-container matColumnDef="streak">
           <mat-header-cell *matHeaderCellDef> Streak </mat-header-cell>
-          <mat-cell *matCellDef="let longestStreak"> {{daysToYearConverter(longestStreak.streak)}} <img src="{{badgeCalculator(longestStreak.streak)}}" alt="" class="badge" matTooltip="{{toolTipCalculator(longestStreak.streak)}}"> </mat-cell>
+          <mat-cell *matCellDef="let longestStreak"> {{daysToYearConverter(longestStreak.streak)}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="badge">
+          <mat-header-cell *matHeaderCellDef> </mat-header-cell>
+          <mat-cell *matCellDef="let longestStreak"> <img src="{{badgeCalculator(longestStreak.streak)}}" alt="" class="badge" matTooltip="{{toolTipCalculator(longestStreak.streak)}}"> </mat-cell>
         </ng-container>
       
-        <mat-header-row *matHeaderRowDef="streakColumnsToDisplay"></mat-header-row>
-        <mat-row *matRowDef="let row; columns: streakColumnsToDisplay;"></mat-row>
+        <mat-header-row *matHeaderRowDef="streakColumnsToDisplayWithBadge"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: streakColumnsToDisplayWithBadge;"></mat-row>
       </mat-table>
     </mat-tab>
     <mat-tab label="Current Streak">
