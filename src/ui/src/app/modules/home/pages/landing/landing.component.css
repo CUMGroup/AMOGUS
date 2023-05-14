@@ -16,6 +16,32 @@
     gap: 1.5em;
 }
 
+footer {
+  position: fixed;
+  bottom: 0px;
+  width: 100%;
+  height: 2.6em;
+  background-color: #21252b;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  line-height: .8em;
+  font-size: .9rem;
+  border-top: var(--background2) solid;
+}
+
+footer div {
+  display:flex;
+  flex-direction: row;
+  gap: 2em;
+}
+
+footer a:visited,
+footer a {
+  color: var(--text);
+}
+
+
 app-amogus-button {
     width: 10em;
     height: 3em;
@@ -28,7 +54,8 @@ app-leaderboard {
 }
     
 .amogusPicture{
-  height: 10rem;
+  width: 70%;
+  max-width: 500px;
 }
 
 .headertextcontainer {
