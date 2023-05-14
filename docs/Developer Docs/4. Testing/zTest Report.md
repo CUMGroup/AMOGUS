@@ -125,6 +125,9 @@ In the process of writing our unit tests, 3 bugs where found (and 2 minor improv
         }
         ```
 
+
+These are the overall test results:
+
 ![Test Results](../../assets/images/metrics/testing/tests.png)
 
 <br>
