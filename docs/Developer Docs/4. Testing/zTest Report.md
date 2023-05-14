@@ -32,9 +32,7 @@ In the process of writing our unit tests, 3 bugs where found (and 2 minor improv
         }
         ```
     - Solution: Added missing “!”
-
-<br>
-
+<br><br><br>
 2. **MentalExerciseFactory - CalcAnswer()**
     - Severity: Low 
     - Test: CheckAnswer_WhenGivenAnswer_AndQuestionIsRandomMental_AndAnswerIsNotCalculable_ReturnsFalse()
@@ -64,9 +62,7 @@ In the process of writing our unit tests, 3 bugs where found (and 2 minor improv
             return string.Empty;
         }
         ```
-
-<br>
-
+        <br><br><br>
 3. **MentalExerciseFactory - Median()**
     - Severity: Low
     - Test: Median_ReturnsMedian_ForSortedArrayWithEvenCount()
@@ -92,9 +88,7 @@ In the process of writing our unit tests, 3 bugs where found (and 2 minor improv
             return (sortedArr[mid] + sortedArr[Math.Max(Math.Min(mid - 1, sortedArr.Length - 1), 0)]) / 2d;
         }
         ```
-
-<br>
-
+        <br><br><br>
 4. **Improvement: return early from Median calculation**
     - Severity: None
     - Median of an empty array or with a single element should return earlier
@@ -112,9 +106,7 @@ In the process of writing our unit tests, 3 bugs where found (and 2 minor improv
             return (sortedArr[mid] + sortedArr[Math.Max(Math.Min(mid - 1, sortedArr.Length - 1), 0)]) / 2d;
         }
         ```
-
-<br>
-
+        <br><br><br>
 5. **Improvement: Do not mutate the input array in Median calculation**
     - Severity: Low 
     - Solution: clone array before sorting
