@@ -14,7 +14,7 @@
 
 ## Target test coverage
 
-The test coverage is around 60% in terms of unit testing. Goal is to test the services functionalities.
+The test coverage is around 60% in terms of unit testing line and branch coverage. Goal is to test the services functionalities.
 
 Every Endpoint had been testet via Swagger.
 
