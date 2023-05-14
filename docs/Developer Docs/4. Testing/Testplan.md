@@ -6,8 +6,6 @@
 
 - Unit tests
 
-- API tests
-
 - Beta tests
 
 
@@ -15,9 +13,6 @@
 ## Target test coverage
 
 The test coverage is around 60% in terms of unit testing line and branch coverage. Goal is to test the services functionalities.
-
-Every Endpoint had been testet via Swagger.
-
 
 
 ## Testing tools
@@ -28,9 +23,6 @@ Every Endpoint had been testet via Swagger.
 
 - [Moq](https://github.com/moq/moq4): Mock framework to mock services
 
-### API testing
-
-- [Swagger](https://swagger.io/): API testing suite (manual testing)
 
 ### Beta tests
 
@@ -162,12 +154,63 @@ Github Actions will show the amount of tests passed and failed per pull request.
 | 68  | CalcAnswer | CalcAnswer_ReturnsEmpty_ForXInStatement | Expressions with x | empty string |
 
 
-### API tests
+#### Game Session Validator
 
-API tests are run manually
+| #   | Tested method | Objective | Input | Expected Result |
+| --- | ------------- | --------- | ----- | --------------- |
+| 69  | Rules | SessionId_CannotBeEmpty | Empty sessionid | false |
+| 70  | Rules | SessionId_ShouldBeValidGuid | invalid guid | false |
+| 71  | Rules | SessionId_ShouldBeValid | valid guid | true |
+| 72  | Rules | Playtime_ShouldNotBeSmallerThanZero | -1 | false  |
+| 73  | Rules | Playtime_CanBeZeroOrBigger | 0, 0.1, 1 | true |
+| 74  | Rules | CorrectAnswersCount_ShouldNotBeSmallerThanZero | -1 | false  |
+| 75  | Rules | CorrectAnswersCount_CanBeZeroOrBigger | 0, 1 | true |
+| 76  | Rules | GivenAnswersCount_ShouldNotBeSmallerThanZero | -1 | false  |
+| 77  | Rules | GivenAnswersCount_CanBeZeroOrBigger | 0, 1 | true |
+| 78  | Rules | AverageTimePerQuestion_ShouldNotBeSmallerThanZero | -1 | false  |
+| 79  | Rules | AverageTimePerQuestion_CanBeZeroOrBigger | 0, 0.1, 1 | true |
+| 80  | Rules | QuickestAnswer_ShouldNotBeSmallerThanZero | -1 | false  |
+| 81  | Rules | QuickestAnswer_CanBeZeroOrBigger | 0, 0.1, 1 | true |
+| 82  | Rules | SlowestAnswer_ShouldNotBeSmallerThanZero | -1 | false  |
+| 83  | Rules | SlowestAnswer_CanBeZeroOrBigger | 0, 0.1, 1 | true |
 
-| #   | Route | Objective | Input | Expected Result |
-| --- | ----- | --------- | ----- | --------------- |
-| 1   |       |           |       |                 |
+#### Registermodel Validator
 
+| #   | Tested method | Objective | Input | Expected Result |
+| --- | ------------- | --------- | ----- | --------------- |
+| 84  | Rules | Email_CannotBeEmpty | Empty email | false |
+| 85  | Rules | Email_CannotBeInvalid | invalid emails | false |
+| 86  | Rules | Email_IsValid | valid email | true |
+| 87  | Rules | Username_CannotBeEmpty | empty username | false  |
+| 88  | Rules | Username_IsValid | non-empty username | true |
+| 89  | Rules | Password_CannotBeEmpty | empty password | false  |
+| 90  | Rules | Password_MustHaveOneLowercase | password without lowercase | false |
+| 91  | Rules | Password_MustHaveOneUppercase | password without uppercase | false  |
+| 92  | Rules | Password_MustHaveOneDigit | password without digit | false |
+| 93  | Rules | Password_MustHaveOneSpecialChar | password without special char | false  |
+| 94  | Rules | Password_MustBeAtLeastSixCharsLong | password shorter than 6 chars | false |
+| 95  | Rules | Password_ShouldBeValid | valid passwords | true  |
+
+
+#### Game Session Validator
+
+| #   | Tested method | Objective | Input | Expected Result |
+| --- | ------------- | --------- | ----- | --------------- |
+| 96  | Rules | Level_ShouldNotBeSmallerThanZero | -1 | false  |
+| 97  | Rules | Level_CanBeZeroOrBigger | 0, 1 | true |
+| 98  | Rules | CurrentStreak_ShouldNotBeSmallerThanZero | -1 | false  |
+| 99  | Rules | CurrentStreak_CanBeZeroOrBigger | 0, 1 | true |
+| 100  | Rules | OverallAnswered_ShouldNotBeSmallerThanZero | -1 | false  |
+| 101 | Rules | OverallAnswered_CanBeZeroOrBigger | 0, 1 | true |
+| 102  | Rules | CorrectAnswers_ShouldNotBeSmallerThanZero | -1 | false  |
+| 103  | Rules | CorrectAnswers_CanBeZeroOrBigger | 0, 1 | true |
+| 104 | Rules | TotalTimePlayed_ShouldNotBeSmallerThanZero | -1 | false  |
+| 105 | Rules | TotalTimePlayed_CanBeZeroOrBigger | 0, 0.1, 1 | true |
+| 106 | Rules | QuickestAnswer_ShouldNotBeSmallerThanZero | -1 | false  |
+| 107 | Rules | QuickestAnswer_CanBeZeroOrBigger | 0, 0.1, 1 | true |
+| 108 | Rules | SlowestAnswer_ShouldNotBeSmallerThanZero | -1 | false  |
+| 109 | Rules | SlowestAnswer_CanBeZeroOrBigger | 0, 0.1, 1 | true |
+| 110 | Rules | LongestStreak_ShouldNotBeSmallerThanZero | -1 | false  |
+| 111 | Rules | LongestStreak_CanBeZeroOrBigger | 0, 1 | true |
+| 112 | Rules | LongestStreak_CannotBeSmallerThanCurrentStreak | currentstreak=1, longeststreak=0 | false |
 
