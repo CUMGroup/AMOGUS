@@ -1,7 +1,11 @@
 <div class="stats-container">
+    
     <div class="streak-container">
-        <div class="text-box">Streak {{stats?.currentStreak}}d</div>
-        <p>Longest Streak: {{stats?.longestStreak}}d</p>
+        <img src="{{badge}}" alt="" class="badge" matTooltip="{{toolTip}}">
+        <div>
+            <div class="text-box">Streak {{currentStreak}}</div>
+            <p>Longest Streak: {{longestStreak}}</p>
+        </div>
     </div>
     
     <div class="questions">

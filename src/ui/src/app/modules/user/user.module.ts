@@ -33,6 +33,7 @@ import {MatRippleModule} from "@angular/material/core";
 import {QuestionPreviewComponent} from "./pages/shared/question-preview/question-preview.component";
 import {Constants} from "./interfaces/selection";
 import { SharedModule } from 'src/app/shared/shared.module';
+import {MatTooltipModule} from '@angular/material/tooltip';
 
 @NgModule({
   declarations: [
@@ -73,7 +74,8 @@ import { SharedModule } from 'src/app/shared/shared.module';
         MatRadioModule,
         MatSelectModule,
         MatSnackBarModule,
-        SharedModule
+        SharedModule,
+        MatTooltipModule
     ],
   providers:[
     Constants
