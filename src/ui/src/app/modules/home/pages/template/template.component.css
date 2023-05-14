@@ -1,8 +1,3 @@
-.parallax {
-    --parallax-height: 15em;
-    height: var(--parallax-height);
-}
-
 .navbarplaceholder {
     height: 3em;
     display: flex;
@@ -58,25 +53,6 @@
     width: 30px;
     border-radius: 2px;
 }
-
-
-.amogush {
-    font-size: 4em;
-    font-weight: bolder;
-    color: var(--accent-text)
-}
-
-.headertextcontainer {
-    position: absolute;
-    top: 3em;
-    width: 100%;
-    height: var(--parallax-height);
-    pointer-events: none;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
 
 .index{
     align-items: center;

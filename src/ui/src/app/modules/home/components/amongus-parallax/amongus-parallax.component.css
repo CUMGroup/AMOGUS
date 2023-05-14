@@ -17,4 +17,5 @@
   width: 5em;
   background: transparent;
   z-index: 1;
+  transform: translate(-21px, 6px) rotate(-40deg);
 }
