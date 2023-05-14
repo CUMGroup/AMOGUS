@@ -14,7 +14,6 @@
     flex-wrap: wrap;
     justify-content: center;
     width: 100%;
-    margin-top: 3rem;
     gap: 1.5em;
 }
 
@@ -27,6 +26,27 @@ app-amogus-button {
 app-leaderboard {
     margin-top: 5em;
     margin-bottom: 5em;
+}
+    
+.amogusPicture{
+  height: 10rem;
+}
+
+.headertextcontainer {
+  position: absolute;
+  top: 3em;
+  width: 100%;
+  height: var(--parallax-height);
+  pointer-events: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.parallax {
+  --parallax-height: 15em;
+  height: var(--parallax-height);
+  width: 100%;
 }
 
 @media screen and (max-width: 800px) {
