@@ -14,7 +14,11 @@ mat-table {
 }
 .mat-elevation-z8{
   background-color: var(--background1);
-  
+}
+.badge {
+  width: 3em;
+  height: auto;
+  margin: 1em;
 }
 
 h2 {
@@ -27,9 +31,11 @@ h2 {
 }
 ::ng-deep .mat-cell {
   color: var(--border);
-}
+  text-align: right;
+} 
 ::ng-deep .mat-row {
   border-color: var(--background4);
+  
 }
 ::ng-deep .mat-header-row {
   border-color: var(--leading-color0);  

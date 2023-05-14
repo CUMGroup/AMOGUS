@@ -10,6 +10,7 @@ import { LandingComponent } from './pages/landing/landing.component';
 import { LeaderboardComponent } from './components/leaderboard/leaderboard.component';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatTableModule} from '@angular/material/table';
+import {MatTooltipModule} from '@angular/material/tooltip';
 
 
 
@@ -30,7 +31,8 @@ import {MatTableModule} from '@angular/material/table';
         HomeRoutingModule,
         SharedModule,
         MatTabsModule,
-        MatTableModule
+        MatTableModule,
+        MatTooltipModule
     ]
 })
 export class HomeModule { }

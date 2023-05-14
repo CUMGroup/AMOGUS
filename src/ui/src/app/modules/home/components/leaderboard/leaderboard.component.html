@@ -15,7 +15,7 @@
       
         <ng-container matColumnDef="streak">
           <mat-header-cell *matHeaderCellDef> Streak </mat-header-cell>
-          <mat-cell *matCellDef="let longestStreak"> {{longestStreak.streak}} </mat-cell>
+          <mat-cell *matCellDef="let longestStreak"> {{daysToYearConverter(longestStreak.streak)}} <img src="{{badgeCalculator(longestStreak.streak)}}" alt="" class="badge" matTooltip="{{toolTipCalculator(longestStreak.streak)}}"> </mat-cell>
         </ng-container>
       
         <mat-header-row *matHeaderRowDef="streakColumnsToDisplay"></mat-header-row>
@@ -36,7 +36,7 @@
         
         <ng-container matColumnDef="streak">
           <mat-header-cell *matHeaderCellDef> Streak </mat-header-cell>
-          <mat-cell *matCellDef="let currentStreak"> {{currentStreak.streak}} </mat-cell>
+          <mat-cell *matCellDef="let currentStreak"> {{daysToYearConverter(currentStreak.streak)}} </mat-cell>
         </ng-container>
         
         <mat-header-row *matHeaderRowDef="streakColumnsToDisplay"></mat-header-row>
