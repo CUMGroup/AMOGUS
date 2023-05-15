@@ -62,7 +62,7 @@
         
           <ng-container matColumnDef="streak">
             <mat-header-cell *matHeaderCellDef> Ratio </mat-header-cell>
-            <mat-cell *matCellDef="let ratio"> {{ratio.correctRatio}} </mat-cell>
+            <mat-cell *matCellDef="let ratio"> {{ratio.correctRatio | number: '1.0-2'}} </mat-cell>
           </ng-container>
         
           <mat-header-row *matHeaderRowDef="streakColumnsToDisplay"></mat-header-row>
