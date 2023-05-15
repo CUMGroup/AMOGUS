@@ -1,53 +1,32 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
-import { Observable, Subscription, range } from 'rxjs';
-import { UserStats } from 'src/app/core/interfaces/user-stats';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import {  Subscription } from 'rxjs';
+import { LeaderboardModel, LeaderboardUserCorrectRatio, LeaderboardUserStreak } from 'src/app/core/interfaces/leaderboard-model';
+import { LeaderboardService } from 'src/app/core/services/leaderboard.service';
 
 @Component({
-  selector: 'app-stats-table',
-  templateUrl: './stats-table.component.html',
-  styleUrls: ['./stats-table.component.css']
+  selector: 'app-leaderboard',
+  templateUrl: './leaderboard.component.html',
+  styleUrls: ['./leaderboard.component.css']
 })
-export class StatsTableComponent implements OnInit, OnDestroy {
+export class LeaderboardComponent implements OnInit, OnDestroy {
 
-  constructor() { }
-
-  @Input()
-  stats$: Observable<UserStats>;
-  statsSubscription: Subscription;
-
-  badge: string;
-  toolTip: string;
-  longestStreak: string;
-  currentStreak: string;
-
-  stats: UserStats;
-  currentLevel: number;
-  totalTime: number;
-  ciRatio: number;
-  slowestAnswerInSec: number;
-
+  constructor(private leaderboardService: LeaderboardService) { }
+  
+  leaderboards: LeaderboardModel;
+  leaderboards$: Subscription;
+  streakColumnsToDisplay = ['place', 'username', 'streak'];
+  streakColumnsToDisplayWithBadge = ['place', 'username', 'streak', 'badge'];
+  
   ngOnInit(): void {
-    this.statsSubscription = this.stats$.subscribe(e => {
-      this.stats = e;
-
-      this.badge = this.badgeCalculator(e.longestStreak);
-      this.toolTip = this.toolTipCalculator(e.longestStreak);
-
-      this.longestStreak = this.daysToYearConverter(e.longestStreak);
-      this.currentStreak = this.daysToYearConverter(e.currentStreak);
-      this.currentLevel = this.xpToLevelConverter(e.level);
-
-      this.ciRatio = e.correctAnswers / Math.max(e.overallAnswered - e.correctAnswers, 1);
-      this.slowestAnswerInSec = Math.floor(e.slowestAnswer / 1000);
-    })
+    this.leaderboards$ = this.leaderboardService.getLeaderboards().subscribe(e => { this.leaderboards = new LeaderboardModel();
+      this.leaderboards.longestStreaks = e.longestStreaks.map(ls => new LeaderboardUserStreak(ls.username, ls.streak));
+      this.leaderboards.currentStreaks = e.currentStreaks.map(cs => new LeaderboardUserStreak(cs.username, cs.streak));
+      this.leaderboards.correctRatios = e.correctRatios.map(cr => new LeaderboardUserCorrectRatio(cr.username, cr.correctRatio));
+    });
   }
-
+  
   ngOnDestroy(): void {
-    this.statsSubscription.unsubscribe();
-  }
-
-  xpToLevelConverter(xp: number): number {
-    return Math.floor(Math.sqrt(5 * xp));
+    this.leaderboards$?.unsubscribe();
   }
 
   daysToYearConverter(days: number): string {
@@ -92,5 +71,4 @@ export class StatsTableComponent implements OnInit, OnDestroy {
     if(longestStreak <= 36499) return "Time to give your account to your grandchildren!";
     return "Maaan, you are doing maths from your graaave! 💀";
   }
-
 }

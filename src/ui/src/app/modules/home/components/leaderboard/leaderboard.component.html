@@ -1,0 +1,73 @@
+<h2>Take a look at our Top 5 players!</h2>
+
+<mat-tab-group color="primary" backgroundColor="primary" dynamicHeight>
+    <mat-tab label="Longest Streak">
+      <mat-table [dataSource]=leaderboards?.longestStreaks class="mat-elevation-z8">
+        <ng-container matColumnDef="place">
+          <mat-header-cell *matHeaderCellDef> Place </mat-header-cell>
+          <mat-cell *matCellDef="let longestStreak"> {{leaderboards?.longestStreaks.indexOf(longestStreak) + 1}}. </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="username">
+          <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+          <mat-cell *matCellDef="let longestStreak"> {{longestStreak.username}} </mat-cell>
+        </ng-container>
+      
+        <ng-container matColumnDef="streak">
+          <mat-header-cell *matHeaderCellDef> Streak </mat-header-cell>
+          <mat-cell *matCellDef="let longestStreak"> {{daysToYearConverter(longestStreak.streak)}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="badge">
+          <mat-header-cell *matHeaderCellDef> </mat-header-cell>
+          <mat-cell *matCellDef="let longestStreak"> <img src="{{badgeCalculator(longestStreak.streak)}}" alt="" class="badge" matTooltip="{{toolTipCalculator(longestStreak.streak)}}"> </mat-cell>
+        </ng-container>
+      
+        <mat-header-row *matHeaderRowDef="streakColumnsToDisplayWithBadge"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: streakColumnsToDisplayWithBadge;"></mat-row>
+      </mat-table>
+    </mat-tab>
+    <mat-tab label="Current Streak">
+      <mat-table [dataSource]=leaderboards?.currentStreaks class="mat-elevation-z8">
+        <ng-container matColumnDef="place">
+          <mat-header-cell *matHeaderCellDef> Place </mat-header-cell>
+          <mat-cell *matCellDef="let currentStreak"> {{leaderboards?.currentStreaks.indexOf(currentStreak) + 1}}. </mat-cell>
+        </ng-container>
+        
+        <ng-container matColumnDef="username">
+          <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+          <mat-cell *matCellDef="let currentStreak"> {{currentStreak.username}} </mat-cell>
+        </ng-container>
+        
+        <ng-container matColumnDef="streak">
+          <mat-header-cell *matHeaderCellDef> Streak </mat-header-cell>
+          <mat-cell *matCellDef="let currentStreak"> {{daysToYearConverter(currentStreak.streak)}} </mat-cell>
+        </ng-container>
+        
+        <mat-header-row *matHeaderRowDef="streakColumnsToDisplay"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: streakColumnsToDisplay;"></mat-row>
+      </mat-table>
+    </mat-tab> 
+    <mat-tab label="Correct to Wrong Ratio">
+        <mat-table [dataSource]=leaderboards?.correctRatios class="mat-elevation-z8">
+          <ng-container matColumnDef="place">
+            <mat-header-cell *matHeaderCellDef> Place </mat-header-cell>
+            <mat-cell *matCellDef="let ratio"> {{leaderboards?.correctRatios.indexOf(ratio) + 1}}. </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="username">
+            <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+            <mat-cell *matCellDef="let ratio"> {{ratio.username}} </mat-cell>
+          </ng-container>
+        
+          <ng-container matColumnDef="streak">
+            <mat-header-cell *matHeaderCellDef> Ratio </mat-header-cell>
+            <mat-cell *matCellDef="let ratio"> {{ratio.correctRatio | number: '1.0-2'}} </mat-cell>
+          </ng-container>
+        
+          <mat-header-row *matHeaderRowDef="streakColumnsToDisplay"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: streakColumnsToDisplay;"></mat-row>
+      </mat-table>
+  </mat-tab>
+</mat-tab-group>
+ 

@@ -48,6 +48,18 @@ p {
     top: -2em;
 }
 
+.badge {
+    width: 7em;
+    height: auto;
+    position: relative;
+    top: -1em;
+    margin-right: 2em;
+}
+
+.streak-container {
+    display: flex;
+}
+
 @media screen and (max-width: 950px) {
 
     .text-box {
