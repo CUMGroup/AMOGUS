@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<coverage version="1.0" date="2023-05-14_16-15-27" tag="">
+  <assembly name="AMOGUS.Core">
+    <class name="AMOGUS.Core.Factories.MentalExerciseFactory" coveredlines="27" coverablelines="32" totallines="207" coveredbranches="12" totalbranches="16" coveredcodeelements="2" totalcodeelements="3" />
+    <class name="AMOGUS.Core.Services.Gameplay.ExerciseService" coveredlines="25" coverablelines="30" totallines="74" coveredbranches="16" totalbranches="16" coveredcodeelements="3" totalcodeelements="4" />
+    <class name="AMOGUS.Core.Services.Gameplay.GameService" coveredlines="41" coverablelines="44" totallines="80" coveredbranches="6" totalbranches="8" coveredcodeelements="5" totalcodeelements="5" />
+    <class name="AMOGUS.Core.Services.Gameplay.StatsService" coveredlines="89" coverablelines="100" totallines="144" coveredbranches="30" totalbranches="30" coveredcodeelements="8" totalcodeelements="9" />
+    <class name="AMOGUS.Core.Services.Gameplay.StreaksService" coveredlines="25" coverablelines="26" totallines="47" coveredbranches="10" totalbranches="10" coveredcodeelements="4" totalcodeelements="4" />
+    <class name="AMOGUS.Core.Services.Information.LeaderboardService" coveredlines="29" coverablelines="29" totallines="44" coveredbranches="6" totalbranches="12" coveredcodeelements="2" totalcodeelements="2" />
+    <class name="AMOGUS.Core.Services.Teacher.TeacherService" coveredlines="32" coverablelines="36" totallines="68" coveredbranches="4" totalbranches="4" coveredcodeelements="4" totalcodeelements="4" />
+  </assembly>
+  <assembly name="AMOGUS.Infrastructure">
+    <class name="AMOGUS.Infrastructure.Services.User.AuthService" coveredlines="59" coverablelines="64" totallines="115" coveredbranches="26" totalbranches="36" coveredcodeelements="6" totalcodeelements="6" />
+    <class name="AMOGUS.Infrastructure.Services.User.UserService" coveredlines="36" coverablelines="40" totallines="73" coveredbranches="7" totalbranches="8" coveredcodeelements="5" totalcodeelements="5" />
+  </assembly>
+  <assembly name="AMOGUS.Validation">
+    <class name="AMOGUS.Validation.Validators.GameSessionValidator" coveredlines="25" coverablelines="25" totallines="43" coveredbranches="0" totalbranches="0" coveredcodeelements="1" totalcodeelements="1" />
+    <class name="AMOGUS.Validation.Validators.RegisterValidator" coveredlines="15" coverablelines="15" totallines="28" coveredbranches="0" totalbranches="0" coveredcodeelements="1" totalcodeelements="1" />
+    <class name="AMOGUS.Validation.Validators.StatsValidator" coveredlines="28" coverablelines="28" totallines="48" coveredbranches="0" totalbranches="0" coveredcodeelements="1" totalcodeelements="1" />
+  </assembly>
+</coverage>

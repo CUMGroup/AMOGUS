@@ -38,7 +38,7 @@ namespace AMOGUS.Core.Domain.Models.Entities {
         public int LongestStreak { get; set; } = 0;
 
         public double GetCorrectRatio() {
-            return CorrectAnswers / Math.Max(OverallAnswered - CorrectAnswers, 1);
+            return (double)CorrectAnswers / Math.Max(OverallAnswered - CorrectAnswers, 1);
         }
     }
 }
