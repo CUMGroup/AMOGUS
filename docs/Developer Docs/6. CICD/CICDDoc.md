@@ -91,7 +91,9 @@ Additionally, a code coverage report is generated that looks something like this
 
 ## CD Workflows
 When something gets pushed to the main branch two workflows could be triggered:
+
 - [Deploy API](https://github.com/CUMGroup/AMOGUS/blob/main/.github/workflows/deploy-api.yaml) - When the `src/api` folder gets updated
+
 ```yaml
 name: Build & Redeploy Api
 
@@ -149,7 +151,9 @@ jobs:
           headers: ${{ secrets.DEPLOY_WEBHOOK_HEADER_API }}
 ```
 This workflow builds a docker image from the API, pushes it to our DockerHub repository and sends a webhook to our deployment script on our server.
+
 - [Deploy UI](https://github.com/CUMGroup/AMOGUS/blob/main/.github/workflows/deploy-ui.yaml) - When the `src/ui` folder gets updated
+
 ```yaml
 name: Build & Redeploy UI
 
