@@ -1,4 +1,4 @@
-# CI/CD Dokumentation
+# CI/CD Documentation
 
 ## CI Workflows
 On every Pull Request to the main branch, that edits the `./src/` folder, following Workflows get executed.
