@@ -4,6 +4,7 @@
 On every Pull Request to the main branch, that edits the `./src/` folder, following Workflows get executed.
 
 - [Build the api and the ui](https://github.com/CUMGroup/AMOGUS/blob/main/.github/workflows/build-on-pullrequest.yaml) (check if everything compiles right)
+
 ```yaml
 name: Build on Pull Request
 
@@ -47,6 +48,7 @@ jobs:
 This workflow checks out the repository and tries to build the dotnet project and the angular project. If any of them fail, the workflow fails and the pull request gets rejected.
 
 - [Run all Unit Tests](https://github.com/CUMGroup/AMOGUS/blob/main/.github/workflows/test-on-pullrequest.yaml)
+
 ```yaml
 name: Test on Pull Request
 
