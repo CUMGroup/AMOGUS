@@ -77,6 +77,7 @@ export class AuthenticationService {
 
   public isAuthenticated() {
     const roles = this.getRoles();
+    console.log();
     if (roles.includes('User')) {
       return true;
     }

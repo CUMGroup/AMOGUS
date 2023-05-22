@@ -18,7 +18,7 @@
     </mat-form-field>
     <button mat-raised-button color="primary" class="newQuestionButton" (click)="createNewQuestion()">New Question</button>
   </div>
-  <ng-container *ngFor="let question of teacherService.questionArray;let i = index">
+  <ng-container *ngFor="let question of teacherService.questionArray; let i = index">
     <app-question [question]="question" [index]="i"></app-question>
   </ng-container>
 </div>
