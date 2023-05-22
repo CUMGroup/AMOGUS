@@ -3,7 +3,6 @@ import {TeacherService} from "../../../../core/services/user/teacher.service";
 import {MatDialog} from "@angular/material/dialog";
 import {QuestionEditViewComponent} from "./question-edit-view/question-edit-view.component";
 import {Constants} from "../../interfaces/selection";
-import { NewQuestion } from 'src/app/core/interfaces/new-question';
 
 @Component({
   selector: 'app-teacher-view',

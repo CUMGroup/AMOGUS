@@ -6,6 +6,7 @@ import {QuestionEditViewComponent} from "../question-edit-view/question-edit-vie
 import {QuestionPreviewComponent} from "../../shared/question-preview/question-preview.component";
 import {question} from "../../../../../core/interfaces/question";
 import { CategoryTypeNewQuestion, DifficultyTypeNewQuestion } from 'src/app/core/interfaces/new-question';
+import { Constants } from '../../../interfaces/selection';
 
 @Component({
   selector: 'app-question',
@@ -17,7 +18,7 @@ export class QuestionComponent implements OnInit {
   @Input() question: FormGroup;
   @Input() index: number;
 
-  constructor(public teacherService:TeacherService, private dialog: MatDialog) { }
+  constructor(public teacherService:TeacherService, private dialog: MatDialog, private constants: Constants) { }
 
   ngOnInit(): void {
 
@@ -30,10 +31,10 @@ export class QuestionComponent implements OnInit {
   getStringValue(question: FormGroup, key: string): string {
     let numValue = question.get(key).value;
     if (key === "difficulty") {
-      return DifficultyTypeNewQuestion[numValue].toLowerCase();
+      return this.constants.Difficulties[numValue];
     }
     if (key === "category") {
-      return CategoryTypeNewQuestion[numValue].toLowerCase();
+      return this.constants.Categories[numValue];
     }
     return 'unknown';
   }
