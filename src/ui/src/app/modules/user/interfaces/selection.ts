@@ -16,13 +16,5 @@ export class Constants{
       category: CategoryType.GEOMETRY,
       gameType: "Geometry",
     },
-    {
-      category: CategoryType.RANDOMMENTAL,
-      gameType: "Randomized Mental Mode",
-    },
-    {
-      category: CategoryType.RANDOMMENTAL_INSANE,
-      gameType: "Randomized Mental Insane Mode",
-    },
   ];
 }
