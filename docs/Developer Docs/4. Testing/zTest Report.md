@@ -144,7 +144,10 @@ Achieved code coverage:
 ![Class Coverage](../../assets/images/metrics/testing/metrics2.png)
 
 ## Recommendations
+Unit testing with xUnit.Net and Moq is easy to use and get up and running.<br>
+Future projects should use a better solution to display the code coverage. For example [Codecov](https://about.codecov.io/) to display coverage in pull requests (for reference see [this](https://fibo952390745.wordpress.com/2023/05/04/week-13-ci-coverage-and-chores/)).
 
+Furthermore a better solution to collect and document test cases (other than manual) should be practiced!
 
 ## Conclusion
 To summarize, very few issues were detected. The found errors could be resolved very quickly and the overall software quality is very good!
