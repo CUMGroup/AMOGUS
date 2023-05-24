@@ -29,9 +29,7 @@ export class TeacherService {
 
   add(questionGroup?:FormGroup){
 
-    console.log(questionGroup);
     let question = this.parseQuestion(questionGroup['value']);
-    console.log(question);
 
     return this.apiService.post<Observable<HttpStatusCode>>('/teachers/questions', question).subscribe(
       resp => {
