@@ -5,6 +5,7 @@ import {GameService} from "../../../../core/services/game.service";
 import {HttpClient} from "@angular/common/http";
 import { CategoryType } from 'src/app/core/interfaces/game-session';
 import { Subscription } from 'rxjs';
+import {Constants} from "../../interfaces/selection";
 
 @Component({
   selector: 'app-game-selection',
@@ -14,37 +15,15 @@ import { Subscription } from 'rxjs';
 export class GameSelectionComponent implements OnDestroy {
 
   gameOptions: gameOption[];
-  
+
   newGameSub$ : Subscription;
-  
+
   constructor(
     public http: HttpClient,
     private router: Router,
     public gameService: GameService,
-  ) {
-    this.gameOptions = [
-      {
-        category: CategoryType.MENTAL,
-        gameType: "Mental arithmetic",
-      },
-      {
-        category: CategoryType.ANALYSIS,
-        gameType: "Analysis",
-      },
-      {
-        category: CategoryType.GEOMETRY,
-        gameType: "Geometry",
-      },
-      {
-        category: CategoryType.RANDOMMENTAL,
-        gameType: "Randomized Mental Mode",
-      },
-      {
-        category: CategoryType.RANDOMMENTAL_INSANE,
-        gameType: "Randomized Mental Insane Mode",
-      },
-    ]
-  }
+    public constants: Constants,
+  ) { }
   ngOnDestroy(): void {
     this.newGameSub$?.unsubscribe();
   }

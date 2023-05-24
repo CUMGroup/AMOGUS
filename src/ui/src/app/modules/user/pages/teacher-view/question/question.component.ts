@@ -5,8 +5,7 @@ import {MatDialog} from "@angular/material/dialog";
 import {QuestionEditViewComponent} from "../question-edit-view/question-edit-view.component";
 import {QuestionPreviewComponent} from "../../shared/question-preview/question-preview.component";
 import {question} from "../../../../../core/interfaces/question";
-import { CategoryTypeNewQuestion, DifficultyTypeNewQuestion } from 'src/app/core/interfaces/new-question';
-import { Constants } from '../../../interfaces/selection';
+import {Constants} from "../../../interfaces/selection";
 
 @Component({
   selector: 'app-question',

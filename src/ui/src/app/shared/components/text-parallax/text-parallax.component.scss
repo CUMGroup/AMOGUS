@@ -1,11 +1,33 @@
 * {
   margin: 0;
   box-sizing: border-box;
-  font-family: sans-serif;
+}
+
+body,
+h1,
+h2,
+h3 {
+  margin: 0;
+}
+
+h1 {
+  font-size: 100px;
+  margin: 0;
+  position: relative;
+  overflow: hidden;
+  height: 200px;
+  width: 100%;
+  text-align: center;
+}
+
+h1 > div {
+  position: relative;
+  margin: 0;
 }
 
 h2 {
   font-size: 3rem;
+  text-align: center;
 }
 
 h2+p {
@@ -32,13 +54,19 @@ h2+p {
   display: flex;
   flex-direction: column;
   padding-left: 30px;
+  margin: auto;
+  min-width: 70%;
+  max-width: 100%;
+  width: 60rem;
 }
 
-.text {
-  font-size: 20px;
+//this class enables the reveal animation for the Element
+.revealUp {
   opacity: 0;
 }
 
 .outline{
   display: contents;
 }
+
+

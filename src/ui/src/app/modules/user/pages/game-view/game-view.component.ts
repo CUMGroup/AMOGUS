@@ -14,7 +14,7 @@ import {QuestionPreviewComponent} from "../shared/question-preview/question-prev
 @Component({
   selector: 'app-game-view',
   templateUrl: './game-view.component.html',
-  styleUrls: ['./game-view.component.css'],
+  styleUrls: ['./game-view.component.scss'],
 })
 
 export class GameViewComponent implements OnInit, AfterViewInit, OnDestroy {
@@ -60,7 +60,7 @@ export class GameViewComponent implements OnInit, AfterViewInit, OnDestroy {
     this.newGameSubscription$?.unsubscribe();
     this.routerSubscription$?.unsubscribe();
     this.gameProgress?.unsubscribe();
-    // TODO: Analyse if memory leak problem could arise
+    //TODO: Analyse if memory leak problem could arise
     //this.endGameSubscription$?.unsubscribe();
   }
 
@@ -143,7 +143,7 @@ export class GameViewComponent implements OnInit, AfterViewInit, OnDestroy {
 @Component({
   selector: 'answer-dialog',
   templateUrl: 'answer-dialog.html',
-  styleUrls: ['./game-view.component.css']
+  styleUrls: ['./game-view.component.scss']
 })
 
 export class AnswerDialog {

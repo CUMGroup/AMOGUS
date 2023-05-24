@@ -1,5 +1,4 @@
 export class Constants{
-  Difficulties = ["Easy","Medium","Hard"];
-  Categories = ["Mental", "Analysis", "Geometry"];
+  Difficulties: string[] = ["Easy","Medium","Hard"];
+  Categories: string[] = ["Mental Arithmetic", "Analysis", "Geometry"]
 }
-

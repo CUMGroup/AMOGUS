@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import {Router} from "@angular/router";
+import {debounceTime} from "rxjs";
 
 
 @Component({
@@ -8,40 +10,61 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
   templateUrl: './text-parallax.component.html',
   styleUrls: ['./text-parallax.component.scss']
 })
-export class TextParallaxComponent implements OnInit {
+export class TextParallaxComponent implements OnInit, OnDestroy {
   constructor() { }
 
-  ngOnInit() {
-    gsap.registerPlugin(ScrollTrigger);
+  ngOnInit(){
     this.initScrollTriggers();
   }
 
-  initScrollTriggers() {
-    let sections: any = gsap.utils.toArray(".section");
+  ngOnDestroy(): void {
+    ScrollTrigger.getAll().forEach(t => t.kill())
+  }
 
-    sections.forEach((section) => {
-      let title = section.querySelector(".title");
-      let time = gsap.timeline({
-        scrollTrigger: {
-          trigger: section,
-          start: "top bottom",
-          end: "+=100",
-          scrub: 2,
-        }
-      })
-        .from(title, {
-          opacity: 0,
-          x: 120,
-          toggleActions: "restart pause reverse pause",
-        })
-      time.add(gsap.timeline(
-        ScrollTrigger.batch(".text", {
-          interval: 0.3, // time window (in seconds) for batching to occur.
-          batchMax: 10,   // maximum batch size (targets). Can be function-based for dynamic values
-          onEnter: batch => gsap.to(batch, { opacity: 1, scrub: 2, stagger: 0.06,overwrite: true }),
-        })
-      ))
-      time.play()
+  async initScrollTriggers() {
+    // when removing the revealUp css class has Opacity:0 -> hast to be changed when changing
+    // Promise is required to not interrupt the lifecycle of angular -> results in misplaced triggers when routing
+    await new Promise(f => setTimeout(f, 0)).then(()=>{
+      gsap.registerPlugin(ScrollTrigger)
+      gsap.utils.toArray(".revealUp").forEach((elem: any) => {
+        ScrollTrigger.create({
+          trigger: elem,
+          start: "top 90%",
+          end: "bottom 10%",
+          onEnter: () => {
+            gsap.fromTo(
+              elem,
+              {y: 100, autoAlpha: 0},
+              {
+                duration: 1.25,
+                y: 0,
+                autoAlpha: 1,
+                ease: "back",
+                overwrite: "auto",
+              }
+            );
+          },
+          onLeave: () => {
+            gsap.fromTo(elem, {autoAlpha: 1}, {autoAlpha: 0, overwrite: "auto"});
+          },
+          onEnterBack: () => {
+            gsap.fromTo(
+              elem,
+              {y: -100, autoAlpha: 0},
+              {
+                duration: 1.25,
+                y: 0,
+                autoAlpha: 1,
+                ease: "back",
+                overwrite: "auto"
+              }
+            );
+          },
+          onLeaveBack: () => {
+            gsap.fromTo(elem, {autoAlpha: 1}, {autoAlpha: 0, overwrite: "auto"});
+          }
+        });
+      });
     });
   }
 }

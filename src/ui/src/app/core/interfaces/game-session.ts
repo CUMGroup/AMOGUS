@@ -1,5 +1,4 @@
 import { question } from "./question";
-
 export class GameSession {
 
     sessionId : string;
@@ -37,3 +36,4 @@ export enum CategoryType {
     RANDOMMENTAL,
     RANDOMMENTAL_INSANE
 }
+
