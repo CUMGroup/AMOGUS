@@ -54,13 +54,13 @@ export class TeacherService {
   parseQuestion(questionValue?: FormGroup) {
     let newQuestion = new NewQuestion(
       '',
-      questionValue['exercise'], 
-      questionValue['answer'], 
+      questionValue['exercise'],
+      questionValue['answer'],
       questionValue['wrongAnswers'],
       questionValue['help'],
-      questionValue['category'], 
-      questionValue['difficulty'], 
-      questionValue['experiencePoints'], 
+      questionValue['category'],
+      questionValue['difficulty'],
+      questionValue['experiencePoints'],
     );
     return newQuestion;
   }
@@ -84,6 +84,9 @@ export class TeacherService {
   }
 
   filteredQuestionArray(category, difficulty): FormGroup[]{
+    console.log(category + " " + difficulty)
+    category == -1 ? category = null : null;
+    difficulty == -1 ? difficulty = null : null;
     return this.questionArray.filter(value => {
       if(category == null && !difficulty){
         return true;

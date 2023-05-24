@@ -14,8 +14,6 @@ import {Constants} from "../../interfaces/selection";
 })
 export class GameSelectionComponent implements OnDestroy {
 
-  gameOptions: gameOption[];
-
   newGameSub$ : Subscription;
 
   constructor(

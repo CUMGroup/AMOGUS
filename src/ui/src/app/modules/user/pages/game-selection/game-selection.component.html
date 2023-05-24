@@ -1,7 +1,7 @@
 
 <h1 class="header">Game Selection</h1>
 <div class="selectionContainer">
-  <ng-container *ngFor="let gameOption of gameOptions">
+  <ng-container *ngFor="let gameOption of constants.IndexedCategories">
     <app-amogus-button
       (click)="navigate(gameOption.category)"
     >
