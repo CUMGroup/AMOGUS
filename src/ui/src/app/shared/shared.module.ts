@@ -6,7 +6,6 @@ import { AmogusButtonComponent } from './components/amogus-button/amogus-button.
 import { BaseComponent } from './components/base/base.component';
 
 
-
 @NgModule({
   declarations: [
     NavBarComponent,

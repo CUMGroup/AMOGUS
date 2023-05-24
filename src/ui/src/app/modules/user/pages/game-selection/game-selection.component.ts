@@ -23,9 +23,7 @@ export class GameSelectionComponent implements OnDestroy {
     private router: Router,
     public gameService: GameService,
     public constants: Constants,
-  ) {
-    this.gameOptions = constants.Categories
-  }
+  ) { }
   ngOnDestroy(): void {
     this.newGameSub$?.unsubscribe();
   }

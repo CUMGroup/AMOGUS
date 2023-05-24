@@ -2,23 +2,23 @@
   <h1 class="title">Questions</h1>
   <div class="header">
     <mat-form-field>
-      <mat-select placeholder="Category" [formControl]="categoryForm">
-        <mat-option *ngFor="let category of noSelectCategory" [value]="category.category">
-          {{ category.gameType }}
+      <mat-select placeholder="Category">
+        <mat-option *ngFor="let category of constants.Categories" [value]="category">
+          {{ category }}
         </mat-option>
       </mat-select>
     </mat-form-field>
 
     <mat-form-field>
-      <mat-select placeholder="Difficulty" [formControl]="difficultyForm">
-        <mat-option *ngFor="let difficulty of noSelectDifficulty" [value]="difficulty">
+      <mat-select placeholder="Difficulty">
+        <mat-option *ngFor="let difficulty of constants.Difficulties" [value]="difficulty">
           {{ difficulty }}
         </mat-option>
       </mat-select>
     </mat-form-field>
     <button mat-raised-button color="primary" class="newQuestionButton" (click)="createNewQuestion()">New Question</button>
   </div>
-  <ng-container *ngFor="let question of teacherService.filteredQuestionArray(categoryForm.value,difficultyForm.value);let i = index">
+  <ng-container *ngFor="let question of teacherService.questionArray; let i = index">
     <app-question [question]="question" [index]="i"></app-question>
   </ng-container>
 </div>
