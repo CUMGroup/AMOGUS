@@ -9,7 +9,7 @@ import {question} from "../../../../../core/interfaces/question";
 })
 export class ExerciseComponent {
 
-  @Input() currentQuestion: question| undefined;
+  @Input() currentQuestion: question;
   @Input() selectedAnswer?: FormControl;
   constructor(
   ) {

@@ -51,6 +51,7 @@ body {
   background-color: var(--background2);
   color: var(--text);
   min-width: 20rem;
+  height: 90%;
 }
 
 .mat-stroked-button {

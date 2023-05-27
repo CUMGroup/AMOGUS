@@ -1,3 +1,4 @@
+@import "../../../../../shared/common-styles.scss";
 
 .container{
   display: flex;

@@ -1,4 +1,4 @@
-@import "../../game-view/game-view.component.css";
+@import "../../game-view/game-view.component";
 
 .questions{
   background: var(--background);
@@ -121,6 +121,10 @@
   display: block;
   margin: auto;
   width: 80%;
-  height: 40%;
+  height: 50%;
   padding: 0 2em;
+  background-color: var(--background3);
+  border: solid var(--border);
+  border-radius: 1rem;
+  color: var(--text);
 }

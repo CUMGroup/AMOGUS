@@ -1,9 +1,10 @@
-<h1 mat-dialog-title>New Question</h1>
+<h1 mat-dialog-title class="header">Create Question</h1>
 <form mat-dialog-content [formGroup]="newQuestion">
   <div class="container">
+
     <mat-form-field>
       <mat-select placeholder="Category" formControlName="category">
-        <mat-option *ngFor="let category of constants.Categories" [value]="category">
+        <mat-option *ngFor="let category of constants.Categories, let i = index" [value]="i">
           {{ category }}
         </mat-option>
       </mat-select>
@@ -11,7 +12,7 @@
 
     <mat-form-field>
       <mat-select placeholder="Difficulty" formControlName="difficulty">
-        <mat-option *ngFor="let difficulty of constants.Difficulties" [value]="difficulty">
+        <mat-option *ngFor="let difficulty of constants.Difficulties, let i = index" [value]="i">
           {{ difficulty }}
         </mat-option>
       </mat-select>
@@ -35,13 +36,19 @@
     </ng-container>
 
     <mat-form-field>
+      <mat-label>Experience Points</mat-label>
+      <textarea cdkTextareaAutosize matInput formControlName="experiencePoints"></textarea>
+    </mat-form-field>
+
+    <mat-form-field>
       <mat-label>Help</mat-label>
       <textarea cdkTextareaAutosize matInput formControlName="help"></textarea>
     </mat-form-field>
 
   </div>
-  <div mat-dialog-actions>
-    <button mat-raised-button color="primary" (click)="submit()"> Submit </button>
-    <button mat-raised-button color="warn" (click)="close()"> Close </button>
-  </div>
 </form>
+
+<div mat-dialog-actions class="actions">
+  <button mat-raised-button color="primary" (click)="submit()"> Submit </button>
+  <button mat-raised-button color="warn" (click)="close()"> Close </button>
+</div>

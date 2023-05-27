@@ -1,3 +1,5 @@
+@import "../../../../shared/common-styles";
+
 .outline{
   width: 80%;
   margin: 0;
@@ -101,7 +103,7 @@ app-exercise{
   max-width: 20rem;
   min-width: 10rem;
   width: 20%;
-  height: 5rem;
+  height: 4rem;
   font-size: 2rem;
   border: solid #c5cad2;
 }

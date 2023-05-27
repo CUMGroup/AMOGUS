@@ -18,7 +18,7 @@ export class QuestionEditViewComponent implements OnInit {
     private formBuilder:FormBuilder,
     public teacherService:TeacherService,
     public dialogRef: MatDialogRef<QuestionEditViewComponent>,
-    public snackBar:MatSnackBar,
+    public snackBar: MatSnackBar,
     public constants: Constants,
 
     @Inject(MAT_DIALOG_DATA) public data: FormGroup,
@@ -50,6 +50,7 @@ export class QuestionEditViewComponent implements OnInit {
       this.newQuestion = this.data
     }else{
       this.newQuestion = this.formBuilder.group({
+        questionId: "",
         exercise: ["",Validators.required ],
         answer: ["", Validators.required ],
         wrongAnswers: this.formBuilder.array([
@@ -60,7 +61,7 @@ export class QuestionEditViewComponent implements OnInit {
         help: ["", Validators.required ],
         difficulty: ["", Validators.required ],
         category: ["", Validators.required ],
-        multipleChoiceAnswers: [],
+        experiencePoints: [1, Validators.min(1)],
       })
     }
   }
