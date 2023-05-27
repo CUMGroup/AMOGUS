@@ -1,19 +1,23 @@
-import {Component, Inject, Input, OnInit} from '@angular/core';
+import {Component, Inject, Input, OnDestroy, OnInit} from '@angular/core';
 import {FormArray, FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {TeacherService} from "../../../../../core/services/user/teacher.service";
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {Constants} from "../../../interfaces/selection";
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-question-edit-view',
   templateUrl: './question-edit-view.component.html',
   styleUrls: ['./question-edit-view.component.css']
 })
-export class QuestionEditViewComponent implements OnInit {
+export class QuestionEditViewComponent implements OnInit, OnDestroy {
 
   @Input() question: FormGroup|undefined;
   newQuestion : FormGroup;
+
+  private addSub$ : Subscription;
+
   constructor(
     private formBuilder:FormBuilder,
     public teacherService:TeacherService,
@@ -26,6 +30,10 @@ export class QuestionEditViewComponent implements OnInit {
   ) {
   }
 
+  ngOnDestroy(): void {
+    this.addSub$?.unsubscribe();
+  }
+
   get wrongAnswerControlArray(): FormControl[]{
     return ((this.newQuestion?.get('wrongAnswers') as FormArray).controls as FormControl[])
   }
@@ -33,7 +41,7 @@ export class QuestionEditViewComponent implements OnInit {
   submit(){
     if(this.newQuestion.valid){
       if(this.data === null){
-        this.teacherService.add(this.newQuestion);
+        this.addSub$ = this.teacherService.add(this.newQuestion).subscribe();
       }
       this.dialogRef.close()
     }else{
