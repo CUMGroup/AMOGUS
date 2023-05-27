@@ -22,7 +22,7 @@ export class TeacherService {
     let route = 'teachers/questions/' + fg.value['questionId'];
     return this.apiService.delete<HttpStatusCode>(route).pipe(
       tap(resp => {
-        this.questionArray.splice(index);
+        this.questionArray.splice(index,1);
       })
     );
   }
