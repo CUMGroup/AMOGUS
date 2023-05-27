@@ -84,7 +84,6 @@ export class TeacherService {
   }
 
   filteredQuestionArray(category, difficulty): FormGroup[]{
-    console.log(category + " " + difficulty)
     category == -1 ? category = null : null;
     difficulty == -1 ? difficulty = null : null;
     return this.questionArray.filter(value => {
