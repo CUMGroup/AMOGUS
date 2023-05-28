@@ -139,7 +139,7 @@ namespace AMOGUS.Benchmarks.Benchmarks {
         [Benchmark]
         public void CheckAnswer_For_RandomMental_Wrong() {
             foreach (var quest in _randomRandomMentalQuestions) {
-                quest.Answer = "2.3";
+                quest.Answer = "2.3"; // generated answers can only be integers
                 _exerciseService.CheckAnswer(quest);
             }
         }
@@ -147,7 +147,7 @@ namespace AMOGUS.Benchmarks.Benchmarks {
         [Benchmark]
         public void CheckAnswer_For_RandomMentalInsane_Wrong() {
             foreach (var quest in _randomRandomMentalInsaneQuestions) {
-                quest.Answer = "2.3";
+                quest.Answer = "2.3"; // generated answers can only be integers
                 _exerciseService.CheckAnswer(quest);
             }
         }
