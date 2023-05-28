@@ -7,7 +7,6 @@ import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from "@angular/material/dialog
 import {Router} from "@angular/router";
 import {Subject, Subscription, takeUntil, timer} from 'rxjs'
 import { CategoryType } from 'src/app/core/interfaces/game-session';
-import {ExerciseComponent} from "../shared/exercise/exercise.component";
 import {QuestionPreviewComponent} from "../shared/question-preview/question-preview.component";
 
 
@@ -29,6 +28,7 @@ export class GameViewComponent implements OnInit, AfterViewInit, OnDestroy {
 
   protected componentDestroyed$: Subject<void> = new Subject<void>();
 
+  //REVIEW: evtl delete
   newGameSubscription$ : Subscription;
   endGameSubscription$ : Subscription;
   routerSubscription$ : Subscription;
@@ -45,9 +45,7 @@ export class GameViewComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    //this.newGameSubscription$ = this.gameService.startNewGame(this.questionType).subscribe(e => {
       this.newQuestion()
-      // });
     }
 
   ngAfterViewInit(): void {
@@ -60,10 +58,12 @@ export class GameViewComponent implements OnInit, AfterViewInit, OnDestroy {
     this.newGameSubscription$?.unsubscribe();
     this.routerSubscription$?.unsubscribe();
     this.gameProgress?.unsubscribe();
+    //REVIEW: DO THE TODO OR DELETE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     //TODO: Analyse if memory leak problem could arise
     //this.endGameSubscription$?.unsubscribe();
   }
 
+  //REVIEW: refactoring
   newQuestion() {
     this.currentQuestion = this.gameService.getQuestion();
     if (this.currentQuestion.finished) {
@@ -89,11 +89,10 @@ export class GameViewComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   animate() {
-    // gsap.fromTo(".knife",{ rotate:0},{ rotate: 765, duration:this.time})
     gsap.fromTo(".progress", {width: "0%"}, {width: "100%", duration: this.currentQuestion.getTime()})
-
   }
 
+  //REVIEW: evtl refactoring
   submit() {
     const session = this.gameService.getSession();
     this.gameProgress?.unsubscribe();
@@ -140,6 +139,7 @@ export class GameViewComponent implements OnInit, AfterViewInit, OnDestroy {
 
 }
 
+// REVIEW: in eigene componente auslagern!!!!
 @Component({
   selector: 'answer-dialog',
   templateUrl: 'answer-dialog.html',

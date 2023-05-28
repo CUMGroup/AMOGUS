@@ -94,7 +94,7 @@ namespace AMOGUS.Core.Factories {
             var numOperands = insaneMode ?
         GenerateIntWithFallingProbability(3, 7)
         : GenerateIntWithFallingProbability(2, 5);
-
+          
             var expr = new MentalExerciseModel {
                 Operands = new int[numOperands],
                 Operators = new int[numOperands - 1],
@@ -157,12 +157,13 @@ namespace AMOGUS.Core.Factories {
                 + avgOperatorsMaxXp * avgOperatorsNormalized
                 + answerMaxXp * answerNormalized) / (double) Math.Max((amountMod5 - (expr.Operands.Length - amountMod5 + 1)), 1)) / (double) amountMod10), 0);
 
+            //REVIEW: Comment code (geogebra + latex)
             expr.Difficulty = Math.Max(Math.Min((int) Math.Round(-Math.Exp((-4d / sumMaxXp) * (int) expr.Xp + 1.4) + 4), 4), 0);
 
             return expr;
         }
 
-        /*
+        /**
          * This generates a random number in the range [min, max) (exclusive)
          * 
          * It was tested with random numbers in [2, 6) and yielded following probability distribution. (100_000_000 tries)
