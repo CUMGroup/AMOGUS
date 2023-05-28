@@ -4,6 +4,9 @@ using AMOGUS.Core.Domain.Models.Entities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
+using System.Text;
+using System.Text.Encodings.Web;
+using System.Text.Json;
 
 namespace AMOGUS.Api.Controllers {
 
@@ -24,7 +27,9 @@ namespace AMOGUS.Api.Controllers {
             if (userId is null) {
                 return Forbid();
             }
-            return Ok(_gameService.NewSession(category, userId));
+            var options = new JsonSerializerOptions { Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping, PropertyNamingPolicy = JsonNamingPolicy.CamelCase };
+            string session = JsonSerializer.Serialize(_gameService.NewSession(category, userId), options);
+            return Ok(Base64Encode(session));
         }
 
         [Route("end")]
@@ -40,6 +45,11 @@ namespace AMOGUS.Api.Controllers {
 
         private string? GetUserId() {
             return HttpContext?.User?.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+        }
+
+        private string Base64Encode(string plainText) {
+            var plainTextBytes = Encoding.UTF8.GetBytes(plainText);
+            return Convert.ToBase64String(plainTextBytes);
         }
     }
 }

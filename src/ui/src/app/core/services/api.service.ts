@@ -22,6 +22,10 @@ export class ApiService {
     return this.http.get<T>(this.buildUrl(endpoint));
   }
 
+  postPlainText(endpoint: string, object: any): Observable<string> {
+    return this.http.post(this.buildUrl(endpoint), object, { responseType: 'text' });
+  }
+
   post<T>(endpoint: string, object: any): Observable<T> {
     return this.http.post<T>(this.buildUrl(endpoint), object);
   }

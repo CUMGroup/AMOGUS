@@ -21,14 +21,17 @@ export class GameService {
 
   questions: question[];
 
-  startNewGame(category : CategoryType) : Observable<GameSession> {
-    return this.apiService.post<GameSession>('/game/new', category)
+  startNewGame(category : CategoryType) : Observable<unknown> {
+    return this.apiService.postPlainText('/game/new', category)
       .pipe(tap(
         e => {
-          this.questions = e.questions.map(
+          const decodedString = window.atob(e.toString());
+          const gs : GameSession = JSON.parse(decodedString) as GameSession;
+
+          this.questions = gs.questions.map(
             quest => new question(quest.answer, quest.category, quest.difficulty, quest.exercise, quest.experiencePoints, quest.help, quest.questionId, quest.wrongAnswers, false)
           );
-          this.session = new GameSession(e.sessionId, e.userId, 0, e.correctAnswersCount, e.givenAnswersCount, 0, Math.min(), 0, e.category, this.questions);
+          this.session = new GameSession(gs.sessionId, gs.userId, 0, gs.correctAnswersCount, gs.givenAnswersCount, 0, Math.min(), 0, gs.category, this.questions);
           this.currentQuestion = 0;
           this.loading = false;
           this.sessionStartTime = new Date().getTime();
