@@ -11,7 +11,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AMOGUS.Api", "AMOGUS.Api\AM
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AMOGUS.Validation", "AMOGUS.Validation\AMOGUS.Validation.csproj", "{24DAE3B5-ACB3-4169-995F-B6D58836BF53}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AMOGUS.UnitTests", "AMOGUS.UnitTests\AMOGUS.UnitTests.csproj", "{0277105F-CE18-4511-84A2-B0448467E994}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AMOGUS.UnitTests", "AMOGUS.UnitTests\AMOGUS.UnitTests.csproj", "{0277105F-CE18-4511-84A2-B0448467E994}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AMOGUS.Benchmarks", "AMOGUS.Benchmarks\AMOGUS.Benchmarks.csproj", "{04DADD11-1739-481F-997B-5C3DCB3758F4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{0277105F-CE18-4511-84A2-B0448467E994}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0277105F-CE18-4511-84A2-B0448467E994}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0277105F-CE18-4511-84A2-B0448467E994}.Release|Any CPU.Build.0 = Release|Any CPU
+		{04DADD11-1739-481F-997B-5C3DCB3758F4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{04DADD11-1739-481F-997B-5C3DCB3758F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{04DADD11-1739-481F-997B-5C3DCB3758F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{04DADD11-1739-481F-997B-5C3DCB3758F4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
