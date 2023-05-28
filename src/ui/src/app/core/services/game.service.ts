@@ -25,11 +25,8 @@ export class GameService {
     return this.apiService.postPlainText('/game/new', category)
       .pipe(tap(
         e => {
-          console.log("e: " + e);
           const decodedString = window.atob(e.toString());
-          console.log("decodedString: " + decodedString);
           const gs : GameSession = JSON.parse(decodedString) as GameSession;
-          console.log("GameSession: ", gs);
 
           this.questions = gs.questions.map(
             quest => new question(quest.answer, quest.category, quest.difficulty, quest.exercise, quest.experiencePoints, quest.help, quest.questionId, quest.wrongAnswers, false)
