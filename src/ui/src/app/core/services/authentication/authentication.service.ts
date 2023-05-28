@@ -40,9 +40,11 @@ export class AuthenticationService {
     localStorage.setItem('id_token', loginResult.token);
   }
 
+  /**
+   * @deprecated Use isAuthenticated instead!
+   */
   public isLoggedIn(): boolean {
-    //double negation for type convertion
-    return !!localStorage.getItem('id_token');
+    return this.isAuthenticated();
   }
 
   public getAuthToken(): string{
@@ -76,6 +78,16 @@ export class AuthenticationService {
   }
 
   public isAuthenticated() {
+    const token = this.getAuthToken();
+    if (token == null) {
+      return false;
+    }
+    let encToken = jwtDecode(token);
+    if(+encToken["exp"] * 1000 < new Date().getTime()) {
+      this.logout();
+      return false;
+    }
+
     const roles = this.getRoles();
     if (roles.includes('User')) {
       return true;
