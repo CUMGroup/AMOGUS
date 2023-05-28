@@ -2,7 +2,6 @@
 using AMOGUS.Core.Domain.Enums;
 using AMOGUS.Core.Domain.Models.Entities;
 using AMOGUS.Core.Factories;
-using AMOGUS.Core.Services;
 using AMOGUS.Core.Services.Gameplay;
 using BenchmarkDotNet.Attributes;
 using Microsoft.Extensions.Logging;
@@ -37,7 +36,7 @@ namespace AMOGUS.Benchmarks.Benchmarks {
                 .Setup(e => e.IsEnabled(It.IsAny<LogLevel>()))
                 .Returns(false);
 
-            var questionFileAccessor = new QuestionFileAccessor(questionRepoConfigMock.Object,loggerMock.Object);
+            var questionFileAccessor = new QuestionFileAccessor(questionRepoConfigMock.Object, loggerMock.Object);
             var exerciseFactory = new MentalExerciseFactory();
             _exerciseService = new ExerciseService(questionFileAccessor) {
                 ExerciseFactory = exerciseFactory
@@ -56,11 +55,11 @@ namespace AMOGUS.Benchmarks.Benchmarks {
         #region Correct Answers
         [Benchmark]
         public void CheckAnswer_For_Mental_Correct() {
-            if(Amount > 40) {
+            if (Amount > 40) {
                 return; // Skip Benchmarks -> There are not enough questions in the catalogue
             }
 
-            foreach(var quest in _randomMentalQuestions) {
+            foreach (var quest in _randomMentalQuestions) {
                 _exerciseService.CheckAnswer(quest);
             }
         }
