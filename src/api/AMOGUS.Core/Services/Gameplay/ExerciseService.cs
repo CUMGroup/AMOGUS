@@ -7,6 +7,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Runtime.CompilerServices;
 
 [assembly: InternalsVisibleTo("AMOGUS.UnitTests")]
+[assembly: InternalsVisibleTo("AMOGUS.Benchmarks")]
 namespace AMOGUS.Core.Services.Gameplay {
     internal class ExerciseService : IExerciseService {
 
@@ -42,7 +43,7 @@ namespace AMOGUS.Core.Services.Gameplay {
             }
 
             try {
-                if (!(answer.Category == CategoryType.MENTAL || isRandomMental)) {
+                if (!isRandomMental) {
                     return origAnswer.Equals(answer.Answer);
                 }
                 Entity exprTrue = origAnswer;

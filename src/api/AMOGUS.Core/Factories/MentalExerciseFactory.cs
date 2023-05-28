@@ -8,6 +8,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Runtime.CompilerServices;
 
 [assembly: InternalsVisibleTo("AMOGUS.UnitTests")]
+[assembly: InternalsVisibleTo("AMOGUS.Benchmarks")]
 namespace AMOGUS.Core.Factories {
 
     public class MentalExerciseFactory : IExerciseFactory {
