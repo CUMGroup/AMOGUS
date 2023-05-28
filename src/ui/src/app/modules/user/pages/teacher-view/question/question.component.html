@@ -1,5 +1,5 @@
 <div class="container">
-  <button mat-mini-fab color="warn" class="buttons" (click)="teacherService.remove(index)"><mat-icon>delete</mat-icon></button>
+  <button mat-mini-fab color="warn" class="buttons" (click)="remove()"><mat-icon>delete</mat-icon></button>
   <button mat-mini-fab color="warn" class="buttons" (click)="preview()"><mat-icon>preview</mat-icon></button>
 
   <h2>{{getStringValue(question, 'difficulty')}} - {{getStringValue(question, 'category')}}</h2>

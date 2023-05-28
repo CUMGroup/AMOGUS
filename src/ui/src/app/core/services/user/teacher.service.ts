@@ -17,41 +17,41 @@ export class TeacherService {
   constructor(private apiService: ApiService, private formBuilder: FormBuilder,) {
   }
 
-  remove(index:number){
+  remove(index:number) : Observable<unknown> {
     let fg = this.questionArray[index];
     let route = 'teachers/questions/' + fg.value['questionId'];
-    return this.apiService.delete<HttpStatusCode>(route).subscribe(
-      resp => {
-        this.questionArray.splice(index);
-      }
+    return this.apiService.delete<HttpStatusCode>(route).pipe(
+      tap(resp => {
+        this.questionArray.splice(index,1);
+      })
     );
   }
 
-  add(questionGroup?:FormGroup){
+  add(questionGroup?:FormGroup) : Observable<unknown> {
 
     let question = this.parseQuestion(questionGroup['value']);
 
-    return this.apiService.post<Observable<HttpStatusCode>>('/teachers/questions', question).subscribe(
-      resp => {
+    return this.apiService.post<Observable<HttpStatusCode>>('/teachers/questions', question).pipe(
+      tap(resp => {
         questionGroup.setValue(resp);
         this.questionArray.push(questionGroup);
-      }
+      })
     );
   }
 
-  getAllQuestions(){
-    return this.apiService.get<NewQuestion[]>('/teachers/questions').subscribe(
-      resp => {
+  getAllQuestions() : Observable<NewQuestion[]> {
+    return this.apiService.get<NewQuestion[]>('/teachers/questions').pipe(
+      tap(resp => {
         resp.forEach(question => {
           let schema = this.parseFormGroup();
           schema.patchValue(question);
           this.questionArray.push(schema);
         })
-      }
+      })
     );
   }
 
-  parseQuestion(questionValue?: FormGroup) {
+  parseQuestion(questionValue?: FormGroup) : NewQuestion {
     let newQuestion = new NewQuestion(
       '',
       questionValue['exercise'],
@@ -84,7 +84,6 @@ export class TeacherService {
   }
 
   filteredQuestionArray(category, difficulty): FormGroup[]{
-    console.log(category + " " + difficulty)
     category == -1 ? category = null : null;
     difficulty == -1 ? difficulty = null : null;
     return this.questionArray.filter(value => {

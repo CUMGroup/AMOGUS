@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnDestroy, OnInit} from '@angular/core';
 import {FormGroup} from "@angular/forms";
 import {TeacherService} from "../../../../../core/services/user/teacher.service";
 import {MatDialog} from "@angular/material/dialog";
@@ -6,18 +6,25 @@ import {QuestionEditViewComponent} from "../question-edit-view/question-edit-vie
 import {QuestionPreviewComponent} from "../../shared/question-preview/question-preview.component";
 import {question} from "../../../../../core/interfaces/question";
 import {Constants} from "../../../interfaces/selection";
+import { Subscription } from 'rxjs/internal/Subscription';
 
 @Component({
   selector: 'app-question',
   templateUrl: './question.component.html',
   styleUrls: ['./question.component.css']
 })
-export class QuestionComponent implements OnInit {
+export class QuestionComponent implements OnInit, OnDestroy {
 
   @Input() question: FormGroup;
   @Input() index: number;
 
+  private removeSub$ : Subscription;
+
   constructor(public teacherService:TeacherService, private dialog: MatDialog, private constants: Constants) { }
+ 
+  ngOnDestroy(): void {
+    this.removeSub$?.unsubscribe();
+  }
 
   ngOnInit(): void {
 
@@ -42,6 +49,10 @@ export class QuestionComponent implements OnInit {
     let quest = this.question.value;
     let questionData = new question(quest.answer, quest.category, quest.difficulty, quest.exercise, quest.experiencePoints, quest.help, quest.questionId, quest.wrongAnswers, false)
     this.dialog.open(QuestionPreviewComponent, { data: questionData, width:"40rem", panelClass: 'mat-dialog-class'});
+  }
+
+  remove() {
+    this.removeSub$ = this.teacherService.remove(this.index).subscribe();
   }
 }
 
