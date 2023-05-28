@@ -2,5 +2,7 @@
     public interface IDateTime {
 
         DateTime Now { get; }
+
+        int GetMillisecondsUntil(DateTime timeTo);
     }
 }

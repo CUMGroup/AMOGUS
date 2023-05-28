@@ -17,6 +17,7 @@ namespace AMOGUS.Core {
             services.AddTransient<IStatsService, StatsService>();
             services.AddTransient<ITeacherService, TeacherService>();
             services.AddTransient<ILeaderboardService, LeaderboardService>();
+            services.AddTransient<IMailerService, MailerService>();
 
             services.AddTransient<IStreakService, StreaksService>();
 
@@ -28,6 +29,7 @@ namespace AMOGUS.Core {
         private static IServiceCollection AddConfigurations(this IServiceCollection services) {
             services.AddTransient<IJwtConfiguration, JwtConfiguration>();
             services.AddTransient<IQuestionRepoConfiguration, QuestionRepoConfiguration>();
+            services.AddTransient<IMailerConfiguration, MailerConfiguration>();
             return services;
         }
 
