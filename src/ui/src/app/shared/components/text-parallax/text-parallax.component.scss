@@ -46,8 +46,11 @@ h2+p {
 }
 
 .image {
-  border-radius: 500px;
-  height: 200px;
+  width: 50em;
+  height: auto;
+  border: 1px solid var(--background3);
+  border-radius: 2em;
+  margin: 0 auto;
 }
 
 .textcon {
