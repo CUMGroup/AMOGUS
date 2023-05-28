@@ -4,7 +4,7 @@ using System.Diagnostics.CodeAnalysis;
 
 namespace AMOGUS.Infrastructure.Services.Date {
     [ExcludeFromCodeCoverage]
-    internal struct DateTimeWrapper : IDateTime {
+    internal class DateTimeWrapper : IDateTime {
         public DateTime Now => DateTime.Now;
 
         public int GetMillisecondsUntil(DateTime timeTo) {
