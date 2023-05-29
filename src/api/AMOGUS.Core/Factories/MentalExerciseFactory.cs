@@ -181,6 +181,7 @@ namespace AMOGUS.Core.Factories {
                 + avgOperatorsMaxXp * avgOperatorsNormalized
                 + answerMaxXp * answerNormalized;
  
+            // punish a lot mod 5s and mod 10s
             double modWeight = 1d / Math.Max(amountMod5 - amountNotMod5 - 1, 1) * (amountMod10 + 1);
 
             expr.Xp = Math.Max((int) ( weightedParams *  modWeight), 0);
