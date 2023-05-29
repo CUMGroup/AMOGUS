@@ -79,6 +79,7 @@ namespace AMOGUS.Core.Factories {
             }
         }
 
+        [ExcludeFromCodeCoverage]
         private MentalExerciseModel GenerateRandomExerciseModel(bool insaneMode = false) {
             var numOperands = GetRandomNumberOfOperands(insaneMode);
 
@@ -117,6 +118,7 @@ namespace AMOGUS.Core.Factories {
          * RandomMentalInsaneMode: between 3 and 6 operands
          * </summary>
          */
+        [ExcludeFromCodeCoverage]
         private int GetRandomNumberOfOperands(bool insaneMode) {
 
             return insaneMode ?
@@ -129,6 +131,7 @@ namespace AMOGUS.Core.Factories {
          *  RandomMentalInsaneMode: +, -, * with equal probability
          * </summary>
          */
+        [ExcludeFromCodeCoverage]
         private int GetRandomOperator(bool insaneMode) {
             return insaneMode ?
                     _rng.Next(3)
@@ -143,6 +146,7 @@ namespace AMOGUS.Core.Factories {
          * default: ' / '
          * </summary>
          */
+        [ExcludeFromCodeCoverage]
         private string OperatorToSignString(int op) {
             return op switch {
                 0 => " + ",
@@ -157,6 +161,7 @@ namespace AMOGUS.Core.Factories {
          * \text{xp}=Max( \left(\frac{\begin{pmatrix} \text{numOperandsMaxXp} \\ \text{avgOperandsMaxXp} \\ \text{avgOperatorsMaxXp} \\ \text{answerMaxXp} \end{pmatrix}^\top \cdot \begin{pmatrix} \frac{\text{numOperands}-2}{6} \\ \frac{Median(\text{Operands})}{40} \\ \frac{Median(\text{Operators})}{2} \\ \frac{|\text{Answer}|}{10000} \end{pmatrix}}{Max((\text{amountMod5} - \text{amountNotMod5} - 1), 1) \cdot (\text{amountMod10} + 1)}\right), 0)
          * </summary>
          */
+        [ExcludeFromCodeCoverage]
         private MentalExerciseModel CalcXp(MentalExerciseModel expr) {
             if (expr.Answer is null) {
                 throw new ArgumentException("No answer given");
@@ -205,6 +210,7 @@ namespace AMOGUS.Core.Factories {
          * Graph: https://www.desmos.com/calculator/tkgwnw0fkm
          * </summary>
          */
+        [ExcludeFromCodeCoverage]
         private int CalculateDifficultyForXp(int xp) {
             double functionValue = -Math.Exp(-4d / sumMaxXp * xp + 1.4) + 4;
             int roundedValue = (int) Math.Round(functionValue);
@@ -223,6 +229,7 @@ namespace AMOGUS.Core.Factories {
          *  5 :  6% (6938769 Hits)<br></br>
          *  </summary>
          */
+        [ExcludeFromCodeCoverage]
         private static int GenerateIntWithFallingProbability(int min, int max) {
             // make max exclusive
             max -= 1;
@@ -252,6 +259,7 @@ namespace AMOGUS.Core.Factories {
             return (sortedArr[mid] + sortedArr[Math.Max(Math.Min(mid - 1, sortedArr.Length - 1), 0)]) / 2d;
         }
 
+        [ExcludeFromCodeCoverage]
         private static Question DummyQuestion(bool insaneMode) {
             return new Question {
                 Answer = "37",
@@ -263,6 +271,7 @@ namespace AMOGUS.Core.Factories {
             };
         }
 
+        [ExcludeFromCodeCoverage]
         private static Question ExpressionModelToQuestion(MentalExerciseModel expr, bool insaneMode) {
             if (expr is null) {
                 throw new ArgumentException("Expression cannot be null");
