@@ -158,7 +158,7 @@ namespace AMOGUS.Core.Factories {
          * </summary>
          */
         private MentalExerciseModel CalcXp(MentalExerciseModel expr) {
-            if (expr.Answer == null) {
+            if (expr.Answer is null) {
                 throw new ArgumentException("No answer given");
             }
             if (Math.Abs((int) expr.Answer) > 10_000) {
