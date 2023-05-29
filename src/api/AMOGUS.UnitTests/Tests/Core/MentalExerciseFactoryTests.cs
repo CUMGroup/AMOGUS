@@ -100,5 +100,27 @@ namespace AMOGUS.UnitTests.Tests.Core {
         }
 
         #endregion
+
+        #region CountElementsDivisibleBy
+
+        [Theory]
+        [InlineData(new int[] {}, 10, 0)]
+        [InlineData(new int[] { 1, 2, 3 }, 10, 0)]
+        [InlineData(new int[] { 10 }, 10, 1)]
+        [InlineData(new int[] { 1, 2, 3, 5, 10 }, 10, 1)]
+        [InlineData(new int[] { 10, 20, 30, 31 }, 10, 3)]
+        [InlineData(new int[] { -10, 0, 30 }, 10, 3)]
+        [InlineData(new int[] { 7, 14, 2 }, 7, 2)]
+        [InlineData(new int[] { 0, 2, 3, 5, 10 }, 5, 3)]
+        public void CountElementsDivisibleBy_Counts_Correctly(int[] input, int divBy, int expected) {
+
+            var factory = new MentalExerciseFactory();
+
+            var result = factory.CountElementsDivisibleBy(input, divBy);
+
+            Assert.Equal(expected, result);
+        }
+
+        #endregion
     }
 }
