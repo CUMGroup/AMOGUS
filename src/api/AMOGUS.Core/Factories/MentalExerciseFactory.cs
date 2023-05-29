@@ -98,13 +98,13 @@ namespace AMOGUS.Core.Factories {
 
                 expr.Operators[^numOperands] = signRng;
                 expr.Expression += OperatorToSignString(signRng);
-                
+
                 byte tryCount = 0;
                 do {
                     expr.Operands[^numOperands] = _rng.Next(expr.MinOperand, Math.Max(expr.MaxOperand - 20, 10));
                     ++tryCount;
 
-                // if insaneMode -> Try to reduce operands that are divisible by 10
+                    // if insaneMode -> Try to reduce operands that are divisible by 10
                 } while (insaneMode && tryCount <= 3 && expr.Operands[^numOperands] % 10 == 0);
                 expr.Expression += expr.Operands[^numOperands];
                 numOperands--;
@@ -118,7 +118,7 @@ namespace AMOGUS.Core.Factories {
          * </summary>
          */
         private int GetRandomNumberOfOperands(bool insaneMode) {
-            
+
             return insaneMode ?
                 GenerateIntWithFallingProbability(3, 7)
                 : GenerateIntWithFallingProbability(2, 5);
@@ -175,18 +175,18 @@ namespace AMOGUS.Core.Factories {
             double avgOperatorsNormalized = Median(expr.Operators) / 2;
             double answerNormalized = Math.Abs((int) expr.Answer) / 10_000d;
 
-            double weightedParams = 
+            double weightedParams =
                 numOperandsMaxXp * numOperandsNormalized
                 + avgOperandsMaxXp * avgOperandsNormalized
                 + avgOperatorsMaxXp * avgOperatorsNormalized
                 + answerMaxXp * answerNormalized;
- 
+
             // punish a lot mod 5s and mod 10s
             double modWeight = 1d / Math.Max(amountMod5 - amountNotMod5 - 1, 1) * (amountMod10 + 1);
 
-            expr.Xp = Math.Max((int) ( weightedParams *  modWeight), 0);
+            expr.Xp = Math.Max((int) (weightedParams * modWeight), 0);
 
-            expr.Difficulty = CalculateDifficultyForXp((int)expr.Xp);
+            expr.Difficulty = CalculateDifficultyForXp((int) expr.Xp);
 
             return expr;
         }
@@ -206,8 +206,8 @@ namespace AMOGUS.Core.Factories {
          * </summary>
          */
         private int CalculateDifficultyForXp(int xp) {
-            double functionValue = - Math.Exp(-4d / sumMaxXp * xp + 1.4) + 4;
-            int roundedValue = (int)Math.Round(functionValue);
+            double functionValue = -Math.Exp(-4d / sumMaxXp * xp + 1.4) + 4;
+            int roundedValue = (int) Math.Round(functionValue);
             return Math.Clamp(roundedValue, 0, 4);
         }
 
@@ -244,7 +244,7 @@ namespace AMOGUS.Core.Factories {
                 return 0;
             if (arr.Length == 1)
                 return arr[0];
-            int[] sortedArr = (int[])arr.Clone();
+            int[] sortedArr = (int[]) arr.Clone();
             Array.Sort(sortedArr);
             int mid = sortedArr.Length / 2;
             if (sortedArr.Length % 2 != 0)
@@ -264,10 +264,10 @@ namespace AMOGUS.Core.Factories {
         }
 
         private static Question ExpressionModelToQuestion(MentalExerciseModel expr, bool insaneMode) {
-            if(expr is null) {
+            if (expr is null) {
                 throw new ArgumentException("Expression cannot be null");
             }
-            if(expr.Answer is null) {
+            if (expr.Answer is null) {
                 throw new ArgumentException("Answer cannot be null");
             }
             if (expr.Xp is null) {
@@ -278,11 +278,11 @@ namespace AMOGUS.Core.Factories {
             }
 
             return new Question {
-                Answer = ((int)expr.Answer).ToString(),
+                Answer = ((int) expr.Answer).ToString(),
                 Category = insaneMode ? CategoryType.RANDOMMENTAL_INSANE : CategoryType.RANDOMMENTAL,
                 Difficulty = (DifficultyType) expr.Difficulty,
                 Exercise = expr.Expression,
-                ExperiencePoints = (int)expr.Xp,
+                ExperiencePoints = (int) expr.Xp,
                 QuestionId = "random"
             };
         }
