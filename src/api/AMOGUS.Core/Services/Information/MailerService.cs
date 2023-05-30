@@ -15,9 +15,10 @@ namespace AMOGUS.Core.Services.Information {
         private readonly IUserManager _userManager;
         private readonly IStatsService _statsService;
 
-        public MailerService(IMailerConfiguration mailerConfiguration, IUserManager userManager) {
+        public MailerService(IMailerConfiguration mailerConfiguration, IUserManager userManager, IStatsService statsService) {
             _mailerConfiguration = mailerConfiguration;
             _userManager = userManager;
+            _statsService = statsService;
         }
 
         public async Task<bool> SendMail(string senderMail, string username) {
@@ -50,7 +51,7 @@ namespace AMOGUS.Core.Services.Information {
 
             foreach (var user in allUsers) {
                 var userResult = await _statsService.GetUserStatsAsync(user.Id);
-                if (!userResult.IsFaulted) { continue; }
+                if (userResult.IsFaulted) { continue; }
                 var stats = userResult.Value;
                 if (!user.PlayedToday && stats.CurrentStreak >= 1) {
                     await SendMail(user.Email, user.UserName);
