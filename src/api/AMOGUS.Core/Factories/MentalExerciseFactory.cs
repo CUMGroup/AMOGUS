@@ -23,6 +23,7 @@ namespace AMOGUS.Core.Factories {
 
         private const int sumMaxXp = numOperandsMaxXp + avgOperandsMaxXp + avgOperatorsMaxXp + answerMaxXp;
 
+
         [ExcludeFromCodeCoverage]
         public Question GenerateRandomQuestion(bool insaneMode) {
 
@@ -127,6 +128,7 @@ namespace AMOGUS.Core.Factories {
         }
 
         /** <summary>
+         * Returns a random operator-id with the intended mapping (0: +, 1: -, 2: *)<br></br>
          *  RandomMentalMode: +, -, * with falling probability <br></br>
          *  RandomMentalInsaneMode: +, -, * with equal probability
          * </summary>
@@ -187,7 +189,7 @@ namespace AMOGUS.Core.Factories {
                 + answerMaxXp * answerNormalized;
 
             // punish a lot mod 5s and mod 10s
-            double modWeight = 1d / Math.Max(amountMod5 - amountNotMod5 - 1, 1) * (amountMod10 + 1);
+            double modWeight = 1d / (Math.Max(amountMod5 - amountNotMod5 - 1, 1) * (amountMod10 + 1));
 
             expr.Xp = Math.Max((int) (weightedParams * modWeight), 0);
 
@@ -197,7 +199,7 @@ namespace AMOGUS.Core.Factories {
         }
 
         /**<summary>
-         * Counts the number of elements that are divisible by 10
+         * Counts the number of elements in the <paramref name="collection"/> that are divisible by <paramref name="divisibleBy"/>
          * </summary>
          */
         internal int CountElementsDivisibleBy(IEnumerable<int> collection, int divisibleBy) {
