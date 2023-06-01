@@ -11,7 +11,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { StatsComponent } from './pages/stats/stats.component';
 import { LevelProgressComponent } from './components/level-progress/level-progress.component';
 import { StatsTableComponent } from './components/stats-table/stats-table.component';
-import { AnswerDialog, GameViewComponent } from "./pages/game-view/game-view.component";
+import { GameViewComponent } from "./pages/game-view/game-view.component";
 import { MatCardModule } from "@angular/material/card";
 import { LoginRegisterComponent } from "./pages/login-register/login-register.component";
 import { MatFormFieldModule } from "@angular/material/form-field";
@@ -26,14 +26,14 @@ import {MatSelectModule} from "@angular/material/select";
 import { QuestionEditViewComponent } from './pages/teacher-view/question-edit-view/question-edit-view.component';
 import {QuestionComponent} from './pages/teacher-view/question/question.component';
 import {MatSnackBarModule} from "@angular/material/snack-bar";
-import { ExerciseComponent } from './pages/shared/exercise/exercise.component';
+import { ExerciseComponent } from './components/exercise/exercise.component';
 import { PieGraphComponent } from './components/stats-graphs/pie-graph/pie-graph.component';
 import { LineGraphComponent } from './components/stats-graphs/line-graph/line-graph.component';
-import {MatRippleModule} from "@angular/material/core";
-import {QuestionPreviewComponent} from "./pages/shared/question-preview/question-preview.component";
+import {QuestionPreviewComponent} from "./components/question-preview/question-preview.component";
 import {Constants} from "./interfaces/selection";
 import { SharedModule } from 'src/app/shared/shared.module';
 import {MatTooltipModule} from '@angular/material/tooltip';
+import { ResultDialogComponent } from './pages/game-view/result-dialog/result-dialog.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +43,6 @@ import {MatTooltipModule} from '@angular/material/tooltip';
     StatsTableComponent,
     GameViewComponent,
     LoginRegisterComponent,
-    AnswerDialog,
     GameSelectionComponent,
     TeacherViewComponent,
     QuestionEditViewComponent,
@@ -52,6 +51,7 @@ import {MatTooltipModule} from '@angular/material/tooltip';
     QuestionPreviewComponent,
     PieGraphComponent,
     LineGraphComponent,
+    ResultDialogComponent,
   ],
     imports: [
         CommonModule,

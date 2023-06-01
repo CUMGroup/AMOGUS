@@ -1,7 +1,7 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
-import {QuestionEditViewComponent} from "../../teacher-view/question-edit-view/question-edit-view.component";
-import {question} from "../../../../../core/interfaces/question";
+import {QuestionEditViewComponent} from "../../pages/teacher-view/question-edit-view/question-edit-view.component";
+import {question} from "../../../../core/interfaces/question";
 import {FormBuilder} from "@angular/forms";
 
 @Component({

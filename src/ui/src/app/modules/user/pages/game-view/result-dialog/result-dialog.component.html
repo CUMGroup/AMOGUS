@@ -1,8 +1,8 @@
 <h1 mat-dialog-title class="header">Result</h1>
 <div mat-dialog-content>
   <div class="resultItem" *ngFor="let answerCorrect of data.answers let i = index">
-    <p *ngIf="answerCorrect" class="correct-highlight">Q{{i}}: Correct!</p>
-    <p *ngIf="!answerCorrect" class="wrong-highlight">Q{{i}}: Incorrect!</p>
+    <p *ngIf="answerCorrect" class="correct-highlight">Question {{i + 1}}: Correct!</p>
+    <p *ngIf="!answerCorrect" class="wrong-highlight">Question {{i + 1}}: Incorrect!</p>
     <button class="previewButton" mat-mini-fab (click)="showQuestion(i)"><mat-icon>preview</mat-icon></button>
   </div>
 </div>

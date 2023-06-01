@@ -1,4 +1,4 @@
-@import "../../../../../shared/common-styles.scss";
+@import "../../../../shared/common-styles.scss";
 
 .closeButton:hover{
   background-color: var(--leading-color2);

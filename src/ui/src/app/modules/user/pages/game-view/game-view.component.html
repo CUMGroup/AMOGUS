@@ -3,11 +3,9 @@
   <div class="loading" *ngIf="gameService.loading">
 
   </div>
-  <div *ngIf="!gameService.loading">
+  <div *ngIf="!gameService.loading && !this.currentQuestion.finished">
     <div class="progressBar">
-      <div class="progress">
-  <!--      <img class="knife" src="https://png.pngtree.com/png-clipart/20220730/ourmid/pngtree-cartoon-knife-png-image_6093279.png">-->
-      </div>
+      <div class="progress"></div>
     </div>
     <form>
       <app-exercise [currentQuestion]="currentQuestion" [selectedAnswer]="selectedAnswer"></app-exercise>
