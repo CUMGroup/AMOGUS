@@ -42,18 +42,18 @@ export class LeaderboardComponent implements OnInit, OnDestroy {
 
   badgeCalculator(longestStreak: number): string {
     if(longestStreak <= 0)return ""
-    if(longestStreak <= 6) return "assets/Badges/first_day_badge.PNG";
-    if(longestStreak <= 29) return "assets/Badges/7_days_badge.PNG";
-    if(longestStreak <= 179) return "assets/Badges/month_badge.PNG";
-    if(longestStreak <= 364) return "assets/Badges/half_year_badge.PNG";
-    if(longestStreak <= 729) return "assets/Badges/1_year_badge.PNG";
-    if(longestStreak <= 1824) return "assets/Badges/2_years_badge.PNG";
-    if(longestStreak <= 3649) return "assets/Badges/5_years_badge.PNG";
-    if(longestStreak <= 9124) return "assets/Badges/10_years_badge.PNG";
-    if(longestStreak <= 15249) return "assets/Badges/25_years_badge.PNG";
-    if(longestStreak <= 27375) return "assets/Badges/50_years_badge.PNG";
-    if(longestStreak <= 36499) return "assets/Badges/75_years_badge.PNG";
-    return "assets/Badges/100_years_badge.PNG";
+    if(longestStreak <= 6) return "assets/Badges/opt/first_day_badge.webp";
+    if(longestStreak <= 29) return "assets/Badges/opt/7_days_badge.webp";
+    if(longestStreak <= 179) return "assets/Badges/opt/month_badge.webp";
+    if(longestStreak <= 364) return "assets/Badges/opt/half_year_badge.webp";
+    if(longestStreak <= 729) return "assets/Badges/opt/1_year_badge.webp";
+    if(longestStreak <= 1824) return "assets/Badges/opt/2_years_badge.webp";
+    if(longestStreak <= 3649) return "assets/Badges/opt/5_years_badge.webp";
+    if(longestStreak <= 9124) return "assets/Badges/opt/10_years_badge.webp";
+    if(longestStreak <= 15249) return "assets/Badges/opt/25_years_badge.webp";
+    if(longestStreak <= 27375) return "assets/Badges/opt/50_years_badge.webp";
+    if(longestStreak <= 36499) return "assets/Badges/opt/75_years_badge.webp";
+    return "assets/Badges/opt/100_years_badge.webp";
   }
 
   toolTipCalculator(longestStreak: number): string {
