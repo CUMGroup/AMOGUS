@@ -19,7 +19,7 @@ namespace AMOGUS.Api.BackgroundWorker {
 
             while (!stoppingToken.IsCancellationRequested) {
                 // get Time until 8:00 PM
-                var millis = _dateTime.GetMillisecondsUntil(_dateTime.Now.AddDays(1).Date.AddHours(-4));
+                var millis = _dateTime.GetMillisecondsUntil(_dateTime.Now.AddDays(1).Date.AddHours(20));
                 await Task.Delay(millis, stoppingToken);
 
                 await SendMail();
