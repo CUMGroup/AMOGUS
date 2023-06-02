@@ -8,6 +8,10 @@
   z-index: 0;
   overflow: hidden;
   background: black;
+  background-image: url('/assets/opt/space-back.webp');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
 }
 
 .amongus {
