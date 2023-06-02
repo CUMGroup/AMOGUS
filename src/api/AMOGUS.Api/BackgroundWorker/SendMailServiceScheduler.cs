@@ -1,14 +1,15 @@
 ﻿using AMOGUS.Core.Common.Interfaces.Abstractions;
 using AMOGUS.Core.Common.Interfaces.Game;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace AMOGUS.Api.BackgroundWorker {
-    public class StreakUpdateScheduler : BackgroundService {
+    public class SendMailServiceScheduler : BackgroundService {
 
         private readonly IServiceScopeFactory _serviceScopeFactory;
         private readonly IDateTime _dateTime;
         private readonly ILogger<StreakUpdateScheduler> _logger;
 
-        public StreakUpdateScheduler(IDateTime dateTime, IServiceScopeFactory serviceScopeFactory, ILogger<StreakUpdateScheduler> logger) {
+        public SendMailServiceScheduler(IDateTime dateTime, IServiceScopeFactory serviceScopeFactory, ILogger<StreakUpdateScheduler> logger) {
             _dateTime = dateTime!;
             _serviceScopeFactory = serviceScopeFactory!;
             _logger = logger!;
@@ -17,22 +18,24 @@ namespace AMOGUS.Api.BackgroundWorker {
         protected override async Task ExecuteAsync(CancellationToken stoppingToken) {
 
             while (!stoppingToken.IsCancellationRequested) {
-                var millis = _dateTime.GetMillisecondsUntil(_dateTime.Now.AddDays(1).Date);
+                // get Time until 8:00 PM
+                var millis = _dateTime.GetMillisecondsUntil(_dateTime.Now.AddDays(1).Date.AddHours(-4));
                 await Task.Delay(millis, stoppingToken);
 
-                await UpdateStreaksAsync();
+                await SendMail();
             }
         }
 
-        private async Task UpdateStreaksAsync() {
+        private async Task SendMail() {
             using (var scope = _serviceScopeFactory.CreateScope()) {
-                var streakService = scope.ServiceProvider.GetRequiredService<IStreakService>();
+                var mailerService = scope.ServiceProvider.GetRequiredService<IMailerService>();
 
                 if (_logger.IsEnabled(LogLevel.Information)) {
-                    _logger.LogInformation("Updating Streak for all users");
+                    _logger.LogInformation("Send Mail to all Users that not played today!");
                 }
-                await streakService.UpdateAllStreaksAsync();
+                await mailerService.SendMails();
             }
         }
+
     }
 }

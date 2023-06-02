@@ -21,6 +21,7 @@ builder.Services.AddDataServices(builder.Configuration, builder.Environment.IsDe
 builder.Services.AddCoreServices();
 
 builder.Services.AddHostedService<StreakUpdateScheduler>();
+builder.Services.AddHostedService<SendMailServiceScheduler>();
 
 
 var app = builder.Build();
