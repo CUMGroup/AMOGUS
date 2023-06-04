@@ -12,7 +12,7 @@
 
 ## Target test coverage
 
-The test coverage is around 60% in terms of unit testing line and branch coverage. Goal is to test the services functionalities.
+The target test coverage is 60% in terms of unit testing line and branch coverage. Goal is to test the services functionalities.
 
 
 ## Testing tools
