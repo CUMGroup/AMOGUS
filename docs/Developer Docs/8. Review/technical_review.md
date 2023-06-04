@@ -12,17 +12,17 @@ Goal: The goal of this meeting is to take a closer look at the three main compon
 
 
 
-| Component               | Criteria for review      |
-| ----------------------- | ------------------------ |
-| game component          | security                 |
-|                         | maintainability          |
-|                         | usablility               |
-| exercise service        | security                 |
-|                         | source code correctness  |
-|                         | performance              |
-| mental exercise factory | source code correctness  |
-|                         | well balanced difficulty |
-|                         | performance              |
+| Component               | Criteria for review      | Why we've chosen this |
+| ----------------------- | ------------------------ | ---- |
+| game component          | security                 | The main UI component to display the gameplay |
+|                         | maintainability          | |
+|                         | usablility               | |
+| exercise service        | security                 | This service orchestrates the exercise retrieval and generation |
+|                         | source code correctness  | |
+|                         | performance              | |
+| mental exercise factory | source code correctness  | This factory generates random mental exercises |
+|                         | well balanced difficulty | |
+|                         | performance              | |
 
 
 
