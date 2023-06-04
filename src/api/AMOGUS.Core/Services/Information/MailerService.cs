@@ -49,14 +49,19 @@ namespace AMOGUS.Core.Services.Information {
         public async Task<bool> SendMails() {
             var allUsers = await _userManager.GetAllAsync();
 
+            var mailTasks = new List<Task>();
+
             foreach (var user in allUsers) {
                 var userResult = await _statsService.GetUserStatsAsync(user.Id);
                 if (userResult.IsFaulted) { continue; }
                 var stats = userResult.Value;
                 if (!user.PlayedToday && stats.CurrentStreak >= 1) {
-                    await SendMail(user.Email, user.UserName);
+                    Task mailTask = SendMail(user.Email, user.UserName);
+                    mailTasks.Add(mailTask);
                 }
             }
+
+            await Task.WhenAll(mailTasks);
             return true;
         }
     }
