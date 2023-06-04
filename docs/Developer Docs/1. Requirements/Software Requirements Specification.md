@@ -87,8 +87,7 @@ The technology used will be:
 We want to let the user create their own account to track their progress, play games and get notified if they would lose their streak.<br>
 [Login Use Case](Use%20Cases/Login%20Use%20Case.md)<br>
 [Register Use Case](Use%20Cases/Register%20Use%20Case.md)<br>
-[Logout Use Case](Use%20Cases/Logout%20Use%20Case.md)<br>
-[Profile Use Case](Use%20Cases/Profile%20Use%20Case.md)
+[Logout Use Case](Use%20Cases/Logout%20Use%20Case.md)
 
 #### Game loop
 
@@ -97,8 +96,7 @@ Currently planned categories are:
 
 - Mental Arithmetic
 - Analysis (with Differentiation and Integration)
-- Algebra (with Matrices)
-- Complex Number Arithmetic<br>
+- Geometry <br>
   [Game loop Use Case](Use%20Cases/Gameloop%20Use%20Case.md)
 
 #### Streak System
@@ -113,7 +111,7 @@ We want to track some statistics of the player to display in a dashboard and let
 
 #### Level System
 
-This will introduce a leveling system where players get levels by simply playing which will increase the difficulty over time.<br>
+This will introduce a leveling system where players get levels by simply playing.<br>
 [Level Use Case](Use%20Cases/Level%20Use%20Case.md)
 
 #### Big Excercise Pool to randomly choose from
@@ -167,14 +165,15 @@ To help our user navigating the application (if necessary) we will provide a "Ho
 
 For not logged in Users
 
-- Login / Register
-  For logged in Users:
-- Profile
+- Login / Register <br>
+
+For logged in Users:
 - Dashboard - Stats
 - Game
 - Level
-- Streak
-  For both:
+- Streak<br>
+
+For both:
 - How to play
 - Landing page
 
