@@ -82,7 +82,7 @@ The technology used will be:
 
 ### 3.1 Functionality
 
-#### Accounts (Login, Registering, Profiles)
+#### Accounts (Login, Registering)
 
 We want to let the user create their own account to track their progress, play games and get notified if they would lose their streak.<br>
 [Login Use Case](Use%20Cases/Login%20Use%20Case.md)<br>
