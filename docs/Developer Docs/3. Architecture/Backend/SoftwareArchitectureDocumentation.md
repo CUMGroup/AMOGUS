@@ -109,18 +109,19 @@ In this section, all software requirements and objectives relevant to AMOGUS tha
 
 - easy deployment of individual components should be possible
 
-- backend and frontend should seperated due to further decouple the application
+- backend and frontend should be seperated to further decouple the application
 
 - to further simplify the deployment, the frontend and backend are deployed in separate docker containers
 
 Special constraints that may apply:
 
-- small team with little experiance
+- small team with little experience 
 
-- small amount of time for implementations
+- small amount of time for implementation
 
 ## 4. Use-Case-View
-Following Use-Cases are fount in AMOGUS:
+Following Use-Cases are found in AMOGUS: <br>
+
 - Login / Register
 - Track process with stats view
 - Practice Math with a game session
