@@ -183,7 +183,31 @@ Both high values could also be because of the class level aggregation that Visua
 
 ### 2.2.  Web Application Metrics
 
-RESULTS
+The web application metrics are measured twice. The first time measuring before all the images on the page were optimized and the second measureing after optimizing the images.
+
+*I.) Landingpage* <br>
+
+<img src="../../assets/images/metrics/webapp/before/landingpage/wamLandingPage1.png" alt="Landingpage Results"></img><br>
+<img src="../../assets/images/metrics/webapp/before/landingpage/wamLandingPage2.png" alt="Landingpage Results"></img>
+
+As seen in the result, the landing page of AMOGUS doesn not score as well in performance as it does in best practices and the largest contentful paint takes up to `3,5s` to build. 
+
+<img src="../../assets/images/metrics/webapp/before/landingpage/wamLandingPageEmpfehlungen.png" alt="Landingpage Results"></img>
+
+The main issue for the performance is statet in Lighthouse's recommendations as seen above: the images are too big. After scaling the logo, the parallax background and the badges down and changing the fileformats to `svg` and `webp` the performance increased. The largest contentful paint now only takes up `1,8s` instead of `3,5s`. Results after scaling images down:
+
+<img src="../../assets/images/metrics/webapp/after/landingpage/wamAfterLanding1.png" alt="Landingpage Results"></img>
+<br>
+<img src="../../assets/images/metrics/webapp/after/landingpage/wamAfterLanding2.png" alt="Landingpage Results"></img>
+
+The full Lighthouse test results for the landingpage can be found here: <br>
+- [First results](https://cumgroup.github.io/AMOGUS/Developer%20Docs/5.%20Metrics/Web%20Application%20Metrics/First%20Results/Landingpage/)
+- [Second results](https://cumgroup.github.io/AMOGUS/Developer%20Docs/5.%20Metrics/Web%20Application%20Metrics/Second%20Results/Landingpage/) (after scaling images down)
+
+*II.) Statistics page* <br>
+
+
+*III.) How-To-Play page* <br>
 
 ### 2.3. Software Testing Metrics
 
