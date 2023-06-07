@@ -229,6 +229,22 @@ The full Lighthouse test results for the statistics page can be found here: <br>
 
 *III.) How-To-Play page* <br>
 
+<img src="../../assets/images/metrics/webapp/before/howtopage/wamHowTo1.png" alt="HowToPage Results"></img>
+<br>
+<img src="../../assets/images/metrics/webapp/before/howtopage/wamHowTo2.png" alt="HowToPage Results"></img>
+
+Different than the previous pages was the How-To-Play page as here the perfamance was already at a good `91%` with the largest contentful paint only taking up to `1,5s`. That is the time the previous pages take *after* the optimizing of the images.
+
+The How-To-Play page only has 3 images. As they are important to be seen in a good quality and the performance is already good, these 3 images are not scaled down. To optimize it their fileformat is also changed to `webp`, resulting to a smlight increase in the performance:
+
+<img src="../../assets/images/metrics/webapp/after/howtopage/wamAfterHowTo1.png" alt="HowToPage Results"></img>
+<br>
+<img src="../../assets/images/metrics/webapp/after/howtopage/wamAfterHowTo2.png" alt="HowToPage Results"></img>
+
+The full Lighthouse test results for the How-To-Play page can be found here: <br>
+- [First results](https://cumgroup.github.io/AMOGUS/Developer%20Docs/5.%20Metrics/Web%20Application%20Metrics/First%20Results/HowToPage/)
+- [Second results](https://cumgroup.github.io/AMOGUS/Developer%20Docs/5.%20Metrics/Web%20Application%20Metrics/Second%20Results/HowToPage/) (after scaling images down)
+
 ### 2.3. Software Testing Metrics
 
 All about the software testing metrics and the results of the testing can be found in the [Test Report](https://cumgroup.github.io/AMOGUS/Developer%20Docs/4.%20Testing/zTest%20Report/).
