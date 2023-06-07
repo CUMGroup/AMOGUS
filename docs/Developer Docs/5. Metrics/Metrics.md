@@ -6,21 +6,25 @@ For the backend the source code complexity and the class coupling metrics are ex
 
 Software testing metrics are a result from the testing described in the [testplan](https://cumgroup.github.io/AMOGUS/Developer%20Docs/4.%20Testing/Testplan/).
 
+<br>
+
 ## 1. Evaluation methods
 
 In this section the methods used to collect the chosen metrics are described.
 
 ### 1.1. Source Code Complexity and Class Coupling
 
-This projects source code complexity and class coupling are measured using the [inbuild feauture](https://learn.microsoft.com/en-us/visualstudio/code-quality/code-metrics-values?view=vs-2022) of the IDE Visual Studio 2022. To evaluate these metrics the results from the calculation of the IDE are gathered on a class level. For the assembly level the median of the results of all classes within that assembly is calculated to exclude outliers.
+This projects source code complexity and class coupling are measured using the [inbuilt feauture](https://learn.microsoft.com/en-us/visualstudio/code-quality/code-metrics-values?view=vs-2022) of the IDE Visual Studio 2022. To evaluate these metrics the results from the calculation of the IDE are gathered on a class level. Visual Studio aggregates the metrics of the functions of a class and provides this as a result. For the assembly level the median of the results of all classes within that assembly is calculated to exclude outliers.
 
 ### 1.2. Web Application Metrics
 
-The web application metrics are measured using the build in feature [Lighthouse](https://developer.chrome.com/docs/lighthouse/) in Google Chrome.
+The web application metrics are measured using the built in feature [Lighthouse](https://developer.chrome.com/docs/lighthouse/) in Google Chrome.
 
 For this project this metric is measured in two rounds:
 1. Before optimizing images.
 2. After optimizing images. 
+
+<br>
 
 ## 2. Results
 
@@ -144,6 +148,14 @@ The following tables show the calculated source code complexity and class coupli
 |Program |2| 3|
 |MentalExerciseFactoryBenchmarks| 7| 6|
 |ExerciseServiceBenchmarks |29| 21|
+
+</details>
+
+<details>
+  <summary>assembly: AMOGUS API</summary>
+
+|            |Code Complexity|Class Coupling|
+|-|-|-|
 |AMOGUS API |5| 19|
 |Program |4| 36|
 |UserController |14 |25|
@@ -156,7 +168,18 @@ The following tables show the calculated source code complexity and class coupli
 |StreakUpdateScheduler| 5| 14|
 |SendMailServiceScheduler |5| 16|
 |DependencyInjection |2| 23|
+
 </details>
+
+<br>
+Looking at the results of these metrics it's possible to say that the code complexety is quite high with the values ranging from 4 to 7 in the assembly level. That could be explained due to a lot of validations and condition checking. 
+As for the class coupling the high values could originate from a lot of utility classes (the services and repositories) being used throughout the project.
+
+<br>
+Both high values could also be because of the class level aggregation that Visual Studio does.
+
+
+<br>
 
 ### 2.2.  Web Application Metrics
 
