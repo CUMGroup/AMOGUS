@@ -199,6 +199,10 @@ The main issue for the performance is statet in Lighthouse's recommendations as 
 <img src="../../assets/images/metrics/webapp/after/landingpage/wamAfterLanding1.png" alt="Landingpage Results"></img>
 <br>
 <img src="../../assets/images/metrics/webapp/after/landingpage/wamAfterLanding2.png" alt="Landingpage Results"></img>
+<br>
+<img src="../../assets/images/metrics/webapp/after/landingpage/wamAfterLanding3.png" alt="Landingpage Results"></img>
+
+In the last image it is seen that the images in the landingpage now pass the tests from Lighthouse.
 
 The full Lighthouse test results for the landingpage can be found here: <br>
 - [First results](https://cumgroup.github.io/AMOGUS/Developer%20Docs/5.%20Metrics/Web%20Application%20Metrics/First%20Results/Landingpage/)
@@ -206,6 +210,22 @@ The full Lighthouse test results for the landingpage can be found here: <br>
 
 *II.) Statistics page* <br>
 
+The statistics page shows similar results to the landingpage.
+
+<img src="../../assets/images/metrics/webapp/before/statisticspage/wamStatisticsPage1.png" alt="Statisticspage Results"></img>
+<br>
+<img src="../../assets/images/metrics/webapp/before/statisticspage/wamStatisticsPage2.png" alt="Statisticspage Results"></img>
+
+Due to badge having a big size and high resolution the largest contentful paint takes up `3,7s`. 
+After scaling down the badges and changing their format, performance in loding the statistics page significantly increased:
+
+<img src="../../assets/images/metrics/webapp/after/statisticspage/wamStats1.png" alt="Statisticspage Results"></img>
+<br>
+<img src="../../assets/images/metrics/webapp/after/statisticspage/wamStats2.png" alt="Statisticspage Results"></img>
+
+The full Lighthouse test results for the statistics page can be found here: <br>
+- [First results](https://cumgroup.github.io/AMOGUS/Developer%20Docs/5.%20Metrics/Web%20Application%20Metrics/First%20Results/Statisticspage/)
+- [Second results](https://cumgroup.github.io/AMOGUS/Developer%20Docs/5.%20Metrics/Web%20Application%20Metrics/Second%20Results/Statisticspage/) (after scaling images down)
 
 *III.) How-To-Play page* <br>
 
