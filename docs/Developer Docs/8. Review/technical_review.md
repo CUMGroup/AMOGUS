@@ -43,28 +43,27 @@ Goal: The goal of this meeting is to take a closer look at the three main compon
 
 ### Game component
 
-| Action                               | Comment                                                                                                                                             | Responsible    |
-| ------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------- | -------------- |
-| refactoring code                     | The component has some strange code styles, we need to refactor that                                                                                | Nick Huebner   |
-| encode session JSON object to base64 | The JSON object can be spied via the network tab of the browser, what willgive you the results of questions. Therefore we need to encode the object | Jasmin Huebner |
+| Action                               | Comment                                                                                                                                             | Responsible    | Done? |
+| ------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------- | -------------- | -- |
+| refactoring code                     | The component has some strange code styles, we need to refactor that                                                                                | Nick Huebner   | Tbd |
+| encode session JSON object to base64 | The JSON object can be spied via the network tab of the browser, what willgive you the results of questions. Therefore we need to encode the object | Jasmin Huebner | Done! |
 
 
 
 ### Exercise Service
 
-| Action          | Comment                                                                                                                           | Responsible    |
-| --------------- | --------------------------------------------------------------------------------------------------------------------------------- | -------------- |
-| benchmark tests | Benchmarks for different categories and different difficulties (10 questions each), <br/>Benchmarks for time usage and allocation | Alexander Hagl |
+| Action          | Comment                                                                                                                           | Responsible    | Done? |
+| --------------- | --------------------------------------------------------------------------------------------------------------------------------- | -------------- | -- |
+| benchmark tests | Benchmarks for different categories and different difficulties (10 questions each), <br/>Benchmarks for time usage and allocation | Alexander Hagl | Done! |
 
 
 
 ### Mental Exercise Factory
 
-| Action          | Comment                                                                                          | Responsible    |
-| --------------- | ------------------------------------------------------------------------------------------------ | -------------- |
-| benchmark tests | Median try count for million questions, <br/>Time for generate a question,
-<br/>Allocation tests | Alexander Hagl |
-| refactoring     | The CalcXp and GenerateExpression Methods are very difficult to understand                       | Alexander Hagl |
+| Action          | Comment                                                                                          | Responsible    | Done? |
+| --------------- | ------------------------------------------------------------------------------------------------ | -------------- | -- |
+| benchmark tests | Median try count for million questions, <br/>Time for generate a question,<br/>Allocation tests | Alexander Hagl | Done! |
+| refactoring     | The CalcXp and GenerateExpression Methods are very difficult to understand                       | Alexander Hagl | Done! |
 
 
 
