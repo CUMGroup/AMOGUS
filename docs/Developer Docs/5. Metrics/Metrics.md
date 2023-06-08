@@ -40,7 +40,7 @@ Median of the code complexity of the overall AMOGUS project:
 
 The following tables show the calculated source code complexity and class coupling on a class level. They are grouped by the assemblies of AMOGUS.
 
-<details>
+<details markdown="1">
   <summary>assembly: AMOGUS VALIDATION</summary>
 
 |            |Code Complexity|Class Coupling|
@@ -52,7 +52,7 @@ The following tables show the calculated source code complexity and class coupli
 |AddValidators| 1 |2|
 </details>
 
-<details>
+<details markdown="1">
   <summary>assembly: AMOGUS INFRASTRUCTURE</summary>
 
 |            |Code Complexity|Class Coupling|
@@ -71,7 +71,7 @@ The following tables show the calculated source code complexity and class coupli
 |AuthService |22 |38|
 </details>
 
-<details>
+<details markdown="1">
   <summary>assembly: AMOGUS CORE</summary>
 
 |            |Code Complexity|Class Coupling|
@@ -139,7 +139,7 @@ The following tables show the calculated source code complexity and class coupli
 |ApplicationUser| 2 |1|
 </details>
 
-<details>
+<details markdown="1">
   <summary>assembly: AMOGUS BENCHMARKS</summary>
 
 |            |Code Complexity|Class Coupling|
@@ -151,7 +151,7 @@ The following tables show the calculated source code complexity and class coupli
 
 </details>
 
-<details>
+<details markdown="1">
   <summary>assembly: AMOGUS API</summary>
 
 |            |Code Complexity|Class Coupling|
