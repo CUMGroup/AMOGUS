@@ -21,6 +21,7 @@ This projects source code complexity and class coupling are measured using the [
 The web application metrics are measured using the built in feature [Lighthouse](https://developer.chrome.com/docs/lighthouse/) in Google Chrome.
 
 For this project this metric is measured in two rounds:
+
 1. Before optimizing images.
 2. After optimizing images. 
 
@@ -187,24 +188,25 @@ The web application metrics are measured twice. The first time measuring before 
 
 *I.) Landingpage* <br>
 
-<img src="../../assets/images/metrics/webapp/before/landingpage/wamLandingPage1.png" alt="Landingpage Results"></img><br>
-<img src="../../assets/images/metrics/webapp/before/landingpage/wamLandingPage2.png" alt="Landingpage Results"></img>
+<img src="../../../assets/images/metrics/webapp/before/landingpage/wamLandingPage1.png" alt="Landingpage Results"></img><br>
+<img src="../../../assets/images/metrics/webapp/before/landingpage/wamLandingPage2.png" alt="Landingpage Results"></img>
 
 As seen in the result, the landing page of AMOGUS doesn not score as well in performance as it does in best practices and the largest contentful paint takes up to `3,5s` to build. 
 
-<img src="../../assets/images/metrics/webapp/before/landingpage/wamLandingPageEmpfehlungen.png" alt="Landingpage Results"></img>
+<img src="../../../assets/images/metrics/webapp/before/landingpage/wamLandingPageEmpfehlungen.png" alt="Landingpage Results"></img>
 
 The main issue for the performance is statet in Lighthouse's recommendations as seen above: the images are too big. After scaling the logo, the parallax background and the badges down and changing the fileformats to `svg` and `webp` the performance increased. The largest contentful paint now only takes up `1,8s` instead of `3,5s`. Results after scaling images down:
 
-<img src="../../assets/images/metrics/webapp/after/landingpage/wamAfterLanding1.png" alt="Landingpage Results"></img>
+<img src="../../../assets/images/metrics/webapp/after/landingpage/wamAfterLanding1.png" alt="Landingpage Results"></img>
 <br>
-<img src="../../assets/images/metrics/webapp/after/landingpage/wamAfterLanding2.png" alt="Landingpage Results"></img>
+<img src="../../../assets/images/metrics/webapp/after/landingpage/wamAfterLanding2.png" alt="Landingpage Results"></img>
 <br>
-<img src="../../assets/images/metrics/webapp/after/landingpage/wamAfterLanding3.png" alt="Landingpage Results"></img>
+<img src="../../../assets/images/metrics/webapp/after/landingpage/wamAfterLanding3.png" alt="Landingpage Results"></img>
 
 In the last image it is seen that the images in the landingpage now pass the tests from Lighthouse.
 
 The full Lighthouse test results for the landingpage can be found here: <br>
+
 - [First results](https://cumgroup.github.io/AMOGUS/Developer%20Docs/5.%20Metrics/Web%20Application%20Metrics/First%20Results/Landingpage/)
 - [Second results](https://cumgroup.github.io/AMOGUS/Developer%20Docs/5.%20Metrics/Web%20Application%20Metrics/Second%20Results/Landingpage/) (after scaling images down)
 
@@ -212,36 +214,38 @@ The full Lighthouse test results for the landingpage can be found here: <br>
 
 The statistics page shows similar results to the landingpage.
 
-<img src="../../assets/images/metrics/webapp/before/statisticspage/wamStatisticsPage1.png" alt="Statisticspage Results"></img>
+<img src="../../../assets/images/metrics/webapp/before/statisticspage/wamStatisticsPage1.png" alt="Statisticspage Results"></img>
 <br>
-<img src="../../assets/images/metrics/webapp/before/statisticspage/wamStatisticsPage2.png" alt="Statisticspage Results"></img>
+<img src="../../../assets/images/metrics/webapp/before/statisticspage/wamStatisticsPage2.png" alt="Statisticspage Results"></img>
 
 Due to badge having a big size and high resolution the largest contentful paint takes up `3,7s`. 
 After scaling down the badges and changing their format, performance in loding the statistics page significantly increased:
 
-<img src="../../assets/images/metrics/webapp/after/statisticspage/wamStats1.png" alt="Statisticspage Results"></img>
+<img src="../../../assets/images/metrics/webapp/after/statisticspage/wamStats1.png" alt="Statisticspage Results"></img>
 <br>
-<img src="../../assets/images/metrics/webapp/after/statisticspage/wamStats2.png" alt="Statisticspage Results"></img>
+<img src="../../../assets/images/metrics/webapp/after/statisticspage/wamStats2.png" alt="Statisticspage Results"></img>
 
 The full Lighthouse test results for the statistics page can be found here: <br>
+
 - [First results](https://cumgroup.github.io/AMOGUS/Developer%20Docs/5.%20Metrics/Web%20Application%20Metrics/First%20Results/Statisticspage/)
 - [Second results](https://cumgroup.github.io/AMOGUS/Developer%20Docs/5.%20Metrics/Web%20Application%20Metrics/Second%20Results/Statisticspage/) (after scaling images down)
 
 *III.) How-To-Play page* <br>
 
-<img src="../../assets/images/metrics/webapp/before/howtopage/wamHowTo1.png" alt="HowToPage Results"></img>
+<img src="../../../assets/images/metrics/webapp/before/howtopage/wamHowTo1.png" alt="HowToPage Results"></img>
 <br>
-<img src="../../assets/images/metrics/webapp/before/howtopage/wamHowTo2.png" alt="HowToPage Results"></img>
+<img src="../../../assets/images/metrics/webapp/before/howtopage/wamHowTo2.png" alt="HowToPage Results"></img>
 
 Different than the previous pages was the How-To-Play page as here the perfamance was already at a good `91%` with the largest contentful paint only taking up to `1,5s`. That is the time the previous pages take *after* the optimizing of the images.
 
 The How-To-Play page only has 3 images. As they are important to be seen in a good quality and the performance is already good, these 3 images are not scaled down. To optimize it their fileformat is also changed to `webp`, resulting to a smlight increase in the performance:
 
-<img src="../../assets/images/metrics/webapp/after/howtopage/wamAfterHowTo1.png" alt="HowToPage Results"></img>
+<img src="../../../assets/images/metrics/webapp/after/howtopage/wamAfterHowTo1.png" alt="HowToPage Results"></img>
 <br>
-<img src="../../assets/images/metrics/webapp/after/howtopage/wamAfterHowTo2.png" alt="HowToPage Results"></img>
+<img src="../../../assets/images/metrics/webapp/after/howtopage/wamAfterHowTo2.png" alt="HowToPage Results"></img>
 
 The full Lighthouse test results for the How-To-Play page can be found here: <br>
+
 - [First results](https://cumgroup.github.io/AMOGUS/Developer%20Docs/5.%20Metrics/Web%20Application%20Metrics/First%20Results/HowToPage/)
 - [Second results](https://cumgroup.github.io/AMOGUS/Developer%20Docs/5.%20Metrics/Web%20Application%20Metrics/Second%20Results/HowToPage/) (after scaling images down)
 
