@@ -6,6 +6,7 @@ repo_name: CUMGroup/AMOGUS
 markdown_extensions:
   - footnotes
   - tables
+  - markdown.extensions.md_in_html
   - pymdownx.highlight:
       anchor_linenums: true
   - pymdownx.inlinehilite
