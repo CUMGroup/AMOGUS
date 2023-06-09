@@ -10,6 +10,7 @@ body {
     font-family: Roboto, "Helvetica Neue", sans-serif;
     color: var(--text);
     background-color: var(--background2);
+    overflow-x: hidden;
 }
 
 :root {

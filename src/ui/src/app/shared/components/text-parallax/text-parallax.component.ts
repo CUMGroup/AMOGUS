@@ -24,7 +24,7 @@ export class TextParallaxComponent implements OnInit, OnDestroy {
   async initScrollTriggers() {
     // when removing the revealUp css class has Opacity:0 -> hast to be changed when changing
     // Promise is required to not interrupt the lifecycle of angular -> results in misplaced triggers when routing
-    await new Promise(f => setTimeout(f, 0)).then(()=>{
+    await new Promise(f => setTimeout(f, 50)).then(()=>{
       gsap.registerPlugin(ScrollTrigger)
       gsap.utils.toArray(".revealUp").forEach((elem: any) => {
         ScrollTrigger.create({
