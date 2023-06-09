@@ -1,0 +1,2069 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://cumgroup.github.io/AMOGUS/Developer%20Docs/1.%20Requirements/Software%20Requirements%20Specification/">
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.1.3">
+    
+    
+      
+        <title>Software Requirements Specification - Amogus Docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.edf004c2.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.e6a45f82.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#000000">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="lime">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#table-of-contents" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Amogus Docs" class="md-header__button md-logo" aria-label="Amogus Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Amogus Docs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Software Requirements Specification
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/CUMGroup/AMOGUS/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    CUMGroup/AMOGUS
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Amogus Docs" class="md-nav__button md-logo" aria-label="Amogus Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    Amogus Docs
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/CUMGroup/AMOGUS/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    CUMGroup/AMOGUS
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        Welcome
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          Developer Docs
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Developer Docs" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Developer Docs
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_1" type="checkbox" id="__nav_2_1" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_1">
+          1. Requirements
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="1. Requirements" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_1">
+          <span class="md-nav__icon md-icon"></span>
+          1. Requirements
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Software Requirements Specification
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Software Requirements Specification
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#table-of-contents" class="md-nav__link">
+    Table of contents
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-introduction" class="md-nav__link">
+    1. Introduction
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Introduction">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-purpose" class="md-nav__link">
+    1.1 Purpose
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-scope" class="md-nav__link">
+    1.2 Scope
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-definition-acronyms-and-abbreviations" class="md-nav__link">
+    1.3 Definition, Acronyms and Abbreviations
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#14-references" class="md-nav__link">
+    1.4 References
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#15-overview" class="md-nav__link">
+    1.5 Overview
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-overall-description" class="md-nav__link">
+    2. Overall Description
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Overall Description">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-vision" class="md-nav__link">
+    2.1 Vision
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-use-case-diagram" class="md-nav__link">
+    2.2 Use Case Diagram
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-technology-stack" class="md-nav__link">
+    2.3 Technology Stack
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-specific-requirements" class="md-nav__link">
+    3. Specific Requirements
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Specific Requirements">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-functionality" class="md-nav__link">
+    3.1 Functionality
+  </a>
+  
+    <nav class="md-nav" aria-label="3.1 Functionality">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#accounts-login-registering" class="md-nav__link">
+    Accounts (Login, Registering)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#game-loop" class="md-nav__link">
+    Game loop
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#streak-system" class="md-nav__link">
+    Streak System
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stats-tracking" class="md-nav__link">
+    Stats tracking
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#level-system" class="md-nav__link">
+    Level System
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#big-excercise-pool-to-randomly-choose-from" class="md-nav__link">
+    Big Excercise Pool to randomly choose from
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-usability" class="md-nav__link">
+    3.2 Usability
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-reliability" class="md-nav__link">
+    3.3 Reliability
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34-performance" class="md-nav__link">
+    3.4 Performance
+  </a>
+  
+    <nav class="md-nav" aria-label="3.4 Performance">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#capacity" class="md-nav__link">
+    Capacity
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#storage" class="md-nav__link">
+    Storage
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#response-time" class="md-nav__link">
+    Response Time
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#35-supportability" class="md-nav__link">
+    3.5 Supportability
+  </a>
+  
+    <nav class="md-nav" aria-label="3.5 Supportability">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#coding-standards" class="md-nav__link">
+    Coding Standards
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#testing-strategy" class="md-nav__link">
+    Testing Strategy
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#36-design-constraints" class="md-nav__link">
+    3.6 Design Constraints
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#37-online-user-documentation-and-help-system-requirements" class="md-nav__link">
+    3.7 Online User Documentation and Help System Requirements
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#38-interfaces" class="md-nav__link">
+    3.8 Interfaces
+  </a>
+  
+    <nav class="md-nav" aria-label="3.8 Interfaces">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#user-interfaces" class="md-nav__link">
+    User Interfaces
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#communication-interfaces" class="md-nav__link">
+    Communication Interfaces
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#39-licensing-requirements" class="md-nav__link">
+    3.9 Licensing Requirements
+  </a>
+  
+    <nav class="md-nav" aria-label="3.9 Licensing Requirements">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#legal-copyright-and-other-notices" class="md-nav__link">
+    Legal, Copyright and other Notices
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-supporting-information" class="md-nav__link">
+    4. Supporting Information
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Use%20Case%20Diagram/" class="md-nav__link">
+        Use Case Diagram
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_1_3" data-md-state="indeterminate" type="checkbox" id="__nav_2_1_3" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_1_3">
+          Use Case Realization Specification
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Use Case Realization Specification" data-md-level="3">
+        <label class="md-nav__title" for="__nav_2_1_3">
+          <span class="md-nav__icon md-icon"></span>
+          Use Case Realization Specification
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Use%20Case%20Realization%20Specification/Login%20UCRS/" class="md-nav__link">
+        Login UCRS
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Use%20Case%20Realization%20Specification/Register%20UCRS/" class="md-nav__link">
+        Register UCRS
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_1_4" data-md-state="indeterminate" type="checkbox" id="__nav_2_1_4" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_1_4">
+          Use Cases
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Use Cases" data-md-level="3">
+        <label class="md-nav__title" for="__nav_2_1_4">
+          <span class="md-nav__icon md-icon"></span>
+          Use Cases
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Use%20Cases/Gameloop%20Use%20Case/" class="md-nav__link">
+        Gameloop Use Case
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Use%20Cases/Level%20Use%20Case/" class="md-nav__link">
+        Level Use Case
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Use%20Cases/Login%20Use%20Case/" class="md-nav__link">
+        Login Use Case
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Use%20Cases/Logout%20Use%20Case/" class="md-nav__link">
+        Logout Use Case
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Use%20Cases/Register%20Use%20Case/" class="md-nav__link">
+        Register Use Case
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Use%20Cases/Stats%20Use%20Case/" class="md-nav__link">
+        Stats Use Case
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Use%20Cases/Streak%20Use%20Case/" class="md-nav__link">
+        Streak Use Case
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2" data-md-state="indeterminate" type="checkbox" id="__nav_2_2" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_2">
+          2. Planning
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="2. Planning" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_2">
+          <span class="md-nav__icon md-icon"></span>
+          2. Planning
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2_1" data-md-state="indeterminate" type="checkbox" id="__nav_2_2_1" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_2_1">
+          GUI Mockups
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="GUI Mockups" data-md-level="3">
+        <label class="md-nav__title" for="__nav_2_2_1">
+          <span class="md-nav__icon md-icon"></span>
+          GUI Mockups
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2.%20Planning/GUI%20Mockups/Game%20View/" class="md-nav__link">
+        Game View
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2.%20Planning/GUI%20Mockups/Landing%20Page/" class="md-nav__link">
+        Landing Page
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2.%20Planning/GUI%20Mockups/Stats%20View/" class="md-nav__link">
+        Stats View
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2.%20Planning/GUI%20Mockups/Teacher%20View/" class="md-nav__link">
+        Teacher View
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2_2" data-md-state="indeterminate" type="checkbox" id="__nav_2_2_2" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_2_2">
+          Gameplay
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Gameplay" data-md-level="3">
+        <label class="md-nav__title" for="__nav_2_2_2">
+          <span class="md-nav__icon md-icon"></span>
+          Gameplay
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2.%20Planning/Gameplay/Game%20Loop/" class="md-nav__link">
+        Game Loop
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2.%20Planning/Gameplay/Level%20System/" class="md-nav__link">
+        Level System
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2.%20Planning/Gameplay/Rewards%20%26%20Punishments/" class="md-nav__link">
+        Rewards & Punishments
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2.%20Planning/Gameplay/Stats%20Tracking/" class="md-nav__link">
+        Stats Tracking
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2.%20Planning/Gameplay/Streak%20System/" class="md-nav__link">
+        Streak System
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2.%20Planning/Gameplay/Task%20Plan/" class="md-nav__link">
+        Task Plan
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2.%20Planning/Gameplay/Tutorial/" class="md-nav__link">
+        Tutorial
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2_3" data-md-state="indeterminate" type="checkbox" id="__nav_2_2_3" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_2_3">
+          Project
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Project" data-md-level="3">
+        <label class="md-nav__title" for="__nav_2_2_3">
+          <span class="md-nav__icon md-icon"></span>
+          Project
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2.%20Planning/Project/Risk%20Management/" class="md-nav__link">
+        Risk Management
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3" data-md-state="indeterminate" type="checkbox" id="__nav_2_3" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_3">
+          3. Architecture
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="3. Architecture" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_3">
+          <span class="md-nav__icon md-icon"></span>
+          3. Architecture
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3_1" data-md-state="indeterminate" type="checkbox" id="__nav_2_3_1" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_3_1">
+          Backend
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Backend" data-md-level="3">
+        <label class="md-nav__title" for="__nav_2_3_1">
+          <span class="md-nav__icon md-icon"></span>
+          Backend
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3.%20Architecture/Backend/ABBA%20Structure/" class="md-nav__link">
+        ABBA Structure
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3.%20Architecture/Backend/ASR-AMOGUS/" class="md-nav__link">
+        ASR AMOGUS
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3.%20Architecture/Backend/Class%20Diagram/" class="md-nav__link">
+        Class Diagram
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3.%20Architecture/Backend/Component%20Diagram/" class="md-nav__link">
+        Component Diagram
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3.%20Architecture/Backend/Database%20Concept/" class="md-nav__link">
+        Database Concept
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3.%20Architecture/Backend/Deployment%20Diagram/" class="md-nav__link">
+        Deployment Diagram
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3.%20Architecture/Backend/Process%20Diagram/" class="md-nav__link">
+        Process Diagram
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3.%20Architecture/Backend/Refactor/" class="md-nav__link">
+        Backend Refactor - Summary 20.04.2023
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3.%20Architecture/Backend/SoftwareArchitectureDocumentation/" class="md-nav__link">
+        SAD
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3.%20Architecture/Backend/Utility-Tree/" class="md-nav__link">
+        Utility Tree
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_4" data-md-state="indeterminate" type="checkbox" id="__nav_2_4" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_4">
+          4. Testing
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="4. Testing" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_4">
+          <span class="md-nav__icon md-icon"></span>
+          4. Testing
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../4.%20Testing/Testplan/" class="md-nav__link">
+        Testplan AMOGUS
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../4.%20Testing/zTest%20Report/" class="md-nav__link">
+        Test Report
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_5" data-md-state="indeterminate" type="checkbox" id="__nav_2_5" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_5">
+          5. Metrics
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="5. Metrics" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_5">
+          <span class="md-nav__icon md-icon"></span>
+          5. Metrics
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../5.%20Metrics/Benchmarks/" class="md-nav__link">
+        Benchmark Tests
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../5.%20Metrics/Metrics/" class="md-nav__link">
+        Metrics
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_5_3" data-md-state="indeterminate" type="checkbox" id="__nav_2_5_3" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_5_3">
+          Web Application Metrics
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Web Application Metrics" data-md-level="3">
+        <label class="md-nav__title" for="__nav_2_5_3">
+          <span class="md-nav__icon md-icon"></span>
+          Web Application Metrics
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_5_3_1" data-md-state="indeterminate" type="checkbox" id="__nav_2_5_3_1" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_5_3_1">
+          First Results
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="First Results" data-md-level="4">
+        <label class="md-nav__title" for="__nav_2_5_3_1">
+          <span class="md-nav__icon md-icon"></span>
+          First Results
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../5.%20Metrics/Web%20Application%20Metrics/First%20Results/HowToPage/" class="md-nav__link">
+        HowToPage
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../5.%20Metrics/Web%20Application%20Metrics/First%20Results/Landingpage/" class="md-nav__link">
+        Landingpage
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../5.%20Metrics/Web%20Application%20Metrics/First%20Results/Statisticspage/" class="md-nav__link">
+        Statisticspage
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_5_3_2" data-md-state="indeterminate" type="checkbox" id="__nav_2_5_3_2" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_5_3_2">
+          Second Results
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Second Results" data-md-level="4">
+        <label class="md-nav__title" for="__nav_2_5_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          Second Results
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../5.%20Metrics/Web%20Application%20Metrics/Second%20Results/HowToPage/" class="md-nav__link">
+        HowToPage
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../5.%20Metrics/Web%20Application%20Metrics/Second%20Results/Landingpage/" class="md-nav__link">
+        Landingpage
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../5.%20Metrics/Web%20Application%20Metrics/Second%20Results/Statisticspage/" class="md-nav__link">
+        Statisticspage
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_6" data-md-state="indeterminate" type="checkbox" id="__nav_2_6" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_6">
+          6. CICD
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="6. CICD" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_6">
+          <span class="md-nav__icon md-icon"></span>
+          6. CICD
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../6.%20CICD/CICDDoc/" class="md-nav__link">
+        CI/CD Documentation
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_7" data-md-state="indeterminate" type="checkbox" id="__nav_2_7" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_7">
+          7. Conventions
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="7. Conventions" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_7">
+          <span class="md-nav__icon md-icon"></span>
+          7. Conventions
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../7.%20Conventions/Color%20Scheme/" class="md-nav__link">
+        Color Scheme
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_8" data-md-state="indeterminate" type="checkbox" id="__nav_2_8" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_8">
+          8. Review
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="8. Review" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_8">
+          <span class="md-nav__icon md-icon"></span>
+          8. Review
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../8.%20Review/technical_review/" class="md-nav__link">
+        Technical Review - AMOGUS
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+<a href="https://github.com/CUMGroup/AMOGUS/edit/master/docs/Developer Docs/1. Requirements/Software Requirements Specification.md" title="Edit this page" class="md-content__button md-icon">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+</a>
+
+
+  <h1>Software Requirements Specification</h1>
+
+<h2 id="table-of-contents">Table of contents</h2>
+<ul>
+<li><a href="#table-of-contents">Table of contents</a></li>
+<li><a href="#1-introduction">Introduction</a></li>
+<li><a href="#11-purpose">Purpose</a></li>
+<li><a href="#12-scope">Scope</a></li>
+<li><a href="#13-definition-acronyms-and-abbreviations">Definitions, Acronyms and Abbreviations</a></li>
+<li><a href="#14-references">References</a></li>
+<li><a href="#15-overview">Overview</a></li>
+<li><a href="#2-overall-description">Overall Description</a></li>
+<li><a href="#21-vision">Vision</a></li>
+<li><a href="#22-use-case-diagram">Use Case Diagram</a></li>
+<li><a href="#23-technology-stack">Technology Stack</a></li>
+<li><a href="#3-specific-requirements">Specific Requirements</a></li>
+<li><a href="#31-functionality">Functionality</a></li>
+<li><a href="#32-usability">Usability</a></li>
+<li><a href="#33-reliability">Reliability</a></li>
+<li><a href="#34-performance">Performance</a></li>
+<li><a href="#35-supportability">Supportability</a></li>
+<li><a href="#36-design-constraints">Design Constraints</a></li>
+<li><a href="#37-online-user-documentation-and-help-system-requirements">Online User Documentation and Help System Requirements</a></li>
+<li><a href="#38-interfaces">Interfaces</a></li>
+<li><a href="#39-licensing-requirements">Licensing Requirements</a></li>
+<li><a href="#4-supporting-information">Supporting Information</a></li>
+</ul>
+<h2 id="1-introduction">1. Introduction</h2>
+<h3 id="11-purpose">1.1 Purpose</h3>
+<p>This document specifies the requirements of our application. It also describes nonfunctional requirements, designconstraints, and other factors necessary to provide a complete and comprehensive description of the requirements for AMOGUS.</p>
+<h3 id="12-scope">1.2 Scope</h3>
+<p>AMOGUS is a web application for people to practice their Mathematic skills similar to the well-known language learning app Duolingo. Each User will be able to have an account in order to keep track of their progress. Admins will be able to manage the Exercises as well as giving support to the users [see Use-Case-Diagramm].<br>
+Planned Systems are:</p>
+<ul>
+<li>Gameplay System</li>
+<li>Streak System</li>
+<li>Level System</li>
+<li>Accounts</li>
+<li>Stats tracking</li>
+</ul>
+<h3 id="13-definition-acronyms-and-abbreviations">1.3 Definition, Acronyms and Abbreviations</h3>
+<table>
+<thead>
+<tr>
+<th>Abbreviation</th>
+<th>Explanation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PAMO</td>
+<td>Project AMOGUS - The name of the Project</td>
+</tr>
+<tr>
+<td>AMOGUS</td>
+<td>Advanced Mathematic Operations and Geometrics Under Stress</td>
+</tr>
+<tr>
+<td>UCS</td>
+<td>Use Cases</td>
+</tr>
+</tbody>
+</table>
+<h3 id="14-references">1.4 References</h3>
+<table>
+<thead>
+<tr>
+<th>Title</th>
+<th>Date</th>
+<th>Publisher</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://github.com/CUMGroup/AMOGUS/discussions">AMOGUS Blog</a></td>
+<td>19.10.2022</td>
+<td>CUMGroup</td>
+</tr>
+<tr>
+<td><a href="https://github.com/CUMGroup/AMOGUS/">Github</a></td>
+<td>19.10.2022</td>
+<td>CUMGroup</td>
+</tr>
+</tbody>
+</table>
+<h3 id="15-overview">1.5 Overview</h3>
+<p>This document provides an overview over the project, its use cases and requirements</p>
+<h2 id="2-overall-description">2. Overall Description</h2>
+<h3 id="21-vision">2.1 Vision</h3>
+<p>AMOGUS is a web application for people to practice their Mathematic skills similar to the well-known language learning app Duolingo.</p>
+<h3 id="22-use-case-diagram">2.2 Use Case Diagram</h3>
+<p><img alt="Use Case Diagram" src="../../../assets/images/requirements/UseCaseDiagram.png" /></p>
+<h3 id="23-technology-stack">2.3 Technology Stack</h3>
+<p>The technology used will be:</p>
+<ul>
+<li>Backend: ASP.Net Web API, Sqlite Database</li>
+<li>Frontend: Angular Web app</li>
+<li>IDE: Visual Studio 2022, Visual Studio Code</li>
+<li>Project Management: Jira, Github, Discord</li>
+</ul>
+<h2 id="3-specific-requirements">3. Specific Requirements</h2>
+<h3 id="31-functionality">3.1 Functionality</h3>
+<h4 id="accounts-login-registering">Accounts (Login, Registering)</h4>
+<p>We want to let the user create their own account to track their progress, play games and get notified if they would lose their streak.<br>
+<a href="../Use%20Cases/Login%20Use%20Case/">Login Use Case</a><br>
+<a href="../Use%20Cases/Register%20Use%20Case/">Register Use Case</a><br>
+<a href="../Use%20Cases/Logout%20Use%20Case/">Logout Use Case</a></p>
+<h4 id="game-loop">Game loop</h4>
+<p>This is the most important feature of our app. Here we will implement the main excercises in a playful way. Players get a random Math problem from a specific category and can then try to solve it to get points and progress in the game.<br>
+Currently planned categories are:</p>
+<ul>
+<li>Mental Arithmetic</li>
+<li>Analysis (with Differentiation and Integration)</li>
+<li>Geometry <br>
+  <a href="../Use%20Cases/Gameloop%20Use%20Case/">Game loop Use Case</a></li>
+</ul>
+<h4 id="streak-system">Streak System</h4>
+<p>Here we want the player to get attached to the game more by introducing a streak system. The player gets a streak which tracks the amount of consecutive days they (uninterupted) played. So if a player doesn't play till midnight, the streak gets reset.<br>
+<a href="../Use%20Cases/Streak%20Use%20Case/">Streak Use Case</a></p>
+<h4 id="stats-tracking">Stats tracking</h4>
+<p>We want to track some statistics of the player to display in a dashboard and let the Person see their progress.<br>
+<a href="../Use%20Cases/Stats%20Use%20Case/">Stats Use Case</a></p>
+<h4 id="level-system">Level System</h4>
+<p>This will introduce a leveling system where players get levels by simply playing.<br>
+<a href="../Use%20Cases/Level%20Use%20Case/">Level Use Case</a></p>
+<h4 id="big-excercise-pool-to-randomly-choose-from">Big Excercise Pool to randomly choose from</h4>
+<p>As we cannot generate a lot of the problems to be solved by the computer, we have to provide a big enough excercise pool to cover a broad range of problems.</p>
+<h3 id="32-usability">3.2 Usability</h3>
+<p>The User Interface should be designed in an obvious way that the user can directly start learning without having to learn the Interface first. For further explanation we will have a "How-To" page covering how to play and the overall infrastructure of the site and we will have small tutorials in each excercise, helping the player when stuck.</p>
+<h3 id="33-reliability">3.3 Reliability</h3>
+<p>The Server should only be down for a very short period of time when a new version of the web app is deployed. All other downtimes have to be handled as quickly as possible.</p>
+<h3 id="34-performance">3.4 Performance</h3>
+<h4 id="capacity">Capacity</h4>
+<p>The Backend should be able to handle many players at the same time. At no point should there be a waiting queue for the user.</p>
+<h4 id="storage">Storage</h4>
+<p>All of the persistant storage will be handled by the Backend, so storage won't be a problem.</p>
+<h4 id="response-time">Response Time</h4>
+<p>As this will be a kind of game, the perfomance - e.g. checking the answer - should be as fast as possible.</p>
+<h3 id="35-supportability">3.5 Supportability</h3>
+<h4 id="coding-standards">Coding Standards</h4>
+<p>We will use the most common clean code standards. To ensure a clean structure we will use a variation of <a href="https://github.com/jasontaylordev/CleanArchitecture">Clean Architecture by Jason Taylor</a> for our C# API Backend.</p>
+<h4 id="testing-strategy">Testing Strategy</h4>
+<p>The application will have a high test coverage to ensure it is working correctly.</p>
+<h3 id="36-design-constraints">3.6 Design Constraints</h3>
+<p>To keep our application modular and testable, we will use the MVVM pattern to connect our C# REST-API to the Angular frontend.
+They will communicate with the JSON format.</p>
+<h3 id="37-online-user-documentation-and-help-system-requirements">3.7 Online User Documentation and Help System Requirements</h3>
+<p>To help our user navigating the application (if necessary) we will provide a "How-To" page and small tutorials in each excercise.</p>
+<h3 id="38-interfaces">3.8 Interfaces</h3>
+<h4 id="user-interfaces">User Interfaces</h4>
+<p>For not logged in Users</p>
+<ul>
+<li>Login / Register <br></li>
+</ul>
+<p>For logged in Users:
+- Dashboard - Stats
+- Game
+- Level
+- Streak<br></p>
+<p>For both:
+- How to play
+- Landing page</p>
+<h4 id="communication-interfaces">Communication Interfaces</h4>
+<p>The Frontend will communicate with the Backend via the HTTP-Protocol.</p>
+<h3 id="39-licensing-requirements">3.9 Licensing Requirements</h3>
+<h4 id="legal-copyright-and-other-notices">Legal, Copyright and other Notices</h4>
+<p>The logo is licensed to CUMGroup and is only allowed to be used for the application. We do not take responsibilty for any incorrect data or errors in the application.</p>
+<h2 id="4-supporting-information">4. Supporting Information</h2>
+<p>For further information you can check out our <a href="https://github.com/CUMGroup/AMOGUS/discussions">blog</a> or contact us directly:</p>
+<ul>
+<li><a href="https://github.com/AlexMi-Ha">@AlexMi-Ha</a></li>
+<li><a href="https://github.com/Annalytic-programming">@Annalytic-programming</a></li>
+<li><a href="https://github.com/elnaz-gharoon">@elnaz-gharoon</a></li>
+<li><a href="https://github.com/jas20202">@jas20202</a></li>
+<li><a href="https://github.com/WachtelHD">@WachtelHD</a></li>
+</ul>
+
+  <hr>
+<div class="md-source-file">
+  <small>
+    
+      Last update:
+      2023-06-09
+    
+  </small>
+</div>
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../../.." class="md-footer__link md-footer__link--prev" aria-label="Previous: Welcome" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Welcome
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../Use%20Case%20Diagram/" class="md-footer__link md-footer__link--next" aria-label="Next: Use Case Diagram" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Use Case Diagram
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.sections", "navigation.expand", "toc.integrate"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../../assets/javascripts/workers/search.0bbba5b5.min.js"}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.e1a181d9.min.js"></script>
+      
+    
+  </body>
+</html>
