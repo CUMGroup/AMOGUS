@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {AfterViewInit, Component, OnDestroy, OnInit} from '@angular/core';
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import {Router} from "@angular/router";
@@ -10,10 +10,10 @@ import {debounceTime} from "rxjs";
   templateUrl: './text-parallax.component.html',
   styleUrls: ['./text-parallax.component.scss']
 })
-export class TextParallaxComponent implements OnInit, OnDestroy {
+export class TextParallaxComponent implements AfterViewInit, OnDestroy {
   constructor() { }
 
-  ngOnInit(){
+  ngAfterViewInit(){
     this.initScrollTriggers();
   }
 
@@ -44,22 +44,22 @@ export class TextParallaxComponent implements OnInit, OnDestroy {
               }
             );
           },
-          onLeave: () => {
-            gsap.fromTo(elem, {autoAlpha: 1}, {autoAlpha: 0, overwrite: "auto"});
-          },
-          onEnterBack: () => {
-            gsap.fromTo(
-              elem,
-              {y: -100, autoAlpha: 0},
-              {
-                duration: 1.25,
-                y: 0,
-                autoAlpha: 1,
-                ease: "back",
-                overwrite: "auto"
-              }
-            );
-          },
+          // onLeave: () => {
+          //   gsap.fromTo(elem, {autoAlpha: 1}, {autoAlpha: 0, overwrite: "auto"});
+          // },
+          // onEnterBack: () => {
+          //   gsap.fromTo(
+          //     elem,
+          //     {y: -100, autoAlpha: 0},
+          //     {
+          //       duration: 1.25,
+          //       y: 0,
+          //       autoAlpha: 1,
+          //       ease: "back",
+          //       overwrite: "auto"
+          //     }
+          //   );
+          // },
           onLeaveBack: () => {
             gsap.fromTo(elem, {autoAlpha: 1}, {autoAlpha: 0, overwrite: "auto"});
           }
