@@ -41,9 +41,12 @@ export class QuestionEditViewComponent implements OnInit, OnDestroy {
   submit(){
     if(this.newQuestion.valid){
       if(this.data === null){
-        this.addSub$ = this.teacherService.add(this.newQuestion).subscribe();
+        this.addSub$ = this.teacherService.add(this.newQuestion).subscribe(e => {
+          this.dialogRef.close();
+        });
+      }else {
+        this.dialogRef.close()
       }
-      this.dialogRef.close()
     }else{
       this.snackBar.open("Please fill the required Fields", "Close",{duration:1000})
     }
