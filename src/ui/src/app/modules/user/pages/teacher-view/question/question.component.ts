@@ -52,7 +52,7 @@ export class QuestionComponent implements OnInit, OnDestroy {
   }
 
   remove() {
-    this.removeSub$ = this.teacherService.remove(this.index).subscribe();
+    this.removeSub$ = this.teacherService.remove(this.question.value['questionId']).subscribe();
   }
 }
 

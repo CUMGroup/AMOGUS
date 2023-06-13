@@ -17,11 +17,11 @@ export class TeacherService {
   constructor(private apiService: ApiService, private formBuilder: FormBuilder,) {
   }
 
-  remove(index:number) : Observable<unknown> {
-    let fg = this.questionArray[index];
-    let route = 'teachers/questions/' + fg.value['questionId'];
+  remove(id:string) : Observable<unknown> {
+    let route = 'teachers/questions/' + id;
     return this.apiService.delete<HttpStatusCode>(route).pipe(
       tap(resp => {
+        let index = this.questionArray.findIndex((e : FormGroup) => e.value['questionId'] === id);
         this.questionArray.splice(index,1);
       })
     );
