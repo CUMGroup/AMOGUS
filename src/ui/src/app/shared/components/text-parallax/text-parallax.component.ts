@@ -31,6 +31,7 @@ export class TextParallaxComponent implements AfterViewInit, OnDestroy {
           trigger: elem,
           start: "top 90%",
           end: "bottom 10%",
+          markers: true,
           onEnter: () => {
             gsap.fromTo(
               elem,

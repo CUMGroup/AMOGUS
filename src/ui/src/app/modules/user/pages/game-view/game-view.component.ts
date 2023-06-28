@@ -1,14 +1,15 @@
 import {AfterViewInit, Component, Inject, OnDestroy, OnInit} from '@angular/core';
-import {FormBuilder, FormControl} from "@angular/forms";
+import {FormBuilder} from "@angular/forms";
 import {gsap} from "gsap";
 import {question} from "../../../../core/interfaces/question";
 import {GameService} from "../../../../core/services/game.service";
 import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from "@angular/material/dialog";
 import {Router} from "@angular/router";
 import {Subject, Subscription, takeUntil, timer} from 'rxjs'
-import { CategoryType } from 'src/app/core/interfaces/game-session';
-import {ExerciseComponent} from "../shared/exercise/exercise.component";
-import {QuestionPreviewComponent} from "../shared/question-preview/question-preview.component";
+import {CategoryType, GameSession} from 'src/app/core/interfaces/game-session';
+import {QuestionPreviewComponent} from "../../components/question-preview/question-preview.component";
+import {ResultDialogComponent} from "./result-dialog/result-dialog.component";
+import {BaseComponent} from "../../../../shared/components/base/base.component";
 
 
 @Component({
@@ -17,24 +18,16 @@ import {QuestionPreviewComponent} from "../shared/question-preview/question-prev
   styleUrls: ['./game-view.component.scss'],
 })
 
-export class GameViewComponent implements OnInit, AfterViewInit, OnDestroy {
+export class GameViewComponent extends BaseComponent implements OnInit, AfterViewInit, OnDestroy {
 
   currentQuestion: question;
   correctAnswers: Array<boolean> = [];
   gameProgress: Subscription;
   answers: string[] = [];
   questionType: CategoryType;
-
   selectedAnswer = this.formBuilder.control("")
-
-  protected componentDestroyed$: Subject<void> = new Subject<void>();
-
-  newGameSubscription$ : Subscription;
-  endGameSubscription$ : Subscription;
-  routerSubscription$ : Subscription;
-
   currentQuestionTimeStart: number;
-  questionIndex : number = 0;
+  questionIndex: number = 0;
 
   constructor(
     private router: Router,
@@ -42,46 +35,35 @@ export class GameViewComponent implements OnInit, AfterViewInit, OnDestroy {
     public gameService: GameService,
     public dialog: MatDialog
   ) {
+    super();
   }
 
   ngOnInit(): void {
-    //this.newGameSubscription$ = this.gameService.startNewGame(this.questionType).subscribe(e => {
-      this.newQuestion()
-      // });
-    }
-
-  ngAfterViewInit(): void {
-      this.animate();
+    this.newQuestion()
   }
 
-  ngOnDestroy(){
-    this.componentDestroyed$.next();
-    this.componentDestroyed$.complete();
-    this.newGameSubscription$?.unsubscribe();
-    this.routerSubscription$?.unsubscribe();
-    this.gameProgress?.unsubscribe();
-    //TODO: Analyse if memory leak problem could arise
-    //this.endGameSubscription$?.unsubscribe();
+  ngAfterViewInit(): void {
+    this.animate();
   }
 
   newQuestion() {
     this.currentQuestion = this.gameService.getQuestion();
     if (this.currentQuestion.finished) {
-      const dialogRef = this.dialog.open(AnswerDialog, {
-        data: {answers: this.correctAnswers, questions: this.gameService.questions}, panelClass: 'mat-dialog-class'}
+      const dialogRef = this.dialog.open(ResultDialogComponent, {
+          data: {answers: this.correctAnswers, questions: this.gameService.questions}, panelClass: 'mat-dialog-class'
+        }
       );
 
-      this.routerSubscription$ = dialogRef.afterClosed().pipe(takeUntil(this.componentDestroyed$)).subscribe(() => {
+      dialogRef.afterClosed().pipe(takeUntil(this.componentDestroyed$)).subscribe(() => {
         this.router.navigate([""])
       });
 
-      this.endGameSubscription$ = this.gameService.endGame().subscribe();
-
+      this.gameService.endGame().pipe(takeUntil(this.componentDestroyed$)).subscribe();
     } else {
       this.currentQuestionTimeStart = new Date().getTime();
       this.questionIndex++;
       this.animate();
-      this.gameProgress = timer(this.currentQuestion.getTime() * 1000).pipe(takeUntil(this.componentDestroyed$)).subscribe(() => {
+      this.gameProgress = timer(this.currentQuestion.getTime() * 1000).pipe().subscribe(() => {
         this.submit()
       })
     }
@@ -89,42 +71,47 @@ export class GameViewComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   animate() {
-    // gsap.fromTo(".knife",{ rotate:0},{ rotate: 765, duration:this.time})
     gsap.fromTo(".progress", {width: "0%"}, {width: "100%", duration: this.currentQuestion.getTime()})
-
   }
 
   submit() {
     const session = this.gameService.getSession();
     this.gameProgress?.unsubscribe();
     const correctAnswer = this.currentQuestion.answer === this.selectedAnswer.value
+
     if (correctAnswer) {
       this.correctAnswers.push(true);
       session.correctAnswersCount++;
     } else {
       this.correctAnswers.push(false);
     }
-    if(this.selectedAnswer) {
+
+    if (this.selectedAnswer) {
       session.givenAnswersCount++;
     }
-    const questionTime = new Date().getTime() - this.currentQuestionTimeStart;
-    session.averageTimePerQuestion += (questionTime - session.averageTimePerQuestion) / Math.max(this.questionIndex, 1);
-    if(questionTime < session.quickestAnswer && correctAnswer) {
-      session.quickestAnswer = questionTime;
-    }
-    if(questionTime > session.slowestAnswer) {
-      session.slowestAnswer = questionTime;
-    }
+
+    this.calculateQuestionStats(session,correctAnswer)
+
     this.currentQuestion.answer = this.selectedAnswer.value;
 
     this.selectedAnswer.reset();
 
     this.newQuestion();
-    this.animate();
+  }
+
+  calculateQuestionStats(session:GameSession, correctAnswer:boolean){
+    const questionTime = new Date().getTime() - this.currentQuestionTimeStart;
+    session.averageTimePerQuestion += (questionTime - session.averageTimePerQuestion) / Math.max(this.questionIndex, 1);
+    if (questionTime < session.quickestAnswer && correctAnswer) {
+      session.quickestAnswer = questionTime;
+    }
+    if (questionTime > session.slowestAnswer) {
+      session.slowestAnswer = questionTime;
+    }
   }
 
   getCategoryName() {
-    switch(this.questionType) {
+    switch (this.questionType) {
       case CategoryType.ANALYSIS:
         return "Analysis";
       case CategoryType.GEOMETRY:
@@ -136,34 +123,5 @@ export class GameViewComponent implements OnInit, AfterViewInit, OnDestroy {
       case CategoryType.RANDOMMENTAL_INSANE:
         return "Random Insane Mode";
     }
-  }
-
-}
-
-@Component({
-  selector: 'answer-dialog',
-  templateUrl: 'answer-dialog.html',
-  styleUrls: ['./game-view.component.scss']
-})
-
-export class AnswerDialog {
-  constructor(
-    public dialogRef: MatDialogRef<AnswerDialog>,
-    public dialog: MatDialog,
-
-  @Inject(MAT_DIALOG_DATA) public data: { answers: Array<boolean>; questions: Array<question> },
-  ) {
-  }
-
-  showQuestion(index:number){
-    this.dialog.open(QuestionPreviewComponent, { data: this.getQuestion(index), width:"40rem", panelClass: 'mat-dialog-class'});
-  }
-
-  getQuestion(index:number): question{
-    return this.data.questions[index]
-  }
-
-  onNoClick(): void {
-    this.dialogRef.close();
   }
 }

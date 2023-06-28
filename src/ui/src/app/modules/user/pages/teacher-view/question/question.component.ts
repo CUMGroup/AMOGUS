@@ -3,7 +3,7 @@ import {FormGroup} from "@angular/forms";
 import {TeacherService} from "../../../../../core/services/user/teacher.service";
 import {MatDialog} from "@angular/material/dialog";
 import {QuestionEditViewComponent} from "../question-edit-view/question-edit-view.component";
-import {QuestionPreviewComponent} from "../../shared/question-preview/question-preview.component";
+import {QuestionPreviewComponent} from "../../../components/question-preview/question-preview.component";
 import {question} from "../../../../../core/interfaces/question";
 import {Constants} from "../../../interfaces/selection";
 import { Subscription } from 'rxjs/internal/Subscription';
@@ -21,7 +21,7 @@ export class QuestionComponent implements OnInit, OnDestroy {
   private removeSub$ : Subscription;
 
   constructor(public teacherService:TeacherService, private dialog: MatDialog, private constants: Constants) { }
- 
+
   ngOnDestroy(): void {
     this.removeSub$?.unsubscribe();
   }

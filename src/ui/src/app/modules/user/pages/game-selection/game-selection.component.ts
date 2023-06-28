@@ -27,7 +27,9 @@ export class GameSelectionComponent implements OnDestroy {
   }
 
   navigate(category : CategoryType){
+    console.log("reached")
     this.gameService.startNewGame(category).subscribe(e => {
+      console.log("reached sub")
       this.router.navigate(["user","game"]);
     });
   }
