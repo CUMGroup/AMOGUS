@@ -36,15 +36,15 @@ This will start the app at `https://localhost:4200`.
 <td align="center"><img src="https://avatars.githubusercontent.com/u/61502536?v=4" width="100px"></img></td>
 <td align="center"><img src="https://avatars.githubusercontent.com/u/97878953?v=4" width="100px"></img></td>
 <td align="center"><img src="https://avatars.githubusercontent.com/u/90132658?v=4" width="100px"></img></td>
-<td align="center"><img src="https://avatars.githubusercontent.com/u/65330698?v=4" width="100px"></img></td>
-<td align="center"><img src="https://avatars.githubusercontent.com/u/147487079?v=4"></img></td>
+<td align="center"><img src="https://avatars.githubusercontent.com/u/99250573?v=4" width="100px"></img></td>
+<td align="center"><img src="https://avatars.githubusercontent.com/u/115617918?v=4" width="100px"></img></td>
 </tr>
 <tr>
 <td align="center"><a align="center" href="https://github.com/AlexMi-Ha">@AlexMi-Ha</a></td>
 <td align="center"><a align="center" href="https://github.com/Annalytic-programming">@Annalytic<br>programming</a></td>
 <td align="center"><a align="center" href="https://github.com/elnaz-gharoon">@elnaz-gharoon</a></td>
-<td align="center"><a align="center"</a></td>
-<td align="center"><a align="center" ">@culmets</a></td>
+<td align="center"><a align="center" href="https://github.com/jas20202">@jas20202</a></td>
+<td align="center"><a align="center" href="https://github.com/WachtelHD">@WachtelHD</a></td>
 </tr>
 </table>
 If you have any Questions, feel free to contact us via the GitHub Discussions, an Issue or <a href="mailto:alex@hagl.de">alex@hagl.de</a>.
