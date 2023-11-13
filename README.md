@@ -43,8 +43,8 @@ This will start the app at `https://localhost:4200`.
 <td align="center"><a align="center" href="https://github.com/AlexMi-Ha">@AlexMi-Ha</a></td>
 <td align="center"><a align="center" href="https://github.com/Annalytic-programming">@Annalytic<br>programming</a></td>
 <td align="center"><a align="center" href="https://github.com/elnaz-gharoon">@elnaz-gharoon</a></td>
-<td align="center"><a align="center" href="https://github.com/Marc738">@Marc7382</a></td>
-<td align="center"><a align="center" href="https://github.com/culmets">@culmets</a></td>
+<td align="center"><a align="center"</a></td>
+<td align="center"><a align="center" ">@culmets</a></td>
 </tr>
 </table>
 If you have any Questions, feel free to contact us via the GitHub Discussions, an Issue or <a href="mailto:alex@hagl.de">alex@hagl.de</a>.
